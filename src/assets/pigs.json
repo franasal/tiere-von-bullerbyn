@@ -1,0 +1,112 @@
+[
+  {
+    "name": "Ronja",
+    "earMark": "right",
+    "earNote": "",
+    "ears": "normal",
+    "color": "grau_rücken_nacken",
+    "tail": "short",
+    "gender": "female",
+    "size": "unknown"
+  },
+  {
+    "name": "Ferdinand",
+    "earMark": "right",
+    "earNote": "ohne_spitzen",
+    "ears": "normal",
+    "color": "rosa",
+    "tail": "short",
+    "gender": "male",
+    "size": "small"
+  },
+  {
+    "name": "Franz",
+    "earMark": "right",
+    "earNote": "",
+    "ears": "normal",
+    "color": "rosa",
+    "tail": "long_without_hair",
+    "gender": "male",
+    "size": "unknown"
+  },
+  {
+    "name": "Kiwi",
+    "earMark": "right",
+    "earNote": "",
+    "ears": "normal",
+    "color": "flecken_gesicht",
+    "tail": "short",
+    "gender": "male",
+    "size": "unknown"
+  },
+  {
+    "name": "Feline",
+    "earMark": "left",
+    "earNote": "",
+    "ears": "normal",
+    "color": "flecken_genau_abgegrenzt",
+    "tail": "short",
+    "gender": "female",
+    "size": "unknown"
+  },
+  {
+    "name": "Hedda",
+    "earMark": "left",
+    "earNote": "",
+    "ears": "hängend",
+    "color": "rosa",
+    "tail": "long_with_hair",
+    "gender": "female",
+    "size": "unknown"
+  },
+  {
+    "name": "Nia",
+    "earMark": "left",
+    "earNote": "",
+    "ears": "hängend",
+    "color": "rosa",
+    "tail": "long_without_hair",
+    "gender": "female",
+    "size": "mini"
+  },
+  {
+    "name": "Hope",
+    "earMark": "left",
+    "earNote": "",
+    "ears": "normal",
+    "color": "rosa",
+    "tail": "long_with_hair",
+    "gender": "female",
+    "size": "unknown"
+  },
+  {
+    "name": "Rosalie",
+    "earMark": "left",
+    "earNote": "",
+    "ears": "normal",
+    "color": "rosa",
+    "tail": "short",
+    "gender": "female",
+    "size": "unknown"
+  },
+  {
+    "name": "Justus",
+    "earMark": "",
+    "earNote": "",
+    "ears": "normal",
+    "color": "komplett_gefleckt",
+    "tail": "long_with_hair",
+    "gender": "male",
+    "size": "unknown"
+  },
+  {
+    "name": "Maike",
+    "earMark": "",
+    "earNote": "",
+    "ears": "normal",
+    "color": "rosa",
+    "tail": "short",
+    "gender": "female",
+    "size": "unknown"
+  }
+]
