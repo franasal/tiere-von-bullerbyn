@@ -106,7 +106,7 @@ export default {
           image: 'https://veganbullerbyn.de/wp-content/uploads/2024/07/MG_1641-14.jpg'
         },
         Maike: {
-          description: 'Weiblich, rosa, voll behaart, keine Ohrmarke/Loch. Sehr behaart, Mangalitza-Wollschwein. Kümmerling aus Biobetrieb, wurde gerne abgegeben, war lange dominant in der Rotte.',
+          description: 'Weiblich, rosa, voll behaart, rechte Ohrmarke/Loch. Sehr behaart, Mangalitza-Wollschwein. Kümmerling aus Biobetrieb, wurde gerne abgegeben, war lange dominant in der Rotte.',
           image: 'https://veganbullerbyn.de/wp-content/uploads/2024/07/MG_1628-9.jpg'
         },
         Milli: {
