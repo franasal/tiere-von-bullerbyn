@@ -1,8 +1,21 @@
 // AnimalIdentifier.vue
 <template>
   <div class="container">
-    <div v-if="!selectedAnimal">
-      <h1>🐾 Tiere von Veganien identifizieren</h1>
+    <div v-if="!selectedAnimal" class="start-screen">
+      <h1 class="start-title">
+  🐾 Die Tiere<br />
+  <span class="subtitle">von Veganien 🐾</span>
+</h1>
+
+
+  <img
+    src="https://veganbullerbyn.de/wp-content/webp-express/webp-images/uploads/2023/03/logo_gross.png.webp"
+    alt="Vegan Bullerbyn Logo"
+    class="start-logo"
+  />
+  <h2 class="subtitle2"> Welches Tier möchtest du identifizieren?</h2>
+
+
       <div class="animal-options">
         <button
           v-for="animal in availableSpecies"
@@ -345,4 +358,35 @@ if (tree) {
 .full-width {
   width: 100%;
 }
+
+.start-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.start-logo {
+  max-width: 30%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+.start-title {
+  font-size: 1.8rem;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.subtitle {
+  display: block;
+  padding-left: 1.5rem; /* oder mehr/kleiner je nach Wunsch */
+}
+
+.subtitle2 {
+  font-size: 1.8rem;
+  display: block;
+}
+
+
 </style>
