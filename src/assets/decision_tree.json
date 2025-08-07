@@ -46,7 +46,7 @@
           "question": "Hat das Schwein eine Ohrmarke oder Loch?",
           "key": "earMark",
           "options": {
-            "right": {
+            "Recht": {
               "question": "Hat es Flecken im Gesicht?",
               "key": "color",
               "options": {
@@ -82,7 +82,7 @@
                 }
               }
             },
-            "left": {
+            "Links": {
               "question": "Hat es orangene Borsten und klare schwarze Flecken im Gesicht?",
               "key": "frida_check",
               "options": {
