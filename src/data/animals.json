@@ -1,0 +1,133 @@
+{
+  "info": {
+    "Franz": {
+      "name": "Franz",
+      "species": "pig",
+      "appearance_description": "Männlich, rosa, rechte Ohrmarke/Loch, normaler Rücken, keine Ohrspitzen, langer Schwanz ohne Haare.",
+      "general_description": "Lange Haare an den Ohren. Haltungsstufe 1, Kümmerer – Ferkel untergewichtig, schlechte körperliche Verfassung, bedeuten für Tierindustrie Verluste, erreichen das Schlachtalter selten, kam zusammen mit Ferdinand nach Bullerbyn.",
+      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2024/11/WhatsApp-Bild-2024-11-12-um-12.56.02_971190da.jpg"
+    },
+    "Kiwi": {
+      "name": "Kiwi",
+      "species": "pig",
+      "appearance_description": "Männlich, schwarze Flecken im Gesicht, rechte Ohrmarke/Loch, kurzer Schwanz.",
+      "general_description": "Sehr redefreudig und kommunikativ, kommt auf einen zu, lässt sich gerne streicheln. Name wegen kleinem Kopf (wie eine Kiwi), mit Flasche aufgezogen, lebte zuerst im Haus der Familie.",
+      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2023/03/kiwi.jpg"
+    },
+    "Ronja": {
+      "name": "Ronja",
+      "species": "pig",
+      "appearance_description": "Weiblich, grauer Rücken, rechte Ohrmarke/Loch, kurzer Schwanz.",
+      "general_description": "Kümmerer, lag mit Hope und Feline in der Ferkelbucht, von Hedda adoptiert.",
+      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2024/08/WhatsApp-Bild-2024-08-12-um-23.58.03_2ee5d254.jpg"
+    },
+    "Ferdinand": {
+      "name": "Ferdinand",
+      "species": "pig",
+      "appearance_description": "Männlich, rosa, rechte Ohrmarke/Loch, Ohrrandnekrose (Ohrrand ohne Spitzen).",
+      "general_description": "Ausschussprodukt aus Tierindustrie, Ferkel, das nicht richtig wächst, absterbendes Gewebe, Eitergeschwür, heute aber gesund.",
+      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2024/08/WhatsApp-Bild-2024-08-12-um-23.55.27_2553c11a.jpg"
+    },
+    "Hedda": {
+      "name": "Hedda",
+      "species": "pig",
+      "appearance_description": "Weiblich, linke Ohrmarke/Loch, hängende Ohren, langer Schwanz mit Haaren.",
+      "general_description": "Sehr dominant, Saugleiste ausgelaugt, Mutter von Hope, Adoptivmutter von Ronja. Letztes Schwein, das nach Bullerbyn kam. War tragend in einem Zuchtbetrieb zur Aufklärung, wurde zusammen mit Nia gerettet und zog Ferkel auf. Im Pass als „saubissig“ eingestuft.",
+      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2024/07/MG_1300-3.jpg"
+    },
+    "Nia": {
+      "name": "Nia",
+      "species": "pig",
+      "appearance_description": "Weiblich, linke Ohrmarke/Loch, hängende Ohren, langer Schwanz ohne Haare.",
+      "general_description": "Sehr dominant, Saugleiste ausgelaugt, Mutter von Feline. Gemeinsam mit Hedda gerettet, zog zusammen mit ihr Feline, Hope und Ronja auf.",
+      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2024/07/MG_1467-21.jpg"
+    },
+    "Feline": {
+      "name": "Feline",
+      "species": "pig",
+      "appearance_description": "Weiblich, rechte Ohrmarke/Loch, abgegrenzte Flecken, kurzer Schwanz.",
+      "general_description": "Deutlich schmaler als Ronja, kleinstes Ferkel des letzten Wurfs, bernsteinbraune Augen, Duroc-Anteil – daher etwas rötlicher.",
+      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2024/08/WhatsApp-Bild-2024-08-12-um-23.57.27_bbfea4a9.jpg"
+    },
+    "Rosalie": {
+      "name": "Rosalie",
+      "species": "pig",
+      "appearance_description": "Weiblich, linke Ohrmarke/Loch, rosa, kurzer Schwanz.",
+      "general_description": "Hat Buckel, humpelt/geht auffällig, sehr lang und schmal. Wurde unter Mutter gequetscht, war kurzzeitig gelähmt, mit Krankengymnastik geheilt.",
+      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2024/07/MG_1639-13.jpg"
+    },
+    "Hope": {
+      "name": "Hope",
+      "species": "pig",
+      "appearance_description": "Weiblich, linke Ohrmarke/Loch, rosa, geringelt langer Schwanz mit Haaren.",
+      "general_description": "Kleinste des Wurfs, Tochter von Hedda, wurde zusammen mit Feline und Ronja von Hedda und Nia aufgezogen.",
+      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2024/07/MG_1526-26.jpg"
+    },
+    "Justus": {
+      "name": "Justus",
+      "species": "pig",
+      "appearance_description": "Männlich, komplett gefleckt, voll behaart, keine Ohrmarke/Loch.",
+      "general_description": "Hält sich getrennt von der Rotte, frisst, schläft, liegt separat. Wurde im Biobetrieb nicht geschlachtet, als Haustier gehalten. Kann nicht gut mit anderen Schweinen kommunizieren.",
+      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2024/07/MG_1641-14.jpg"
+    },
+    "Maike": {
+      "name": "Maike",
+      "species": "pig",
+      "appearance_description": "Weiblich, rosa, voll behaart, rechte Ohrmarke/Loch.",
+      "general_description": "Sehr behaart, Mangalitza-Wollschwein. Kümmerling aus Biobetrieb, wurde gerne abgegeben, war lange dominant in der Rotte.",
+      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2024/07/MG_1628-9.jpg"
+    },
+    "Milli": {
+      "name": "Milli",
+      "species": "pig",
+      "appearance_description": "Weiblich, größtes Hängebauchschwein, schwarz-weiße Borsten am ganzen Körper.",
+      "general_description": "Gemeinsam mit Vanilli vor dem Schlachten gerettet. Ihre Halter:innen begingen Suizid, Nachbar:innen griffen ein.",
+      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2023/03/milli-neu.jpg"
+    },
+    "Vanilli": {
+      "name": "Vanilli",
+      "species": "pig",
+      "appearance_description": "Weiblich, klein, halb rosa, halb schwarz, weiße Borsten.",
+      "general_description": "Ihre Halter:innen begingen Suizid, Angehörige wollten sie schlachten lassen – Nachbar:innen griffen ein.",
+      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2024/07/MG_1031-9.jpg"
+    },
+    "Strolch": {
+      "name": "Strolch",
+      "species": "pig",
+      "appearance_description": "Männlich, heller Borstenwuchs, deutlicher Buckel, Stoßzähne.",
+      "general_description": "Gemeinsam mit Susi vor dem Schlachten gerettet, lebt mit ihr in Bullerbyn.",
+      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2023/03/strolch.jpg"
+    },
+    "Susi": {
+      "name": "Susi",
+      "species": "pig",
+      "appearance_description": "Weiblich, komplett schwarz mit Borsten im Nacken.",
+      "general_description": "Angehörige wollten sie nach Tod des Halters schlachten lassen, Enkel rettete sie. Erste Bewohnerin von Bullerbyn.",
+      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2023/03/susi.jpg"
+    },
+    "Frida": {
+      "name": "Frida",
+      "species": "pig",
+      "appearance_description": "Weiblich, linke Ohrmarke, orangerote Borsten, klare schwarze Flecken im Gesicht und am Schwanz, sehr schuppige Haut, kurzer Schwanz.",
+      "general_description": "Stark unterernährt und apathisch gefunden, heute Palliativpatientin in Bullerbyn.",
+      "image_url": "https://veganbullerbyn.de/wp-content/webp-express/webp-images/uploads/2024/07/MG_0979-6.jpg.webp"
+    },
+    "Lili": {
+      "name": "Lili",
+      "species": "wild_boar",
+      "appearance_description": "Weiblich, Wildschwein, braunes Fell.",
+      "general_description": "Unverwechselbar mit Gezi, lebt gemeinsam mit ihr in Bullerbyn.",
+      "image_url": "https://lh3.googleusercontent.com/pw/AP1GczPGuZmaKJtBeu9jflNaCY3VMMUexVVTa3zWEg5K0r3JrqZkCLlRLCGuPThK57c2IzjckoxuXD-NjnyaufT7AnM6x-5G5GjdLEwE5WzI9epBbJHYrYAmgl2LBiq_sfNLBvqSw4xOzwplEHleQJ3acJBo=w1080-h1440-s-no-gm?authuser=0"
+    },
+    "Gezi": {
+      "name": "Gezi",
+      "species": "wild_boar",
+      "appearance_description": "Weiblich, Wildschwein, graues Fell.",
+      "general_description": "Wurde nach illegaler Jagd im Straßengraben gefunden, von Tierärztin aufgepäppelt und kam nach Bullerbyn.",
+      "image_url": "https://veganbullerbyn.de/wp-content/webp-express/webp-images/uploads/2024/07/MG_1622-8.jpg.webp"
+    }
+  },
+  "species": [
+    "pigs"
+  ]
+}

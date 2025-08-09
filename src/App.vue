@@ -1,7 +1,7 @@
 <script setup>
-import PigIdentifier from './components/PigIdentifier.vue'
+import AnimalIdentifier from './components/AnimalIdentifier.vue'
 </script>
 
 <template>
-  <PigIdentifier />
+  <AnimalIdentifier />
 </template>
