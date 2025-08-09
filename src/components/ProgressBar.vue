@@ -4,9 +4,7 @@
     <div class="progress-track">
       <div class="progress-fill" :style="{ width: (percent*100).toFixed(1) + '%' }"></div>
     </div>
-    <div class="progress-label">
-      {{ answered }} / {{ total }} Merkmale gewählt
-    </div>
+
   </div>
 </template>
 

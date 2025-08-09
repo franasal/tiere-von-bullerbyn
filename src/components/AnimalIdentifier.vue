@@ -16,7 +16,7 @@
       <ChoicesTrail :steps="steps" @removeLast="goBack" />
 
       <template v-if="resultName">
-  <h2>Gefunden: {{ resultName }}</h2>
+  <h2>Es ist: {{ resultName }}!</h2>
   <ResultCard
     :name="resultName"
     :image-url="getAnimalImage(resultName)"

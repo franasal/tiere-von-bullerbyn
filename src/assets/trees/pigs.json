@@ -2,7 +2,7 @@
   "question": "Hat das Schwein einen komplett behaarten Körper?",
   "key": "fullHair",
   "options": {
-    "ja": {
+    "Ja": {
       "question": "Welche Fellfarbe hat das Schwein?",
       "key": "color",
       "options": {
@@ -12,11 +12,11 @@
         "rosa": { "result": "Maike" }
       }
     },
-    "nein": {
+    "Nein": {
       "question": "Ist es ein Hängebauchschwein?",
       "key": "is_belly_pig",
       "options": {
-        "ja": {
+        "Ja": {
           "question": "Welche Merkmale treffen zu?",
           "key": "belly_traits",
           "options": {
@@ -26,8 +26,8 @@
             "nur_schwarz_borsten_im_nacken": { "result": "Susi" }
           }
         },
-        "nein": {
-          "question": "Hat das Schwein eine Ohrmarke oder Loch?",
+        "Nein": {
+          "question": "Wo hat das Schwein eine Ohrmarke oder Loch?",
           "key": "earMark",
           "options": {
             "right": {
@@ -63,8 +63,8 @@
               "question": "Hat es orangene Borsten und klare schwarze Flecken im Gesicht?",
               "key": "frida_check",
               "options": {
-                "ja": { "result": "Frida" },
-                "nein": {
+                "Ja": { "result": "Frida" },
+                "Nein": {
                   "question": "Sind die Ohren hängend?",
                   "key": "ears",
                   "options": {
