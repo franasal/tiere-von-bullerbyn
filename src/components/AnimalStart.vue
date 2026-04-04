@@ -44,6 +44,12 @@ function formatSpecies(key) {
 .subtitle { display: block; padding-left: 1.5rem; }
 .subtitle2 { font-size: 1.8rem; display: block; }
 .animal-options { display: flex; flex-direction: column; gap: .5rem; }
-.animal-options button { background-color: #ffccbc; color: #5d4037; border: none; padding: .5rem; border-radius: 4px; cursor: pointer; font-weight: bold; }
+.animal-options button {
+  background-color: #ffccbc; color: #5d4037; border: none;
+  padding: .75rem 1rem; border-radius: 6px; cursor: pointer;
+  font-weight: bold; font-size: .95rem;
+  transition: background .15s ease, transform .1s ease;
+}
 .animal-options button:hover { background-color: #ffab91; color: white; }
+.animal-options button:active { transform: scale(0.98); }
 </style>
