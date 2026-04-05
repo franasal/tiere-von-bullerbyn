@@ -8,9 +8,13 @@ function resolveTraitLabel(key, value) {
   return question?.options?.[value] || value;
 }
 
+// Traits that should always appear in "So erkennst du mich" when present
+const ALWAYS_SHOW_TRAITS = ['earMark'];
+
 /**
  * Return the 2-3 traits that most distinguish a pig from all others.
- * Traits shared by fewer other pigs rank higher.
+ * earMark is always included when present. Remaining slots filled
+ * by most unique traits (shared by fewest others).
  */
 export function getUniqueTraits(pigName) {
   const pig = pigProfiles.find((p) => p.name === pigName);
@@ -32,8 +36,18 @@ export function getUniqueTraits(pigName) {
     });
   }
 
-  scored.sort((a, b) => a.sharedBy - b.sharedBy);
-  return scored.slice(0, 3);
+  // Always-show traits go first
+  const pinned = scored.filter((t) => ALWAYS_SHOW_TRAITS.includes(t.key));
+  const rest = scored
+    .filter((t) => !ALWAYS_SHOW_TRAITS.includes(t.key))
+    .sort((a, b) => a.sharedBy - b.sharedBy);
+
+  const result = [...pinned];
+  for (const t of rest) {
+    if (result.length >= 3) break;
+    result.push(t);
+  }
+  return result;
 }
 
 /**

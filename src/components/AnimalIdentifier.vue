@@ -2,10 +2,19 @@
   <div class="container">
     <!-- Admin Mode -->
     <AdminMode
-      v-if="adminMode"
+      v-if="adminMode && adminUnlocked"
       :animal-info="animalInfo"
+      :security-info="adminSecurityInfo"
       @back="adminMode = false"
+      @lock="lockAdminAccess"
       @openHelper="adminMode = false; helperMode = true"
+    />
+
+    <AdminAccessGate
+      v-else-if="adminMode"
+      :security-info="adminSecurityInfo"
+      @back="adminMode = false"
+      @unlock="handleAdminUnlock"
     />
 
     <!-- Helper Mode -->
@@ -133,6 +142,7 @@ import AnimalGallery from './AnimalGallery.vue';
 import AnimalProfile from './AnimalProfile.vue';
 import AdminMode from './AdminMode.vue';
 import HelperMode from './HelperMode.vue';
+import AdminAccessGate from './AdminAccessGate.vue';
 
 import {
   loadFromLocalMirror,
@@ -140,6 +150,11 @@ import {
   saveCache,
   fetchFromGoogle
 } from '../composables/useAnimalData.js';
+import {
+  getAdminSecurityInfo,
+  isAdminUnlocked,
+  lockAdmin
+} from '../composables/useAdminAuth.js';
 import {
   buildPigQuestionNode,
   filterPigCandidates,
@@ -157,7 +172,7 @@ export default {
   name: 'AnimalIdentifier',
   components: {
     AnimalStart, DecisionTree, ResultCard, ChoicesTrail,
-    ComparisonView, AnimalGallery, AnimalProfile, AdminMode, HelperMode
+    ComparisonView, AnimalGallery, AnimalProfile, AdminMode, HelperMode, AdminAccessGate
   },
   data() {
     return {
@@ -180,7 +195,9 @@ export default {
       comparisonCandidates: [],
       comparisonTraits: [],
       adminMode: false,
-      helperMode: false
+      helperMode: false,
+      adminUnlocked: false,
+      adminSecurityInfo: getAdminSecurityInfo()
     };
   },
   computed: {
@@ -193,6 +210,8 @@ export default {
     }
   },
   async mounted() {
+    this.adminUnlocked = isAdminUnlocked();
+
     // Check URL params for admin/helper mode
     const params = window.location.search;
     if (params.includes('admin')) {
@@ -218,6 +237,16 @@ export default {
     await this.loadDecisionTrees();
   },
   methods: {
+    handleAdminUnlock() {
+      this.adminUnlocked = true;
+    },
+
+    lockAdminAccess() {
+      lockAdmin();
+      this.adminUnlocked = false;
+      this.adminMode = false;
+    },
+
     async backgroundRefresh() {
       try {
         const fresh = await fetchFromGoogle(this.animalDataUrl);

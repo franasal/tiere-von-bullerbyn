@@ -4,7 +4,8 @@ export const pigProfiles = [
     traits: {
       pigType: 'wild_boar_like',
       sex: 'female',
-      coatAppearance: 'brown_dense'
+      coatAppearance: 'brown_dense',
+      wildBoarMarking: 'plain_brown'
     }
   },
   {
@@ -12,7 +13,8 @@ export const pigProfiles = [
     traits: {
       pigType: 'wild_boar_like',
       sex: 'female',
-      coatAppearance: 'gray_dense'
+      coatAppearance: 'gray_dense',
+      wildBoarMarking: 'black_ears_lower_back_spot'
     }
   },
   {
@@ -101,9 +103,8 @@ export const pigProfiles = [
       pigType: 'standard_domestic',
       sex: 'female',
       earMark: 'left',
-      coatAppearance: 'orange_red',
-      spotPattern: 'black_face_tail_spots',
-      skinCondition: 'scaly',
+      coatAppearance: 'orange_hair',
+      livesAlone: 'yes',
       tailType: 'short'
     }
   },
@@ -206,7 +207,16 @@ export const pigQuestions = [
       bristle_punk_left: 'Borsten auf der linken Seite (Punk-Look)',
       light_bristles: 'Hellere Borsten',
       black_with_neck_bristles: 'Schwarz mit Borsten im Nacken',
-      orange_red: 'Orange-rote Borsten'
+      orange_hair: 'Orangefarbene Haare'
+    }
+  },
+  {
+    key: 'wildBoarMarking',
+    priority: 78,
+    question: 'Welche Wildschwein-Merkmale sind sichtbar?',
+    options: {
+      plain_brown: 'Braunes Fell ohne schwarze Ohren oder schwarzen Fleck am unteren Rücken',
+      black_ears_lower_back_spot: 'Schwarz behaarte Ohren und schwarzer Fleck am unteren Rücken'
     }
   },
   {
@@ -315,6 +325,14 @@ export const pigQuestions = [
     options: {
       slim_hump: 'Sehr lang, schmal oder buckelig'
     }
+  },
+  {
+    key: 'livesAlone',
+    priority: 15,
+    question: 'Lebt das Schwein allein / getrennt von der Rotte?',
+    options: {
+      yes: 'Ja, lebt allein'
+    }
   }
 ];
 
@@ -351,10 +369,11 @@ export const traitMeta = {
   pigType:        { icon: '🐖', label: 'Typ' },
   sex:            { icon: '♀♂', label: 'Geschlecht' },
   coatAppearance: { icon: '🎨', label: 'Fell / Borsten' },
+  wildBoarMarking:{ icon: '🪶', label: 'Wildschwein-Merkmale' },
   spotPattern:    { icon: '⚫', label: 'Flecken' },
   earPosture:     { icon: '👂', label: 'Ohren' },
   tailType:       { icon: '〰️', label: 'Schwanz' },
-  earMark:        { icon: '🏷️', label: 'Ohrmarke' },
+  earMark:        { icon: '🕳️', label: 'Ohrloch' },
   earTips:        { icon: '✂️', label: 'Ohrspitzen' },
   skinColor:      { icon: '🩷', label: 'Hautfarbe' },
   backColor:      { icon: '🔘', label: 'Rücken' },
@@ -362,7 +381,8 @@ export const traitMeta = {
   sizeClass:      { icon: '📏', label: 'Größe' },
   tusksVisible:   { icon: '🦷', label: 'Stoßzähne' },
   humpPresent:    { icon: '🐫', label: 'Buckel' },
-  bodyShape:      { icon: '📐', label: 'Körperbau' }
+  bodyShape:      { icon: '📐', label: 'Körperbau' },
+  livesAlone:     { icon: '🏠', label: 'Lebt allein' }
 };
 
 export function getInitialPigCandidates() {
