@@ -13,6 +13,45 @@
       <p v-if="appearance"><strong>Erscheinung:</strong> {{ appearance }}</p>
       <p v-if="story"><strong>Geschichte:</strong> {{ story }}</p>
     </div>
+
+    <!-- Unique traits: "So erkennst du mich" -->
+    <div v-if="uniqueTraits && uniqueTraits.length" class="unique-traits">
+      <h3 class="section-title">So erkennst du mich</h3>
+      <div class="trait-badges">
+        <span v-for="t in uniqueTraits" :key="t.key" class="trait-badge">
+          <span class="badge-icon">{{ t.icon }}</span>
+          <span class="badge-text">
+            <span class="badge-label">{{ t.label }}</span>
+            <span class="badge-value">{{ t.value }}</span>
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Similar animals: "Leicht zu verwechseln mit" -->
+    <div v-if="similarAnimals && similarAnimals.length" class="similar-section">
+      <h3 class="section-title">So unterscheide ich mich von anderen</h3>
+      <div
+        v-for="sim in similarAnimals"
+        :key="sim.name"
+        class="similar-card"
+        @click="$emit('showProfile', sim.name)"
+      >
+        <img
+          v-if="sim.imageUrl"
+          :src="sim.imageUrl"
+          :alt="sim.name"
+          class="similar-img"
+        />
+        <div class="similar-info">
+          <strong class="similar-name">{{ sim.name }}</strong>
+          <p v-for="d in sim.differences.slice(0, 2)" :key="d.key" class="diff-line">
+            {{ d.icon }} {{ d.label }}: <em>{{ d.otherValue }}</em>
+            <span class="diff-vs">vs.</span> {{ d.thisValue }}
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -24,7 +63,11 @@ defineProps({
   imageUrl: { type: String, required: true },
   appearance: { type: String, default: '' },
   story: { type: String, default: '' },
+  uniqueTraits: { type: Array, default: () => [] },
+  similarAnimals: { type: Array, default: () => [] }
 });
+
+defineEmits(['showProfile']);
 
 const showConfetti = ref(false);
 
@@ -76,6 +119,55 @@ onMounted(() => {
 .animal-info {
   text-align: center; color: #212121;
   word-wrap: break-word; overflow-wrap: break-word; max-width: 100%;
+}
+
+/* Unique traits section */
+.section-title {
+  font-size: .9rem; color: #5d4037; margin: .75rem 0 .4rem;
+  text-align: left; width: 100%;
+}
+.unique-traits { width: 100%; }
+.trait-badges {
+  display: flex; flex-wrap: wrap; gap: .4rem;
+}
+.trait-badge {
+  display: inline-flex; align-items: center; gap: .35rem;
+  background: rgba(244,143,177,.15);
+  border: 1px solid #f8bbd0;
+  border-radius: 20px;
+  padding: .3rem .6rem;
+}
+.badge-icon { font-size: 1rem; }
+.badge-text { display: flex; flex-direction: column; line-height: 1.2; }
+.badge-label { font-size: .65rem; color: #8d6e63; text-transform: uppercase; letter-spacing: .03em; }
+.badge-value { font-size: .82rem; font-weight: 600; color: #3e2723; }
+
+/* Similar animals section */
+.similar-section { width: 100%; }
+.similar-card {
+  display: flex; align-items: center; gap: .6rem;
+  padding: .5rem; margin-top: .4rem;
+  background: rgba(255,255,255,.7);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background .15s ease, box-shadow .15s ease;
+}
+.similar-card:hover {
+  background: rgba(255,255,255,.95);
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.similar-img {
+  width: 48px; height: 48px;
+  border-radius: 50%; object-fit: cover;
+  border: 2px solid #f8bbd0; flex-shrink: 0;
+}
+.similar-info { flex: 1; min-width: 0; }
+.similar-name { font-size: .9rem; color: #3e2723; }
+.diff-line {
+  font-size: .78rem; color: #5d4037; margin: .15rem 0 0; line-height: 1.3;
+}
+.diff-vs {
+  color: #bbb; font-style: normal; margin: 0 .2rem;
 }
 
 /* Confetti */

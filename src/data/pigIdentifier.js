@@ -37,7 +37,6 @@ export const pigProfiles = [
     name: 'Milli',
     traits: {
       pigType: 'pot_bellied',
-      sex: 'female',
       coatAppearance: 'black_white_bristles',
       sizeClass: 'large'
     }
@@ -46,8 +45,7 @@ export const pigProfiles = [
     name: 'Vanilli',
     traits: {
       pigType: 'pot_bellied',
-      sex: 'female',
-      coatAppearance: 'half_black_half_pink',
+      coatAppearance: 'bristle_punk_left',
       sizeClass: 'small'
     }
   },
@@ -55,7 +53,6 @@ export const pigProfiles = [
     name: 'Strolch',
     traits: {
       pigType: 'pot_bellied',
-      sex: 'male',
       tusksVisible: 'yes',
       humpPresent: 'yes',
       coatAppearance: 'light_bristles'
@@ -65,7 +62,6 @@ export const pigProfiles = [
     name: 'Susi',
     traits: {
       pigType: 'pot_bellied',
-      sex: 'female',
       coatAppearance: 'black_with_neck_bristles'
     }
   },
@@ -159,6 +155,7 @@ export const pigProfiles = [
       sex: 'female',
       earMark: 'left',
       skinColor: 'pink',
+      spotPattern: 'black_hip_spots',
       tailType: 'short',
       bodyShape: 'slim_hump'
     }
@@ -206,7 +203,7 @@ export const pigQuestions = [
       full_hair_no_spots: 'Voll behaart ohne Flecken',
       big_black_spots_full_hair: 'Große schwarze Flecken und voll behaart',
       black_white_bristles: 'Schwarz mit weisslichen Borsten',
-      half_black_half_pink: 'Halb schwarz, halb rosa',
+      bristle_punk_left: 'Borsten auf der linken Seite (Punk-Look)',
       light_bristles: 'Hellere Borsten',
       black_with_neck_bristles: 'Schwarz mit Borsten im Nacken',
       orange_red: 'Orange-rote Borsten'
@@ -219,7 +216,8 @@ export const pigQuestions = [
     options: {
       face_spots: 'Schwarze Flecken im Gesicht',
       sharp_spots: 'Klar abgegrenzte Flecken am Körper',
-      black_face_tail_spots: 'Schwarze Flecken im Gesicht und am Schwanz'
+      black_face_tail_spots: 'Schwarze Flecken im Gesicht und am Schwanz',
+      black_hip_spots: 'Schwarze Flecken am Rücken bei der Hüfte'
     }
   },
   {
