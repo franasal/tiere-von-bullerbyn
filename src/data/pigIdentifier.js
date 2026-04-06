@@ -73,6 +73,8 @@ export const pigProfiles = [
       pigType: 'standard_domestic',
       sex: 'male',
       earMark: 'right',
+      skinColor: 'pink',
+      earForm: 'pointed',
       spotPattern: 'face_spots',
       tailType: 'short'
     }
@@ -84,7 +86,7 @@ export const pigProfiles = [
       sex: 'male',
       earMark: 'right',
       skinColor: 'pink',
-      earTips: 'missing',
+      earForm: 'round_hairy',
       tailType: 'short'
     }
   },
@@ -95,6 +97,7 @@ export const pigProfiles = [
       sex: 'male',
       earMark: 'right',
       skinColor: 'pink',
+      earForm: 'folded',
       tailType: 'long_bare'
     }
   },
@@ -226,7 +229,7 @@ export const pigQuestions = [
     question: 'Welche Fleckenzeichnung ist sichtbar?',
     options: {
       face_spots: 'Schwarze Flecken im Gesicht',
-      sharp_spots: 'Klar abgegrenzte Flecken am Körper',
+      sharp_spots: 'Grosse Flecken im Gesicht und am Körper',
       black_face_tail_spots: 'Schwarze Flecken im Gesicht und am Schwanz',
       black_hip_spots: 'Schwarze Flecken am Rücken bei der Hüfte'
     }
@@ -262,12 +265,13 @@ export const pigQuestions = [
     }
   },
   {
-    key: 'earTips',
+    key: 'earForm',
     priority: 45,
-    question: 'Fehlen Ohrspitzen?',
+    question: 'Welche Ohrform passt besser?',
     options: {
-      missing: 'Ja, Ohrspitzen fehlen',
-      intact: 'Nein, Ohrspitzen wirken normal'
+      round_hairy: 'Rund mit Haaren',
+      pointed: 'Spitzig',
+      folded: 'Gefaltet'
     }
   },
   {
@@ -356,7 +360,7 @@ export const pigOpeningQuestions = [
     key: 'pigType',
     compareValue: 'woolly_domestic',
     compareLabel: 'Stark behaartes Wollschwein',
-    question: 'Ist es ein stark behaartes Wollschwein?'
+    question: 'Ist es ein behaartes Wollschwein?'
   },
   {
     key: 'coatAppearance',
@@ -375,7 +379,7 @@ export const traitMeta = {
   earPosture:     { icon: '👂', label: 'Ohren' },
   tailType:       { icon: '〰️', label: 'Schwanz' },
   earMark:        { icon: '🕳️', label: 'Ohrloch' },
-  earTips:        { icon: '✂️', label: 'Ohrspitzen' },
+  earForm:        { icon: '👂', label: 'Ohrform' },
   skinColor:      { icon: '🩷', label: 'Hautfarbe' },
   backColor:      { icon: '🔘', label: 'Rücken' },
   skinCondition:  { icon: '🧴', label: 'Haut' },

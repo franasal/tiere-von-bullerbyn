@@ -3,14 +3,14 @@
     "Franz": {
       "name": "Franz",
       "species": "pig",
-      "appearance_description": "Männlich, rosa, rechte Ohrmarke/Loch, normaler Rücken, keine Ohrspitzen, langer Schwanz ohne Haare.",
+      "appearance_description": "Männlich, rosa, rechte Ohrmarke/Loch, normaler Rücken, gefaltete Ohren, langer Schwanz ohne Haare.",
       "general_description": "Lange Haare an den Ohren. Haltungsstufe 1, Kümmerer – Ferkel untergewichtig, schlechte körperliche Verfassung, bedeuten für Tierindustrie Verluste, erreichen das Schlachtalter selten, kam zusammen mit Ferdinand nach Bullerbyn.",
       "image_url": "https://veganbullerbyn.de/wp-content/uploads/2024/11/WhatsApp-Bild-2024-11-12-um-12.56.02_971190da.jpg"
     },
     "Kiwi": {
       "name": "Kiwi",
       "species": "pig",
-      "appearance_description": "Männlich, schwarze Flecken im Gesicht, rechte Ohrmarke/Loch, kurzer Schwanz.",
+      "appearance_description": "Männlich, rosa, schwarze Flecken im Gesicht, rechte Ohrmarke/Loch, spitzige Ohren, kurzer Schwanz.",
       "general_description": "Sehr redefreudig und kommunikativ, kommt auf einen zu, lässt sich gerne streicheln. Name wegen kleinem Kopf (wie eine Kiwi), mit Flasche aufgezogen, lebte zuerst im Haus der Familie.",
       "image_url": "https://veganbullerbyn.de/wp-content/uploads/2023/03/kiwi.jpg"
     },
@@ -24,7 +24,7 @@
     "Ferdinand": {
       "name": "Ferdinand",
       "species": "pig",
-      "appearance_description": "Männlich, rosa, rechte Ohrmarke/Loch, runde behaarte Ohren, Ohrrandnekrose (Ohrrand ohne Spitzen), kurzer Schwanz.",
+      "appearance_description": "Männlich, rosa, rechte Ohrmarke/Loch, runde behaarte Ohren, kurzer Schwanz.",
       "general_description": "Ausschussprodukt aus Tierindustrie, Ferkel, das nicht richtig wächst, absterbendes Gewebe, Eitergeschwür, heute aber gesund.",
       "image_url": "https://veganbullerbyn.de/wp-content/uploads/2024/08/WhatsApp-Bild-2024-08-12-um-23.55.27_2553c11a.jpg"
     },
@@ -45,7 +45,7 @@
     "Feline": {
       "name": "Feline",
       "species": "pig",
-      "appearance_description": "Weiblich, rechte Ohrmarke/Loch, abgegrenzte Flecken, kurzer Schwanz.",
+      "appearance_description": "Weiblich, rechte Ohrmarke/Loch, grosse Flecken im Gesicht und am Körper, kurzer Schwanz.",
       "general_description": "Deutlich schmaler als Ronja, kleinstes Ferkel des letzten Wurfs, bernsteinbraune Augen, Duroc-Anteil – daher etwas rötlicher.",
       "image_url": "https://veganbullerbyn.de/wp-content/uploads/2024/08/WhatsApp-Bild-2024-08-12-um-23.57.27_bbfea4a9.jpg"
     },

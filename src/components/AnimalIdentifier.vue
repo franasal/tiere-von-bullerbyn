@@ -81,6 +81,55 @@
         </div>
       </div>
 
+      <div v-if="questionCueGroups.length" class="question-cues">
+        <div class="question-cues-title">Foto-Hinweise zur aktuellen Frage</div>
+        <div class="question-cues-list">
+          <article
+            v-for="group in questionCueGroups"
+            :key="group.name"
+            class="question-cue-card"
+          >
+            <div class="question-cue-images">
+              <button
+                v-for="(url, index) in group.images"
+                :key="`${group.name}-${index}`"
+                type="button"
+                class="question-cue-button"
+                @click="openCuePreview(url)"
+              >
+                <img
+                  :src="url"
+                  alt="Hinweisfoto"
+                  class="question-cue-image"
+                />
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div
+        v-if="activeCuePreview"
+        class="cue-preview-overlay"
+        @click.self="closeCuePreview"
+      >
+        <div class="cue-preview-dialog">
+          <button
+            type="button"
+            class="cue-preview-close"
+            aria-label="Bild schliessen"
+            @click="closeCuePreview"
+          >
+            X
+          </button>
+          <img
+            :src="activeCuePreview"
+            alt="Grosses Hinweisfoto"
+            class="cue-preview-image"
+          />
+        </div>
+      </div>
+
       <!-- Comparison view for 2-3 similar candidates -->
       <template v-if="showComparison">
         <ComparisonView
@@ -129,6 +178,12 @@
         Alle {{ formatSpecies(selectedAnimal) }} kennenlernen →
       </button>
     </div>
+
+    <FeedbackWidget
+      :pig-names="feedbackPigNames"
+      :selected-pig="feedbackSelectedPig"
+      :current-view="feedbackViewLabel"
+    />
   </div>
 </template>
 
@@ -143,6 +198,7 @@ import AnimalProfile from './AnimalProfile.vue';
 import AdminMode from './AdminMode.vue';
 import HelperMode from './HelperMode.vue';
 import AdminAccessGate from './AdminAccessGate.vue';
+import FeedbackWidget from './FeedbackWidget.vue';
 
 import {
   loadFromLocalMirror,
@@ -167,12 +223,13 @@ import {
   getSimilarAnimals,
   getDifferentiatingTraits
 } from '../data/pigTraitAnalysis.js';
+import { getQuestionCueGallery } from '../data/pigCues.js';
 
 export default {
   name: 'AnimalIdentifier',
   components: {
     AnimalStart, DecisionTree, ResultCard, ChoicesTrail,
-    ComparisonView, AnimalGallery, AnimalProfile, AdminMode, HelperMode, AdminAccessGate
+    ComparisonView, AnimalGallery, AnimalProfile, AdminMode, HelperMode, AdminAccessGate, FeedbackWidget
   },
   data() {
     return {
@@ -197,7 +254,8 @@ export default {
       adminMode: false,
       helperMode: false,
       adminUnlocked: false,
-      adminSecurityInfo: getAdminSecurityInfo()
+      adminSecurityInfo: getAdminSecurityInfo(),
+      activeCuePreview: ''
     };
   },
   computed: {
@@ -207,6 +265,51 @@ export default {
         imageUrl: this.getAnimalImage(name),
         uniqueTraits: getUniqueTraits(name)
       }));
+    },
+    questionCueGroups() {
+      if (
+        this.selectedAnimal !== 'pigs' ||
+        this.showComparison ||
+        this.resultName ||
+        !this.currentNode ||
+        !this.currentCandidates.length
+      ) {
+        return [];
+      }
+
+      const candidateNames = this.currentCandidates.map((candidate) => candidate.name);
+      return getQuestionCueGallery(candidateNames, this.currentNode.key, {
+        maxPigs: 4,
+        maxImagesPerPig: 2
+      });
+    },
+    feedbackPigNames() {
+      return Object.values(this.animalInfo)
+        .filter((animal) => animal.species === 'pig')
+        .map((animal) => animal.name)
+        .sort((a, b) => a.localeCompare(b, 'de'));
+    },
+    feedbackSelectedPig() {
+      if (this.resultName && this.animalInfo[this.resultName]?.species === 'pig') {
+        return this.resultName;
+      }
+
+      if (this.profileAnimal && this.animalInfo[this.profileAnimal]?.species === 'pig') {
+        return this.profileAnimal;
+      }
+
+      return '';
+    },
+    feedbackViewLabel() {
+      if (this.appView === 'profile') {
+        return `profile:${this.profileAnimal || '-'}`;
+      }
+
+      if (this.appView === 'identify' && this.selectedAnimal) {
+        return `identify:${this.selectedAnimal}`;
+      }
+
+      return this.appView;
     }
   },
   async mounted() {
@@ -419,6 +522,14 @@ export default {
       this.currentNode = null;
     },
 
+    openCuePreview(url) {
+      this.activeCuePreview = url;
+    },
+
+    closeCuePreview() {
+      this.activeCuePreview = '';
+    },
+
     recomputePigState() {
       let candidates = getInitialPigCandidates();
 
@@ -550,7 +661,7 @@ export default {
   max-width: 500px;
   margin: 2rem auto;
   font-family: sans-serif;
-  padding: 1rem;
+  padding: 1rem 1rem 5.5rem;
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #fff;
@@ -578,6 +689,89 @@ export default {
 .thumb-name {
   font-size: .65rem; color: #5d4037;
   text-align: center; line-height: 1.1; margin-top: 2px;
+}
+
+.question-cues {
+  margin: 0 0 1rem;
+  padding: .6rem;
+  background: #fff8fb;
+  border: 1px solid #f8bbd0;
+  border-radius: 8px;
+}
+.question-cues-title {
+  font-size: .9rem;
+  font-weight: 700;
+  color: #7b1f46;
+  margin-bottom: .45rem;
+}
+.question-cues-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.question-cue-card {
+  background: transparent;
+}
+.question-cue-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+}
+.question-cue-button {
+  padding: 0;
+  border: none;
+  background: transparent;
+  border-radius: 999px;
+  line-height: 0;
+}
+.question-cue-image {
+  width: 76px;
+  height: 76px;
+  object-fit: cover;
+  border-radius: 999px;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 1px #f0d6e0;
+}
+.question-cue-button:hover .question-cue-image {
+  box-shadow: 0 0 0 1px #e8a1c1, 0 6px 16px rgba(126, 56, 92, 0.14);
+}
+
+.cue-preview-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(23, 18, 23, 0.68);
+}
+.cue-preview-dialog {
+  position: relative;
+  width: min(92vw, 560px);
+}
+.cue-preview-close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 999px;
+  background: #fff;
+  color: #5a4151;
+  font-size: 0.9rem;
+  font-weight: 700;
+  box-shadow: 0 8px 22px rgba(22, 14, 22, 0.22);
+}
+.cue-preview-image {
+  display: block;
+  width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 18px 50px rgba(15, 11, 15, 0.3);
 }
 
 .option-button, .back-button, .reset-button {
