@@ -189,7 +189,6 @@ async function sharePhoto(pigName, field) {
 
 .helper-title { font-size: 1.2rem; margin: 0 0 .2rem; color: #3e2723; }
 .helper-hint { font-size: .85rem; color: #8d6e63; margin: 0 0 .5rem; line-height: 1.4; }
-
 .helper-stats {
   background: #fff3e0; border: 1px solid #ffe0b2;
   border-radius: 6px; padding: .4rem .6rem; margin-bottom: .75rem;

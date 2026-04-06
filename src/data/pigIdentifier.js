@@ -84,7 +84,8 @@ export const pigProfiles = [
       sex: 'male',
       earMark: 'right',
       skinColor: 'pink',
-      earTips: 'missing'
+      earTips: 'missing',
+      tailType: 'short'
     }
   },
   {
@@ -394,17 +395,31 @@ export function filterPigCandidates(candidates, step) {
     return candidates;
   }
 
+  const matchesTrait = (candidate, expectedValue) => {
+    const candidateValue = candidate.traits[step.questionKey];
+    if (candidateValue === expectedValue) {
+      return true;
+    }
+
+    // "Lang mit Haaren" should include ringed long hairy tails as well.
+    if (step.questionKey === 'tailType' && expectedValue === 'long_hairy' && candidateValue === 'curly_hairy') {
+      return true;
+    }
+
+    return false;
+  };
+
   if (step.mode === 'binary') {
     if (step.optionKey === 'yes') {
-      return candidates.filter((candidate) => candidate.traits[step.questionKey] === step.compareValue);
+      return candidates.filter((candidate) => matchesTrait(candidate, step.compareValue));
     }
 
     if (step.optionKey === 'no') {
-      return candidates.filter((candidate) => candidate.traits[step.questionKey] !== step.compareValue);
+      return candidates.filter((candidate) => !matchesTrait(candidate, step.compareValue));
     }
   }
 
-  return candidates.filter((candidate) => candidate.traits[step.questionKey] === step.optionKey);
+  return candidates.filter((candidate) => matchesTrait(candidate, step.optionKey));
 }
 
 function getDistinctValues(candidates, questionKey) {
