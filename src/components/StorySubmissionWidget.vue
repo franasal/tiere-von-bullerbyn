@@ -4,84 +4,90 @@
       Geschichte beisteuern
     </button>
 
-    <transition name="story-fade">
-      <div v-if="openPanel" class="story-overlay" @click.self="closePanel">
-        <section class="story-panel" aria-label="Geschichte beisteuern">
-          <div class="story-header">
-            <div>
-              <h2>Geschichte beisteuern</h2>
-              <p>
-                Reicht einen Vorschlag zur Freigabe ein.
-                Nutze die Schweine als Vorbild: Erkennung und Geschichte getrennt beschreiben.
-              </p>
+    <Teleport to="body">
+      <transition name="story-fade">
+        <div v-if="openPanel" class="story-overlay" @click.self="closePanel">
+          <section class="story-panel" aria-label="Geschichte beisteuern">
+            <div class="story-header">
+              <div>
+                <h2>Geschichte beisteuern</h2>
+                <p>
+                  Reicht einen Vorschlag zur Freigabe ein.
+                  Nutze die Schweine als Vorbild: Erkennung und Geschichte getrennt beschreiben.
+                </p>
+              </div>
+              <button class="story-close" @click="closePanel" aria-label="Schließen">
+                ×
+              </button>
             </div>
-            <button class="story-close" @click="closePanel" aria-label="Schließen">
-              ×
-            </button>
-          </div>
 
-          <div class="story-example">
-            <strong>Vorlage wie bei den Schweinen:</strong>
-            <p>`Erscheinung`: Woran erkennt man das Tier auf Distanz?</p>
-            <p>`Geschichte`: Rettung, Charakter, Besonderheiten, frühere Haltung oder Erlebnisse.</p>
-          </div>
+            <div class="story-example">
+              <strong>Vorlage wie bei den Schweinen:</strong>
+              <p>`Erscheinung`: Woran erkennt man das Tier auf Distanz?</p>
+              <p>`Geschichte`: Rettung, Charakter, Besonderheiten, frühere Haltung oder Erlebnisse.</p>
+            </div>
 
-          <label class="story-field">
-            <span>Tier</span>
-            <select v-model="selectedAnimalName">
-              <option value="">Bitte auswählen</option>
-              <option v-for="animal in animalNames" :key="animal" :value="animal">
-                {{ animal }}
-              </option>
-            </select>
-          </label>
+            <label class="story-field">
+              <span>Tier</span>
+              <select v-model="selectedAnimalName">
+                <option value="">Bitte auswählen</option>
+                <option v-for="animal in animalNames" :key="animal" :value="animal">
+                  {{ animal }}
+                </option>
+              </select>
+            </label>
 
-          <label class="story-field">
-            <span>Dein Name oder Bezug zum Tier</span>
-            <input
-              v-model.trim="contributor"
-              type="text"
-              placeholder="Optional, z. B. Pflegerin, Freundin, Helfer"
-            />
-          </label>
+            <label class="story-field">
+              <span>Dein Name oder Bezug zum Tier</span>
+              <input
+                v-model.trim="contributor"
+                type="text"
+                placeholder="Optional, z. B. Pflegerin, Freundin, Helfer"
+              />
+            </label>
 
-          <label class="story-field">
-            <span>Erscheinung / Woran erkennt man das Tier?</span>
-            <textarea
-              v-model.trim="appearanceDraft"
-              rows="4"
-              placeholder="Beispiel wie bei den Schweinen: Weiblich, rosa, linke Ohrmarke/Loch, kurzer Schwanz ..."
-            />
-          </label>
+            <label class="story-field">
+              <span>Erscheinung / Woran erkennt man das Tier?</span>
+              <textarea
+                v-model.trim="appearanceDraft"
+                rows="4"
+                placeholder="Beispiel wie bei den Schweinen: Weiblich, rosa, linke Ohrmarke/Loch, kurzer Schwanz ..."
+              />
+            </label>
 
-          <label class="story-field">
-            <span>Geschichte / Was sollte im Profil stehen?</span>
-            <textarea
-              v-model.trim="storyDraft"
-              rows="7"
-              placeholder="Beispiel wie bei den Schweinen: Rettung, frühere Haltung, Charakter, markante Eigenheiten ..."
-            />
-          </label>
+            <label class="story-field">
+              <span>Geschichte / Was sollte im Profil stehen?</span>
+              <textarea
+                v-model.trim="storyDraft"
+                rows="7"
+                placeholder="Beispiel wie bei den Schweinen: Rettung, frühere Haltung, Charakter, markante Eigenheiten ..."
+              />
+            </label>
 
-          <div v-if="selectedAnimalName" class="story-current">
-            <strong>Aktueller Stand im Profil</strong>
-            <p><span>Erscheinung:</span> {{ currentAppearance || 'Noch leer' }}</p>
-            <p><span>Geschichte:</span> {{ currentStory || 'Noch leer' }}</p>
-          </div>
+            <div v-if="selectedAnimalName" class="story-current">
+              <strong>Aktueller Stand im Profil</strong>
+              <p><span>Erscheinung:</span> {{ currentAppearance || 'Noch leer' }}</p>
+              <p><span>Geschichte:</span> {{ currentStory || 'Noch leer' }}</p>
+            </div>
 
-          <div class="story-note">
-            Beim Absenden öffnet sich dein E-Mail-Programm mit einem sauber formatierten Markdown-Entwurf.
-          </div>
+            <div class="story-note">
+              Beim Absenden öffnet sich dein E-Mail-Programm mit einem sauber formatierten Markdown-Entwurf.
+              Du kannst den Text alternativ kopieren und an Pacho per WhatsApp senden.
+            </div>
 
-          <div class="story-actions">
-            <button class="story-secondary" @click="closePanel">Abbrechen</button>
-            <button class="story-primary" :disabled="!canSubmit" @click="submitStory">
-              E-Mail öffnen
-            </button>
-          </div>
-        </section>
-      </div>
-    </transition>
+            <div class="story-actions">
+              <button class="story-secondary" @click="closePanel">Abbrechen</button>
+              <button class="story-secondary" :disabled="!canSubmit" @click="copyText">
+                {{ copied ? 'Text kopiert' : 'Text kopieren' }}
+              </button>
+              <button class="story-primary" :disabled="!canSubmit" @click="submitStory">
+                E-Mail öffnen
+              </button>
+            </div>
+          </section>
+        </div>
+      </transition>
+    </Teleport>
   </div>
 </template>
 
@@ -118,7 +124,8 @@ export default {
       selectedAnimalName: '',
       contributor: '',
       appearanceDraft: '',
-      storyDraft: ''
+      storyDraft: '',
+      copied: false
     };
   },
   computed: {
@@ -155,6 +162,7 @@ export default {
       this.contributor = '';
       this.appearanceDraft = '';
       this.storyDraft = '';
+      this.copied = false;
     },
     buildMarkdownBody() {
       return [
@@ -187,6 +195,17 @@ export default {
       });
 
       return `mailto:${STORY_EMAIL}?${params.toString()}`;
+    },
+    async copyText() {
+      if (!this.canSubmit) {
+        return;
+      }
+
+      await navigator.clipboard.writeText(this.buildMarkdownBody());
+      this.copied = true;
+      window.setTimeout(() => {
+        this.copied = false;
+      }, 2000);
     },
     submitStory() {
       if (!this.canSubmit) {
@@ -222,23 +241,22 @@ export default {
   position: fixed;
   inset: 0;
   background: rgba(24, 28, 24, 0.38);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 1rem;
+  display: block;
   z-index: 60;
 }
 
 .story-panel {
-  width: min(640px, 100%);
-  max-height: calc(100vh - 2rem);
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
   overflow: auto;
   background: #fbf7ef;
-  border: 1px solid #d7ccb5;
-  border-radius: 18px;
-  padding: 1rem;
+  border: 0;
+  border-radius: 0;
+  padding: 1rem 1rem 1.5rem;
   box-shadow: 0 20px 60px rgba(25, 30, 25, 0.24);
   text-align: left;
+  box-sizing: border-box;
 }
 
 .story-header {
