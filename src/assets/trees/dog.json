@@ -1,0 +1,47 @@
+{
+  "question": "Welche Grundfarbe oder Zeichnung fällt zuerst auf?",
+  "optionLabels": {
+    "white_spotted": "Weiß mit Flecken",
+    "black": "Schwarz",
+    "gray": "Grau"
+  },
+  "options": {
+    "white_spotted": {
+      "question": "Welche Zeichnung passt besser?",
+      "optionLabels": {
+        "brown_head_spots": "Braune Flecken am Kopf",
+        "mostly_white": "Überwiegend weiß",
+        "black_brown_spots": "Schwarze und braune Flecken"
+      },
+      "options": {
+        "brown_head_spots": {
+          "result": "Piper"
+        },
+        "mostly_white": {
+          "result": "Ziggy"
+        },
+        "black_brown_spots": {
+          "result": "Pru"
+        }
+      }
+    },
+    "black": {
+      "question": "Ist das Fell lockig?",
+      "optionLabels": {
+        "yes": "Ja",
+        "no": "Nein"
+      },
+      "options": {
+        "yes": {
+          "result": "Bobby"
+        },
+        "no": {
+          "result": "Jina"
+        }
+      }
+    },
+    "gray": {
+      "result": "Grinch"
+    }
+  }
+}

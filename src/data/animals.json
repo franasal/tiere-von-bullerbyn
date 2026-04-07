@@ -286,6 +286,48 @@
       "appearance_description": "Graue Kuh, der Zwilling von Romeo.",
       "general_description": "",
       "image_url": "/animal-images/cow/giulia.jpg"
+    },
+    "Pru": {
+      "name": "Pru",
+      "species": "dog",
+      "appearance_description": "Weißer Hund mit schwarzen und braunen Flecken.",
+      "general_description": "",
+      "image_url": "/animal-images/dog/pru-placeholder.svg"
+    },
+    "Piper": {
+      "name": "Piper",
+      "species": "dog",
+      "appearance_description": "Weißer Hund mit braunen Flecken am Kopf.",
+      "general_description": "",
+      "image_url": "/animal-images/dog/piper-placeholder.svg"
+    },
+    "Ziggy": {
+      "name": "Ziggy",
+      "species": "dog",
+      "appearance_description": "Überwiegend weißer Hund.",
+      "general_description": "",
+      "image_url": "/animal-images/dog/ziggy-placeholder.svg"
+    },
+    "Bobby": {
+      "name": "Bobby",
+      "species": "dog",
+      "appearance_description": "Schwarzer Hund mit lockigem Fell.",
+      "general_description": "",
+      "image_url": "/animal-images/dog/bobby.jpg"
+    },
+    "Jina": {
+      "name": "Jina",
+      "species": "dog",
+      "appearance_description": "Schwarzer Hund.",
+      "general_description": "",
+      "image_url": "/animal-images/dog/jina.jpg"
+    },
+    "Grinch": {
+      "name": "Grinch",
+      "species": "dog",
+      "appearance_description": "Großer Hund mit grauem Fell.",
+      "general_description": "",
+      "image_url": "/animal-images/dog/grinch-placeholder.svg"
     }
   },
   "species": [
@@ -293,6 +335,7 @@
     "goat",
     "sheep",
     "equine",
-    "cow"
+    "cow",
+    "dog"
   ]
 }

@@ -56,7 +56,8 @@ function formatSpecies(key) {
     cow: '🐮 Kühe',
     goat: '🐐 Ziegen',
     sheep: '🐑 Schafe',
-    equine: '🫏 Esel & Ponys'
+    equine: '🫏 Esel & Ponys',
+    dog: '🐶 Hunde'
   };
   return map[key] || key;
 }
@@ -87,6 +88,11 @@ function getSpeciesThemeStyle(key) {
       '--species-button-bg': '#ffe0b2',
       '--species-button-hover': '#fb8c00',
       '--species-button-text': '#6d4c41'
+    },
+    dog: {
+      '--species-button-bg': '#c8e6c9',
+      '--species-button-hover': '#43a047',
+      '--species-button-text': '#2e5d34'
     }
   };
 

@@ -412,6 +412,22 @@ export default {
           '--group-link-bg': '#fff7eb',
           '--group-link-border': '#ffb74d',
           '--group-link-hover': '#fff3e0'
+        },
+        dog: {
+          '--group-accent-soft': '#e8f5e9',
+          '--group-accent-border': '#a5d6a7',
+          '--group-accent': '#81c784',
+          '--group-accent-strong': '#43a047',
+          '--group-accent-text': '#2e5d34',
+          '--group-secondary': '#dcedc8',
+          '--group-secondary-strong': '#7cb342',
+          '--group-secondary-text': '#33691e',
+          '--group-tertiary': '#fff8e1',
+          '--group-tertiary-strong': '#f9a825',
+          '--group-tertiary-text': '#6d4c41',
+          '--group-link-bg': '#f1f8e9',
+          '--group-link-border': '#81c784',
+          '--group-link-hover': '#e8f5e9'
         }
       };
 
@@ -833,7 +849,8 @@ export default {
         goat: 'Ziegen',
         sheep: 'Schafe',
         equine: 'Esel & Ponys',
-        cow: 'Kühe'
+        cow: 'Kühe',
+        dog: 'Hunde'
       };
       return map[key] || key;
     },
