@@ -443,14 +443,6 @@ export default {
   async mounted() {
     this.adminUnlocked = isAdminUnlocked();
 
-    // Check URL params for admin/helper mode
-    const params = window.location.search;
-    if (params.includes('admin')) {
-      this.adminMode = true;
-    } else if (params.includes('helper')) {
-      this.helperMode = true;
-    }
-
     const local = await loadFromLocalMirror();
     const cached = loadFromCache();
 

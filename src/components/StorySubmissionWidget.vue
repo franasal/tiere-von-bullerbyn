@@ -37,31 +37,36 @@
               </select>
             </label>
 
-            <label class="story-field">
-              <span>Dein Name oder Bezug zum Tier</span>
-              <input
-                v-model.trim="contributor"
-                type="text"
-                placeholder="Optional, z. B. Pflegerin, Freundin, Helfer"
-              />
-            </label>
-
-            <label class="story-field">
-              <span>Erscheinung / Woran erkennt man das Tier?</span>
-              <textarea
-                v-model.trim="appearanceDraft"
-                rows="4"
-                placeholder="Beispiel wie bei den Schweinen: Weiblich, rosa, linke Ohrmarke/Loch, kurzer Schwanz ..."
-              />
-            </label>
+          <label class="story-field">
+            <span>Erscheinung / Woran erkennt man das Tier?</span>
+            <textarea
+              v-model.trim="appearanceDraft"
+              :maxlength="appearanceMaxLength"
+              rows="4"
+              placeholder="Beispiel wie bei den Schweinen: Weiblich, rosa, linke Ohrmarke/Loch, kurzer Schwanz ..."
+            />
+            <div class="story-field-meta">
+              <span class="story-helper">Maximal {{ appearanceMaxLength }} Zeichen, damit der Text im Profil gut lesbar bleibt.</span>
+              <span class="story-counter" :class="{ 'story-counter--limit': appearanceDraft.length > appearanceMaxLength * 0.9 }">
+                {{ appearanceDraft.length }} / {{ appearanceMaxLength }}
+              </span>
+            </div>
+          </label>
 
             <label class="story-field">
               <span>Geschichte / Was sollte im Profil stehen?</span>
               <textarea
                 v-model.trim="storyDraft"
+                :maxlength="storyMaxLength"
                 rows="7"
                 placeholder="Beispiel wie bei den Schweinen: Rettung, frühere Haltung, Charakter, markante Eigenheiten ..."
               />
+              <div class="story-field-meta">
+                <span class="story-helper">Maximal {{ storyMaxLength }} Zeichen, damit die Geschichte im Profil noch gut scanbar bleibt.</span>
+                <span class="story-counter" :class="{ 'story-counter--limit': storyDraft.length > storyMaxLength * 0.9 }">
+                  {{ storyDraft.length }} / {{ storyMaxLength }}
+                </span>
+              </div>
             </label>
 
             <div v-if="selectedAnimalName" class="story-current">
@@ -72,7 +77,7 @@
 
             <div class="story-note">
               Beim Absenden öffnet sich dein E-Mail-Programm mit einem sauber formatierten Markdown-Entwurf.
-              Du kannst den Text alternativ kopieren und an Pacho per WhatsApp senden.
+              <strong>Du kannst den Text alternativ kopieren und an Pacho per WhatsApp senden.</strong>
             </div>
 
             <div class="story-actions">
@@ -93,6 +98,8 @@
 
 <script>
 const STORY_EMAIL = 'farcilas@gmail.com';
+const APPEARANCE_MAX_LENGTH = 320;
+const STORY_MAX_LENGTH = 500;
 
 export default {
   name: 'StorySubmissionWidget',
@@ -122,13 +129,18 @@ export default {
     return {
       openPanel: false,
       selectedAnimalName: '',
-      contributor: '',
       appearanceDraft: '',
       storyDraft: '',
       copied: false
     };
   },
   computed: {
+    appearanceMaxLength() {
+      return APPEARANCE_MAX_LENGTH;
+    },
+    storyMaxLength() {
+      return STORY_MAX_LENGTH;
+    },
     canSubmit() {
       return Boolean(this.selectedAnimalName && (this.appearanceDraft || this.storyDraft));
     },
@@ -159,7 +171,6 @@ export default {
       this.openPanel = false;
     },
     resetForm() {
-      this.contributor = '';
       this.appearanceDraft = '';
       this.storyDraft = '';
       this.copied = false;
@@ -169,7 +180,6 @@ export default {
         `# Tiergeschichte: ${this.selectedAnimalName}`,
         '',
         '## Meta',
-        `- Beitrag von: ${this.contributor || '-'}`,
         `- Ansicht: ${this.currentView || '-'}`,
         `- URL: ${window.location.href}`,
         '',
@@ -344,6 +354,29 @@ export default {
 .story-field textarea {
   resize: vertical;
   min-height: 110px;
+}
+
+.story-field-meta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.story-helper,
+.story-counter {
+  font-size: 0.8rem;
+  color: #6d776d;
+}
+
+.story-counter {
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.story-counter--limit {
+  color: #9d5f1d;
+  font-weight: 700;
 }
 
 .story-note {

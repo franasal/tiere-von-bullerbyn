@@ -190,25 +190,10 @@
       </div>
 
       <div class="helper-section">
-        <h3 class="section-label">Helfer einladen</h3>
+        <h3 class="section-label">Helfer-Modus</h3>
         <p class="helper-desc">
-          Teile diesen Link mit Helfer:innen. Sie sehen, welche Fotos fehlen,
-          können direkt fotografieren und die Bilder weiterleiten.
+          Der Helfer-Modus bleibt intern im Admin erreichbar, aber nicht mehr über URL-Parameter.
         </p>
-        <div class="helper-link-row">
-          <input
-            type="text"
-            readonly
-            :value="helperUrl"
-            class="helper-link-input"
-          />
-          <button class="copy-btn" @click="copyHelperLink">
-            {{ copied ? 'Kopiert!' : 'Kopieren' }}
-          </button>
-        </div>
-        <button class="share-helper-btn" @click="shareHelperLink">
-          Helfer-Link teilen
-        </button>
         <button class="open-helper-btn" @click="$emit('openHelper')">
           Helfer-Modus öffnen
         </button>
@@ -377,18 +362,11 @@ const proposedSchema = `{
   ]
 }`;
 
-const copied = ref(false);
 const filter = ref('missing');
 const activeTab = ref('overview');
 const expanded = reactive({});
 const urlInputs = reactive({});
 const refreshKey = ref(0);
-
-const helperUrl = computed(() => {
-  const url = new URL(window.location.href);
-  url.search = '?helper';
-  return url.toString();
-});
 
 const rawSpecies = computed(() =>
   Array.from(
@@ -438,29 +416,6 @@ const securityStatusClass = computed(() => {
   if (props.securityInfo.source === 'dev-fallback') return 'warn';
   return 'error';
 });
-
-function copyHelperLink() {
-  navigator.clipboard.writeText(helperUrl.value).then(() => {
-    copied.value = true;
-    setTimeout(() => { copied.value = false; }, 2000);
-  });
-}
-
-async function shareHelperLink() {
-  if (navigator.share) {
-    try {
-      await navigator.share({
-        title: 'Bullerbyn Foto-Helfer',
-        text: 'Hilf uns, Fotos von den Tieren zu machen!',
-        url: helperUrl.value
-      });
-      return;
-    } catch (err) {
-      if (err.name === 'AbortError') return;
-    }
-  }
-  copyHelperLink();
-}
 
 function getAnimalImage(name) {
   return props.animalInfo[name]?.image_url || '';
@@ -724,8 +679,7 @@ function doImport(event) {
 }
 
 .admin-filter,
-.admin-actions,
-.helper-link-row {
+.admin-actions {
   display: flex;
   gap: .4rem;
 }
@@ -929,10 +883,6 @@ function doImport(event) {
   background: #e3f2fd;
 }
 
-.helper-link-row {
-  margin-bottom: .4rem;
-}
-
 .copy-btn {
   padding: .35rem .6rem;
   background: #42a5f5;
@@ -941,7 +891,6 @@ function doImport(event) {
   white-space: nowrap;
 }
 
-.share-helper-btn,
 .open-helper-btn {
   width: 100%;
   padding: .52rem;
@@ -949,14 +898,7 @@ function doImport(event) {
   font-weight: 700;
 }
 
-.share-helper-btn {
-  margin-top: .25rem;
-  background: #42a5f5;
-  color: #fff;
-}
-
 .open-helper-btn {
-  margin-top: .35rem;
   background: transparent;
   border: 1px solid #90caf9;
   color: #1565c0;
@@ -1000,7 +942,6 @@ function doImport(event) {
 .filter-btn:active,
 .action-btn:active,
 .copy-btn:active,
-.share-helper-btn:active,
 .open-helper-btn:active,
 .back-button:active,
 .lock-btn:active {
