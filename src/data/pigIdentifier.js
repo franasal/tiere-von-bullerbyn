@@ -139,6 +139,7 @@ export const pigProfiles = [
       sex: 'female',
       earMark: 'right',
       skinColor: 'pink',
+      spotPattern: 'black_hip_spots',
       backColor: 'gray_back',
       tailType: 'short'
     }
@@ -160,7 +161,6 @@ export const pigProfiles = [
       sex: 'female',
       earMark: 'left',
       skinColor: 'pink',
-      spotPattern: 'black_hip_spots',
       tailType: 'short',
       bodyShape: 'slim_hump'
     }
@@ -360,7 +360,7 @@ export const pigOpeningQuestions = [
     key: 'pigType',
     compareValue: 'woolly_domestic',
     compareLabel: 'Stark behaartes Wollschwein',
-    question: 'Ist es ein behaartes Wollschwein?'
+    question: 'Ist es eio behaartes Wollschwein?'
   },
   {
     key: 'coatAppearance',

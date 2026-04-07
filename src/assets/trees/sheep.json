@@ -1,0 +1,59 @@
+{
+  "question": "Welche Grundfarbe hat das Schaf?",
+  "optionLabels": {
+    "black": "Schwarz",
+    "brown": "Braun",
+    "white": "Weiß"
+  },
+  "options": {
+    "black": {
+      "result": "Henry"
+    },
+    "brown": {
+      "question": "Wie sehen die Hörner aus?",
+      "optionLabels": {
+        "long_horns": "Lange Hörner",
+        "short_horns": "Kürzere Hörner"
+      },
+      "options": {
+        "long_horns": {
+          "result": "Samu"
+        },
+        "short_horns": {
+          "result": "Raven"
+        }
+      }
+    },
+    "white": {
+      "question": "Welches Merkmal passt besser?",
+      "optionLabels": {
+        "brown_legs": "Braun gefleckte Beine",
+        "small_horns": "Kleine Hörner",
+        "no_horns": "Keine Hörner"
+      },
+      "options": {
+        "brown_legs": {
+          "result": "Schneeweißchen"
+        },
+        "small_horns": {
+          "result": "Lisso"
+        },
+        "no_horns": {
+          "question": "Hat es braune Flecken auf der Nase?",
+          "optionLabels": {
+            "yes": "Ja",
+            "no": "Nein"
+          },
+          "options": {
+            "yes": {
+              "result": "Carlos"
+            },
+            "no": {
+              "result": "Lissi"
+            }
+          }
+        }
+      }
+    }
+  }
+}

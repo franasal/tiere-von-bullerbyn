@@ -5,129 +5,229 @@
       "species": "pig",
       "appearance_description": "Männlich, rosa, rechte Ohrmarke/Loch, normaler Rücken, gefaltete Ohren, langer Schwanz ohne Haare.",
       "general_description": "Lange Haare an den Ohren. Haltungsstufe 1, Kümmerer – Ferkel untergewichtig, schlechte körperliche Verfassung, bedeuten für Tierindustrie Verluste, erreichen das Schlachtalter selten, kam zusammen mit Ferdinand nach Bullerbyn.",
-      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2024/11/WhatsApp-Bild-2024-11-12-um-12.56.02_971190da.jpg"
+      "image_url": "/animal-images/pigs/franz.jpg"
     },
     "Kiwi": {
       "name": "Kiwi",
       "species": "pig",
       "appearance_description": "Männlich, rosa, schwarze Flecken im Gesicht, rechte Ohrmarke/Loch, spitzige Ohren, kurzer Schwanz.",
       "general_description": "Sehr redefreudig und kommunikativ, kommt auf einen zu, lässt sich gerne streicheln. Name wegen kleinem Kopf (wie eine Kiwi), mit Flasche aufgezogen, lebte zuerst im Haus der Familie.",
-      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2023/03/kiwi.jpg"
+      "image_url": "/animal-images/pigs/kiwi.jpg"
     },
     "Ronja": {
       "name": "Ronja",
       "species": "pig",
-      "appearance_description": "Weiblich, grauer Rücken, rechte Ohrmarke/Loch, kurzer Schwanz.",
+      "appearance_description": "Weiblich, grauer Rücken, rechte Ohrmarke/Loch, schwarze Flecken am Rücken bei der Hüfte, kurzer Schwanz.",
       "general_description": "Kümmerer, lag mit Hope und Feline in der Ferkelbucht, von Hedda adoptiert.",
-      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2024/08/WhatsApp-Bild-2024-08-12-um-23.58.03_2ee5d254.jpg"
+      "image_url": "/animal-images/pigs/ronja.jpg"
     },
     "Ferdinand": {
       "name": "Ferdinand",
       "species": "pig",
       "appearance_description": "Männlich, rosa, rechte Ohrmarke/Loch, runde behaarte Ohren, kurzer Schwanz.",
       "general_description": "Ausschussprodukt aus Tierindustrie, Ferkel, das nicht richtig wächst, absterbendes Gewebe, Eitergeschwür, heute aber gesund.",
-      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2024/08/WhatsApp-Bild-2024-08-12-um-23.55.27_2553c11a.jpg"
+      "image_url": "/animal-images/pigs/ferdinand.jpg"
     },
     "Hedda": {
       "name": "Hedda",
       "species": "pig",
       "appearance_description": "Weiblich, linke Ohrmarke/Loch, hängende Ohren, langer Schwanz mit Haaren.",
       "general_description": "Sehr dominant, Saugleiste ausgelaugt, Mutter von Hope, Adoptivmutter von Ronja. Letztes Schwein, das nach Bullerbyn kam. War tragend in einem Zuchtbetrieb zur Aufklärung, wurde zusammen mit Nia gerettet und zog Ferkel auf. Im Pass als „saubissig“ eingestuft.",
-      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2024/07/MG_1300-3.jpg"
+      "image_url": "/animal-images/pigs/hedda.jpg"
     },
     "Nia": {
       "name": "Nia",
       "species": "pig",
       "appearance_description": "Weiblich, linke Ohrmarke/Loch, hängende Ohren, langer Schwanz ohne Haare.",
       "general_description": "Sehr dominant, Saugleiste ausgelaugt, Mutter von Feline. Gemeinsam mit Hedda gerettet, zog zusammen mit ihr Feline, Hope und Ronja auf.",
-      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2024/07/MG_1467-21.jpg"
+      "image_url": "/animal-images/pigs/nia.jpg"
     },
     "Feline": {
       "name": "Feline",
       "species": "pig",
       "appearance_description": "Weiblich, rechte Ohrmarke/Loch, grosse Flecken im Gesicht und am Körper, kurzer Schwanz.",
       "general_description": "Deutlich schmaler als Ronja, kleinstes Ferkel des letzten Wurfs, bernsteinbraune Augen, Duroc-Anteil – daher etwas rötlicher.",
-      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2024/08/WhatsApp-Bild-2024-08-12-um-23.57.27_bbfea4a9.jpg"
+      "image_url": "/animal-images/pigs/feline.jpg"
     },
     "Rosalie": {
       "name": "Rosalie",
       "species": "pig",
-      "appearance_description": "Weiblich, linke Ohrmarke/Loch, rosa, schwarze Flecken am Rücken bei der Hüfte, kurzer Schwanz.",
+      "appearance_description": "Weiblich, linke Ohrmarke/Loch, rosa, kurzer Schwanz.",
       "general_description": "Hat Buckel, humpelt/geht auffällig, sehr lang und schmal. Wurde unter Mutter gequetscht, war kurzzeitig gelähmt, mit Krankengymnastik geheilt.",
-      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2024/07/MG_1639-13.jpg"
+      "image_url": "/animal-images/pigs/rosalie.jpg"
     },
     "Hope": {
       "name": "Hope",
       "species": "pig",
       "appearance_description": "Weiblich, linke Ohrmarke/Loch, rosa, geringelt langer Schwanz mit Haaren.",
       "general_description": "Kleinste des Wurfs, Tochter von Hedda, wurde zusammen mit Feline und Ronja von Hedda und Nia aufgezogen.",
-      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2024/07/MG_1526-26.jpg"
+      "image_url": "/animal-images/pigs/hope.jpg"
     },
     "Justus": {
       "name": "Justus",
       "species": "pig",
       "appearance_description": "Männlich, komplett gefleckt, voll behaart, keine Ohrmarke/Loch.",
       "general_description": "Hält sich getrennt von der Rotte, frisst, schläft, liegt separat. Wurde im Biobetrieb nicht geschlachtet, als Haustier gehalten. Kann nicht gut mit anderen Schweinen kommunizieren.",
-      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2024/07/MG_1641-14.jpg"
+      "image_url": "/animal-images/pigs/justus.jpg"
     },
     "Maike": {
       "name": "Maike",
       "species": "pig",
       "appearance_description": "Weiblich, rosa, voll behaart, rechte Ohrmarke/Loch.",
       "general_description": "Sehr behaart, Mangalitza-Wollschwein. Kümmerling aus Biobetrieb, wurde gerne abgegeben, war lange dominant in der Rotte.",
-      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2024/07/MG_1628-9.jpg"
+      "image_url": "/animal-images/pigs/maike.jpg"
     },
     "Milli": {
       "name": "Milli",
       "species": "pig",
       "appearance_description": "Weiblich, größtes Hängebauchschwein, schwarz-weiße Borsten am ganzen Körper.",
       "general_description": "Gemeinsam mit Vanilli vor dem Schlachten gerettet. Ihre Halter:innen begingen Suizid, Nachbar:innen griffen ein.",
-      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2023/03/milli-neu.jpg"
+      "image_url": "/animal-images/pigs/milli.jpg"
     },
     "Vanilli": {
       "name": "Vanilli",
       "species": "pig",
       "appearance_description": "Weiblich, klein, Borsten auf der linken Seite (Punk-Look), halb rosa, halb schwarz.",
       "general_description": "Ihre Halter:innen begingen Suizid, Angehörige wollten sie schlachten lassen – Nachbar:innen griffen ein.",
-      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2024/07/MG_1031-9.jpg"
+      "image_url": "/animal-images/pigs/vanilli.jpg"
     },
     "Strolch": {
       "name": "Strolch",
       "species": "pig",
       "appearance_description": "Männlich, heller Borstenwuchs, deutlicher Buckel, Stoßzähne.",
       "general_description": "Gemeinsam mit Susi vor dem Schlachten gerettet, lebt mit ihr in Bullerbyn.",
-      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2023/03/strolch.jpg"
+      "image_url": "/animal-images/pigs/strolch.jpg"
     },
     "Susi": {
       "name": "Susi",
       "species": "pig",
       "appearance_description": "Weiblich, komplett schwarz mit Borsten im Nacken.",
       "general_description": "Angehörige wollten sie nach Tod des Halters schlachten lassen, Enkel rettete sie. Erste Bewohnerin von Bullerbyn.",
-      "image_url": "https://veganbullerbyn.de/wp-content/uploads/2023/03/susi.jpg"
+      "image_url": "/animal-images/pigs/susi.jpg"
     },
     "Frida": {
       "name": "Frida",
       "species": "pig",
       "appearance_description": "Weiblich, linke Ohrmarke, orangefarbene Haare, kurzer Schwanz. Lebt allein, getrennt von der Rotte.",
       "general_description": "Stark unterernährt und apathisch gefunden, heute Palliativpatientin in Bullerbyn.",
-      "image_url": "https://veganbullerbyn.de/wp-content/webp-express/webp-images/uploads/2024/07/MG_0979-6.jpg.webp"
+      "image_url": "/animal-images/pigs/frida.webp"
     },
     "Lili": {
       "name": "Lili",
       "species": "wild_boar",
       "appearance_description": "Weiblich, Wildschwein, braunes Fell.",
       "general_description": "Unverwechselbar mit Gezi, lebt gemeinsam mit ihr in Bullerbyn.",
-      "image_url": "https://lh3.googleusercontent.com/pw/AP1GczPGuZmaKJtBeu9jflNaCY3VMMUexVVTa3zWEg5K0r3JrqZkCLlRLCGuPThK57c2IzjckoxuXD-NjnyaufT7AnM6x-5G5GjdLEwE5WzI9epBbJHYrYAmgl2LBiq_sfNLBvqSw4xOzwplEHleQJ3acJBo=w1080-h1440-s-no-gm?authuser=0"
+      "image_url": "/animal-images/pigs/lili.jpg"
     },
     "Gezi": {
       "name": "Gezi",
       "species": "wild_boar",
       "appearance_description": "Weiblich, Wildschwein, graues Fell, schwarz behaarte Ohren und ein schwarzer Fleck am unteren Rücken.",
       "general_description": "Wurde nach illegaler Jagd im Straßengraben gefunden, von Tierärztin aufgepäppelt und kam nach Bullerbyn.",
-      "image_url": "https://veganbullerbyn.de/wp-content/webp-express/webp-images/uploads/2024/07/MG_1622-8.jpg.webp"
+      "image_url": "/animal-images/pigs/gezi.webp"
+    },
+    "Kale": {
+      "name": "Kale",
+      "species": "goat",
+      "appearance_description": "Ziege, überwiegend braun, mit weißem Fleck auf der Nase.",
+      "general_description": "",
+      "image_url": "/animal-images/goat/kale.jpg"
+    },
+    "Emil": {
+      "name": "Emil",
+      "species": "goat",
+      "appearance_description": "Ziege, braun-weiß gezeichnet, mit großem weißem Fleck im Gesicht.",
+      "general_description": "",
+      "image_url": "/animal-images/goat/emil.jpg"
+    },
+    "Markus": {
+      "name": "Markus",
+      "species": "goat",
+      "appearance_description": "Kleine weiße Ziege mit lockigen Hörnern.",
+      "general_description": "Hat eine sehr markante Lautäußerung.",
+      "image_url": "/animal-images/goat/markus.jpg"
+    },
+    "Yoda": {
+      "name": "Yoda",
+      "species": "goat",
+      "appearance_description": "Komplett weiße Ziege.",
+      "general_description": "Hat starke Meister-Yoda-Vibes.",
+      "image_url": "/animal-images/goat/yoda.jpg"
+    },
+    "Jule": {
+      "name": "Jule",
+      "species": "goat",
+      "appearance_description": "Schwarze Ziege mit Hörnern.",
+      "general_description": "",
+      "image_url": "/animal-images/goat/jule.jpg"
+    },
+    "Timon": {
+      "name": "Timon",
+      "species": "goat",
+      "appearance_description": "Kleine weiße Ziege mit dunklem Fleck auf dem Rücken.",
+      "general_description": "Das kleinste Mitglied der Gruppe.",
+      "image_url": "/animal-images/goat/timon.jpg"
+    },
+    "August": {
+      "name": "August",
+      "species": "goat",
+      "appearance_description": "Große weiße Ziege mit braun gefärbtem Kopf.",
+      "general_description": "Der Boss der Gruppe.",
+      "image_url": "/animal-images/goat/august.jpg"
+    },
+    "Schneeweißchen": {
+      "name": "Schneeweißchen",
+      "species": "sheep",
+      "appearance_description": "Komplett weißes Schaf mit braun gefleckten Beinen.",
+      "general_description": "",
+      "image_url": "/animal-images/sheep/schneeweisschen.jpg"
+    },
+    "Henry": {
+      "name": "Henry",
+      "species": "sheep",
+      "appearance_description": "Komplett schwarzes Schaf ohne Hörner.",
+      "general_description": "",
+      "image_url": "/animal-images/sheep/henry.jpg"
+    },
+    "Carlos": {
+      "name": "Carlos",
+      "species": "sheep",
+      "appearance_description": "Komplett weißes Schaf mit braunen Flecken auf der Nase.",
+      "general_description": "",
+      "image_url": "/animal-images/sheep/carlos.jpg"
+    },
+    "Samu": {
+      "name": "Samu",
+      "species": "sheep",
+      "appearance_description": "Braunes Schaf mit langen Hörnern.",
+      "general_description": "",
+      "image_url": ""
+    },
+    "Raven": {
+      "name": "Raven",
+      "species": "sheep",
+      "appearance_description": "Braunes Schaf mit kürzeren Hörnern.",
+      "general_description": "",
+      "image_url": "/animal-images/sheep/raven.jpg"
+    },
+    "Lissi": {
+      "name": "Lissi",
+      "species": "sheep",
+      "appearance_description": "Weißes Schaf ohne Hörner.",
+      "general_description": "Schwester von Lisso.",
+      "image_url": ""
+    },
+    "Lisso": {
+      "name": "Lisso",
+      "species": "sheep",
+      "appearance_description": "Weißes Schaf mit kleinen Hörnern.",
+      "general_description": "Schwester von Lissi.",
+      "image_url": ""
     }
   },
   "species": [
-    "pigs"
+    "pigs",
+    "goat",
+    "sheep"
   ]
 }

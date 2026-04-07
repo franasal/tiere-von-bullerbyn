@@ -30,6 +30,21 @@ export function loadFromCache() {
   return null;
 }
 
+export function mergeAnimalSources(primary, secondary) {
+  const primaryInfo = primary?.info || {};
+  const secondaryInfo = secondary?.info || {};
+  const mergedInfo = { ...secondaryInfo, ...primaryInfo };
+
+  const mergedSpecies = Array.from(
+    new Set([...(secondary?.species || []), ...(primary?.species || [])])
+  );
+
+  return {
+    info: mergedInfo,
+    species: mergedSpecies
+  };
+}
+
 export function saveCache(info, species) {
   localStorage.setItem(
     CACHE_KEY,

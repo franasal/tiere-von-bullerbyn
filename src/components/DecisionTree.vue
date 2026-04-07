@@ -109,7 +109,8 @@ function formatLabel(option) {
 .mb-4 { margin-bottom: 1rem; }
 
 .question-box {
-  background-color: #fce4ec; border: 1px solid #f8bbd0;
+  background-color: var(--group-accent-soft, #fce4ec);
+  border: 1px solid var(--group-accent-border, #f8bbd0);
   padding: 1rem; border-radius: 6px; margin-bottom: 1rem;
 }
 .category-hint {
@@ -134,8 +135,14 @@ function formatLabel(option) {
   transform: scale(0.98);
 }
 
-.option-button { background-color: #f48fb1; color: #212121; }
-.option-button:hover { background-color: #ec407a; color: white; }
+.option-button {
+  background-color: var(--group-accent, #f48fb1);
+  color: var(--group-accent-text, #212121);
+}
+.option-button:hover {
+  background-color: var(--group-accent-strong, #ec407a);
+  color: white;
+}
 
 .skip-button {
   background: transparent;
@@ -148,10 +155,22 @@ function formatLabel(option) {
 }
 .skip-button:hover { border-color: #999; color: #555; background: #f5f5f5; }
 
-.back-button { background-color: #d1c4e9; color: #4527a0; }
-.back-button:hover { background-color: #b39ddb; color: white; }
-.reset-button { background-color: #b0bec5; color: #37474f; }
-.reset-button:hover { background-color: #90a4ae; color: white; }
+.back-button {
+  background-color: var(--group-secondary, #d1c4e9);
+  color: var(--group-secondary-text, #4527a0);
+}
+.back-button:hover {
+  background-color: var(--group-secondary-strong, #b39ddb);
+  color: white;
+}
+.reset-button {
+  background-color: var(--group-tertiary, #b0bec5);
+  color: var(--group-tertiary-text, #37474f);
+}
+.reset-button:hover {
+  background-color: var(--group-tertiary-strong, #90a4ae);
+  color: white;
+}
 
 .navigation-buttons {
   display: flex; justify-content: space-between; gap: 1rem; margin-top: 1rem;

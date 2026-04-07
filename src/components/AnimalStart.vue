@@ -18,6 +18,8 @@
       <button
         v-for="animal in availableSpecies"
         :key="animal"
+        :class="['species-button', `species-button--${animal}`]"
+        :style="getSpeciesThemeStyle(animal)"
         @click="$emit('select', animal)"
       >
         {{ formatSpecies(animal) }}
@@ -49,8 +51,30 @@ function handleTitleTap() {
 }
 
 function formatSpecies(key) {
-  const map = { pigs: 'Schweine', cow: 'Kuh', goat: 'Ziege' };
+  const map = { pigs: 'Schweine', cow: 'Kuh', goat: 'Ziegen', sheep: 'Schafe' };
   return map[key] || key;
+}
+
+function getSpeciesThemeStyle(key) {
+  const themes = {
+    pigs: {
+      '--species-button-bg': '#f8bbd0',
+      '--species-button-hover': '#ec407a',
+      '--species-button-text': '#5a3044'
+    },
+    goat: {
+      '--species-button-bg': '#d7ccc8',
+      '--species-button-hover': '#8d6e63',
+      '--species-button-text': '#4e342e'
+    },
+    sheep: {
+      '--species-button-bg': '#cfd8dc',
+      '--species-button-hover': '#607d8b',
+      '--species-button-text': '#37474f'
+    }
+  };
+
+  return themes[key] || {};
 }
 </script>
 
@@ -65,12 +89,18 @@ function formatSpecies(key) {
 .subtitle2 { font-size: 1.4rem; display: block; margin-bottom: .5rem; }
 .animal-options { display: flex; flex-direction: column; gap: .5rem; width: 100%; max-width: 280px; }
 .animal-options button {
-  background-color: #ffccbc; color: #5d4037; border: none;
+  background-color: var(--species-button-bg, #ffccbc);
+  color: var(--species-button-text, #5d4037);
+  border: none;
   padding: .75rem 1rem; border-radius: 6px; cursor: pointer;
   font-weight: bold; font-size: .95rem;
-  transition: background .15s ease, transform .1s ease;
+  transition: background .15s ease, color .15s ease, transform .1s ease, box-shadow .15s ease;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.35);
 }
-.animal-options button:hover { background-color: #ffab91; color: white; }
+.animal-options button:hover {
+  background-color: var(--species-button-hover, #ffab91);
+  color: white;
+}
 .animal-options button:active { transform: scale(0.98); }
 
 .browse-button {

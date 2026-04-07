@@ -12,7 +12,7 @@
       >
         <span class="trait-icon">{{ traitMeta[s.questionKey]?.icon || '?' }}</span>
         <span class="trait-body">
-          <span class="trait-category">{{ traitMeta[s.questionKey]?.label || s.questionKey }}</span>
+          <span class="trait-category">{{ resolveCategory(s) }}</span>
           <span class="trait-value">{{ resolveLabel(s) }}</span>
         </span>
         <span class="trait-undo" title="Zurück zu diesem Schritt">×</span>
@@ -42,6 +42,10 @@ function resolveLabel(step) {
     return step.compareLabel;
   }
   return step.optionLabel;
+}
+
+function resolveCategory(step) {
+  return traitMeta[step.questionKey]?.label || step.question || step.questionKey || 'Merkmal';
 }
 </script>
 

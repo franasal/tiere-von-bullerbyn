@@ -54,7 +54,7 @@
     />
 
     <!-- Identification flow -->
-    <div v-else-if="appView === 'identify'">
+    <div v-else-if="appView === 'identify'" class="identify-view" :style="currentThemeStyle">
       <h1>
         <template v-if="selectedAnimal === 'pigs'">Schweine</template>
         <template v-else>{{ formatSpecies(selectedAnimal) }}</template>
@@ -62,21 +62,21 @@
 
       <ChoicesTrail :steps="steps" @undoTo="undoTo" />
 
-      <div v-if="selectedAnimal === 'pigs' && !showComparison && !resultName && currentCandidates.length > 1" class="candidate-gallery">
-        <span class="candidate-label">Noch möglich ({{ currentCandidates.length }}):</span>
+      <div v-if="!showComparison && !resultName && currentCandidateCards.length > 1" class="candidate-gallery">
+        <span class="candidate-label">Noch möglich ({{ currentCandidateCards.length }}):</span>
         <div class="candidate-thumbs">
           <div
-            v-for="pig in currentCandidates"
-            :key="pig.name"
+            v-for="candidate in currentCandidateCards"
+            :key="candidate.name"
             class="candidate-thumb"
-            :title="pig.name"
+            :title="candidate.name"
           >
             <img
-              :src="getAnimalImage(pig.name)"
-              :alt="pig.name"
+              :src="candidate.imageUrl"
+              :alt="candidate.name"
               class="thumb-img"
             />
-            <span class="thumb-name">{{ pig.name }}</span>
+            <span class="thumb-name">{{ candidate.name }}</span>
           </div>
         </div>
       </div>
@@ -203,6 +203,7 @@ import FeedbackWidget from './FeedbackWidget.vue';
 import {
   loadFromLocalMirror,
   loadFromCache,
+  mergeAnimalSources,
   saveCache,
   fetchFromGoogle
 } from '../composables/useAnimalData.js';
@@ -259,8 +260,35 @@ export default {
     };
   },
   computed: {
+    currentCandidateCards() {
+      if (!this.selectedAnimal || this.showComparison || this.resultName) {
+        return [];
+      }
+
+      if (this.selectedAnimal === 'pigs') {
+        return this.currentCandidates.map((candidate) => ({
+          name: candidate.name,
+          imageUrl: this.getAnimalImage(candidate.name)
+        }));
+      }
+
+      const names = this.collectResultsFromNode(this.currentNode);
+      return names.map((name) => ({
+        name,
+        imageUrl: this.getAnimalImage(name)
+      }));
+    },
     galleryAnimals() {
-      return Object.keys(this.animalInfo).map((name) => ({
+      const names = Object.keys(this.animalInfo).filter((name) => {
+        const species = this.animalInfo[name]?.species;
+        if (this.selectedAnimal === 'pigs') {
+          return species === 'pig' || species === 'wild_boar';
+        }
+
+        return species === this.selectedAnimal;
+      });
+
+      return names.map((name) => ({
         name,
         imageUrl: this.getAnimalImage(name),
         uniqueTraits: getUniqueTraits(name)
@@ -310,6 +338,60 @@ export default {
       }
 
       return this.appView;
+    },
+    currentThemeStyle() {
+      const themes = {
+        pigs: {
+          '--group-accent-soft': '#fce4ec',
+          '--group-accent-border': '#f8bbd0',
+          '--group-accent': '#f48fb1',
+          '--group-accent-strong': '#ec407a',
+          '--group-accent-text': '#5a3044',
+          '--group-secondary': '#d1c4e9',
+          '--group-secondary-strong': '#9575cd',
+          '--group-secondary-text': '#4527a0',
+          '--group-tertiary': '#ffccbc',
+          '--group-tertiary-strong': '#ff8a65',
+          '--group-tertiary-text': '#5d4037',
+          '--group-link-bg': '#fff1f5',
+          '--group-link-border': '#f48fb1',
+          '--group-link-hover': '#fce4ec'
+        },
+        goat: {
+          '--group-accent-soft': '#efebe9',
+          '--group-accent-border': '#d7ccc8',
+          '--group-accent': '#bcaaa4',
+          '--group-accent-strong': '#8d6e63',
+          '--group-accent-text': '#4e342e',
+          '--group-secondary': '#dcedc8',
+          '--group-secondary-strong': '#7cb342',
+          '--group-secondary-text': '#33691e',
+          '--group-tertiary': '#ffe0b2',
+          '--group-tertiary-strong': '#fb8c00',
+          '--group-tertiary-text': '#6d4c41',
+          '--group-link-bg': '#f7f1ed',
+          '--group-link-border': '#a1887f',
+          '--group-link-hover': '#efebe9'
+        },
+        sheep: {
+          '--group-accent-soft': '#eceff1',
+          '--group-accent-border': '#cfd8dc',
+          '--group-accent': '#b0bec5',
+          '--group-accent-strong': '#607d8b',
+          '--group-accent-text': '#37474f',
+          '--group-secondary': '#d1c4e9',
+          '--group-secondary-strong': '#7e57c2',
+          '--group-secondary-text': '#4a148c',
+          '--group-tertiary': '#f5f5f5',
+          '--group-tertiary-strong': '#90a4ae',
+          '--group-tertiary-text': '#455a64',
+          '--group-link-bg': '#f4f7f8',
+          '--group-link-border': '#90a4ae',
+          '--group-link-hover': '#eceff1'
+        }
+      };
+
+      return themes[this.selectedAnimal] || {};
     }
   },
   async mounted() {
@@ -323,14 +405,16 @@ export default {
       this.helperMode = true;
     }
 
+    const local = await loadFromLocalMirror();
     const cached = loadFromCache();
+
     if (cached) {
-      this.animalInfo = cached.info;
-      this.availableSpecies = cached.species;
+      const merged = mergeAnimalSources(cached, local);
+      this.animalInfo = merged.info;
+      this.availableSpecies = merged.species;
       this.loading = false;
       this.$nextTick(() => this.backgroundRefresh());
     } else {
-      const local = await loadFromLocalMirror();
       this.animalInfo = local.info;
       this.availableSpecies = local.species;
       this.loading = false;
@@ -354,9 +438,11 @@ export default {
       try {
         const fresh = await fetchFromGoogle(this.animalDataUrl);
         if (Object.keys(fresh.info).length) {
-          this.animalInfo = fresh.info;
-          this.availableSpecies = fresh.species;
-          saveCache(fresh.info, fresh.species);
+          const local = await loadFromLocalMirror();
+          const merged = mergeAnimalSources(fresh, local);
+          this.animalInfo = merged.info;
+          this.availableSpecies = merged.species;
+          saveCache(merged.info, merged.species);
           await this.loadDecisionTrees();
         }
       } catch (e) {
@@ -436,9 +522,14 @@ export default {
         return;
       }
 
-      const optionLabel = this.formatLabel(option);
+      const optionLabel = this.currentNode.optionLabels?.[option] || this.formatLabel(option);
       const questionText = typeof this.currentNode === 'object' ? this.currentNode.question : '';
-      this.steps.push({ question: questionText, optionKey: option, optionLabel });
+      this.steps.push({
+        question: questionText,
+        questionKey: this.currentNode.key || '',
+        optionKey: option,
+        optionLabel
+      });
       this.path.push(option);
       const next = branch ?? null;
 
@@ -477,6 +568,8 @@ export default {
       this.comparisonTraits = [];
       if (this.selectedAnimal === 'pigs') {
         this.recomputePigState();
+      } else {
+        this.currentNode = this.decisionTrees[this.selectedAnimal] || null;
       }
     },
 
@@ -632,9 +725,35 @@ export default {
     getStory(name) {
       return this.animalInfo[name]?.general_description || '';
     },
+    collectResultsFromNode(node, seen = new Set()) {
+      if (!node) {
+        return [];
+      }
+
+      if (typeof node === 'string') {
+        return seen.has(node) ? [] : [node];
+      }
+
+      if (typeof node === 'object' && node.result) {
+        return seen.has(node.result) ? [] : [node.result];
+      }
+
+      const names = [];
+      for (const branch of Object.values(node.options || {})) {
+        const branchResults = this.collectResultsFromNode(branch, seen);
+        branchResults.forEach((name) => {
+          if (!seen.has(name)) {
+            seen.add(name);
+            names.push(name);
+          }
+        });
+      }
+
+      return names;
+    },
 
     formatSpecies(key) {
-      const map = { pigs: 'Schweine', cow: 'Kuh', goat: 'Ziege' };
+      const map = { pigs: 'Schweine', cow: 'Kuh', goat: 'Ziegen', sheep: 'Schafe' };
       return map[key] || key;
     },
     formatLabel(option) {
@@ -784,22 +903,44 @@ export default {
 .option-button:active, .back-button:active, .reset-button:active {
   transform: scale(0.98);
 }
-.option-button { background-color: #f48fb1; color: #212121; }
-.option-button:hover { background-color: #ec407a; color: #fff; }
-.back-button { background-color: #d1c4e9; color: #4527a0; }
-.back-button:hover { background-color: #b39ddb; color: #fff; }
+.option-button {
+  background-color: var(--group-accent, #f48fb1);
+  color: var(--group-accent-text, #212121);
+}
+.option-button:hover {
+  background-color: var(--group-accent-strong, #ec407a);
+  color: #fff;
+}
+.back-button {
+  background-color: var(--group-secondary, #d1c4e9);
+  color: var(--group-secondary-text, #4527a0);
+}
+.back-button:hover {
+  background-color: var(--group-secondary-strong, #b39ddb);
+  color: #fff;
+}
 .restart-button {
   display: block; width: 100%;
   padding: 0.75rem 1rem; margin-top: 0.5rem;
   border: none; border-radius: 6px;
   cursor: pointer; font-weight: bold; font-size: 0.95rem;
   transition: background .15s ease, transform .1s ease;
-  background-color: #ffccbc; color: #5d4037;
+  background-color: var(--group-tertiary, #ffccbc);
+  color: var(--group-tertiary-text, #5d4037);
 }
-.restart-button:hover { background-color: #ffab91; color: #fff; }
+.restart-button:hover {
+  background-color: var(--group-tertiary-strong, #ffab91);
+  color: #fff;
+}
 .restart-button:active { transform: scale(0.98); }
-.reset-button { background-color: #b0bec5; color: #37474f; }
-.reset-button:hover { background-color: #90a4ae; color: #fff; }
+.reset-button {
+  background-color: var(--group-tertiary, #b0bec5);
+  color: var(--group-tertiary-text, #37474f);
+}
+.reset-button:hover {
+  background-color: var(--group-tertiary-strong, #90a4ae);
+  color: #fff;
+}
 
 .navigation-buttons {
   display: flex; justify-content: space-between; gap: 1rem; margin-top: 1rem;
@@ -810,13 +951,16 @@ export default {
 /* Browse link */
 .browse-link {
   display: block; width: 100%; margin-top: 1rem;
-  padding: .55rem; border: 1.5px dashed #a5d6a7; border-radius: 6px;
-  background: transparent; color: #2e7d32;
+  padding: .55rem; border: 1.5px dashed var(--group-link-border, #a5d6a7); border-radius: 6px;
+  background: var(--group-link-bg, transparent); color: var(--group-secondary-text, #2e7d32);
   font-size: .85rem; font-weight: 600; cursor: pointer;
   text-align: center;
   transition: background .15s ease, border-color .15s ease;
 }
-.browse-link:hover { background: #e8f5e9; border-color: #66bb6a; }
+.browse-link:hover {
+  background: var(--group-link-hover, #e8f5e9);
+  border-color: var(--group-accent-strong, #66bb6a);
+}
 
 /* Species sub-menu */
 .species-menu {

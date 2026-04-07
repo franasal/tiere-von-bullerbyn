@@ -1,0 +1,51 @@
+{
+  "question": "Welche Grundfarbe fällt zuerst auf?",
+  "optionLabels": {
+    "black": "Schwarz",
+    "brown": "Braun",
+    "white": "Weiß"
+  },
+  "options": {
+    "black": {
+      "result": "Jule"
+    },
+    "brown": {
+      "question": "Welches weiße Merkmal passt besser?",
+      "optionLabels": {
+        "nose_spot": "Weißer Fleck auf der Nase",
+        "face_patch": "Großer weißer Fleck im Gesicht",
+        "brown_head": "Weißer Körper mit braunem Kopf"
+      },
+      "options": {
+        "nose_spot": {
+          "result": "Kale"
+        },
+        "face_patch": {
+          "result": "Emil"
+        },
+        "brown_head": {
+          "result": "August"
+        }
+      }
+    },
+    "white": {
+      "question": "Welches Merkmal siehst du?",
+      "optionLabels": {
+        "back_spot": "Dunkler Fleck auf dem Rücken",
+        "curly_horns": "Lockige Hörner",
+        "plain_white": "Komplett weiß"
+      },
+      "options": {
+        "back_spot": {
+          "result": "Timon"
+        },
+        "curly_horns": {
+          "result": "Markus"
+        },
+        "plain_white": {
+          "result": "Yoda"
+        }
+      }
+    }
+  }
+}
