@@ -812,31 +812,16 @@ export default {
     getStory(name) {
       return this.animalInfo[name]?.general_description || '';
     },
-    collectResultsFromNode(node, seen = new Set()) {
-      if (!node) {
-        return [];
-      }
-
-      if (typeof node === 'string') {
-        return seen.has(node) ? [] : [node];
-      }
-
-      if (typeof node === 'object' && node.result) {
-        return seen.has(node.result) ? [] : [node.result];
-      }
+    collectResultsFromNode(node) {
+      if (!node) return [];
+      if (typeof node === 'string') return [node];
+      if (typeof node === 'object' && node.result) return [node.result];
 
       const names = [];
       for (const branch of Object.values(node.options || {})) {
-        const branchResults = this.collectResultsFromNode(branch, seen);
-        branchResults.forEach((name) => {
-          if (!seen.has(name)) {
-            seen.add(name);
-            names.push(name);
-          }
-        });
+        names.push(...this.collectResultsFromNode(branch));
       }
-
-      return names;
+      return [...new Set(names)];
     },
     getTreeCandidates(node) {
       return this.collectResultsFromNode(node).map((name) => ({ name }));
