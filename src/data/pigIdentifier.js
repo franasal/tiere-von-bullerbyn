@@ -360,7 +360,7 @@ export const pigOpeningQuestions = [
     key: 'pigType',
     compareValue: 'woolly_domestic',
     compareLabel: 'Stark behaartes Wollschwein',
-    question: 'Ist es eio behaartes Wollschwein?'
+    question: 'Ist es ein behaartes Wollschwein?'
   },
   {
     key: 'coatAppearance',

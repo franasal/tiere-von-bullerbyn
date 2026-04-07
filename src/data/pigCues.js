@@ -93,6 +93,13 @@ function sortCuesForQuestion(cues, questionKey) {
   });
 }
 
+export function getCueImageForAnimalAndQuestion(name, questionKey) {
+  const cues = cueIndex.get(name) || [];
+  const sorted = sortCuesForQuestion(cues, questionKey);
+  const matching = sorted.filter((cue) => scoreCueForQuestion(cue, questionKey) > 0);
+  return matching.length > 0 ? matching[0].url : null;
+}
+
 export function getQuestionCueGallery(candidateNames, questionKey, options = {}) {
   const maxPigs = options.maxPigs || 4;
   const maxImagesPerPig = options.maxImagesPerPig || 2;

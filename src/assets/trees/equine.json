@@ -1,0 +1,43 @@
+{
+  "question": "Ist es ein Esel oder ein Pony?",
+  "optionLabels": {
+    "donkey": "Esel",
+    "pony": "Pony"
+  },
+  "options": {
+    "donkey": {
+      "question": "Welcher Esel ist es?",
+      "optionLabels": {
+        "xenta": "Xenta",
+        "pablo": "Pablo"
+      },
+      "options": {
+        "xenta": {
+          "result": "Xenta"
+        },
+        "pablo": {
+          "result": "Pablo"
+        }
+      }
+    },
+    "pony": {
+      "question": "Welche Fellfarbe fällt zuerst auf?",
+      "optionLabels": {
+        "gray": "Grau",
+        "brown": "Braun",
+        "brown_white": "Weiß-braun"
+      },
+      "options": {
+        "gray": {
+          "result": "Miela"
+        },
+        "brown": {
+          "result": "Kasper"
+        },
+        "brown_white": {
+          "result": "Peter-Charlie"
+        }
+      }
+    }
+  }
+}

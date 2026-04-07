@@ -1,0 +1,31 @@
+{
+  "question": "Welche Fellfarbe fällt zuerst auf?",
+  "optionLabels": {
+    "black": "Schwarz",
+    "light_brown": "Hellbraun",
+    "gray": "Grau"
+  },
+  "options": {
+    "black": {
+      "result": "Greta"
+    },
+    "light_brown": {
+      "result": "Grumpy"
+    },
+    "gray": {
+      "question": "Ist ein herzförmiger Fleck auf der Stirn sichtbar?",
+      "optionLabels": {
+        "yes": "Ja",
+        "no": "Nein"
+      },
+      "options": {
+        "yes": {
+          "result": "Romeo"
+        },
+        "no": {
+          "result": "Giulia"
+        }
+      }
+    }
+  }
+}

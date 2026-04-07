@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <rect width="800" height="800" fill="#edf1f4"/>
+  <circle cx="400" cy="300" r="120" fill="#8f9aa3"/>
+  <path d="M380 255c18-26 56-24 67 7 13-29 52-32 69-6 18 28-3 63-69 105-67-41-87-76-67-106z" fill="#fff5f7"/>
+  <rect x="235" y="430" width="330" height="130" rx="65" fill="#a5afb7"/>
+  <text x="400" y="660" text-anchor="middle" font-family="Arial, sans-serif" font-size="56" font-weight="700" fill="#475057">Romeo</text>
+  <text x="400" y="720" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" fill="#6a747b">Bild folgt</text>
+</svg>

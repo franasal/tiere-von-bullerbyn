@@ -51,7 +51,13 @@ function handleTitleTap() {
 }
 
 function formatSpecies(key) {
-  const map = { pigs: 'Schweine', cow: 'Kuh', goat: 'Ziegen', sheep: 'Schafe' };
+  const map = {
+    pigs: '🐷 Schweine',
+    cow: '🐮 Kühe',
+    goat: '🐐 Ziegen',
+    sheep: '🐑 Schafe',
+    equine: '🫏 Esel & Ponys'
+  };
   return map[key] || key;
 }
 
@@ -71,6 +77,16 @@ function getSpeciesThemeStyle(key) {
       '--species-button-bg': '#cfd8dc',
       '--species-button-hover': '#607d8b',
       '--species-button-text': '#37474f'
+    },
+    equine: {
+      '--species-button-bg': '#d7ccc8',
+      '--species-button-hover': '#8d6e63',
+      '--species-button-text': '#4e342e'
+    },
+    cow: {
+      '--species-button-bg': '#ffe0b2',
+      '--species-button-hover': '#fb8c00',
+      '--species-button-text': '#6d4c41'
     }
   };
 

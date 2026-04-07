@@ -41,8 +41,15 @@
             <button
               v-if="option !== unknownOption"
               class="option-button"
+              :class="{ 'option-button--with-image': currentNode.optionImages?.[option] }"
               @click="$emit('advance', option, branch)"
             >
+              <img
+                v-if="currentNode.optionImages?.[option]"
+                :src="currentNode.optionImages[option]"
+                :alt="formatLabel(option)"
+                class="option-cue-image"
+              />
               {{ formatLabel(option) }}
             </button>
           </template>
@@ -203,6 +210,21 @@ function formatLabel(option) {
 .option-button:hover {
   background-color: var(--group-accent-strong, #ec407a);
   color: white;
+}
+
+.option-button--with-image {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  text-align: left;
+}
+
+.option-cue-image {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
 }
 
 .skip-button {

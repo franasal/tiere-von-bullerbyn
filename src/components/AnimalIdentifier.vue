@@ -224,7 +224,7 @@ import {
   getSimilarAnimals,
   getDifferentiatingTraits
 } from '../data/pigTraitAnalysis.js';
-import { getQuestionCueGallery } from '../data/pigCues.js';
+import { getQuestionCueGallery, getCueImageForAnimalAndQuestion } from '../data/pigCues.js';
 
 export default {
   name: 'AnimalIdentifier',
@@ -387,6 +387,38 @@ export default {
           '--group-link-bg': '#f4f7f8',
           '--group-link-border': '#90a4ae',
           '--group-link-hover': '#eceff1'
+        },
+        equine: {
+          '--group-accent-soft': '#efebe9',
+          '--group-accent-border': '#d7ccc8',
+          '--group-accent': '#bcaaa4',
+          '--group-accent-strong': '#8d6e63',
+          '--group-accent-text': '#4e342e',
+          '--group-secondary': '#dcedc8',
+          '--group-secondary-strong': '#7cb342',
+          '--group-secondary-text': '#33691e',
+          '--group-tertiary': '#ffe0b2',
+          '--group-tertiary-strong': '#fb8c00',
+          '--group-tertiary-text': '#6d4c41',
+          '--group-link-bg': '#f7f1ed',
+          '--group-link-border': '#a1887f',
+          '--group-link-hover': '#efebe9'
+        },
+        cow: {
+          '--group-accent-soft': '#fff3e0',
+          '--group-accent-border': '#ffcc80',
+          '--group-accent': '#ffb74d',
+          '--group-accent-strong': '#fb8c00',
+          '--group-accent-text': '#6d4c41',
+          '--group-secondary': '#d7ccc8',
+          '--group-secondary-strong': '#8d6e63',
+          '--group-secondary-text': '#4e342e',
+          '--group-tertiary': '#fff8e1',
+          '--group-tertiary-strong': '#ffb300',
+          '--group-tertiary-text': '#6d4c41',
+          '--group-link-bg': '#fff7eb',
+          '--group-link-border': '#ffb74d',
+          '--group-link-hover': '#fff3e0'
         }
       };
 
@@ -475,8 +507,9 @@ export default {
         return;
       }
 
-      this.currentNode = this.decisionTrees[species] || null;
-      this.currentCandidates = this.getTreeCandidates(this.currentNode);
+      const tree = this.decisionTrees[species] || null;
+      this.currentCandidates = this.getTreeCandidates(tree);
+      this.currentNode = this.enrichTreeNode(tree, this.currentCandidates.length);
     },
 
     showProfile(name) {
@@ -541,8 +574,9 @@ export default {
         this.currentNode = null;
         this.currentCandidates = [];
       } else {
-        this.currentNode = next;
-        this.currentCandidates = this.getTreeCandidates(next);
+        const nextCandidates = this.getTreeCandidates(next);
+        this.currentCandidates = nextCandidates;
+        this.currentNode = this.enrichTreeNode(next, nextCandidates.length);
       }
     },
 
@@ -571,8 +605,10 @@ export default {
       if (this.selectedAnimal === 'pigs') {
         this.recomputePigState();
       } else {
-        this.currentNode = this.decisionTrees[this.selectedAnimal] || null;
-        this.currentCandidates = this.getTreeCandidates(this.currentNode);
+        const tree = this.decisionTrees[this.selectedAnimal] || null;
+        const candidates = this.getTreeCandidates(tree);
+        this.currentCandidates = candidates;
+        this.currentNode = this.enrichTreeNode(tree, candidates.length);
       }
     },
 
@@ -591,8 +627,10 @@ export default {
         if (this.selectedAnimal === 'pigs') {
           this.recomputePigState();
         } else {
-          this.currentNode = this.decisionTrees[this.selectedAnimal];
-          this.currentCandidates = this.getTreeCandidates(this.currentNode);
+          const tree = this.decisionTrees[this.selectedAnimal];
+          const candidates = this.getTreeCandidates(tree);
+          this.currentCandidates = candidates;
+          this.currentNode = this.enrichTreeNode(tree, candidates.length);
         }
         return;
       }
@@ -610,8 +648,9 @@ export default {
         const next = node.options?.[step];
         node = typeof next === 'string' ? { result: next } : next;
       }
-      this.currentNode = node;
-      this.currentCandidates = this.getTreeCandidates(node);
+      const candidates = this.getTreeCandidates(node);
+      this.currentCandidates = candidates;
+      this.currentNode = this.enrichTreeNode(node, candidates.length);
     },
 
     selectFromComparison(name) {
@@ -679,7 +718,8 @@ export default {
       this.resultName = null;
 
       if (nextQuestion) {
-        this.currentNode = buildPigQuestionNode(nextQuestion.question, candidates, nextQuestion.values);
+        const node = buildPigQuestionNode(nextQuestion.question, candidates, nextQuestion.values);
+        this.currentNode = this.addOptionImages(node, candidates);
         return;
       }
 
@@ -713,6 +753,38 @@ export default {
       this.showComparison = true;
       this.resultName = null;
       this.currentNode = null;
+    },
+
+    // Enrich a decision-tree node from the JSON trees with helpText (candidate count)
+    enrichTreeNode(node, candidateCount) {
+      if (!node || node.result) return node;
+      const speciesLabel = this.formatSpecies(this.selectedAnimal);
+      return {
+        ...node,
+        helpText: `${candidateCount} ${speciesLabel} passen aktuell noch.`
+      };
+    },
+
+    // Add optionImages to a pig question node based on available cue images
+    addOptionImages(node, candidates) {
+      const images = {};
+      if (node.mode === 'binary' && node.compareValue) {
+        const matching = candidates.filter((c) => c.traits[node.key] === node.compareValue);
+        for (const candidate of matching) {
+          const img = getCueImageForAnimalAndQuestion(candidate.name, node.key);
+          if (img) { images['yes'] = img; break; }
+        }
+      } else if (node.mode === 'direct') {
+        for (const optionKey of Object.keys(node.options)) {
+          if (optionKey === UNKNOWN_OPTION) continue;
+          const matching = candidates.filter((c) => c.traits[node.key] === optionKey);
+          for (const candidate of matching) {
+            const img = getCueImageForAnimalAndQuestion(candidate.name, node.key);
+            if (img) { images[optionKey] = img; break; }
+          }
+        }
+      }
+      return Object.keys(images).length > 0 ? { ...node, optionImages: images } : node;
     },
 
     // Trait analysis helpers
@@ -777,7 +849,13 @@ export default {
     },
 
     formatSpecies(key) {
-      const map = { pigs: 'Schweine', cow: 'Kuh', goat: 'Ziegen', sheep: 'Schafe' };
+      const map = {
+        pigs: 'Schweine',
+        goat: 'Ziegen',
+        sheep: 'Schafe',
+        equine: 'Esel & Ponys',
+        cow: 'Kühe'
+      };
       return map[key] || key;
     },
     formatLabel(option) {

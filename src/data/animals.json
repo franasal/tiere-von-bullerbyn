@@ -223,11 +223,76 @@
       "appearance_description": "Weißes Schaf mit kleinen Hörnern.",
       "general_description": "Schwester von Lissi.",
       "image_url": ""
+    },
+    "Xenta": {
+      "name": "Xenta",
+      "species": "equine",
+      "appearance_description": "Esel.",
+      "general_description": "",
+      "image_url": "/animal-images/equine/xenta-placeholder.svg"
+    },
+    "Pablo": {
+      "name": "Pablo",
+      "species": "equine",
+      "appearance_description": "Esel.",
+      "general_description": "",
+      "image_url": "/animal-images/equine/pablo-placeholder.svg"
+    },
+    "Miela": {
+      "name": "Miela",
+      "species": "equine",
+      "appearance_description": "Blinder grauer Pony.",
+      "general_description": "",
+      "image_url": "/animal-images/equine/miela.jpg"
+    },
+    "Kasper": {
+      "name": "Kasper",
+      "species": "equine",
+      "appearance_description": "Brauner Pony.",
+      "general_description": "",
+      "image_url": "/animal-images/equine/kasper.jpg"
+    },
+    "Peter-Charlie": {
+      "name": "Peter-Charlie",
+      "species": "equine",
+      "appearance_description": "Weiß-brauner Pony.",
+      "general_description": "",
+      "image_url": "/animal-images/equine/peter-charlie.jpg"
+    },
+    "Greta": {
+      "name": "Greta",
+      "species": "cow",
+      "appearance_description": "Schwarze Kuh.",
+      "general_description": "",
+      "image_url": "/animal-images/cow/greta-placeholder.svg"
+    },
+    "Grumpy": {
+      "name": "Grumpy",
+      "species": "cow",
+      "appearance_description": "Die größte Kuh, hellbraun, mit grummigem Blick.",
+      "general_description": "",
+      "image_url": "/animal-images/cow/grumpy-placeholder.svg"
+    },
+    "Romeo": {
+      "name": "Romeo",
+      "species": "cow",
+      "appearance_description": "Graue Kuh mit herzförmigem Fleck auf der Stirn.",
+      "general_description": "",
+      "image_url": "/animal-images/cow/romeo-placeholder.svg"
+    },
+    "Giulia": {
+      "name": "Giulia",
+      "species": "cow",
+      "appearance_description": "Graue Kuh, der Zwilling von Romeo.",
+      "general_description": "",
+      "image_url": "/animal-images/cow/giulia-placeholder.svg"
     }
   },
   "species": [
     "pigs",
     "goat",
-    "sheep"
+    "sheep",
+    "equine",
+    "cow"
   ]
 }
