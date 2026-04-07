@@ -201,7 +201,7 @@
       "species": "sheep",
       "appearance_description": "Braunes Schaf mit langen Hörnern.",
       "general_description": "",
-      "image_url": ""
+      "image_url": "/animal-images/sheep/samu.jpg"
     },
     "Raven": {
       "name": "Raven",
@@ -215,28 +215,28 @@
       "species": "sheep",
       "appearance_description": "Weißes Schaf ohne Hörner.",
       "general_description": "Schwester von Lisso.",
-      "image_url": ""
+      "image_url": "/animal-images/sheep/lissi.jpg"
     },
     "Lisso": {
       "name": "Lisso",
       "species": "sheep",
       "appearance_description": "Weißes Schaf mit kleinen Hörnern.",
       "general_description": "Schwester von Lissi.",
-      "image_url": ""
+      "image_url": "/animal-images/sheep/lisso.jpg"
     },
     "Xenta": {
       "name": "Xenta",
       "species": "equine",
       "appearance_description": "Esel.",
       "general_description": "",
-      "image_url": "/animal-images/equine/xenta-placeholder.svg"
+      "image_url": "/animal-images/equine/xenta.jpg"
     },
     "Pablo": {
       "name": "Pablo",
       "species": "equine",
       "appearance_description": "Esel.",
       "general_description": "",
-      "image_url": "/animal-images/equine/pablo-placeholder.svg"
+      "image_url": "/animal-images/equine/pablo.jpg"
     },
     "Miela": {
       "name": "Miela",
@@ -264,28 +264,28 @@
       "species": "cow",
       "appearance_description": "Schwarze Kuh.",
       "general_description": "",
-      "image_url": "/animal-images/cow/greta-placeholder.svg"
+      "image_url": "/animal-images/cow/greta.jpg"
     },
     "Grumpy": {
       "name": "Grumpy",
       "species": "cow",
       "appearance_description": "Die größte Kuh, hellbraun, mit grummigem Blick.",
       "general_description": "",
-      "image_url": "/animal-images/cow/grumpy-placeholder.svg"
+      "image_url": "/animal-images/cow/grumpy.jpg"
     },
     "Romeo": {
       "name": "Romeo",
       "species": "cow",
       "appearance_description": "Graue Kuh mit herzförmigem Fleck auf der Stirn.",
       "general_description": "",
-      "image_url": "/animal-images/cow/romeo-placeholder.svg"
+      "image_url": "/animal-images/cow/romeo.jpg"
     },
     "Giulia": {
       "name": "Giulia",
       "species": "cow",
       "appearance_description": "Graue Kuh, der Zwilling von Romeo.",
       "general_description": "",
-      "image_url": "/animal-images/cow/giulia-placeholder.svg"
+      "image_url": "/animal-images/cow/giulia.jpg"
     }
   },
   "species": [

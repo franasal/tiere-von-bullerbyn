@@ -265,13 +265,6 @@ export default {
         return [];
       }
 
-      if (this.selectedAnimal !== 'pigs') {
-        return this.collectResultsFromNode(this.currentNode).map((name) => ({
-          name,
-          imageUrl: this.getAnimalImage(name)
-        }));
-      }
-
       return this.currentCandidates.map((candidate) => ({
         name: candidate.name,
         imageUrl: this.getAnimalImage(candidate.name)
@@ -802,7 +795,8 @@ export default {
     getAnimalImage(name) {
       const imageUrl = this.animalInfo[name]?.image_url;
       if (!imageUrl) {
-        return 'https://veganbullerbyn.de/wp-content/uploads/2024/07/MG_0979-6.jpg';
+        const base = import.meta.env.BASE_URL || '/';
+        return `${base.replace(/\/$/, '')}/animal-images/placeholder.svg`;
       }
 
       if (imageUrl.startsWith('/')) {

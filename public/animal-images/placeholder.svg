@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <rect width="800" height="800" fill="#f4efe8"/>
+  <circle cx="400" cy="280" r="118" fill="#d7ccc8"/>
+  <rect x="220" y="420" width="360" height="150" rx="75" fill="#e6ddd4"/>
+  <text x="400" y="655" text-anchor="middle" font-family="Arial, sans-serif" font-size="54" font-weight="700" fill="#5d534b">Bild folgt</text>
+  <text x="400" y="715" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" fill="#82766d">Platzhalter</text>
+</svg>
