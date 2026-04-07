@@ -1,20 +1,17 @@
 {
-  "question": "Welche Grundfarbe fällt zuerst auf?",
+  "categoryHint": "⚫ Flecken",
+  "question": "Sind Flecken sichtbar?",
   "optionLabels": {
-    "black": "Schwarz",
-    "brown": "Braun",
-    "white": "Weiß"
+    "yes": "Ja, Flecken sind sichtbar",
+    "no": "Nein, keine Flecken"
   },
   "options": {
-    "black": {
-      "result": "Jule"
-    },
-    "brown": {
-      "question": "Welches weiße Merkmal passt besser?",
+    "yes": {
+      "question": "Wo sind die Flecken oder hellen Abzeichen am deutlichsten?",
       "optionLabels": {
         "nose_spot": "Weißer Fleck auf der Nase",
         "face_patch": "Großer weißer Fleck im Gesicht",
-        "brown_head": "Weißer Körper mit braunem Kopf"
+        "back_spot": "Dunkler Fleck auf dem Rücken"
       },
       "options": {
         "nose_spot": {
@@ -23,27 +20,39 @@
         "face_patch": {
           "result": "Emil"
         },
-        "brown_head": {
-          "result": "August"
+        "back_spot": {
+          "result": "Timon"
         }
       }
     },
-    "white": {
-      "question": "Welches Merkmal siehst du?",
+    "no": {
+      "question": "Welche Grundfarbe fällt zuerst auf?",
       "optionLabels": {
-        "back_spot": "Dunkler Fleck auf dem Rücken",
-        "curly_horns": "Lockige Hörner",
-        "plain_white": "Komplett weiß"
+        "black": "Schwarz",
+        "brown_head": "Weiß mit braunem Kopf",
+        "white": "Weiß"
       },
       "options": {
-        "back_spot": {
-          "result": "Timon"
+        "black": {
+          "result": "Jule"
         },
-        "curly_horns": {
-          "result": "Markus"
+        "brown_head": {
+          "result": "August"
         },
-        "plain_white": {
-          "result": "Yoda"
+        "white": {
+          "question": "Welches Merkmal siehst du?",
+          "optionLabels": {
+        "curly_horns": "Lockige Hörner",
+        "plain_white": "Komplett weiß"
+          },
+          "options": {
+            "curly_horns": {
+              "result": "Markus"
+            },
+            "plain_white": {
+              "result": "Yoda"
+            }
+          }
         }
       }
     }

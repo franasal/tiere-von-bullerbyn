@@ -265,17 +265,16 @@ export default {
         return [];
       }
 
-      if (this.selectedAnimal === 'pigs') {
-        return this.currentCandidates.map((candidate) => ({
-          name: candidate.name,
-          imageUrl: this.getAnimalImage(candidate.name)
+      if (this.selectedAnimal !== 'pigs' && !this.currentCandidates.length) {
+        return this.collectResultsFromNode(this.currentNode).map((name) => ({
+          name,
+          imageUrl: this.getAnimalImage(name)
         }));
       }
 
-      const names = this.collectResultsFromNode(this.currentNode);
-      return names.map((name) => ({
-        name,
-        imageUrl: this.getAnimalImage(name)
+      return this.currentCandidates.map((candidate) => ({
+        name: candidate.name,
+        imageUrl: this.getAnimalImage(candidate.name)
       }));
     },
     galleryAnimals() {
@@ -476,8 +475,8 @@ export default {
         return;
       }
 
-      this.currentCandidates = [];
       this.currentNode = this.decisionTrees[species] || null;
+      this.currentCandidates = this.getTreeCandidates(this.currentNode);
     },
 
     showProfile(name) {
@@ -536,11 +535,14 @@ export default {
       if (typeof next === 'string') {
         this.resultName = next;
         this.currentNode = null;
+        this.currentCandidates = [];
       } else if (next && typeof next === 'object' && 'result' in next) {
         this.resultName = next.result;
         this.currentNode = null;
+        this.currentCandidates = [];
       } else {
         this.currentNode = next;
+        this.currentCandidates = this.getTreeCandidates(next);
       }
     },
 
@@ -570,6 +572,7 @@ export default {
         this.recomputePigState();
       } else {
         this.currentNode = this.decisionTrees[this.selectedAnimal] || null;
+        this.currentCandidates = this.getTreeCandidates(this.currentNode);
       }
     },
 
@@ -589,6 +592,7 @@ export default {
           this.recomputePigState();
         } else {
           this.currentNode = this.decisionTrees[this.selectedAnimal];
+          this.currentCandidates = this.getTreeCandidates(this.currentNode);
         }
         return;
       }
@@ -607,6 +611,7 @@ export default {
         node = typeof next === 'string' ? { result: next } : next;
       }
       this.currentNode = node;
+      this.currentCandidates = this.getTreeCandidates(node);
     },
 
     selectFromComparison(name) {
@@ -723,10 +728,17 @@ export default {
     },
 
     getAnimalImage(name) {
-      return (
-        this.animalInfo[name]?.image_url ||
-        'https://veganbullerbyn.de/wp-content/uploads/2024/07/MG_0979-6.jpg'
-      );
+      const imageUrl = this.animalInfo[name]?.image_url;
+      if (!imageUrl) {
+        return 'https://veganbullerbyn.de/wp-content/uploads/2024/07/MG_0979-6.jpg';
+      }
+
+      if (imageUrl.startsWith('/')) {
+        const base = import.meta.env.BASE_URL || '/';
+        return `${base.replace(/\/$/, '')}${imageUrl}`;
+      }
+
+      return imageUrl;
     },
     getAppearance(name) {
       return this.animalInfo[name]?.appearance_description || '';
@@ -759,6 +771,9 @@ export default {
       }
 
       return names;
+    },
+    getTreeCandidates(node) {
+      return this.collectResultsFromNode(node).map((name) => ({ name }));
     },
 
     formatSpecies(key) {
