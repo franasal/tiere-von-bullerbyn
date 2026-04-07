@@ -28,30 +28,26 @@
       "question": "Welches Merkmal passt besser?",
       "optionLabels": {
         "brown_legs": "Braun gefleckte Beine",
+        "curly_horns": "Lockige Hörner",
         "small_horns": "Kleine Hörner",
-        "no_horns": "Keine Hörner"
+        "brown_nose_spots": "Braune Flecken auf der Nase",
+        "no_horns": "Keine Hörner und keine braunen Nasenflecken"
       },
       "options": {
         "brown_legs": {
           "result": "Schneeweißchen"
         },
+        "curly_horns": {
+          "result": "Markus"
+        },
         "small_horns": {
           "result": "Lisso"
         },
+        "brown_nose_spots": {
+          "result": "Carlos"
+        },
         "no_horns": {
-          "question": "Hat es braune Flecken auf der Nase?",
-          "optionLabels": {
-            "yes": "Ja",
-            "no": "Nein"
-          },
-          "options": {
-            "yes": {
-              "result": "Carlos"
-            },
-            "no": {
-              "result": "Lissi"
-            }
-          }
+          "result": "Lissi"
         }
       }
     }

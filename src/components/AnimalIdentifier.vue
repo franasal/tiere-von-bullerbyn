@@ -265,7 +265,7 @@ export default {
         return [];
       }
 
-      if (this.selectedAnimal !== 'pigs' && !this.currentCandidates.length) {
+      if (this.selectedAnimal !== 'pigs') {
         return this.collectResultsFromNode(this.currentNode).map((name) => ({
           name,
           imageUrl: this.getAnimalImage(name)

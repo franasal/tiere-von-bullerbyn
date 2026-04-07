@@ -142,10 +142,10 @@
     },
     "Markus": {
       "name": "Markus",
-      "species": "goat",
-      "appearance_description": "Kleine weiße Ziege mit lockigen Hörnern.",
+      "species": "sheep",
+      "appearance_description": "Kleines weißes Schaf mit lockigen Hörnern.",
       "general_description": "Hat eine sehr markante Lautäußerung.",
-      "image_url": "/animal-images/goat/markus.jpg"
+      "image_url": "/animal-images/sheep/markus.jpg"
     },
     "Yoda": {
       "name": "Yoda",
@@ -171,7 +171,7 @@
     "August": {
       "name": "August",
       "species": "goat",
-      "appearance_description": "Große weiße Ziege mit braun gefärbtem Kopf.",
+      "appearance_description": "Größtenteils weiße Ziege mit braun gefärbtem Kopf.",
       "general_description": "Der Boss der Gruppe.",
       "image_url": "/animal-images/goat/august.jpg"
     },
