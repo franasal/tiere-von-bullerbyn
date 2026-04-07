@@ -342,6 +342,7 @@ export const pigQuestions = [
 ];
 
 export const UNKNOWN_OPTION = 'unknown';
+const ANY_SPOT_PATTERN = '__any_spot_pattern__';
 
 export const pigOpeningQuestions = [
   {
@@ -401,6 +402,10 @@ export function filterPigCandidates(candidates, step) {
 
   const matchesTrait = (candidate, expectedValue) => {
     const candidateValue = candidate.traits[step.questionKey];
+    if (step.questionKey === 'spotPattern' && expectedValue === ANY_SPOT_PATTERN) {
+      return candidateValue !== undefined && candidateValue !== null;
+    }
+
     if (candidateValue === expectedValue) {
       return true;
     }
@@ -461,7 +466,12 @@ export function getNextPigQuestion(candidates, answeredKeys) {
       if (step.compareValue !== undefined) {
         askedByKey.get(step.questionKey).add(step.compareValue);
       }
-      if (step.optionKey === UNKNOWN_OPTION || step.optionKey === 'yes') {
+      const keepSpotFollowUp =
+        step.questionKey === 'spotPattern' &&
+        step.compareValue === ANY_SPOT_PATTERN &&
+        step.optionKey === 'yes';
+
+      if ((step.optionKey === UNKNOWN_OPTION || step.optionKey === 'yes') && !keepSpotFollowUp) {
         lockedKeys.add(step.questionKey);
       }
       return;
@@ -502,6 +512,31 @@ export function getNextPigQuestion(candidates, answeredKeys) {
 }
 
 function getOpeningQuestion(candidates, answeredSteps) {
+  const spotted = candidates.filter((candidate) => candidate.traits.spotPattern !== undefined);
+  if (spotted.length && spotted.length < candidates.length) {
+    const alreadyAsked = answeredSteps.some(
+      (step) => step.questionKey === 'spotPattern' && step.compareValue === ANY_SPOT_PATTERN
+    );
+
+    if (!alreadyAsked) {
+      return {
+        question: {
+          key: 'spotPattern',
+          mode: 'binary',
+          compareValue: ANY_SPOT_PATTERN,
+          compareLabel: 'Flecken sichtbar',
+          question: 'Sind Flecken sichtbar?',
+          options: {
+            yes: 'Ja, Flecken sind sichtbar',
+            no: 'Nein, keine Flecken'
+          }
+        },
+        values: ['yes', 'no'],
+        forcedBinary: true
+      };
+    }
+  }
+
   for (const opening of pigOpeningQuestions) {
     if (
       opening.key === 'coatAppearance' &&

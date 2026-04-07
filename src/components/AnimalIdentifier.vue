@@ -684,6 +684,15 @@ export default {
         question: 'Mehrere Schweine passen noch. Welches passt am ehesten?',
         options: Object.fromEntries(candidates.map((c) => [c.name, { result: c.name }])),
         optionLabels: Object.fromEntries(candidates.map((c) => [c.name, c.name])),
+        optionCards: Object.fromEntries(
+          candidates.map((c) => [
+            c.name,
+            {
+              title: c.name,
+              imageUrl: this.getAnimalImage(c.name)
+            }
+          ])
+        ),
         estimatedRemaining: 1,
         helpText: 'Die bisherigen Merkmale reichen noch nicht für eine eindeutige Entscheidung.'
       };

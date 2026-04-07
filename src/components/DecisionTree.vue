@@ -20,7 +20,23 @@
           <p class="question">{{ currentNode.question }}</p>
           <p v-if="currentNode.helpText" class="help-text">{{ currentNode.helpText }}</p>
         </div>
-        <div class="options">
+        <div v-if="currentNode.key === 'fallbackResult' && currentNode.optionCards" class="option-card-grid">
+          <button
+            v-for="(branch, option) in currentNode.options"
+            :key="option"
+            type="button"
+            class="option-card"
+            @click="$emit('advance', option, branch)"
+          >
+            <img
+              :src="currentNode.optionCards[option]?.imageUrl"
+              :alt="currentNode.optionCards[option]?.title || formatLabel(option)"
+              class="option-card-image"
+            />
+            <span class="option-card-title">{{ currentNode.optionCards[option]?.title || formatLabel(option) }}</span>
+          </button>
+        </div>
+        <div v-else class="options">
           <template v-for="(branch, option) in currentNode.options" :key="option">
             <button
               v-if="option !== unknownOption"
@@ -121,6 +137,51 @@ function formatLabel(option) {
 .help-text { margin: 0.5rem 0 0; font-size: 0.9rem; color: #6d4c41; }
 
 .options { display: flex; flex-direction: column; gap: .4rem; }
+
+.option-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(124px, 1fr));
+  gap: .7rem;
+}
+
+.option-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .45rem;
+  width: 100%;
+  padding: .65rem;
+  border: 1px solid var(--group-accent-border, #f8bbd0);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--group-accent-soft, #fce4ec) 65%, white);
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .15s ease, border-color .15s ease;
+}
+
+.option-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, .08);
+  border-color: var(--group-accent-strong, #ec407a);
+}
+
+.option-card:active {
+  transform: scale(0.98);
+}
+
+.option-card-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.option-card-title {
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--group-accent-text, #3e2723);
+  text-align: center;
+}
 
 .option-button, .skip-button, .back-button, .reset-button {
   display: block; width: 100%;
