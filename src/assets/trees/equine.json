@@ -6,14 +6,14 @@
   },
   "options": {
     "donkey": {
-      "question": "Welcher Esel ist es?",
+      "question": "Welche Fellfarbe passt besser?",
       "optionLabels": {
-        "xenta": "Xenta",
-        "pablo": "Pablo"
+        "senta": "Braun-grau",
+        "pablo": "Schwarz-grau"
       },
       "options": {
-        "xenta": {
-          "result": "Xenta"
+        "senta": {
+          "result": "Senta"
         },
         "pablo": {
           "result": "Pablo"

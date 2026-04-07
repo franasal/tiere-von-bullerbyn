@@ -4,6 +4,6 @@
   <circle cx="355" cy="265" r="34" fill="#3b3b3b"/>
   <circle cx="450" cy="320" r="30" fill="#9b6a43"/>
   <rect x="225" y="430" width="350" height="145" rx="72" fill="#ece5dd"/>
-  <text x="400" y="660" text-anchor="middle" font-family="Arial, sans-serif" font-size="56" font-weight="700" fill="#4d433c">Pru</text>
+  <text x="400" y="660" text-anchor="middle" font-family="Arial, sans-serif" font-size="56" font-weight="700" fill="#4d433c">Prue</text>
   <text x="400" y="720" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="#776a61">Bild folgt</text>
 </svg>

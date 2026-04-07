@@ -47,6 +47,7 @@
       :image-url="getAnimalImage(profileAnimal)"
       :appearance="getAppearance(profileAnimal)"
       :story="getStory(profileAnimal)"
+      :animal-names="allAnimalNames"
       :unique-traits="getUniqueTraitsFor(profileAnimal)"
       :similar-animals="getSimilarAnimalsFor(profileAnimal)"
       @back="appView = 'gallery'"
@@ -117,14 +118,14 @@
           <button
             type="button"
             class="cue-preview-close"
-            aria-label="Bild schliessen"
+            aria-label="Bild schließen"
             @click="closeCuePreview"
           >
             X
           </button>
           <img
             :src="activeCuePreview"
-            alt="Grosses Hinweisfoto"
+            alt="Großes Hinweisfoto"
             class="cue-preview-image"
           />
         </div>
@@ -152,6 +153,7 @@
           :image-url="getAnimalImage(resultName)"
           :appearance="getAppearance(resultName)"
           :story="getStory(resultName)"
+          :animal-names="allAnimalNames"
           :unique-traits="getUniqueTraitsFor(resultName)"
           :similar-animals="getSimilarAnimalsFor(resultName)"
           @showProfile="showProfileFromResult"
@@ -168,6 +170,7 @@
         v-else
         :current-node="currentNode"
         :path="path"
+        :species="selectedAnimal"
         :show-nav="true"
         @advance="advance"
         @back="goBack"
@@ -308,6 +311,9 @@ export default {
         .filter((animal) => animal.species === 'pig')
         .map((animal) => animal.name)
         .sort((a, b) => a.localeCompare(b, 'de'));
+    },
+    allAnimalNames() {
+      return Object.keys(this.animalInfo).sort((a, b) => a.localeCompare(b, 'de'));
     },
     feedbackSelectedPig() {
       if (this.resultName && this.animalInfo[this.resultName]?.species === 'pig') {
@@ -778,7 +784,12 @@ export default {
     addOptionImages(node, candidates) {
       const images = {};
       if (node.mode === 'binary' && node.compareValue) {
-        const matching = candidates.filter((c) => c.traits[node.key] === node.compareValue);
+        const matching = candidates.filter((c) => {
+          if (node.compareValue === '__defined__') {
+            return c.traits[node.key] !== undefined && c.traits[node.key] !== null;
+          }
+          return c.traits[node.key] === node.compareValue;
+        });
         for (const candidate of matching) {
           const img = getCueImageForAnimalAndQuestion(candidate.name, node.key);
           if (img) { images['yes'] = img; break; }

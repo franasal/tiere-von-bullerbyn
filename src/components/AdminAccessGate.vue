@@ -24,7 +24,7 @@
 
       <div class="gate-status">
         <p v-if="securityInfo.source === 'env'" class="status-ok">
-          Passwort ist ueber `VITE_ADMIN_PASSWORD` konfiguriert.
+          Passwort ist über `VITE_ADMIN_PASSWORD` konfiguriert.
         </p>
         <p v-else-if="securityInfo.source === 'dev-fallback'" class="status-warn">
           Entwicklungs-Fallback aktiv: `{{ securityInfo.devFallbackPassword }}`.
@@ -40,7 +40,7 @@
         </p>
       </div>
 
-      <button class="back-button" type="button" @click="$emit('back')">← Zurueck</button>
+      <button class="back-button" type="button" @click="$emit('back')">← Zurück</button>
     </div>
   </div>
 </template>

@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
-  <rect width="800" height="800" fill="#eef1f3"/>
-  <circle cx="400" cy="300" r="120" fill="#8e979f"/>
-  <rect x="235" y="430" width="330" height="130" rx="65" fill="#a4adb5"/>
-  <text x="400" y="660" text-anchor="middle" font-family="Arial, sans-serif" font-size="56" font-weight="700" fill="#475057">Giulia</text>
-  <text x="400" y="720" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" fill="#6a747b">Bild folgt</text>
-</svg>

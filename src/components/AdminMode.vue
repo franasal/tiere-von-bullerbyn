@@ -73,7 +73,7 @@
         <h3 class="section-title">Vorgeschlagenes Datenmodell</h3>
         <p class="panel-copy">
           Statt harter `pigProfiles` und `pigQuestions` braucht die App ein generisches
-          Content-Modell, das Tiergruppen, Merkmale, Tiere, Entscheidungsbaeume und
+          Content-Modell, das Tiergruppen, Merkmale, Tiere, Entscheidungsbäume und
           Spielvarianten versioniert speichert.
         </p>
         <pre class="schema-block">{{ proposedSchema }}</pre>
@@ -95,7 +95,7 @@
         <h3 class="section-title">Merkmal-Fotos</h3>
         <p class="panel-copy">
           Pro Tier werden aktuell 3 Fotos gesammelt: Ohren, Schwanz und ein besonderes Merkmal.
-          Dieser Bereich sollte spaeter pro Tiergruppe konfigurierbare Medien-Slots bekommen.
+          Dieser Bereich sollte später pro Tiergruppe konfigurierbare Medien-Slots bekommen.
         </p>
       </section>
 
@@ -193,7 +193,7 @@
         <h3 class="section-label">Helfer einladen</h3>
         <p class="helper-desc">
           Teile diesen Link mit Helfer:innen. Sie sehen, welche Fotos fehlen,
-          koennen direkt fotografieren und die Bilder weiterleiten.
+          können direkt fotografieren und die Bilder weiterleiten.
         </p>
         <div class="helper-link-row">
           <input
@@ -227,21 +227,21 @@
       <section class="panel-section">
         <h3 class="section-title">Passwortschutz</h3>
         <p class="panel-copy">
-          Das Panel ist jetzt per Passwortgate geschuetzt und merkt sich die Freigabe fuer
+          Das Panel ist jetzt per Passwortgate geschützt und merkt sich die Freigabe für
           die aktuelle Browser-Sitzung.
         </p>
         <div class="security-card">
           <p :class="['security-status', securityStatusClass]">{{ securityStatus }}</p>
           <p class="security-copy">
             Empfehlung: `VITE_ADMIN_PASSWORD` in der Deployment-Umgebung setzen. Das ist
-            fuer eine statische Vue-App ein sinnvoller Basisschutz, aber kein Ersatz fuer
+            für eine statische Vue-App ein sinnvoller Basisschutz, aber kein Ersatz für
             serverseitige Authentifizierung.
           </p>
           <p v-if="securityInfo.usesFallback" class="security-copy">
-            Aktuell laeuft der Entwicklungs-Fallback `{{ securityInfo.devFallbackPassword }}`.
+            Aktuell läuft der Entwicklungs-Fallback `{{ securityInfo.devFallbackPassword }}`.
           </p>
           <p class="security-copy">
-            Wenn ihr spaeter echte Bearbeitung, Teamzugriff und Publizieren braucht, sollte
+            Wenn ihr später echte Bearbeitung, Teamzugriff und Publizieren braucht, sollte
             das Admin Panel an ein Backend mit Accounts, Rollen und Versionierung angeschlossen werden.
           </p>
           <button class="lock-btn secondary" @click="$emit('lock')">Admin jetzt sperren</button>
@@ -277,25 +277,25 @@ const emit = defineEmits(['back', 'openHelper', 'lock']);
 const strengths = [
   'Der Startscreen und die Tierdaten aus `animals.json` sind bereits als Inhaltsquelle angelegt.',
   'Die Schweine-Identifikation ist spielerisch stark: Kandidatenfilter, Vergleichsansicht und Profilkarten sind schon da.',
-  'Es gibt schon einen versteckten Admin-Einstieg und einen separaten Helfer-Modus fuer Foto-Sammlungen.',
-  'Import und Export laufen lokal bereits ueber JSON und bilden einen guten Start fuer spaetere Publish-Workflows.'
+  'Es gibt schon einen versteckten Admin-Einstieg und einen separaten Helfer-Modus für Foto-Sammlungen.',
+  'Import und Export laufen lokal bereits über JSON und bilden einen guten Start für spätere Publish-Workflows.'
 ];
 
 const scaleBlockers = [
-  'Die eigentliche Spiellogik ist fest in `pigIdentifier.js` und `pigTraitAnalysis.js` verdrahtet. Neue Tiergruppen koennen nicht im Admin angelegt werden.',
+  'Die eigentliche Spiellogik ist fest in `pigIdentifier.js` und `pigTraitAnalysis.js` verdrahtet. Neue Tiergruppen können nicht im Admin angelegt werden.',
   'Die Daten sind auf mehrere Formate verteilt: Tabellen-Spiegel in `animals.json`, harte Trait-Definitionen im Code und Foto-Slots nur in `localStorage`.',
-  'Andere Arten sind im Ladepfad vorgesehen, aber es gibt noch keinen generischen Editor fuer Traits, Fragen, Baeume oder Spielregeln.',
-  'Die aktuellen 3 Foto-Felder gelten fuer alle Tiere gleich, obwohl andere Tiergruppen andere Referenzbilder brauchen werden.'
+  'Andere Arten sind im Ladepfad vorgesehen, aber es gibt noch keinen generischen Editor für Traits, Fragen, Bäume oder Spielregeln.',
+  'Die aktuellen 3 Foto-Felder gelten für alle Tiere gleich, obwohl andere Tiergruppen andere Referenzbilder brauchen werden.'
 ];
 
 const adminModules = [
   {
     title: '1. Tiergruppen',
-    copy: 'Gruppen wie Schweine, Ziegen, Schafe oder Huehner anlegen. Jede Gruppe bekommt Label, Bildstil, Sortierung und einen aktiven Status.'
+    copy: 'Gruppen wie Schweine, Ziegen, Schafe oder Hühner anlegen. Jede Gruppe bekommt Label, Bildstil, Sortierung und einen aktiven Status.'
   },
   {
     title: '2. Merkmalsbibliothek',
-    copy: 'Traits als strukturierte Felder pflegen: Typ, Frage, Optionen, Icons, Hilfetexte, Pflichtgrad und ob sie fuer Fotos oder Spiele genutzt werden.'
+    copy: 'Traits als strukturierte Felder pflegen: Typ, Frage, Optionen, Icons, Hilfetexte, Pflichtgrad und ob sie für Fotos oder Spiele genutzt werden.'
   },
   {
     title: '3. Tierprofile',
@@ -311,22 +311,22 @@ const adminModules = [
   },
   {
     title: '6. Medien und Publishing',
-    copy: 'Fotos, Referenzbilder, Export, Import, Versionen und spaeter Freigabe nach Produktion an einer Stelle sammeln.'
+    copy: 'Fotos, Referenzbilder, Export, Import, Versionen und später Freigabe nach Produktion an einer Stelle sammeln.'
   }
 ];
 
 const rolloutPhases = [
   {
     title: 'Phase 1: Datenmodell entkoppeln',
-    copy: 'Pig-spezifische Konstanten in ein generisches Registry-Modell ueberfuehren: groups, traits, animals, trees und gameModes.'
+    copy: 'Pig-spezifische Konstanten in ein generisches Registry-Modell überführen: groups, traits, animals, trees und gameModes.'
   },
   {
     title: 'Phase 2: Admin CRUD',
-    copy: 'Masken fuer Tiergruppen, Traits und Tierprofile bauen. Erst danach lohnt sich ein visueller Tree-Builder.'
+    copy: 'Masken für Tiergruppen, Traits und Tierprofile bauen. Erst danach lohnt sich ein visueller Tree-Builder.'
   },
   {
     title: 'Phase 3: Tree und Game Builder',
-    copy: 'Aus dem generischen Modell Entscheidungsbaeume und Spielkonfigurationen erzeugen, validieren und in der Vorschau testen.'
+    copy: 'Aus dem generischen Modell Entscheidungsbäume und Spielkonfigurationen erzeugen, validieren und in der Vorschau testen.'
   },
   {
     title: 'Phase 4: Backend und Rollen',
@@ -419,7 +419,7 @@ const reviewCards = computed(() => [
   {
     label: 'Harte Fragen im Code',
     value: pigQuestions.length,
-    copy: 'Neue Fragen koennen bisher nicht ohne Codeaenderung gepflegt werden.'
+    copy: 'Neue Fragen können bisher nicht ohne Codeänderung gepflegt werden.'
   }
 ]);
 

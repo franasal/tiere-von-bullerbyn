@@ -46,16 +46,29 @@
       </div>
     </div>
 
+    <div class="profile-section">
+      <StorySubmissionWidget
+        :animal-names="animalNames"
+        :selected-animal="name"
+        :appearance="appearance"
+        :story="story"
+        current-view="Profil"
+      />
+    </div>
+
     <button class="back-button" @click="$emit('back')">← Zurück zur Galerie</button>
   </div>
 </template>
 
 <script setup>
+import StorySubmissionWidget from './StorySubmissionWidget.vue';
+
 defineProps({
   name: { type: String, required: true },
   imageUrl: { type: String, required: true },
   appearance: { type: String, default: '' },
   story: { type: String, default: '' },
+  animalNames: { type: Array, default: () => [] },
   uniqueTraits: { type: Array, default: () => [] },
   similarAnimals: { type: Array, default: () => [] }
 });

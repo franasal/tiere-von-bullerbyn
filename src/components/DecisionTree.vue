@@ -6,6 +6,7 @@
       :answered="answeredCount"
       :total="totalSteps"
       :percent="progress"
+      :species="species"
       class="mb-4"
     />
 
@@ -18,6 +19,16 @@
         <div class="question-box">
           <p v-if="currentNode.categoryHint" class="category-hint">{{ currentNode.categoryHint }}</p>
           <p class="question">{{ currentNode.question }}</p>
+          <div v-if="currentNode.questionImage" class="question-visual">
+            <img
+              :src="currentNode.questionImage"
+              :alt="currentNode.questionImageAlt || currentNode.question"
+              class="question-visual-image"
+            />
+            <p v-if="currentNode.questionImageCaption" class="question-visual-caption">
+              {{ currentNode.questionImageCaption }}
+            </p>
+          </div>
           <p v-if="currentNode.helpText" class="help-text">{{ currentNode.helpText }}</p>
         </div>
         <div v-if="currentNode.key === 'fallbackResult' && currentNode.optionCards" class="option-card-grid">
@@ -86,6 +97,7 @@ const unknownOption = UNKNOWN_OPTION;
 const props = defineProps({
   currentNode: { type: Object, default: null },
   path: { type: Array, required: true },
+  species: { type: String, default: '' },
   showNav: { type: Boolean, default: true }
 });
 
@@ -142,6 +154,26 @@ function formatLabel(option) {
 }
 .question { font-weight: bold; margin: 0; }
 .help-text { margin: 0.5rem 0 0; font-size: 0.9rem; color: #6d4c41; }
+.question-visual {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.75);
+}
+.question-visual-image {
+  display: block;
+  width: 100%;
+  max-width: 240px;
+  border-radius: 8px;
+  margin: 0 auto;
+  object-fit: cover;
+}
+.question-visual-caption {
+  margin: 0.55rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.35;
+  color: #5d4037;
+}
 
 .options { display: flex; flex-direction: column; gap: .4rem; }
 

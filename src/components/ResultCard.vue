@@ -52,17 +52,29 @@
         </div>
       </div>
     </div>
+
+    <div class="story-submit-section">
+      <StorySubmissionWidget
+        :animal-names="animalNames"
+        :selected-animal="name"
+        :appearance="appearance"
+        :story="story"
+        current-view="Ergebnis"
+      />
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import StorySubmissionWidget from './StorySubmissionWidget.vue';
 
 defineProps({
   name: { type: String, required: true },
   imageUrl: { type: String, required: true },
   appearance: { type: String, default: '' },
   story: { type: String, default: '' },
+  animalNames: { type: Array, default: () => [] },
   uniqueTraits: { type: Array, default: () => [] },
   similarAnimals: { type: Array, default: () => [] }
 });
@@ -144,6 +156,7 @@ onMounted(() => {
 
 /* Similar animals section */
 .similar-section { width: 100%; }
+.story-submit-section { width: 100%; margin-top: 0.9rem; }
 .similar-card {
   display: flex; align-items: center; gap: .6rem;
   padding: .5rem; margin-top: .4rem;

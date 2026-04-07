@@ -87,7 +87,7 @@
     "Vanilli": {
       "name": "Vanilli",
       "species": "pig",
-      "appearance_description": "Weiblich, klein, Borsten auf der linken Seite (Punk-Look), halb rosa, halb schwarz.",
+      "appearance_description": "Weiblich, klein, Borsten auf dem Rücken (Punk-Look), halb rosa, halb schwarz.",
       "general_description": "Ihre Halter:innen begingen Suizid, Angehörige wollten sie schlachten lassen – Nachbar:innen griffen ein.",
       "image_url": "/animal-images/pigs/vanilli.jpg"
     },
@@ -115,7 +115,7 @@
     "Lili": {
       "name": "Lili",
       "species": "wild_boar",
-      "appearance_description": "Weiblich, Wildschwein, braunes Fell.",
+      "appearance_description": "Weiblich, Wildschwein, braunes Fell, schwarze Ohren mit weißen Haaren.",
       "general_description": "Unverwechselbar mit Gezi, lebt gemeinsam mit ihr in Bullerbyn.",
       "image_url": "/animal-images/pigs/lili.jpg"
     },
@@ -222,19 +222,19 @@
       "species": "sheep",
       "appearance_description": "Weißes Schaf mit kleinen Hörnern.",
       "general_description": "Schwester von Lissi.",
-      "image_url": "/animal-images/sheep/lisso.jpg"
+      "image_url": "/animal-images/sheep/lisso.jpeg"
     },
-    "Xenta": {
-      "name": "Xenta",
+    "Senta": {
+      "name": "Senta",
       "species": "equine",
-      "appearance_description": "Esel.",
+      "appearance_description": "Esel, braun-grau.",
       "general_description": "",
-      "image_url": "/animal-images/equine/xenta.jpg"
+      "image_url": "/animal-images/equine/senta.jpeg"
     },
     "Pablo": {
       "name": "Pablo",
       "species": "equine",
-      "appearance_description": "Esel.",
+      "appearance_description": "Esel, schwarz-grau.",
       "general_description": "",
       "image_url": "/animal-images/equine/pablo.jpg"
     },
@@ -264,35 +264,35 @@
       "species": "cow",
       "appearance_description": "Schwarze Kuh.",
       "general_description": "",
-      "image_url": "/animal-images/cow/greta.jpg"
+      "image_url": "/animal-images/cow/greta.jpeg"
     },
     "Grumpy": {
       "name": "Grumpy",
       "species": "cow",
       "appearance_description": "Die größte Kuh, hellbraun, mit grummigem Blick.",
       "general_description": "",
-      "image_url": "/animal-images/cow/grumpy.jpg"
+      "image_url": "/animal-images/cow/grumpy.jpeg"
     },
     "Romeo": {
       "name": "Romeo",
       "species": "cow",
       "appearance_description": "Graue Kuh mit herzförmigem Fleck auf der Stirn.",
       "general_description": "",
-      "image_url": "/animal-images/cow/romeo.jpg"
+      "image_url": "/animal-images/cow/romeo.jpeg"
     },
     "Giulia": {
       "name": "Giulia",
       "species": "cow",
       "appearance_description": "Graue Kuh, der Zwilling von Romeo.",
       "general_description": "",
-      "image_url": "/animal-images/cow/giulia.jpg"
+      "image_url": "/animal-images/cow/giulia.jpeg"
     },
-    "Pru": {
-      "name": "Pru",
+    "Prue": {
+      "name": "Prue",
       "species": "dog",
       "appearance_description": "Weißer Hund mit schwarzen und braunen Flecken.",
       "general_description": "",
-      "image_url": "/animal-images/dog/pru-placeholder.svg"
+      "image_url": "/animal-images/dog/prue.jpeg"
     },
     "Piper": {
       "name": "Piper",
@@ -306,7 +306,14 @@
       "species": "dog",
       "appearance_description": "Überwiegend weißer Hund.",
       "general_description": "",
-      "image_url": "/animal-images/dog/ziggy-placeholder.svg"
+      "image_url": "/animal-images/dog/ziggy.jpeg"
+    },
+    "Eli": {
+      "name": "Eli",
+      "species": "dog",
+      "appearance_description": "Braun-schwarzer Hund mit heller Schnauze.",
+      "general_description": "",
+      "image_url": "/animal-images/dog/eli.jpeg"
     },
     "Bobby": {
       "name": "Bobby",
@@ -327,7 +334,7 @@
       "species": "dog",
       "appearance_description": "Großer Hund mit grauem Fell.",
       "general_description": "",
-      "image_url": "/animal-images/dog/grinch-placeholder.svg"
+      "image_url": "/animal-images/dog/grinch.jpeg"
     }
   },
   "species": [

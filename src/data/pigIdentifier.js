@@ -185,7 +185,7 @@ export const pigQuestions = [
     options: {
       wild_boar_like: 'Wildschweinartig mit dichtem Fell',
       pot_bellied: 'Hängebauchschwein',
-      woolly_domestic: 'Stark behaartes Wollschwein',
+      woolly_domestic: 'Behaartes Schwein',
       standard_domestic: 'Normales Hausschwein'
     }
   },
@@ -207,8 +207,8 @@ export const pigQuestions = [
       gray_dense: 'Grau und dicht behaart',
       full_hair_no_spots: 'Voll behaart ohne Flecken',
       big_black_spots_full_hair: 'Große schwarze Flecken und voll behaart',
-      black_white_bristles: 'Schwarz mit weisslichen Borsten',
-      bristle_punk_left: 'Borsten auf der linken Seite (Punk-Look)',
+      black_white_bristles: 'Schwarz mit weißlichen Borsten',
+      bristle_punk_left: 'Borsten auf dem Rücken (Punk-Look)',
       light_bristles: 'Hellere Borsten',
       black_with_neck_bristles: 'Schwarz mit Borsten im Nacken',
       orange_hair: 'Orangefarbene Haare'
@@ -219,7 +219,7 @@ export const pigQuestions = [
     priority: 78,
     question: 'Welche Wildschwein-Merkmale sind sichtbar?',
     options: {
-      plain_brown: 'Braunes Fell ohne schwarze Ohren oder schwarzen Fleck am unteren Rücken',
+      plain_brown: 'Braunes Fell, schwarze Ohren mit weißen Haaren',
       black_ears_lower_back_spot: 'Schwarz behaarte Ohren und schwarzer Fleck am unteren Rücken'
     }
   },
@@ -229,7 +229,7 @@ export const pigQuestions = [
     question: 'Welche Fleckenzeichnung ist sichtbar?',
     options: {
       face_spots: 'Schwarze Flecken im Gesicht',
-      sharp_spots: 'Grosse Flecken im Gesicht und am Körper',
+      sharp_spots: 'Große Flecken im Gesicht und am Körper',
       black_face_tail_spots: 'Schwarze Flecken im Gesicht und am Schwanz',
       black_hip_spots: 'Schwarze Flecken am Rücken bei der Hüfte'
     }
@@ -342,6 +342,8 @@ export const pigQuestions = [
 ];
 
 export const UNKNOWN_OPTION = 'unknown';
+const DEFINED_TRAIT_VALUE = '__defined__';
+const MALE_PIG_GUIDE_IMAGE = `${import.meta.env.BASE_URL || '/'}male_pig.png`;
 
 export const pigOpeningQuestions = [
   {
@@ -357,10 +359,16 @@ export const pigOpeningQuestions = [
     question: 'Ist es ein Hängebauchschwein?'
   },
   {
+    key: 'tusksVisible',
+    compareValue: 'yes',
+    compareLabel: 'Stoßzähne',
+    question: 'Sind Stoßzähne sichtbar?'
+  },
+  {
     key: 'pigType',
     compareValue: 'woolly_domestic',
-    compareLabel: 'Stark behaartes Wollschwein',
-    question: 'Ist es ein behaartes Wollschwein?'
+    compareLabel: 'Behaartes Schwein',
+    question: 'Ist es ein behaartes Schwein?'
   },
   {
     key: 'coatAppearance',
@@ -401,6 +409,10 @@ export function filterPigCandidates(candidates, step) {
 
   const matchesTrait = (candidate, expectedValue) => {
     const candidateValue = candidate.traits[step.questionKey];
+    if (expectedValue === DEFINED_TRAIT_VALUE) {
+      return candidateValue !== undefined && candidateValue !== null;
+    }
+
     if (candidateValue === expectedValue) {
       return true;
     }
@@ -470,6 +482,11 @@ export function getNextPigQuestion(candidates, answeredKeys) {
     lockedKeys.add(step.questionKey);
   });
 
+  const rosalieQuestion = getRosalieSpotQuestion(candidates, answeredKeys);
+  if (rosalieQuestion) {
+    return rosalieQuestion;
+  }
+
   const openingQuestion = getOpeningQuestion(candidates, answeredKeys);
   if (openingQuestion) {
     return openingQuestion;
@@ -501,6 +518,49 @@ export function getNextPigQuestion(candidates, answeredKeys) {
   return bestQuestion ? { question: bestQuestion, values: bestValues } : null;
 }
 
+function getRosalieSpotQuestion(candidates, answeredSteps) {
+  const hasFemale = answeredSteps.some(
+    (step) => step.questionKey === 'sex' && step.optionKey === 'female'
+  );
+  const hasShortTail = answeredSteps.some(
+    (step) => step.questionKey === 'tailType' && step.optionKey === 'short'
+  );
+  const alreadyAsked = answeredSteps.some(
+    (step) => step.questionKey === 'spotPattern' && step.compareValue === DEFINED_TRAIT_VALUE
+  );
+
+  if (!hasFemale || !hasShortTail || alreadyAsked) {
+    return null;
+  }
+
+  const withSpots = candidates.filter((candidate) => candidate.traits.spotPattern !== undefined);
+  const withoutSpots = candidates.filter((candidate) => candidate.traits.spotPattern === undefined);
+
+  if (
+    withSpots.length < 2 ||
+    withoutSpots.length !== 1 ||
+    withoutSpots[0]?.name !== 'Rosalie'
+  ) {
+    return null;
+  }
+
+  return {
+    question: {
+      key: 'spotPattern',
+      mode: 'binary',
+      compareValue: DEFINED_TRAIT_VALUE,
+      compareLabel: 'Flecken sichtbar',
+      question: 'Sind Flecken sichtbar?',
+      options: {
+        yes: 'Ja, passt',
+        no: 'Nein'
+      }
+    },
+    values: ['yes', 'no'],
+    forcedBinary: true
+  };
+}
+
 function getOpeningQuestion(candidates, answeredSteps) {
   for (const opening of pigOpeningQuestions) {
     if (
@@ -517,7 +577,14 @@ function getOpeningQuestion(candidates, answeredSteps) {
       continue;
     }
 
-    const matching = candidates.filter((candidate) => candidate.traits[opening.key] === opening.compareValue);
+    const matching = candidates.filter((candidate) => {
+      const value = candidate.traits[opening.key];
+      if (opening.compareValue === DEFINED_TRAIT_VALUE) {
+        return value !== undefined && value !== null;
+      }
+      return value === opening.compareValue;
+    });
+
     if (!matching.length || matching.length === candidates.length) {
       continue;
     }
@@ -563,6 +630,15 @@ export function buildPigQuestionNode(question, candidates, values) {
   const estimatedRemaining = Math.max(1, Math.ceil(Math.log2(candidates.length)));
 
   const meta = traitMeta[question.key];
+  const sexGuide =
+    question.key === 'sex'
+      ? {
+          questionImage: MALE_PIG_GUIDE_IMAGE,
+          questionImageAlt: 'Beispiel für das Präputium bei einem männlichen Schwein',
+          questionImageCaption:
+            'Aus der Distanz ist das oft der einfachste Unterschied: Beim männlichen Schwein sieht das Präputium ein bisschen wie ein Bauchnabel aus. Bild adaptiert von Jo-Anne McArthur / We Animals.'
+        }
+      : {};
 
   if (question.mode === 'binary' && question.compareValue) {
     const categoryHint = meta ? `${meta.icon} ${meta.label}` : '';
@@ -585,7 +661,8 @@ export function buildPigQuestionNode(question, candidates, values) {
         [UNKNOWN_OPTION]: 'Nicht sicher'
       },
       estimatedRemaining,
-      helpText: `${candidates.length} Schweine passen aktuell noch.`
+      helpText: `${candidates.length} Schweine passen aktuell noch.`,
+      ...sexGuide
     };
   }
 
@@ -604,7 +681,8 @@ export function buildPigQuestionNode(question, candidates, values) {
       options,
       optionLabels: { ...question.options, [UNKNOWN_OPTION]: 'Nicht sicher' },
       estimatedRemaining,
-      helpText: `${candidates.length} Schweine passen aktuell noch.`
+      helpText: `${candidates.length} Schweine passen aktuell noch.`,
+      ...sexGuide
     };
   }
 
@@ -630,6 +708,7 @@ export function buildPigQuestionNode(question, candidates, values) {
       [UNKNOWN_OPTION]: 'Nicht sicher'
     },
     estimatedRemaining,
-    helpText: `${candidates.length} Schweine passen aktuell noch.`
+    helpText: `${candidates.length} Schweine passen aktuell noch.`,
+    ...sexGuide
   };
 }

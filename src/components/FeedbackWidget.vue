@@ -10,7 +10,7 @@
           <div class="feedback-header">
             <div>
               <h2>Feedback senden</h2>
-              <p>Oeffnet eine vorbereitete E-Mail an `farcilas@gmail.com`.</p>
+              <p>Öffnet eine vorbereitete E-Mail an `farcilas@gmail.com`.</p>
             </div>
             <button class="feedback-close" @click="closePanel" aria-label="Schliessen">
               ×
@@ -40,7 +40,7 @@
           <label v-if="feedbackType === 'pig'" class="feedback-field">
             <span>Schwein</span>
             <select v-model="selectedPigName">
-              <option value="">Bitte auswaehlen</option>
+              <option value="">Bitte auswählen</option>
               <option v-for="pig in pigNames" :key="pig" :value="pig">
                 {{ pig }}
               </option>
@@ -57,13 +57,13 @@
           </label>
 
           <div class="feedback-note">
-            Beim Absenden oeffnet sich dein E-Mail-Programm mit vorausgefuelltem Betreff und Text.
+            Beim Absenden öffnet sich dein E-Mail-Programm mit vorausgefülltem Betreff und Text.
           </div>
 
           <div class="feedback-actions">
             <button class="feedback-secondary" @click="closePanel">Abbrechen</button>
             <button class="feedback-primary" :disabled="!canSubmit" @click="submitFeedback">
-              E-Mail oeffnen
+              E-Mail öffnen
             </button>
           </div>
         </section>

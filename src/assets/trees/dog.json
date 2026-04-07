@@ -2,6 +2,7 @@
   "question": "Welche Grundfarbe oder Zeichnung fällt zuerst auf?",
   "optionLabels": {
     "white_spotted": "Weiß mit Flecken",
+    "brown_black": "Braun mit schwarzem Rücken",
     "black": "Schwarz",
     "gray": "Grau"
   },
@@ -21,9 +22,12 @@
           "result": "Ziggy"
         },
         "black_brown_spots": {
-          "result": "Pru"
+          "result": "Prue"
         }
       }
+    },
+    "brown_black": {
+      "result": "Eli"
     },
     "black": {
       "question": "Ist das Fell lockig?",
