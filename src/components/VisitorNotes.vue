@@ -4,13 +4,13 @@
     <p class="notes-hint">Schreib deine Beobachtungen oder Erlebnisse mit {{ animalName }} auf.</p>
 
     <p v-if="!firebaseEnabled" class="notes-status notes-status-error">
-      Firebase ist noch nicht verbunden. Trage erst die Projektwerte in die Vite-Umgebung ein.
+      Besucher*innennotizen sind gerade nicht verfuegbar.
     </p>
     <p v-else class="notes-status">
       Maximal {{ maxNotesPerDay }} Notizen pro Geraet und Tag. Verbleibend heute: {{ remainingToday }}.
     </p>
 
-    <form class="note-form" @submit.prevent="handleSubmit">
+    <form v-if="firebaseEnabled" class="note-form" @submit.prevent="handleSubmit">
       <textarea
         v-model="newNote"
         class="note-input"
@@ -28,7 +28,7 @@
         <button
           type="submit"
           class="note-submit"
-          :disabled="submitting || !firebaseEnabled || newNote.trim().length < 10"
+          :disabled="submitting || newNote.trim().length < 10"
         >
           {{ submitting ? 'Speichert ...' : 'Speichern' }}
         </button>
@@ -36,7 +36,7 @@
       <p class="notes-helper">Bitte mindestens 10 und maximal 500 Zeichen schreiben.</p>
     </form>
 
-    <p v-if="error" class="notes-status notes-status-error">{{ error }}</p>
+    <p v-if="error && firebaseEnabled" class="notes-status notes-status-error">{{ error }}</p>
     <p v-if="loading" class="notes-empty">Notizen werden geladen ...</p>
 
     <div v-else-if="notes.length" class="notes-list">

@@ -276,14 +276,14 @@ Die größte Kuh, hellbraun, mit grummigem Blick.
 Graue Kuh mit herzförmigem Fleck auf der Stirn.
 
 ### Geschichte
--
+Romeo ist der Zwillingsbruder von Giulia. Die beiden wurden aus einem Milchviehbetrieb gerettet. Sie wurden direkt nach der Geburt von ihrer Mutter und auch voneinander getrennt. Nur ein kleines Iglu ohne jegliche Nähe war ihr Zuhause. Eine Aktivistin verhinderte die geplante Schlachtung, da Zwillingskälber keinen Wert für die Industrie haben. Romeo ist ein zurückhaltender, verschmuster Bub. Vor allem die Zuneigung von Grumpy genießt er sehr.
 
 ## Giulia
 ### Erscheinung
 Graue Kuh, der Zwilling von Romeo.
 
 ### Geschichte
--
+Giulia ist die Zwillingsschwester von Romeo. Die beiden wurden aus einem Milchviehbetrieb gerettet. Sie wurden direkt nach der Geburt von ihrer Mutter und auch voneinander getrennt. Nur ein kleines Iglu ohne jegliche Nähe war ihr Zuhause. Eine Aktivistin verhinderte die geplante Schlachtung, da Zwillingskälber keinen Wert für die Industrie haben. Giulia ist sehr neugierig und immer an der Seite von Greta auf der Suche nach dem nächsten Abenteuer.
 
 ## Prue
 ### Erscheinung
@@ -318,7 +318,7 @@ Eli ist die jüngste Griechin. Sie wurde als Welpin in einem Tierheim aufgenomme
 Schwarzer Hund mit lockigem Fell.
 
 ### Geschichte
-Bobby ist der Senior im Rudel. Er wurde als Welpe von Anna und Danny in Rumänien von der Straße gerettet. Mittlerweile ist er leicht dement und schläft viel, doch wenn er einmal in Bewegung ist, freut er sich über Aufmerksamkeit und Spieleinheiten.
+Bobby ist der Senior im Rudel. Er wurde als Welpe von Anna und Danny in Rumänien von der Straße gerettet. Mittlerweile ist er leicht dement und taub. Bobby schläft viel, doch wenn er einmal in Bewegung ist, freut er sich über Aufmerksamkeit und Spieleinheiten.
 
 ## Jina
 ### Erscheinung

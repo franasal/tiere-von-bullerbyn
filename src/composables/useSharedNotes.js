@@ -127,7 +127,7 @@ function sortNotes(a, b) {
 
 function getConfigError() {
   if (firebaseEnabled) return '';
-  return `Firebase-Konfiguration fehlt: ${firebaseConfigHelp.join(', ')}`;
+  return 'Besucher*innennotizen sind gerade nicht verfuegbar.';
 }
 
 async function getServerDailyCount(uid, dayKey) {
