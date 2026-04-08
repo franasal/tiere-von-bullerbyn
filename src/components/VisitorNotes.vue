@@ -36,19 +36,21 @@
       <p class="notes-helper">Bitte mindestens 10 und maximal 500 Zeichen schreiben.</p>
     </form>
 
-    <p v-if="error && firebaseEnabled" class="notes-status notes-status-error">{{ error }}</p>
-    <p v-if="loading" class="notes-empty">Notizen werden geladen ...</p>
+    <template v-if="firebaseEnabled">
+      <p v-if="error" class="notes-status notes-status-error">{{ error }}</p>
+      <p v-else-if="loading" class="notes-empty">Notizen werden geladen ...</p>
 
-    <div v-else-if="notes.length" class="notes-list">
-      <div v-for="note in notes" :key="note.id" class="note-card">
-        <div class="note-header">
-          <span class="note-author">{{ note.author || 'Anonym' }}</span>
-          <span class="note-date">{{ formatDate(note.createdAt) }}</span>
+      <div v-else-if="notes.length" class="notes-list">
+        <div v-for="note in notes" :key="note.id" class="note-card">
+          <div class="note-header">
+            <span class="note-author">{{ note.author || 'Anonym' }}</span>
+            <span class="note-date">{{ formatDate(note.createdAt) }}</span>
+          </div>
+          <p class="note-text">{{ note.text }}</p>
         </div>
-        <p class="note-text">{{ note.text }}</p>
       </div>
-    </div>
-    <p v-else class="notes-empty">Noch keine freigegebenen Notizen vorhanden.</p>
+      <p v-else class="notes-empty">Noch keine freigegebenen Notizen vorhanden.</p>
+    </template>
   </div>
 </template>
 

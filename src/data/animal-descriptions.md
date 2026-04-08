@@ -262,7 +262,7 @@ Peter-Charlie und Kasper wurden in den Niederlanden auf einem Lebendmarkt vor de
 Schwarze Kuh.
 
 ### Geschichte
--
+Greta stammt aus demselben Betrieb wie die beiden Zwillinge. Sie wurde ebenfalls direkt nach der Geburt von ihrer Mutter getrennt und in ein Iglu gesteckt. Eigentlich sollte sie dasselbe Schicksal erleiden wie ihre Mutter, doch die Aktivistin konnte den Bauer überzeugen. Greta ist sehr mutig und manchmal auch ein bisschen frech. Schmusen und Kraulen findet sie besonders toll. Giulia ist ihre beste Freundin.
 
 ## Grumpy
 ### Erscheinung
