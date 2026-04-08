@@ -82,6 +82,9 @@ export function mergeAnimalSources(primary, secondary) {
 
   Object.keys(secondaryInfo).forEach((name) => {
     if (!mergedInfo[name]) return;
+    if ('image_url' in secondaryInfo[name]) {
+      mergedInfo[name].image_url = secondaryInfo[name].image_url || '';
+    }
     if ('appearance_description' in secondaryInfo[name]) {
       mergedInfo[name].appearance_description = secondaryInfo[name].appearance_description || '';
     }
