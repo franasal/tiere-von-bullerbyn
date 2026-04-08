@@ -269,7 +269,9 @@ Greta stammt aus demselben Betrieb wie die beiden Zwillinge. Sie wurde ebenfalls
 Die größte Kuh, hellbraun, mit grummigem Blick.
 
 ### Geschichte
--
+Grumpy ist auf einem Milchviehbetrieb zur Welt gekommen. Aufgrund eines Gendefekts war sie jedoch nicht „geeignet“, Mutter zu werden. Trotzdem hat der Landwirt sie am Leben gelassen. Zwei schöne Sommer auf der Weide durfte sie erleben – doch dann sollte sie dennoch zum Schlachter.
+Durch einen glücklichen Zufall ist Grumpy bei uns gelandet, statt im Schlachthof.
+Sie ist die Ziehmutter von Greta, Giulia und Romeo und kümmert sich sehr liebevoll um ihre drei Schätze.
 
 ## Romeo
 ### Erscheinung
