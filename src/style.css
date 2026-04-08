@@ -3,6 +3,16 @@
   line-height: 1.5;
   font-weight: 400;
   color: #213547;
+  color-scheme: light;
+  --theme-text: #2d221b;
+  --theme-muted: #6f4e37;
+  --theme-border: #decbbb;
+  --theme-surface: rgba(255, 251, 246, 0.92);
+  --theme-surface-strong: #fff7ef;
+  --theme-surface-soft: rgba(255, 255, 255, 0.78);
+  --theme-background:
+    radial-gradient(circle at top, #fff7ef 0%, #fffdf9 48%, #f7efe5 100%);
+  --theme-shadow: 0 18px 50px rgba(76, 53, 39, 0.08);
   background:
     radial-gradient(circle at top, #fff7ef 0%, #fffdf9 48%, #f7efe5 100%);
 
@@ -10,6 +20,20 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+:root[data-theme='dark'] {
+  color: #f2e9df;
+  color-scheme: dark;
+  --theme-text: #f2e9df;
+  --theme-muted: #cbb9ab;
+  --theme-border: #5f4d40;
+  --theme-surface: rgba(34, 25, 20, 0.9);
+  --theme-surface-strong: #241a15;
+  --theme-surface-soft: rgba(52, 39, 31, 0.88);
+  --theme-background:
+    radial-gradient(circle at top, #34261f 0%, #1f1713 52%, #130e0c 100%);
+  --theme-shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
 }
 
 a {
@@ -27,6 +51,9 @@ body {
   justify-content: center;
   min-width: 320px;
   min-height: 100vh;
+  color: var(--theme-text);
+  background: var(--theme-background);
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 h1 {
@@ -63,4 +90,293 @@ button:focus-visible {
   padding: 2rem;
   text-align: center;
   width: 100%;
+}
+
+:root[data-theme='dark'] a {
+  color: #f0b98c;
+}
+
+:root[data-theme='dark'] a:hover {
+  color: #ffd0aa;
+}
+
+:root[data-theme='dark'] button {
+  background-color: #33261f;
+  color: #f2e9df;
+}
+
+:root[data-theme='dark'] .container,
+:root[data-theme='dark'] .identify-view,
+:root[data-theme='dark'] .result-card,
+:root[data-theme='dark'] .profile,
+:root[data-theme='dark'] .visitor-notes,
+:root[data-theme='dark'] .admin,
+:root[data-theme='dark'] .panel-section,
+:root[data-theme='dark'] .gate-card,
+:root[data-theme='dark'] .animal-card,
+:root[data-theme='dark'] .similar-card,
+:root[data-theme='dark'] .pending-group,
+:root[data-theme='dark'] .pending-note-card,
+:root[data-theme='dark'] .candidate-gallery,
+:root[data-theme='dark'] .question-cues,
+:root[data-theme='dark'] .trait-row,
+:root[data-theme='dark'] .note-card,
+:root[data-theme='dark'] .animal-block {
+  color: var(--theme-text);
+  background: var(--theme-surface);
+  border-color: var(--theme-border);
+  box-shadow: var(--theme-shadow);
+}
+
+:root[data-theme='dark'] .start-screen,
+:root[data-theme='dark'] .start-title,
+:root[data-theme='dark'] .start-prompt,
+:root[data-theme='dark'] .subtitle,
+:root[data-theme='dark'] .animal-info,
+:root[data-theme='dark'] .profile-info,
+:root[data-theme='dark'] .gate-copy,
+:root[data-theme='dark'] .panel-copy,
+:root[data-theme='dark'] .notes-hint,
+:root[data-theme='dark'] .notes-helper,
+:root[data-theme='dark'] .notes-empty,
+:root[data-theme='dark'] .question-cues-title,
+:root[data-theme='dark'] .candidate-label,
+:root[data-theme='dark'] .thumb-name,
+:root[data-theme='dark'] .app-credit,
+:root[data-theme='dark'] .status-note,
+:root[data-theme='dark'] .metric-copy,
+:root[data-theme='dark'] .proposal-copy,
+:root[data-theme='dark'] .phase-copy,
+:root[data-theme='dark'] .security-copy,
+:root[data-theme='dark'] .diff-line,
+:root[data-theme='dark'] .note-text,
+:root[data-theme='dark'] .trait-hint,
+:root[data-theme='dark'] .note-date,
+:root[data-theme='dark'] .pending-note-meta,
+:root[data-theme='dark'] .metric-copy,
+:root[data-theme='dark'] .status-note {
+  color: var(--theme-muted) !important;
+}
+
+:root[data-theme='dark'] .admin-hero,
+:root[data-theme='dark'] .animal-header,
+:root[data-theme='dark'] .tab-btn,
+:root[data-theme='dark'] .filter-btn,
+:root[data-theme='dark'] .action-btn,
+:root[data-theme='dark'] .back-button,
+:root[data-theme='dark'] .lock-btn,
+:root[data-theme='dark'] .notes-status,
+:root[data-theme='dark'] .status-warn,
+:root[data-theme='dark'] .status-ok,
+:root[data-theme='dark'] .status-error {
+  background: var(--theme-surface-soft);
+  color: var(--theme-text) !important;
+  border-color: var(--theme-border);
+}
+
+:root[data-theme='dark'] .note-input,
+:root[data-theme='dark'] .author-input,
+:root[data-theme='dark'] .gate-input,
+:root[data-theme='dark'] .desc-input,
+:root[data-theme='dark'] .url-input,
+:root[data-theme='dark'] .login-input {
+  background: #211813 !important;
+  color: var(--theme-text) !important;
+  border-color: #5f4d40 !important;
+}
+
+:root[data-theme='dark'] .section-title,
+:root[data-theme='dark'] .admin-title,
+:root[data-theme='dark'] .gate-title,
+:root[data-theme='dark'] .profile-name,
+:root[data-theme='dark'] .similar-name,
+:root[data-theme='dark'] .proposal-title,
+:root[data-theme='dark'] .phase-title,
+:root[data-theme='dark'] .metric-label,
+:root[data-theme='dark'] .trait-label,
+:root[data-theme='dark'] .note-author,
+:root[data-theme='dark'] h1,
+:root[data-theme='dark'] h2,
+:root[data-theme='dark'] h3 {
+  color: var(--theme-text) !important;
+}
+
+:root[data-theme='dark'] .tab-btn.active,
+:root[data-theme='dark'] .filter-btn.active,
+:root[data-theme='dark'] .gate-button,
+:root[data-theme='dark'] .note-submit,
+:root[data-theme='dark'] .approve-btn,
+:root[data-theme='dark'] .url-save-btn {
+  background: #d98357 !important;
+  color: #1a120e !important;
+}
+
+:root[data-theme='dark'] .thumb-img,
+:root[data-theme='dark'] .admin-thumb,
+:root[data-theme='dark'] .preview-img,
+:root[data-theme='dark'] .similar-img {
+  border-color: #7a5d4f;
+}
+
+:root[data-theme='dark'] .animal-card {
+  background: #2b201a !important;
+  color: #f2e9df !important;
+  border-color: #6b5447 !important;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28) !important;
+}
+
+:root[data-theme='dark'] .animal-card:hover {
+  background: #d98357 !important;
+  border-color: #d98357 !important;
+  color: #1a120e !important;
+}
+
+:root[data-theme='dark'] .identify-view,
+:root[data-theme='dark'] .result-card,
+:root[data-theme='dark'] .visitor-notes,
+:root[data-theme='dark'] .panel-section,
+:root[data-theme='dark'] .gate-card,
+:root[data-theme='dark'] .pending-group,
+:root[data-theme='dark'] .pending-note-card,
+:root[data-theme='dark'] .candidate-gallery,
+:root[data-theme='dark'] .question-cues,
+:root[data-theme='dark'] .trait-row,
+:root[data-theme='dark'] .note-card,
+:root[data-theme='dark'] .animal-block,
+:root[data-theme='dark'] .similar-card,
+:root[data-theme='dark'] .trait-row,
+:root[data-theme='dark'] .question-cue-card,
+:root[data-theme='dark'] .trait-badge,
+:root[data-theme='dark'] .status-chip,
+:root[data-theme='dark'] .trait-pill,
+:root[data-theme='dark'] .species-chip,
+:root[data-theme='dark'] .characteristics-card,
+:root[data-theme='dark'] .characteristics-list,
+:root[data-theme='dark'] .characteristic-item,
+:root[data-theme='dark'] .besonderheiten-card {
+  background: var(--theme-surface) !important;
+  border-color: var(--theme-border) !important;
+}
+
+:root[data-theme='dark'] .question-card,
+:root[data-theme='dark'] .help-box,
+:root[data-theme='dark'] .choice-button,
+:root[data-theme='dark'] .choice-chip,
+:root[data-theme='dark'] .cue-preview-dialog,
+:root[data-theme='dark'] .preview-shell,
+:root[data-theme='dark'] .metric-card,
+:root[data-theme='dark'] .proposal-card,
+:root[data-theme='dark'] .phase-card,
+:root[data-theme='dark'] .security-card,
+:root[data-theme='dark'] .trait-row,
+:root[data-theme='dark'] .photo-preview,
+:root[data-theme='dark'] .preview-details,
+:root[data-theme='dark'] .trait-value,
+:root[data-theme='dark'] .trait-body,
+:root[data-theme='dark'] .feedback-card,
+:root[data-theme='dark'] .feedback-form,
+:root[data-theme='dark'] .feedback-note {
+  background: var(--theme-surface-soft) !important;
+  border-color: var(--theme-border) !important;
+}
+
+:root[data-theme='dark'] .candidate-label,
+:root[data-theme='dark'] .question-cues-title,
+:root[data-theme='dark'] .trait-copy,
+:root[data-theme='dark'] .characteristics-title,
+:root[data-theme='dark'] .characteristic-label,
+:root[data-theme='dark'] .diff-line,
+:root[data-theme='dark'] .badge-label,
+:root[data-theme='dark'] .diff-vs,
+:root[data-theme='dark'] .animal-status,
+:root[data-theme='dark'] .expand-icon,
+:root[data-theme='dark'] .metric-value,
+:root[data-theme='dark'] .trait-undo,
+:root[data-theme='dark'] .feedback-subtitle,
+:root[data-theme='dark'] .feedback-meta,
+:root[data-theme='dark'] .feedback-note,
+:root[data-theme='dark'] .feedback-label {
+  color: #d7c3b5 !important;
+}
+
+:root[data-theme='dark'] .animal-info,
+:root[data-theme='dark'] .profile-info,
+:root[data-theme='dark'] .similar-name,
+:root[data-theme='dark'] .badge-value,
+:root[data-theme='dark'] .trait-value,
+:root[data-theme='dark'] .trait-copy strong,
+:root[data-theme='dark'] .animal-label,
+:root[data-theme='dark'] .question-text,
+:root[data-theme='dark'] .choice-label,
+:root[data-theme='dark'] .species-menu h2,
+:root[data-theme='dark'] .feedback-title,
+:root[data-theme='dark'] .feedback-select,
+:root[data-theme='dark'] .feedback-input,
+:root[data-theme='dark'] .feedback-textarea {
+  color: var(--theme-text) !important;
+}
+
+:root[data-theme='dark'] .back-button,
+:root[data-theme='dark'] .restart-button,
+:root[data-theme='dark'] .reset-button,
+:root[data-theme='dark'] .browse-link,
+:root[data-theme='dark'] .identify-btn,
+:root[data-theme='dark'] .browse-btn,
+:root[data-theme='dark'] .select-button,
+:root[data-theme='dark'] .feedback-submit,
+:root[data-theme='dark'] .toggle-visibility {
+  background: #3a2a22 !important;
+  color: #f2e9df !important;
+  border-color: #6b5447 !important;
+}
+
+:root[data-theme='dark'] .back-button:hover,
+:root[data-theme='dark'] .restart-button:hover,
+:root[data-theme='dark'] .reset-button:hover,
+:root[data-theme='dark'] .browse-link:hover,
+:root[data-theme='dark'] .identify-btn:hover,
+:root[data-theme='dark'] .browse-btn:hover,
+:root[data-theme='dark'] .select-button:hover,
+:root[data-theme='dark'] .feedback-submit:hover,
+:root[data-theme='dark'] .toggle-visibility:hover {
+  background: #d98357 !important;
+  color: #1a120e !important;
+  border-color: #d98357 !important;
+}
+
+:root[data-theme='dark'] .notes-status-error,
+:root[data-theme='dark'] .gate-error,
+:root[data-theme='dark'] .notes-error,
+:root[data-theme='dark'] .status-error {
+  color: #ffb3ad !important;
+  background: rgba(98, 34, 28, 0.78) !important;
+  border-color: #8b4b45 !important;
+}
+
+:root[data-theme='dark'] .status-ok {
+  color: #b9efc5 !important;
+}
+
+:root[data-theme='dark'] .status-warn {
+  color: #ffd69a !important;
+}
+
+:root[data-theme='dark'] .question-cue-button,
+:root[data-theme='dark'] .cue-preview-close,
+:root[data-theme='dark'] .remove-btn {
+  background: #3a2a22 !important;
+  color: #f2e9df !important;
+  border-color: #6b5447 !important;
+}
+
+:root[data-theme='dark'] .remove-btn:hover,
+:root[data-theme='dark'] .cue-preview-close:hover {
+  background: #87413b !important;
+  color: #fff5f2 !important;
+  border-color: #a85850 !important;
+}
+
+:root[data-theme='dark'] input::placeholder,
+:root[data-theme='dark'] textarea::placeholder {
+  color: #ab9587 !important;
 }

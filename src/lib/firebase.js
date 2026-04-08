@@ -1,4 +1,5 @@
 import { initializeApp } from 'firebase/app';
+import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
 import {
   browserLocalPersistence,
   getAuth,
@@ -20,9 +21,11 @@ const firebaseConfig = {
 };
 
 export const configuredAdminEmail = import.meta.env.VITE_FIREBASE_ADMIN_EMAIL?.trim() || '';
+export const appCheckSiteKey = import.meta.env.VITE_FIREBASE_RECAPTCHA_SITE_KEY?.trim() || '';
 
 const requiredKeys = ['apiKey', 'authDomain', 'projectId', 'appId'];
 export const firebaseEnabled = requiredKeys.every((key) => Boolean(firebaseConfig[key]));
+export const appCheckEnabled = Boolean(appCheckSiteKey);
 
 export const firebaseConfigHelp = requiredKeys
   .filter((key) => !firebaseConfig[key])
@@ -31,6 +34,12 @@ export const firebaseConfigHelp = requiredKeys
 const app = firebaseEnabled ? initializeApp(firebaseConfig) : null;
 export const auth = app ? getAuth(app) : null;
 export const db = app ? getFirestore(app) : null;
+export const appCheck = app && appCheckSiteKey
+  ? initializeAppCheck(app, {
+      provider: new ReCaptchaV3Provider(appCheckSiteKey),
+      isTokenAutoRefreshEnabled: true
+    })
+  : null;
 
 const persistenceReady = auth
   ? setPersistence(auth, browserLocalPersistence).catch(() => {})

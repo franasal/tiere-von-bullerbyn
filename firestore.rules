@@ -7,12 +7,14 @@ service cloud.firestore {
 
     function isAdmin() {
       return isSignedIn()
-        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+        && request.auth.token.firebase.sign_in_provider != 'anonymous';
     }
 
     function isValidNotePayload(data) {
       return data.animalKey is string
         && data.animalName is string
+        && data.animalKey.size() > 0
+        && data.animalName.size() > 0
         && data.text is string
         && data.text.size() >= 10
         && data.text.size() <= 500
@@ -20,28 +22,27 @@ service cloud.firestore {
         && data.author.size() <= 40
         && data.status == 'approved'
         && data.deviceUid is string
-        && data.createdDay is string;
+        && data.deviceUid.size() > 0
+        && data.createdDay is string
+        && data.createdDay.size() == 10
+        && data.createdAt is timestamp;
     }
 
-    function isValidNoteCreate() {
+    function isValidNoteCreate(animalKey) {
       return isValidNotePayload(request.resource.data)
+        && request.resource.data.animalKey == animalKey
         && request.resource.data.deviceUid == request.auth.uid;
     }
 
     match /notes/{animalKey}/entries/{noteId} {
       allow read: if isSignedIn();
 
-      allow create: if isSignedIn() && isValidNoteCreate();
+      allow create: if isSignedIn() && isValidNoteCreate(animalKey);
 
       allow update: if isAdmin()
         && isValidNotePayload(request.resource.data);
 
       allow delete: if isAdmin();
-    }
-
-    match /admins/{uid} {
-      allow read: if isAdmin();
-      allow write: if false;
     }
   }
 }

@@ -81,9 +81,10 @@ function submit() {
     return;
   }
 
+  const submittedPassword = password.value;
   password.value = '';
-  emit('unlock', password.value);
-  }
+  emit('unlock', submittedPassword);
+}
 </script>
 
 <style scoped>

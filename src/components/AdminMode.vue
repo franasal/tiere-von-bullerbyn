@@ -136,7 +136,7 @@
     </template>
 
     <template v-else>
-      <AdminNotesModeration :admin-password="adminPassword" />
+      <AdminNotesModeration :admin-password="adminPassword" :animal-info="animalInfo" />
     </template>
 
     <button class="back-button" @click="$emit('back')">← Zurück</button>

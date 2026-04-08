@@ -297,14 +297,14 @@ Die Schwestern Prue und Piper kommen aus Griechenland. Sie wurden als Welpen auf
 Weißer Hund mit braunen Flecken am Kopf.
 
 ### Geschichte
--
+Die Schwestern Prue und Piper kommen aus Griechenland. Sie wurden als Welpen auf der Straße entdeckt und gerettet. Man merkt ihnen die südliche Herkunft an, da sie kaltes und nasses Wetter überhaupt nicht mögen. Beide sind sehr territorial und verteidigen lautstark ihre Schlafplätze, daher tragen sie noch den Spitznamen „die Hexen“. Piper ist sehr schüchtern und zurückhaltend.
 
 ## Ziggy
 ### Erscheinung
 Überwiegend weißer Hund.
 
 ### Geschichte
--
+Ziggy kommt ebenfalls aus Griechenland. Im Vergleich zu den Hexen ist er wetterfest und genießt das Draußensein. Er spielt gerne mit Eli und lässt sich gerne den Bauch streicheln.
 
 ## Eli
 ### Erscheinung

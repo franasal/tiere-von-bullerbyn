@@ -2,16 +2,14 @@ import { computed, onBeforeUnmount, ref, toValue, watch } from 'vue';
 import {
   addDoc,
   collection,
-  collectionGroup,
   deleteDoc,
   doc,
+  getDocs,
   getCountFromServer,
-  getDoc,
   onSnapshot,
   orderBy,
   query,
   serverTimestamp,
-  updateDoc,
   where
 } from 'firebase/firestore';
 import {
@@ -142,12 +140,6 @@ async function getServerDailyCount(uid, dayKey) {
   );
 
   return snapshot.data().count || 0;
-}
-
-async function isAdminUser(uid) {
-  if (!uid) return false;
-  const adminDoc = await getDoc(doc(db, 'admins', uid));
-  return adminDoc.exists();
 }
 
 export function useVisitorNotes(animalNameSource) {
@@ -327,7 +319,7 @@ export function useVisitorNotes(animalNameSource) {
   };
 }
 
-export function useAdminNotesModeration() {
+export function useAdminNotesModeration(animalInfo) {
   const allNotes = ref([]);
   const loading = ref(false);
   const authLoading = ref(false);
@@ -352,12 +344,7 @@ export function useAdminNotesModeration() {
       .sort((a, b) => a.animalName.localeCompare(b.animalName, 'de'));
   });
 
-  let stopPending = null;
-
-  function clearSubscription() {
-    stopPending?.();
-    stopPending = null;
-  }
+  function clearSubscription() {}
 
   async function ensureAdmin() {
     if (!firebaseEnabled) {
@@ -371,42 +358,40 @@ export function useAdminNotesModeration() {
       return false;
     }
 
-    const allowed = await isAdminUser(adminUser.value.uid);
-    adminReady.value = allowed;
-
-    if (!allowed) {
-      authError.value = 'Dieser Account ist nicht in der Firestore-Admins-Liste freigeschaltet.';
-    } else {
-      authError.value = '';
-    }
-
-    return allowed;
+    adminReady.value = true;
+    authError.value = '';
+    return true;
   }
 
   async function subscribeToPending() {
     clearSubscription();
     allNotes.value = [];
-
-    const allowed = await ensureAdmin();
-    if (!allowed) {
-      loading.value = false;
-      return;
-    }
+    authError.value = '';
 
     loading.value = true;
     notesError.value = '';
 
-    stopPending = onSnapshot(
-      query(collectionGroup(db, 'entries'), orderBy('createdAt', 'desc')),
-      (snapshot) => {
-        allNotes.value = snapshot.docs.map(mapNote).sort(sortNotes);
-        loading.value = false;
-      },
-      (snapshotError) => {
-        notesError.value = snapshotError.message || 'Pending-Notizen konnten nicht geladen werden.';
-        loading.value = false;
-      }
-    );
+    try {
+      await ensureVisitorSession();
+      const animals = Object.keys(animalInfo || {});
+      const snapshots = await Promise.all(
+        animals.map(async (animalName) => {
+          const animalKey = normalizeAnimalKey(animalName);
+          const snapshot = await getDocs(
+            query(collection(db, 'notes', animalKey, 'entries'), orderBy('createdAt', 'desc'))
+          );
+          return snapshot.docs;
+        })
+      );
+
+      allNotes.value = snapshots.flat().map(mapNote).sort(sortNotes);
+      loading.value = false;
+
+      await ensureAdmin();
+    } catch (subscribeError) {
+      notesError.value = subscribeError.message || 'Notizen konnten nicht geladen werden.';
+      loading.value = false;
+    }
   }
 
   async function login(email, password) {
@@ -425,6 +410,7 @@ export function useAdminNotesModeration() {
 
     try {
       await signInAdmin(email, password);
+      adminReady.value = true;
       await subscribeToPending();
     } catch (loginError) {
       authError.value = loginError.message || 'Firebase-Admin-Login fehlgeschlagen.';
@@ -464,9 +450,9 @@ export function useAdminNotesModeration() {
       if (adminUser.value) {
         subscribeToPending();
       } else {
-        clearSubscription();
-        allNotes.value = [];
         adminReady.value = false;
+        authError.value = '';
+        subscribeToPending();
       }
     },
     { immediate: true }

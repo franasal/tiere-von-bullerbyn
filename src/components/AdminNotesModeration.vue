@@ -9,33 +9,34 @@
       Firebase ist noch nicht konfiguriert.
     </p>
 
-    <template v-else-if="!adminReady">
-      <p class="panel-copy">
-        Moderation wird automatisch mit dem festen Firebase-Admin-Account verbunden.
-      </p>
+    <template v-else>
+      <div class="notes-toolbar">
+        <p v-if="adminReady" class="panel-copy toolbar-copy">
+          Account verbunden.
+        </p>
+        <p v-else class="panel-copy toolbar-copy">
+          Moderation wird automatisch mit dem festen Firebase-Admin-Account verbunden.
+        </p>
+        <button v-if="adminReady" class="lock-btn secondary" @click="logout">Firebase Logout</button>
+      </div>
+
       <p v-if="!configuredAdminEmail" class="notes-error">
         `VITE_FIREBASE_ADMIN_EMAIL` fehlt in der Umgebung.
       </p>
-      <p v-else-if="authLoading" class="notes-empty">Moderation wird verbunden ...</p>
+      <p v-else-if="authLoading && !adminReady" class="notes-empty">Moderation wird verbunden ...</p>
       <p v-if="authError" class="notes-error">{{ authError }}</p>
       <button
-        v-if="configuredAdminEmail && adminPassword && authError"
+        v-if="configuredAdminEmail && adminPassword && authError && !adminReady"
         class="action-btn login-btn"
         :disabled="authLoading"
         @click="connectWithPanelPassword"
       >
         Erneut verbinden
       </button>
-    </template>
 
-    <template v-else>
-      <div class="notes-toolbar">
-        <p class="panel-copy toolbar-copy">
-          Angemeldet als <strong>{{ adminUser?.email || adminUser?.uid }}</strong>
-        </p>
-        <button class="lock-btn secondary" @click="logout">Firebase Logout</button>
-      </div>
-
+      <p v-if="!adminReady" class="notes-error">
+        Notizen sind sichtbar, aber Loeschen ist erst moeglich wenn der Firebase-Admin-Login erfolgreich ist.
+      </p>
       <p v-if="notesError" class="notes-error">{{ notesError }}</p>
       <p v-if="loading" class="notes-empty">Notizen werden geladen ...</p>
       <p v-else-if="!groupedNotes.length" class="notes-empty">Noch keine Notizen vorhanden.</p>
@@ -56,7 +57,7 @@
             <div class="pending-note-actions">
               <button
                 class="remove-btn"
-                :disabled="actionId === note.id"
+                :disabled="actionId === note.id || !adminReady"
                 @click="deleteNote(note)"
               >
                 Loeschen
@@ -75,7 +76,8 @@ import { useAdminNotesModeration } from '../composables/useSharedNotes.js';
 import { configuredAdminEmail } from '../lib/firebase.js';
 
 const props = defineProps({
-  adminPassword: { type: String, default: '' }
+  adminPassword: { type: String, default: '' },
+  animalInfo: { type: Object, required: true }
 });
 
 const {
@@ -91,7 +93,7 @@ const {
   login,
   logout,
   deleteNote
-} = useAdminNotesModeration();
+} = useAdminNotesModeration(props.animalInfo);
 
 async function connectWithPanelPassword() {
   if (!configuredAdminEmail || !props.adminPassword) return;
