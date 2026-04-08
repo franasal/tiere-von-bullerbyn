@@ -2,6 +2,14 @@
 
 The app supports shared visitor notes backed by Firebase Auth, App Check, and Firestore.
 
+## Characteristic Ratings
+
+The profile "Steckbrief" ratings now come from one central file:
+
+- [`animalCharacteristics.js`](/home/franasa/bullerbyn-schweine/pig-id-vue/src/data/animalCharacteristics.js)
+
+That file contains both the shared characteristic definitions and all per-animal 5-point scores, so collaborators can edit the whole ranking system in one place.
+
 ## Firebase Wiring
 
 Create a separate Firebase project for this app, then enable:

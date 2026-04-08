@@ -7,7 +7,7 @@
         <span class="char-label">{{ char.label }}</span>
         <span class="char-scale">
           <span
-            v-for="n in 3"
+            v-for="n in CHARACTERISTIC_SCALE_MAX"
             :key="n"
             class="char-dot"
             :class="{ filled: n <= char.value }"
@@ -24,32 +24,22 @@
 
 <script setup>
 import { computed } from 'vue';
+import {
+  CHARACTERISTIC_DEFINITIONS,
+  CHARACTERISTIC_SCALE_MAX
+} from '../data/animalCharacteristics.js';
 
 const props = defineProps({
   characteristics: { type: Object, default: () => ({}) },
   besonderheiten: { type: String, default: '' }
 });
 
-const charList = computed(() => [
-  {
-    key: 'menschenfreundlichkeit',
-    icon: '🤗',
-    label: 'Menschenfreundlich',
-    value: props.characteristics?.menschenfreundlichkeit || 0
-  },
-  {
-    key: 'aktivitaet',
-    icon: '⚡',
-    label: 'Aktivität',
-    value: props.characteristics?.aktivitaet || 0
-  },
-  {
-    key: 'neugier',
-    icon: '🔍',
-    label: 'Neugier',
-    value: props.characteristics?.neugier || 0
-  }
-]);
+const charList = computed(() =>
+  CHARACTERISTIC_DEFINITIONS.map((definition) => ({
+    ...definition,
+    value: props.characteristics?.[definition.key] || 0
+  }))
+);
 </script>
 
 <style scoped>

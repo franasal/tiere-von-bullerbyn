@@ -209,6 +209,7 @@ import {
   lockAdmin
 } from '../composables/useAdminAuth.js';
 import { signOutFirebase } from '../lib/firebase.js';
+import { getAnimalCharacteristics } from '../data/animalCharacteristics.js';
 import {
   buildPigQuestionNode,
   filterPigCandidates,
@@ -826,7 +827,7 @@ export default {
       return this.animalInfo[name]?.general_description || '';
     },
     getCharacteristics(name) {
-      return this.animalInfo[name]?.characteristics || {};
+      return getAnimalCharacteristics(name);
     },
     getBesonderheiten(name) {
       return this.animalInfo[name]?.besonderheiten || '';
