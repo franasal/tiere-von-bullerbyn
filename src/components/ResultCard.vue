@@ -4,15 +4,21 @@
     <div class="confetti-container" v-if="showConfetti">
       <span v-for="n in 18" :key="n" class="confetti-piece" :style="confettiStyle(n)" />
     </div>
-    <img
+    <ExpandableImage
       :src="imageUrl"
       :alt="`Bild von ${name}`"
-      class="animal-image"
+      img-class="animal-image"
     />
     <div class="animal-info">
       <p v-if="appearance"><strong>Erscheinung:</strong> {{ appearance }}</p>
       <p v-if="story"><strong>Geschichte:</strong> {{ story }}</p>
     </div>
+
+    <AnimalCharacteristics
+      v-if="characteristics && Object.keys(characteristics).length"
+      :characteristics="characteristics"
+      :besonderheiten="besonderheiten"
+    />
 
     <!-- Unique traits: "So erkennst du mich" -->
     <div v-if="uniqueTraits && uniqueTraits.length" class="unique-traits">
@@ -37,11 +43,11 @@
         class="similar-card"
         @click="$emit('showProfile', sim.name)"
       >
-        <img
+        <ExpandableImage
           v-if="sim.imageUrl"
           :src="sim.imageUrl"
           :alt="sim.name"
-          class="similar-img"
+          img-class="similar-img"
         />
         <div class="similar-info">
           <strong class="similar-name">{{ sim.name }}</strong>
@@ -53,30 +59,25 @@
       </div>
     </div>
 
-    <div class="story-submit-section">
-      <StorySubmissionWidget
-        :animal-names="animalNames"
-        :selected-animal="name"
-        :appearance="appearance"
-        :story="story"
-        current-view="Ergebnis"
-      />
-    </div>
+    <VisitorNotes :animal-name="name" />
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import StorySubmissionWidget from './StorySubmissionWidget.vue';
+import ExpandableImage from './ExpandableImage.vue';
+import AnimalCharacteristics from './AnimalCharacteristics.vue';
+import VisitorNotes from './VisitorNotes.vue';
 
 defineProps({
   name: { type: String, required: true },
   imageUrl: { type: String, required: true },
   appearance: { type: String, default: '' },
   story: { type: String, default: '' },
-  animalNames: { type: Array, default: () => [] },
   uniqueTraits: { type: Array, default: () => [] },
-  similarAnimals: { type: Array, default: () => [] }
+  similarAnimals: { type: Array, default: () => [] },
+  characteristics: { type: Object, default: () => ({}) },
+  besonderheiten: { type: String, default: '' }
 });
 
 defineEmits(['showProfile']);
@@ -124,9 +125,14 @@ onMounted(() => {
   to   { opacity: 1; transform: scale(1); }
 }
 
-.animal-image {
+:deep(.animal-image) {
   max-width: 100%; max-height: 280px; object-fit: contain;
   border-radius: 8px; margin-bottom: .75rem;
+}
+:deep(.similar-img) {
+  width: 48px; height: 48px;
+  border-radius: 50%; object-fit: cover;
+  border: 2px solid #f8bbd0; flex-shrink: 0;
 }
 .animal-info {
   text-align: center; color: #212121;
@@ -156,7 +162,6 @@ onMounted(() => {
 
 /* Similar animals section */
 .similar-section { width: 100%; }
-.story-submit-section { width: 100%; margin-top: 0.9rem; }
 .similar-card {
   display: flex; align-items: center; gap: .6rem;
   padding: .5rem; margin-top: .4rem;
@@ -168,11 +173,6 @@ onMounted(() => {
 .similar-card:hover {
   background: rgba(255,255,255,.95);
   box-shadow: 0 1px 4px rgba(0,0,0,.08);
-}
-.similar-img {
-  width: 48px; height: 48px;
-  border-radius: 50%; object-fit: cover;
-  border: 2px solid #f8bbd0; flex-shrink: 0;
 }
 .similar-info { flex: 1; min-width: 0; }
 .similar-name { font-size: .9rem; color: #3e2723; }

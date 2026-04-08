@@ -3,22 +3,16 @@
     <div class="admin-hero">
       <div>
         <p class="admin-kicker">Admin Workspace</p>
-        <h2 class="admin-title">Tierdaten, Merkmale und Spiele verwalten</h2>
+        <h2 class="admin-title">Fotos und Besucher*innennotizen verwalten</h2>
         <p class="admin-hint">
-          Der bisherige Foto-Workflow bleibt erhalten. Zusaetzlich zeigt dieses Panel,
-          wie die App auf beliebig viele Tiergruppen erweitert werden sollte.
+          Dieses Panel ist jetzt auf die beiden aktiven Aufgaben reduziert:
+          Merkmal-Fotos pflegen und Notizen moderieren.
         </p>
       </div>
-      <button class="lock-btn" @click="$emit('lock')">Sperren</button>
+      <button class="lock-btn" @click="$emit('lock')">Log out</button>
     </div>
 
     <div class="tab-row">
-      <button
-        :class="['tab-btn', { active: activeTab === 'overview' }]"
-        @click="activeTab = 'overview'"
-      >
-        Struktur
-      </button>
       <button
         :class="['tab-btn', { active: activeTab === 'photos' }]"
         @click="activeTab = 'photos'"
@@ -26,71 +20,14 @@
         Fotos
       </button>
       <button
-        :class="['tab-btn', { active: activeTab === 'security' }]"
-        @click="activeTab = 'security'"
+        :class="['tab-btn', { active: activeTab === 'notes' }]"
+        @click="activeTab = 'notes'"
       >
-        Sicherheit
+        Notizen
       </button>
     </div>
 
-    <template v-if="activeTab === 'overview'">
-      <section class="panel-section">
-        <h3 class="section-title">Bestandsaufnahme</h3>
-        <div class="metrics-grid">
-          <article v-for="card in reviewCards" :key="card.label" class="metric-card">
-            <span class="metric-value">{{ card.value }}</span>
-            <span class="metric-label">{{ card.label }}</span>
-            <p class="metric-copy">{{ card.copy }}</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="panel-section">
-        <h3 class="section-title">Was heute schon gut funktioniert</h3>
-        <ul class="bullet-list">
-          <li v-for="item in strengths" :key="item">{{ item }}</li>
-        </ul>
-      </section>
-
-      <section class="panel-section">
-        <h3 class="section-title">Warum die aktuelle Struktur nicht skaliert</h3>
-        <ul class="bullet-list">
-          <li v-for="item in scaleBlockers" :key="item">{{ item }}</li>
-        </ul>
-      </section>
-
-      <section class="panel-section">
-        <h3 class="section-title">Empfohlene Admin-Module</h3>
-        <div class="proposal-grid">
-          <article v-for="module in adminModules" :key="module.title" class="proposal-card">
-            <p class="proposal-title">{{ module.title }}</p>
-            <p class="proposal-copy">{{ module.copy }}</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="panel-section">
-        <h3 class="section-title">Vorgeschlagenes Datenmodell</h3>
-        <p class="panel-copy">
-          Statt harter `pigProfiles` und `pigQuestions` braucht die App ein generisches
-          Content-Modell, das Tiergruppen, Merkmale, Tiere, Entscheidungsbäume und
-          Spielvarianten versioniert speichert.
-        </p>
-        <pre class="schema-block">{{ proposedSchema }}</pre>
-      </section>
-
-      <section class="panel-section">
-        <h3 class="section-title">Umsetzungsphasen</h3>
-        <div class="phase-list">
-          <article v-for="phase in rolloutPhases" :key="phase.title" class="phase-card">
-            <p class="phase-title">{{ phase.title }}</p>
-            <p class="phase-copy">{{ phase.copy }}</p>
-          </article>
-        </div>
-      </section>
-    </template>
-
-    <template v-else-if="activeTab === 'photos'">
+    <template v-if="activeTab === 'photos'">
       <section class="panel-section">
         <h3 class="section-title">Merkmal-Fotos</h3>
         <p class="panel-copy">
@@ -189,16 +126,6 @@
         </div>
       </div>
 
-      <div class="helper-section">
-        <h3 class="section-label">Helfer-Modus</h3>
-        <p class="helper-desc">
-          Der Helfer-Modus bleibt intern im Admin erreichbar, aber nicht mehr über URL-Parameter.
-        </p>
-        <button class="open-helper-btn" @click="$emit('openHelper')">
-          Helfer-Modus öffnen
-        </button>
-      </div>
-
       <div class="admin-actions">
         <button class="action-btn" @click="doExport">Fotos exportieren (JSON)</button>
         <label class="action-btn import-btn">
@@ -209,29 +136,7 @@
     </template>
 
     <template v-else>
-      <section class="panel-section">
-        <h3 class="section-title">Passwortschutz</h3>
-        <p class="panel-copy">
-          Das Panel ist jetzt per Passwortgate geschützt und merkt sich die Freigabe für
-          die aktuelle Browser-Sitzung.
-        </p>
-        <div class="security-card">
-          <p :class="['security-status', securityStatusClass]">{{ securityStatus }}</p>
-          <p class="security-copy">
-            Empfehlung: `VITE_ADMIN_PASSWORD` in der Deployment-Umgebung setzen. Das ist
-            für eine statische Vue-App ein sinnvoller Basisschutz, aber kein Ersatz für
-            serverseitige Authentifizierung.
-          </p>
-          <p v-if="securityInfo.usesFallback" class="security-copy">
-            Aktuell läuft der Entwicklungs-Fallback `{{ securityInfo.devFallbackPassword }}`.
-          </p>
-          <p class="security-copy">
-            Wenn ihr später echte Bearbeitung, Teamzugriff und Publizieren braucht, sollte
-            das Admin Panel an ein Backend mit Accounts, Rollen und Versionierung angeschlossen werden.
-          </p>
-          <button class="lock-btn secondary" @click="$emit('lock')">Admin jetzt sperren</button>
-        </div>
-      </section>
+      <AdminNotesModeration :admin-password="adminPassword" />
     </template>
 
     <button class="back-button" @click="$emit('back')">← Zurück</button>
@@ -240,7 +145,8 @@
 
 <script setup>
 import { ref, reactive, computed } from 'vue';
-import { pigProfiles, pigQuestions } from '../data/pigIdentifier.js';
+import { pigProfiles } from '../data/pigIdentifier.js';
+import AdminNotesModeration from './AdminNotesModeration.vue';
 import {
   PHOTO_FIELDS,
   getTraitPhoto,
@@ -254,168 +160,16 @@ import {
 
 const props = defineProps({
   animalInfo: { type: Object, required: true },
-  securityInfo: { type: Object, required: true }
+  adminPassword: { type: String, default: '' }
 });
 
-const emit = defineEmits(['back', 'openHelper', 'lock']);
-
-const strengths = [
-  'Der Startscreen und die Tierdaten aus `animals.json` sind bereits als Inhaltsquelle angelegt.',
-  'Die Schweine-Identifikation ist spielerisch stark: Kandidatenfilter, Vergleichsansicht und Profilkarten sind schon da.',
-  'Es gibt schon einen versteckten Admin-Einstieg und einen separaten Helfer-Modus für Foto-Sammlungen.',
-  'Import und Export laufen lokal bereits über JSON und bilden einen guten Start für spätere Publish-Workflows.'
-];
-
-const scaleBlockers = [
-  'Die eigentliche Spiellogik ist fest in `pigIdentifier.js` und `pigTraitAnalysis.js` verdrahtet. Neue Tiergruppen können nicht im Admin angelegt werden.',
-  'Die Daten sind auf mehrere Formate verteilt: Tabellen-Spiegel in `animals.json`, harte Trait-Definitionen im Code und Foto-Slots nur in `localStorage`.',
-  'Andere Arten sind im Ladepfad vorgesehen, aber es gibt noch keinen generischen Editor für Traits, Fragen, Bäume oder Spielregeln.',
-  'Die aktuellen 3 Foto-Felder gelten für alle Tiere gleich, obwohl andere Tiergruppen andere Referenzbilder brauchen werden.'
-];
-
-const adminModules = [
-  {
-    title: '1. Tiergruppen',
-    copy: 'Gruppen wie Schweine, Ziegen, Schafe oder Hühner anlegen. Jede Gruppe bekommt Label, Bildstil, Sortierung und einen aktiven Status.'
-  },
-  {
-    title: '2. Merkmalsbibliothek',
-    copy: 'Traits als strukturierte Felder pflegen: Typ, Frage, Optionen, Icons, Hilfetexte, Pflichtgrad und ob sie für Fotos oder Spiele genutzt werden.'
-  },
-  {
-    title: '3. Tierprofile',
-    copy: 'Einzelne Tiere pro Gruppe verwalten: Stammdaten, Story, Bild, Trait-Werte, Medien und Freigabestatus.'
-  },
-  {
-    title: '4. Entscheidungsbaum-Builder',
-    copy: 'Fragen per Drag-and-drop oder Listenlogik aufbauen, Knoten testen, Konflikte anzeigen und aus Trait-Daten automatisch Vorschlaege generieren.'
-  },
-  {
-    title: '5. Spiele-Modi',
-    copy: 'Nicht nur Identifikation, sondern auch Quiz-, Vergleichs- und Lernspiele pro Tiergruppe konfigurieren, inklusive Schwierigkeit und Frageauswahl.'
-  },
-  {
-    title: '6. Medien und Publishing',
-    copy: 'Fotos, Referenzbilder, Export, Import, Versionen und später Freigabe nach Produktion an einer Stelle sammeln.'
-  }
-];
-
-const rolloutPhases = [
-  {
-    title: 'Phase 1: Datenmodell entkoppeln',
-    copy: 'Pig-spezifische Konstanten in ein generisches Registry-Modell überführen: groups, traits, animals, trees und gameModes.'
-  },
-  {
-    title: 'Phase 2: Admin CRUD',
-    copy: 'Masken für Tiergruppen, Traits und Tierprofile bauen. Erst danach lohnt sich ein visueller Tree-Builder.'
-  },
-  {
-    title: 'Phase 3: Tree und Game Builder',
-    copy: 'Aus dem generischen Modell Entscheidungsbäume und Spielkonfigurationen erzeugen, validieren und in der Vorschau testen.'
-  },
-  {
-    title: 'Phase 4: Backend und Rollen',
-    copy: 'Wenn mehrere Personen Inhalte pflegen, braucht das Projekt ein Backend mit Auth, Versionshistorie und Publikationsstufen.'
-  }
-];
-
-const proposedSchema = `{
-  "groups": [
-    {
-      "id": "pigs",
-      "label": "Schweine",
-      "mediaSlots": ["ears", "tail", "special"],
-      "gameModes": ["identify", "compare", "quiz"]
-    }
-  ],
-  "traits": [
-    {
-      "groupId": "pigs",
-      "key": "earMark",
-      "label": "Ohrmarke",
-      "input": "single-select",
-      "options": ["left", "right", "none"],
-      "question": "Wo ist eine Ohrmarke sichtbar?"
-    }
-  ],
-  "animals": [
-    {
-      "groupId": "pigs",
-      "name": "Hedda",
-      "profile": { "imageUrl": "...", "story": "..." },
-      "traitValues": { "earMark": "left", "tailType": "long_hairy" }
-    }
-  ],
-  "trees": [
-    {
-      "groupId": "pigs",
-      "version": 1,
-      "nodes": [{ "traitKey": "pigType", "mode": "binary" }]
-    }
-  ],
-  "gameModes": [
-    {
-      "groupId": "pigs",
-      "type": "identify",
-      "treeVersion": 1
-    }
-  ]
-}`;
+defineEmits(['back', 'lock']);
 
 const filter = ref('missing');
-const activeTab = ref('overview');
+const activeTab = ref('notes');
 const expanded = reactive({});
 const urlInputs = reactive({});
 const refreshKey = ref(0);
-
-const rawSpecies = computed(() =>
-  Array.from(
-    new Set(
-      Object.values(props.animalInfo)
-        .map((animal) => animal?.species)
-        .filter(Boolean)
-    )
-  )
-);
-
-const reviewCards = computed(() => [
-  {
-    label: 'Tiere im Spiegel',
-    value: Object.keys(props.animalInfo).length,
-    copy: 'Datensaetze aus `animals.json` bzw. Google Sheet.'
-  },
-  {
-    label: 'Rohe Arten im Quellfeed',
-    value: rawSpecies.value.length,
-    copy: rawSpecies.value.join(', ') || 'Noch keine'
-  },
-  {
-    label: 'Pig Profiles im Code',
-    value: pigProfiles.length,
-    copy: 'Diese Tiere sind aktuell fest im Entscheidungsmodell verdrahtet.'
-  },
-  {
-    label: 'Harte Fragen im Code',
-    value: pigQuestions.length,
-    copy: 'Neue Fragen können bisher nicht ohne Codeänderung gepflegt werden.'
-  }
-]);
-
-const securityStatus = computed(() => {
-  if (props.securityInfo.source === 'env') {
-    return 'Produktions-Passwort aktiv';
-  }
-  if (props.securityInfo.source === 'dev-fallback') {
-    return 'Entwicklungs-Fallback aktiv';
-  }
-  return 'Kein Passwort konfiguriert';
-});
-
-const securityStatusClass = computed(() => {
-  if (props.securityInfo.source === 'env') return 'ok';
-  if (props.securityInfo.source === 'dev-fallback') return 'warn';
-  return 'error';
-});
 
 function getAnimalImage(name) {
   return props.animalInfo[name]?.image_url || '';
@@ -565,9 +319,6 @@ function doImport(event) {
 .tab-btn,
 .filter-btn,
 .action-btn,
-.copy-btn,
-.share-helper-btn,
-.open-helper-btn,
 .back-button,
 .lock-btn {
   border: none;
@@ -647,7 +398,6 @@ function doImport(event) {
 .metric-copy,
 .proposal-copy,
 .phase-copy,
-.helper-desc,
 .security-copy {
   margin: .25rem 0 0;
   font-size: .8rem;
@@ -810,8 +560,7 @@ function doImport(event) {
 }
 
 .desc-input,
-.url-input,
-.helper-link-input {
+.url-input {
   width: 100%;
   padding: .35rem .45rem;
   border: 1px solid #ddd;
@@ -875,35 +624,6 @@ function doImport(event) {
   cursor: default;
 }
 
-.helper-section {
-  margin-top: .8rem;
-  padding: .75rem;
-  border: 1px solid #90caf9;
-  border-radius: 10px;
-  background: #e3f2fd;
-}
-
-.copy-btn {
-  padding: .35rem .6rem;
-  background: #42a5f5;
-  color: #fff;
-  font-size: .78rem;
-  white-space: nowrap;
-}
-
-.open-helper-btn {
-  width: 100%;
-  padding: .52rem;
-  font-size: .84rem;
-  font-weight: 700;
-}
-
-.open-helper-btn {
-  background: transparent;
-  border: 1px solid #90caf9;
-  color: #1565c0;
-}
-
 .security-status {
   margin: 0;
   font-size: .85rem;
@@ -941,8 +661,6 @@ function doImport(event) {
 .tab-btn:active,
 .filter-btn:active,
 .action-btn:active,
-.copy-btn:active,
-.open-helper-btn:active,
 .back-button:active,
 .lock-btn:active {
   transform: scale(.98);

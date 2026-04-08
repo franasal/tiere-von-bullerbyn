@@ -4,10 +4,9 @@
     <AdminMode
       v-if="adminMode && adminUnlocked"
       :animal-info="animalInfo"
-      :security-info="adminSecurityInfo"
+      :admin-password="adminSessionPassword"
       @back="adminMode = false"
       @lock="lockAdminAccess"
-      @openHelper="adminMode = false; helperMode = true"
     />
 
     <AdminAccessGate
@@ -15,13 +14,6 @@
       :security-info="adminSecurityInfo"
       @back="adminMode = false"
       @unlock="handleAdminUnlock"
-    />
-
-    <!-- Helper Mode -->
-    <HelperMode
-      v-else-if="helperMode"
-      :animal-info="animalInfo"
-      @back="helperMode = false"
     />
 
     <!-- Start screen -->
@@ -47,9 +39,10 @@
       :image-url="getAnimalImage(profileAnimal)"
       :appearance="getAppearance(profileAnimal)"
       :story="getStory(profileAnimal)"
-      :animal-names="allAnimalNames"
       :unique-traits="getUniqueTraitsFor(profileAnimal)"
       :similar-animals="getSimilarAnimalsFor(profileAnimal)"
+      :characteristics="getCharacteristics(profileAnimal)"
+      :besonderheiten="getBesonderheiten(profileAnimal)"
       @back="appView = 'gallery'"
       @showProfile="showProfile"
     />
@@ -153,9 +146,10 @@
           :image-url="getAnimalImage(resultName)"
           :appearance="getAppearance(resultName)"
           :story="getStory(resultName)"
-          :animal-names="allAnimalNames"
           :unique-traits="getUniqueTraitsFor(resultName)"
           :similar-animals="getSimilarAnimalsFor(resultName)"
+          :characteristics="getCharacteristics(resultName)"
+          :besonderheiten="getBesonderheiten(resultName)"
           @showProfile="showProfileFromResult"
         />
         <div class="navigation-buttons three-col">
@@ -199,7 +193,6 @@ import ComparisonView from './ComparisonView.vue';
 import AnimalGallery from './AnimalGallery.vue';
 import AnimalProfile from './AnimalProfile.vue';
 import AdminMode from './AdminMode.vue';
-import HelperMode from './HelperMode.vue';
 import AdminAccessGate from './AdminAccessGate.vue';
 import FeedbackWidget from './FeedbackWidget.vue';
 
@@ -215,6 +208,7 @@ import {
   isAdminUnlocked,
   lockAdmin
 } from '../composables/useAdminAuth.js';
+import { signOutFirebase } from '../lib/firebase.js';
 import {
   buildPigQuestionNode,
   filterPigCandidates,
@@ -233,7 +227,7 @@ export default {
   name: 'AnimalIdentifier',
   components: {
     AnimalStart, DecisionTree, ResultCard, ChoicesTrail,
-    ComparisonView, AnimalGallery, AnimalProfile, AdminMode, HelperMode, AdminAccessGate, FeedbackWidget
+    ComparisonView, AnimalGallery, AnimalProfile, AdminMode, AdminAccessGate, FeedbackWidget
   },
   data() {
     return {
@@ -256,8 +250,8 @@ export default {
       comparisonCandidates: [],
       comparisonTraits: [],
       adminMode: false,
-      helperMode: false,
       adminUnlocked: false,
+      adminSessionPassword: '',
       adminSecurityInfo: getAdminSecurityInfo(),
       activeCuePreview: ''
     };
@@ -311,9 +305,6 @@ export default {
         .filter((animal) => animal.species === 'pig')
         .map((animal) => animal.name)
         .sort((a, b) => a.localeCompare(b, 'de'));
-    },
-    allAnimalNames() {
-      return Object.keys(this.animalInfo).sort((a, b) => a.localeCompare(b, 'de'));
     },
     feedbackSelectedPig() {
       if (this.resultName && this.animalInfo[this.resultName]?.species === 'pig') {
@@ -462,12 +453,15 @@ export default {
     await this.loadDecisionTrees();
   },
   methods: {
-    handleAdminUnlock() {
+    handleAdminUnlock(password) {
       this.adminUnlocked = true;
+      this.adminSessionPassword = password || '';
     },
 
-    lockAdminAccess() {
+    async lockAdminAccess() {
       lockAdmin();
+      this.adminSessionPassword = '';
+      await signOutFirebase().catch(() => {});
       this.adminUnlocked = false;
       this.adminMode = false;
     },
@@ -830,6 +824,12 @@ export default {
     },
     getStory(name) {
       return this.animalInfo[name]?.general_description || '';
+    },
+    getCharacteristics(name) {
+      return this.animalInfo[name]?.characteristics || {};
+    },
+    getBesonderheiten(name) {
+      return this.animalInfo[name]?.besonderheiten || '';
     },
     collectResultsFromNode(node) {
       if (!node) return [];

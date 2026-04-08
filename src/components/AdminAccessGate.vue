@@ -10,14 +10,23 @@
 
       <form class="gate-form" @submit.prevent="submit">
         <label class="gate-label" for="admin-password">Passwort</label>
-        <input
-          id="admin-password"
-          v-model="password"
-          class="gate-input"
-          type="password"
-          autocomplete="current-password"
-          placeholder="Admin-Passwort"
-        />
+        <div class="password-row">
+          <input
+            id="admin-password"
+            v-model="password"
+            class="gate-input"
+            :type="showPassword ? 'text' : 'password'"
+            autocomplete="current-password"
+            placeholder="Admin-Passwort"
+          />
+          <button
+            type="button"
+            class="toggle-visibility"
+            @click="showPassword = !showPassword"
+          >
+            {{ showPassword ? 'Verbergen' : 'Anzeigen' }}
+          </button>
+        </div>
         <p v-if="error" class="gate-error">{{ error }}</p>
         <button class="gate-button" type="submit">Admin entsperren</button>
       </form>
@@ -57,6 +66,7 @@ const emit = defineEmits(['back', 'unlock']);
 
 const password = ref('');
 const error = ref('');
+const showPassword = ref(false);
 
 function submit() {
   error.value = '';
@@ -72,8 +82,8 @@ function submit() {
   }
 
   password.value = '';
-  emit('unlock');
-}
+  emit('unlock', password.value);
+  }
 </script>
 
 <style scoped>
@@ -122,6 +132,11 @@ function submit() {
   gap: .45rem;
 }
 
+.password-row {
+  display: flex;
+  gap: .45rem;
+}
+
 .gate-label {
   font-size: .82rem;
   font-weight: 600;
@@ -136,6 +151,17 @@ function submit() {
   background: #fff;
   color: #3e2723;
   font-size: .95rem;
+}
+
+.toggle-visibility {
+  flex-shrink: 0;
+  padding: .7rem .8rem;
+  border: 1px solid #d7ccc8;
+  border-radius: 8px;
+  background: #f7f1eb;
+  color: #5d4037;
+  font-size: .8rem;
+  font-weight: 700;
 }
 
 .gate-button,
@@ -209,5 +235,11 @@ function submit() {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 520px) {
+  .password-row {
+    flex-direction: column;
+  }
 }
 </style>

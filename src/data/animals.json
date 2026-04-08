@@ -5,126 +5,234 @@
       "species": "pig",
       "appearance_description": "Männlich, rosa, rechte Ohrmarke/Loch, normaler Rücken, gefaltete Ohren, langer Schwanz ohne Haare.",
       "general_description": "Lange Haare an den Ohren. Haltungsstufe 1, Kümmerer – Ferkel untergewichtig, schlechte körperliche Verfassung, bedeuten für Tierindustrie Verluste, erreichen das Schlachtalter selten, kam zusammen mit Ferdinand nach Bullerbyn.",
-      "image_url": "/animal-images/pigs/franz.jpg"
+      "image_url": "/animal-images/pigs/franz.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 1,
+        "neugier": 2
+      },
+      "besonderheiten": "Hat auffällig lange Haare an den Ohren – sein Markenzeichen."
     },
     "Kiwi": {
       "name": "Kiwi",
       "species": "pig",
       "appearance_description": "Männlich, rosa, schwarze Flecken im Gesicht, rechte Ohrmarke/Loch, spitzige Ohren, kurzer Schwanz.",
       "general_description": "Sehr redefreudig und kommunikativ, kommt auf einen zu, lässt sich gerne streicheln. Name wegen kleinem Kopf (wie eine Kiwi), mit Flasche aufgezogen, lebte zuerst im Haus der Familie.",
-      "image_url": "/animal-images/pigs/kiwi.jpg"
+      "image_url": "/animal-images/pigs/kiwi.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 3,
+        "aktivitaet": 2,
+        "neugier": 3
+      },
+      "besonderheiten": "Wurde mit der Flasche aufgezogen und lebte anfangs im Haus – daher extrem menschenbezogen und redefreudig."
     },
     "Ronja": {
       "name": "Ronja",
       "species": "pig",
       "appearance_description": "Weiblich, grauer Rücken, rechte Ohrmarke/Loch, schwarze Flecken am Rücken bei der Hüfte, kurzer Schwanz.",
       "general_description": "Kümmerer, lag mit Hope und Feline in der Ferkelbucht, von Hedda adoptiert.",
-      "image_url": "/animal-images/pigs/ronja.jpg"
+      "image_url": "/animal-images/pigs/ronja.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Wurde von Hedda adoptiert, obwohl sie nicht ihre leibliche Mutter ist."
     },
     "Ferdinand": {
       "name": "Ferdinand",
       "species": "pig",
       "appearance_description": "Männlich, rosa, rechte Ohrmarke/Loch, runde behaarte Ohren, kurzer Schwanz.",
       "general_description": "Ausschussprodukt aus Tierindustrie, Ferkel, das nicht richtig wächst, absterbendes Gewebe, Eitergeschwür, heute aber gesund.",
-      "image_url": "/animal-images/pigs/ferdinand.jpg"
+      "image_url": "/animal-images/pigs/ferdinand.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Kam krank nach Bullerbyn und hat sich komplett erholt – ein echtes Stehaufmännchen."
     },
     "Hedda": {
       "name": "Hedda",
       "species": "pig",
       "appearance_description": "Weiblich, linke Ohrmarke/Loch, hängende Ohren, langer Schwanz mit Haaren.",
       "general_description": "Sehr dominant, Saugleiste ausgelaugt, Mutter von Hope, Adoptivmutter von Ronja. Letztes Schwein, das nach Bullerbyn kam. War tragend in einem Zuchtbetrieb zur Aufklärung, wurde zusammen mit Nia gerettet und zog Ferkel auf. Im Pass als „saubissig“ eingestuft.",
-      "image_url": "/animal-images/pigs/hedda.jpg"
+      "image_url": "/animal-images/pigs/hedda.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 1,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Im Pass offiziell als ‘saubissig’ eingestuft – Respekt ist angesagt!"
     },
     "Nia": {
       "name": "Nia",
       "species": "pig",
       "appearance_description": "Weiblich, linke Ohrmarke/Loch, hängende Ohren, langer Schwanz ohne Haare.",
       "general_description": "Sehr dominant, Saugleiste ausgelaugt, Mutter von Feline. Gemeinsam mit Hedda gerettet, zog zusammen mit ihr Feline, Hope und Ronja auf.",
-      "image_url": "/animal-images/pigs/nia.jpg"
+      "image_url": "/animal-images/pigs/nia.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 1,
+        "aktivitaet": 2,
+        "neugier": 1
+      },
+      "besonderheiten": "Hat gemeinsam mit Hedda drei Ferkel großgezogen – ein echtes Teamwork."
     },
     "Feline": {
       "name": "Feline",
       "species": "pig",
       "appearance_description": "Weiblich, rechte Ohrmarke/Loch, grosse Flecken im Gesicht und am Körper, kurzer Schwanz.",
       "general_description": "Deutlich schmaler als Ronja, kleinstes Ferkel des letzten Wurfs, bernsteinbraune Augen, Duroc-Anteil – daher etwas rötlicher.",
-      "image_url": "/animal-images/pigs/feline.jpg"
+      "image_url": "/animal-images/pigs/feline.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Hat seltene bernsteinbraune Augen durch ihren Duroc-Anteil."
     },
     "Rosalie": {
       "name": "Rosalie",
       "species": "pig",
       "appearance_description": "Weiblich, linke Ohrmarke/Loch, rosa, kurzer Schwanz.",
       "general_description": "Hat Buckel, humpelt/geht auffällig, sehr lang und schmal. Wurde unter Mutter gequetscht, war kurzzeitig gelähmt, mit Krankengymnastik geheilt.",
-      "image_url": "/animal-images/pigs/rosalie.jpg"
+      "image_url": "/animal-images/pigs/rosalie.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 1,
+        "neugier": 2
+      },
+      "besonderheiten": "War kurzzeitig gelähmt und wurde mit Krankengymnastik wieder fit – eine echte Kämpferin."
     },
     "Hope": {
       "name": "Hope",
       "species": "pig",
       "appearance_description": "Weiblich, linke Ohrmarke/Loch, rosa, geringelt langer Schwanz mit Haaren.",
       "general_description": "Kleinste des Wurfs, Tochter von Hedda, wurde zusammen mit Feline und Ronja von Hedda und Nia aufgezogen.",
-      "image_url": "/animal-images/pigs/hope.jpg"
+      "image_url": "/animal-images/pigs/hope.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 2,
+        "neugier": 3
+      },
+      "besonderheiten": "Die Kleinste des Wurfs – aber mit dem größten Ringelschwanz."
     },
     "Justus": {
       "name": "Justus",
       "species": "pig",
       "appearance_description": "Männlich, komplett gefleckt, voll behaart, keine Ohrmarke/Loch.",
       "general_description": "Hält sich getrennt von der Rotte, frisst, schläft, liegt separat. Wurde im Biobetrieb nicht geschlachtet, als Haustier gehalten. Kann nicht gut mit anderen Schweinen kommunizieren.",
-      "image_url": "/animal-images/pigs/justus.jpg"
+      "image_url": "/animal-images/pigs/justus.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 1,
+        "neugier": 1
+      },
+      "besonderheiten": "Wurde als Haustier gehalten und kann daher nicht gut mit anderen Schweinen kommunizieren – ein Einzelgänger."
     },
     "Maike": {
       "name": "Maike",
       "species": "pig",
       "appearance_description": "Weiblich, rosa, voll behaart, rechte Ohrmarke/Loch.",
       "general_description": "Sehr behaart, Mangalitza-Wollschwein. Kümmerling aus Biobetrieb, wurde gerne abgegeben, war lange dominant in der Rotte.",
-      "image_url": "/animal-images/pigs/maike.jpg"
+      "image_url": "/animal-images/pigs/maike.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Ein Mangalitza-Wollschwein – sieht aus wie ein Schwein im Schafspelz."
     },
     "Milli": {
       "name": "Milli",
       "species": "pig",
       "appearance_description": "Weiblich, größtes Hängebauchschwein, schwarz-weiße Borsten am ganzen Körper.",
       "general_description": "Gemeinsam mit Vanilli vor dem Schlachten gerettet. Ihre Halter:innen begingen Suizid, Nachbar:innen griffen ein.",
-      "image_url": "/animal-images/pigs/milli.jpg"
+      "image_url": "/animal-images/pigs/milli.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 1,
+        "neugier": 2
+      },
+      "besonderheiten": "Das größte Hängebauchschwein in Bullerbyn – unverkennbar zusammen mit Vanilli."
     },
     "Vanilli": {
       "name": "Vanilli",
       "species": "pig",
       "appearance_description": "Weiblich, klein, Borsten auf dem Rücken (Punk-Look), halb rosa, halb schwarz.",
       "general_description": "Ihre Halter:innen begingen Suizid, Angehörige wollten sie schlachten lassen – Nachbar:innen griffen ein.",
-      "image_url": "/animal-images/pigs/vanilli.jpg"
+      "image_url": "/animal-images/pigs/vanilli.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 2,
+        "neugier": 3
+      },
+      "besonderheiten": "Trägt einen natürlichen Punk-Irokesen aus Borsten auf dem Rücken."
     },
     "Strolch": {
       "name": "Strolch",
       "species": "pig",
       "appearance_description": "Männlich, heller Borstenwuchs, deutlicher Buckel, Stoßzähne.",
       "general_description": "Gemeinsam mit Susi vor dem Schlachten gerettet, lebt mit ihr in Bullerbyn.",
-      "image_url": "/animal-images/pigs/strolch.jpg"
+      "image_url": "/animal-images/pigs/strolch.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 1,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Hat beeindruckende Stoßzähne und einen markanten Buckel."
     },
     "Susi": {
       "name": "Susi",
       "species": "pig",
       "appearance_description": "Weiblich, komplett schwarz mit Borsten im Nacken.",
       "general_description": "Angehörige wollten sie nach Tod des Halters schlachten lassen, Enkel rettete sie. Erste Bewohnerin von Bullerbyn.",
-      "image_url": "/animal-images/pigs/susi.jpg"
+      "image_url": "/animal-images/pigs/susi.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 1,
+        "neugier": 2
+      },
+      "besonderheiten": "Die allererste Bewohnerin von Bullerbyn – die Pionierin!"
     },
     "Frida": {
       "name": "Frida",
       "species": "pig",
       "appearance_description": "Weiblich, linke Ohrmarke, orangefarbene Haare, kurzer Schwanz. Lebt allein, getrennt von der Rotte.",
       "general_description": "Stark unterernährt und apathisch gefunden, heute Palliativpatientin in Bullerbyn.",
-      "image_url": "/animal-images/pigs/frida.webp"
+      "image_url": "/animal-images/pigs/frida.webp",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 1,
+        "neugier": 1
+      },
+      "besonderheiten": "Lebt in ihrem eigenen Bereich und bekommt besondere Pflege als Palliativpatientin."
     },
     "Lili": {
       "name": "Lili",
       "species": "wild_boar",
       "appearance_description": "Weiblich, Wildschwein, braunes Fell, schwarze Ohren mit weißen Haaren.",
       "general_description": "Unverwechselbar mit Gezi, lebt gemeinsam mit ihr in Bullerbyn.",
-      "image_url": "/animal-images/pigs/lili.jpg"
+      "image_url": "/animal-images/pigs/lili.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 1,
+        "aktivitaet": 2,
+        "neugier": 3
+      },
+      "besonderheiten": "Liebt Cashews über alles – ihr absolutes Lieblingsleckerli."
     },
     "Gezi": {
       "name": "Gezi",
       "species": "wild_boar",
       "appearance_description": "Weiblich, Wildschwein, graues Fell, schwarz behaarte Ohren und ein schwarzer Fleck am unteren Rücken.",
       "general_description": "Wurde nach illegaler Jagd im Straßengraben gefunden, von Tierärztin aufgepäppelt und kam nach Bullerbyn.",
-      "image_url": "/animal-images/pigs/gezi.webp"
+      "image_url": "/animal-images/pigs/gezi.webp",
+      "characteristics": {
+        "menschenfreundlichkeit": 1,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Wurde als Frischling nach illegaler Jagd gerettet und von einer Tierärztin aufgepäppelt."
     },
     "Kale": {
       "name": "Kale",
@@ -138,203 +246,377 @@
       "species": "goat",
       "appearance_description": "Ziege, braun-weiß gezeichnet, mit großem weißem Fleck im Gesicht.",
       "general_description": "",
-      "image_url": "/animal-images/goat/emil.jpg"
+      "image_url": "/animal-images/goat/emil.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 2,
+        "neugier": 3
+      },
+      "besonderheiten": "Sein großer weißer Gesichtsfleck macht ihn unverwechselbar."
     },
     "Markus": {
       "name": "Markus",
       "species": "sheep",
       "appearance_description": "Kleines weißes Schaf mit lockigen Hörnern.",
       "general_description": "Hat eine sehr markante Lautäußerung.",
-      "image_url": "/animal-images/sheep/markus.jpg"
+      "image_url": "/animal-images/sheep/markus.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Hat die markanteste Stimme der Herde – man hört ihn immer zuerst."
     },
     "Yoda": {
       "name": "Yoda",
       "species": "goat",
       "appearance_description": "Komplett weiße Ziege.",
       "general_description": "Hat starke Meister-Yoda-Vibes.",
-      "image_url": "/animal-images/goat/yoda.jpg"
+      "image_url": "/animal-images/goat/yoda.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 1,
+        "neugier": 2
+      },
+      "besonderheiten": "Strahlt die Ruhe und Weisheit von Meister Yoda aus – daher der Name."
     },
     "Jule": {
       "name": "Jule",
       "species": "goat",
       "appearance_description": "Schwarze Ziege mit Hörnern.",
       "general_description": "",
-      "image_url": "/animal-images/goat/jule.jpg"
+      "image_url": "/animal-images/goat/jule.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Die einzige komplett schwarze Ziege in der Gruppe."
     },
     "Timon": {
       "name": "Timon",
       "species": "goat",
       "appearance_description": "Kleine weiße Ziege mit dunklem Fleck auf dem Rücken.",
       "general_description": "Das kleinste Mitglied der Gruppe.",
-      "image_url": "/animal-images/goat/timon.jpg"
+      "image_url": "/animal-images/goat/timon.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 3,
+        "aktivitaet": 3,
+        "neugier": 3
+      },
+      "besonderheiten": "Der Kleinste der Gruppe, aber mit dem größten Temperament."
     },
     "August": {
       "name": "August",
       "species": "goat",
       "appearance_description": "Größtenteils weiße Ziege mit braun gefärbtem Kopf.",
       "general_description": "Der Boss der Gruppe.",
-      "image_url": "/animal-images/goat/august.jpg"
+      "image_url": "/animal-images/goat/august.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Der unangefochtene Boss der Ziegengruppe."
     },
     "Schneeweißchen": {
       "name": "Schneeweißchen",
       "species": "sheep",
       "appearance_description": "Komplett weißes Schaf mit braun gefleckten Beinen.",
       "general_description": "",
-      "image_url": "/animal-images/sheep/schneeweisschen.jpg"
+      "image_url": "/animal-images/sheep/schneeweisschen.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Fast schneeweiß – nur die gefleckten Beine verraten den Unterschied."
     },
     "Henry": {
       "name": "Henry",
       "species": "sheep",
       "appearance_description": "Komplett schwarzes Schaf ohne Hörner.",
       "general_description": "",
-      "image_url": "/animal-images/sheep/henry.jpg"
+      "image_url": "/animal-images/sheep/henry.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Das einzige komplett schwarze Schaf – das buchstäbliche ‘schwarze Schaf’."
     },
     "Carlos": {
       "name": "Carlos",
       "species": "sheep",
       "appearance_description": "Komplett weißes Schaf mit braunen Flecken auf der Nase.",
       "general_description": "",
-      "image_url": "/animal-images/sheep/carlos.jpg"
+      "image_url": "/animal-images/sheep/carlos.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Seine braunen Nasenflecken machen ihn zum Hingucker der Herde."
     },
     "Samu": {
       "name": "Samu",
       "species": "sheep",
       "appearance_description": "Braunes Schaf mit langen Hörnern.",
       "general_description": "",
-      "image_url": "/animal-images/sheep/samu.jpg"
+      "image_url": "/animal-images/sheep/samu.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 1,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Trägt die längsten Hörner der Herde – sehr imposant."
     },
     "Raven": {
       "name": "Raven",
       "species": "sheep",
       "appearance_description": "Braunes Schaf mit kürzeren Hörnern.",
       "general_description": "",
-      "image_url": "/animal-images/sheep/raven.jpg"
+      "image_url": "/animal-images/sheep/raven.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Ähnelt Samu, hat aber deutlich kürzere Hörner."
     },
     "Lissi": {
       "name": "Lissi",
       "species": "sheep",
       "appearance_description": "Weißes Schaf ohne Hörner.",
       "general_description": "Schwester von Lisso.",
-      "image_url": "/animal-images/sheep/lissi.jpg"
+      "image_url": "/animal-images/sheep/lissi.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Schwester von Lisso – die beiden sind fast unzertrennlich."
     },
     "Lisso": {
       "name": "Lisso",
       "species": "sheep",
       "appearance_description": "Weißes Schaf mit kleinen Hörnern.",
       "general_description": "Schwester von Lissi.",
-      "image_url": "/animal-images/sheep/lisso.jpeg"
+      "image_url": "/animal-images/sheep/lisso.jpeg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Schwester von Lissi – an den kleinen Hörnern von Lissi zu unterscheiden."
     },
     "Senta": {
       "name": "Senta",
       "species": "equine",
       "appearance_description": "Esel, braun-grau.",
       "general_description": "",
-      "image_url": "/animal-images/equine/senta.jpeg"
+      "image_url": "/animal-images/equine/senta.jpeg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 1,
+        "neugier": 2
+      },
+      "besonderheiten": "Eine gemütliche Eseldame mit typisch sturem Esel-Charme."
     },
     "Pablo": {
       "name": "Pablo",
       "species": "equine",
       "appearance_description": "Esel, schwarz-grau.",
       "general_description": "",
-      "image_url": "/animal-images/equine/pablo.jpg"
+      "image_url": "/animal-images/equine/pablo.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Der dunklere der beiden Esel – leicht an der Farbe zu unterscheiden."
     },
     "Miela": {
       "name": "Miela",
       "species": "equine",
       "appearance_description": "Blinder grauer Pony.",
       "general_description": "",
-      "image_url": "/animal-images/equine/miela.jpg"
+      "image_url": "/animal-images/equine/miela.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 3,
+        "aktivitaet": 1,
+        "neugier": 2
+      },
+      "besonderheiten": "Ist blind, orientiert sich aber erstaunlich gut und vertraut Menschen sehr."
     },
     "Kasper": {
       "name": "Kasper",
       "species": "equine",
       "appearance_description": "Brauner Pony.",
       "general_description": "",
-      "image_url": "/animal-images/equine/kasper.jpg"
+      "image_url": "/animal-images/equine/kasper.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 2,
+        "neugier": 3
+      },
+      "besonderheiten": "Der neugierigste Pony – kommt immer als Erster zum Zaun."
     },
     "Peter-Charlie": {
       "name": "Peter-Charlie",
       "species": "equine",
       "appearance_description": "Weiß-brauner Pony.",
       "general_description": "",
-      "image_url": "/animal-images/equine/peter-charlie.jpg"
+      "image_url": "/animal-images/equine/peter-charlie.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Trägt einen Doppelnamen – zwei Namen für ein besonderes Pony."
     },
     "Greta": {
       "name": "Greta",
       "species": "cow",
       "appearance_description": "Schwarze Kuh.",
       "general_description": "",
-      "image_url": "/animal-images/cow/greta.jpeg"
+      "image_url": "/animal-images/cow/greta.jpeg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Die einzige komplett schwarze Kuh in der Gruppe."
     },
     "Grumpy": {
       "name": "Grumpy",
       "species": "cow",
       "appearance_description": "Die größte Kuh, hellbraun, mit grummigem Blick.",
       "general_description": "",
-      "image_url": "/animal-images/cow/grumpy.jpeg"
+      "image_url": "/animal-images/cow/grumpy.jpeg",
+      "characteristics": {
+        "menschenfreundlichkeit": 1,
+        "aktivitaet": 1,
+        "neugier": 1
+      },
+      "besonderheiten": "Sieht immer grummig aus – aber das ist nur ihr Gesichtsausdruck!"
     },
     "Romeo": {
       "name": "Romeo",
       "species": "cow",
       "appearance_description": "Graue Kuh mit herzförmigem Fleck auf der Stirn.",
       "general_description": "",
-      "image_url": "/animal-images/cow/romeo.jpeg"
+      "image_url": "/animal-images/cow/romeo.jpeg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Trägt einen herzförmigen Fleck auf der Stirn – der wahre Romantiker."
     },
     "Giulia": {
       "name": "Giulia",
       "species": "cow",
       "appearance_description": "Graue Kuh, der Zwilling von Romeo.",
       "general_description": "",
-      "image_url": "/animal-images/cow/giulia.jpeg"
+      "image_url": "/animal-images/cow/giulia.jpeg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Zwilling von Romeo – die beiden sind kaum auseinanderzuhalten."
     },
     "Prue": {
       "name": "Prue",
       "species": "dog",
       "appearance_description": "Weißer Hund mit schwarzen und braunen Flecken.",
       "general_description": "",
-      "image_url": "/animal-images/dog/prue.jpeg"
+      "image_url": "/animal-images/dog/prue.jpeg",
+      "characteristics": {
+        "menschenfreundlichkeit": 3,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Ein fröhlicher Hofhund mit auffälligem Fleckenmuster."
     },
     "Piper": {
       "name": "Piper",
       "species": "dog",
       "appearance_description": "Weißer Hund mit braunen Flecken am Kopf.",
       "general_description": "",
-      "image_url": "/animal-images/dog/piper-placeholder.svg"
+      "image_url": "/animal-images/dog/piper-placeholder.svg",
+      "characteristics": {
+        "menschenfreundlichkeit": 3,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Erkennbar an den braunen Flecken am Kopf."
     },
     "Ziggy": {
       "name": "Ziggy",
       "species": "dog",
       "appearance_description": "Überwiegend weißer Hund.",
       "general_description": "",
-      "image_url": "/animal-images/dog/ziggy.jpeg"
+      "image_url": "/animal-images/dog/ziggy.jpeg",
+      "characteristics": {
+        "menschenfreundlichkeit": 3,
+        "aktivitaet": 3,
+        "neugier": 3
+      },
+      "besonderheiten": "Der energiegeladenste Hund auf dem Hof – immer in Bewegung."
     },
     "Eli": {
       "name": "Eli",
       "species": "dog",
       "appearance_description": "Braun-schwarzer Hund mit heller Schnauze.",
       "general_description": "",
-      "image_url": "/animal-images/dog/eli.jpeg"
+      "image_url": "/animal-images/dog/eli.jpeg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Seine helle Schnauze hebt ihn von den anderen Hunden ab."
     },
     "Bobby": {
       "name": "Bobby",
       "species": "dog",
       "appearance_description": "Schwarzer Hund mit lockigem Fell.",
       "general_description": "",
-      "image_url": "/animal-images/dog/bobby.jpg"
+      "image_url": "/animal-images/dog/bobby.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 3,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Sein lockiges Fell macht ihn zum Teddy unter den Hofhunden."
     },
     "Jina": {
       "name": "Jina",
       "species": "dog",
       "appearance_description": "Schwarzer Hund.",
       "general_description": "",
-      "image_url": "/animal-images/dog/jina.jpg"
+      "image_url": "/animal-images/dog/jina.jpg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Eine ruhige, aufmerksame Beobachterin des Hoflebens."
     },
     "Grinch": {
       "name": "Grinch",
       "species": "dog",
       "appearance_description": "Großer Hund mit grauem Fell.",
       "general_description": "",
-      "image_url": "/animal-images/dog/grinch.jpeg"
+      "image_url": "/animal-images/dog/grinch.jpeg",
+      "characteristics": {
+        "menschenfreundlichkeit": 2,
+        "aktivitaet": 2,
+        "neugier": 2
+      },
+      "besonderheiten": "Der Größte unter den Hunden – ein sanfter Riese trotz des Namens."
     }
   },
   "species": [

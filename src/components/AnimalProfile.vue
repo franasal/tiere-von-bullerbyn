@@ -1,13 +1,23 @@
 <!-- src/components/AnimalProfile.vue -->
 <template>
   <div class="profile">
-    <img :src="imageUrl" :alt="name" class="profile-img" />
+    <ExpandableImage
+      :src="imageUrl"
+      :alt="name"
+      img-class="profile-img"
+    />
     <h2 class="profile-name">{{ name }}</h2>
 
     <div class="profile-info">
       <p v-if="appearance"><strong>Erscheinung:</strong> {{ appearance }}</p>
       <p v-if="story"><strong>Geschichte:</strong> {{ story }}</p>
     </div>
+
+    <AnimalCharacteristics
+      v-if="characteristics && Object.keys(characteristics).length"
+      :characteristics="characteristics"
+      :besonderheiten="besonderheiten"
+    />
 
     <div v-if="uniqueTraits.length" class="profile-section">
       <h3 class="section-title">So erkennst du mich</h3>
@@ -30,11 +40,11 @@
         class="similar-card"
         @click="$emit('showProfile', sim.name)"
       >
-        <img
+        <ExpandableImage
           v-if="sim.imageUrl"
           :src="sim.imageUrl"
           :alt="sim.name"
-          class="similar-img"
+          img-class="similar-img"
         />
         <div class="similar-info">
           <strong>{{ sim.name }}</strong>
@@ -46,31 +56,26 @@
       </div>
     </div>
 
-    <div class="profile-section">
-      <StorySubmissionWidget
-        :animal-names="animalNames"
-        :selected-animal="name"
-        :appearance="appearance"
-        :story="story"
-        current-view="Profil"
-      />
-    </div>
+    <VisitorNotes :animal-name="name" />
 
     <button class="back-button" @click="$emit('back')">← Zurück zur Galerie</button>
   </div>
 </template>
 
 <script setup>
-import StorySubmissionWidget from './StorySubmissionWidget.vue';
+import ExpandableImage from './ExpandableImage.vue';
+import AnimalCharacteristics from './AnimalCharacteristics.vue';
+import VisitorNotes from './VisitorNotes.vue';
 
 defineProps({
   name: { type: String, required: true },
   imageUrl: { type: String, required: true },
   appearance: { type: String, default: '' },
   story: { type: String, default: '' },
-  animalNames: { type: Array, default: () => [] },
   uniqueTraits: { type: Array, default: () => [] },
-  similarAnimals: { type: Array, default: () => [] }
+  similarAnimals: { type: Array, default: () => [] },
+  characteristics: { type: Object, default: () => ({}) },
+  besonderheiten: { type: String, default: '' }
 });
 
 defineEmits(['back', 'showProfile']);
@@ -86,7 +91,7 @@ defineEmits(['back', 'showProfile']);
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.profile-img {
+:deep(.profile-img) {
   max-width: 100%; max-height: 260px; object-fit: contain;
   border-radius: 10px; margin-bottom: .5rem;
 }
@@ -128,7 +133,7 @@ defineEmits(['back', 'showProfile']);
   transition: background .15s ease;
 }
 .similar-card:hover { background: rgba(255,255,255,.95); }
-.similar-img {
+:deep(.similar-img) {
   width: 44px; height: 44px;
   border-radius: 50%; object-fit: cover;
   border: 2px solid #f8bbd0; flex-shrink: 0;

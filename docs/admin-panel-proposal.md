@@ -6,7 +6,7 @@ The app already has three useful building blocks:
 
 - `animals.json` mirrors animal profile data from the Google Sheet.
 - `AnimalIdentifier.vue` provides a strong public game flow with gallery, result cards, and comparison mode.
-- `AdminMode.vue` and `HelperMode.vue` already support a lightweight media collection workflow.
+- `AdminMode.vue` already supports a lightweight media collection workflow.
 
 The main scaling issue is that the actual identification engine is still pig-specific:
 

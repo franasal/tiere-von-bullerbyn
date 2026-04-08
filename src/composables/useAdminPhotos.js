@@ -1,6 +1,6 @@
 const STORAGE_KEY = 'admin_trait_photos';
 
-// The 3 photo categories tracked per pig in admin/helper mode
+// The 3 photo categories tracked per pig in admin mode
 export const PHOTO_FIELDS = [
   { key: 'ear', icon: '👂', label: 'Ohren', hint: 'Fotografiere die Ohren (Form, Haltung, Ohrmarke/Loch).' },
   { key: 'tail', icon: '〰️', label: 'Schwanz', hint: 'Fotografiere den Schwanz (Länge, Haare, Form).' },

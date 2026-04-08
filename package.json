@@ -11,6 +11,7 @@
     "build:animals": "node scripts/build-animals.mjs"
   },
   "dependencies": {
+    "firebase": "^12.11.0",
     "node-fetch": "^3.3.2",
     "papaparse": "^5.5.3",
     "vue": "^3.5.17"

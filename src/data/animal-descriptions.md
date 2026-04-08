@@ -31,7 +31,7 @@ Ausschussprodukt aus Tierindustrie, Ferkel, das nicht richtig wächst, absterben
 Weiblich, linke Ohrmarke/Loch, hängende Ohren, langer Schwanz mit Haaren.
 
 ### Geschichte
-Sehr dominant, Saugleiste ausgelaugt, Mutter von Hope, Adoptivmutter von Ronja. Letztes Schwein, das nach Bullerbyn kam. War tragend in einem Zuchtbetrieb zur Aufklärung, wurde zusammen mit Nia gerettet und zog Ferkel auf. Im Pass als „saubissig“ eingestuft.
+Sehr dominant, Saugleiste ausgelaugt, Mutter von Hope, Adoptivmutter von Ronja und Gezi. War tragend in einem Zuchtbetrieb zur Aufklärung, wurde zusammen mit Nia gerettet und zog Ferkel auf. Im Pass als „saubissig“ eingestuft.
 
 ## Nia
 ### Erscheinung
@@ -124,19 +124,19 @@ Weiblich, Wildschwein, graues Fell, schwarz behaarte Ohren und ein schwarzer Fle
 ### Geschichte
 Wurde nach illegaler Jagd im Straßengraben gefunden, von Tierärztin aufgepäppelt und kam nach Bullerbyn.
 
-## Kale
+## Kalle
 ### Erscheinung
 Ziege, überwiegend braun, mit weißem Fleck auf der Nase.
 
 ### Geschichte
--
+Kalle ist mit seinen zwei Freunden Jule und Emil zu uns nach Bullerbyn gezogen. Er ist sehr schüchtern und das Schlusslicht der Ziegengruppe. Kalles Schmusepartner ist Yoda – jede Nacht kuscheln die beiden.
 
 ## Emil
 ### Erscheinung
 Ziege, braun-weiß gezeichnet, mit großem weißem Fleck im Gesicht.
 
 ### Geschichte
--
+Emil ist mit seinen zwei Freunden Jule und Kalle zu uns nach Bullerbyn gezogen. Emil ist der Zauninspektor – er findet jedes noch so kleine Schlupfloch, um an das saftigste Gras zu kommen.
 
 ## Markus
 ### Erscheinung
@@ -150,28 +150,28 @@ Hat eine sehr markante Lautäußerung.
 Komplett weiße Ziege.
 
 ### Geschichte
-Hat starke Meister-Yoda-Vibes.
+Yoda hatte sein Partnertier verloren, und zwei Bullerbyn-Mitglieder haben angefragt, ob er nicht zu uns ziehen kann. Er ist der Älteste in der Ziegengruppe. Die Macht ist Stark in Yoda.
 
 ## Jule
 ### Erscheinung
 Schwarze Ziege mit Hörnern.
 
 ### Geschichte
--
+Jule ist mit seinen zwei Freunden Emil und Kalle zu uns nach Bullerbyn gezogen. Er ist immer direkt hinter August und prüft die Besucher*innen auf Leckereien.
 
 ## Timon
 ### Erscheinung
 Kleine weiße Ziege mit dunklem Fleck auf dem Rücken.
 
 ### Geschichte
-Das kleinste Mitglied der Gruppe.
+Timon hat zuvor auf einem Ferienhof unter schlechten Bedingungen gelebt. Er ist eines der Tiere, die am längsten Teil der Bullerbyn-Familie sind. Er ist maximal verschmust – man kann ihn richtig in den Schlaf kraulen.
 
 ## August
 ### Erscheinung
 Größtenteils weiße Ziege mit braun gefärbtem Kopf.
 
 ### Geschichte
-Der Boss der Gruppe.
+August ist ein ehemaliger Zuchtbock, der von Aktivisti vor der Schlachtung gerettet wurde. Er ist ein sehr zutraulicher und verschmuster Bock. Der Boss der Ziegengang.
 
 ## Schneeweißchen
 ### Erscheinung
@@ -227,35 +227,35 @@ Schwester von Lissi.
 Esel, braun-grau.
 
 ### Geschichte
--
+Senta und Pablo sind bereits seit ihrem dritten Lebensjahr zusammen. Die beiden wurden schweren Herzens bei uns abgegeben, werden aber noch regelmäßig von ihren Menschen besucht. Senta ist zurückhaltend – außer wenn es ums Essen geht, dann setzt sie sich gegen alle anderen durch.
 
 ## Pablo
 ### Erscheinung
 Esel, schwarz-grau.
 
 ### Geschichte
--
+Pablo und Senta sind bereits seit ihrem dritten Lebensjahr zusammen. Die beiden wurden schweren Herzens bei uns abgegeben, werden aber noch regelmäßig von ihren Menschen besucht. Pablo ist ein sanfter Riese, der sich über Aufmerksamkeit freut.
 
 ## Miela
 ### Erscheinung
 Blinder grauer Pony.
 
 ### Geschichte
--
+Miela ist ein ehemaliges Zirkuspony. Die Zeit im Zirkus hat sie nicht nur stark traumatisiert, sondern sie auch ihr Augenlicht gekostet. Sie kennt Veganien in- und auswendig, was ihr besonders hilft, wenn sie einmal den Anschluss zu ihrer Herde verloren hat. Menschen machen ihr immer noch Angst, doch mit viel Ruhe, Zuneigung und Zeit kann man vorsichtig Kontakt zu ihr aufbauen.
 
 ## Kasper
 ### Erscheinung
 Brauner Pony.
 
 ### Geschichte
--
+Kasper und Peter-Charlie wurden in den Niederlanden auf einem Lebendmarkt vor der Schlachtung gerettet. Kasper düst regelmäßig im vollen Karacho durch Veganien, dabei weht seine beneidenswerte goldene Mähne majestätisch im Wind.
 
 ## Peter-Charlie
 ### Erscheinung
 Weiß-brauner Pony.
 
 ### Geschichte
--
+Peter-Charlie und Kasper wurden in den Niederlanden auf einem Lebendmarkt vor der Schlachtung gerettet. Manchmal passt die Beschreibung „Stoffel“ perfekt zu Peter-Charlie, doch er hat auch viel Zuneigung zu geben.
 
 ## Greta
 ### Erscheinung
@@ -290,7 +290,7 @@ Graue Kuh, der Zwilling von Romeo.
 Weißer Hund mit schwarzen und braunen Flecken.
 
 ### Geschichte
--
+Die Schwestern Prue und Piper kommen aus Griechenland. Sie wurden als Welpen auf der Straße entdeckt und gerettet. Man merkt ihnen die südliche Herkunft an, da sie kaltes und nasses Wetter überhaupt nicht mögen. Beide sind sehr territorial und verteidigen lautstark ihre Schlafplätze, daher tragen sie noch den Spitznamen „die Hexen“. Prue ist die Mutigere von beiden und traut sich, mit genügend Zeit neue Menschen kennenzulernen.
 
 ## Piper
 ### Erscheinung
@@ -332,4 +332,5 @@ Schwarzer Hund.
 Großer Hund mit grauem Fell.
 
 ### Geschichte
--
+Grinch stammt aus Rumänien und wurde von Mitarbeiter*innen des Casa Animale nach Deutschland gebracht. Sie hatten ihn verwundet und vermutlich ausgesetzt an einer Tankstelle gefunden.
+Der liebe Kerl ist verträglich mit allen und jedem und löst Konflikte souverän und liebevoll – genau der richtige Ruhepol für das Bullerbyn-Rudel.
