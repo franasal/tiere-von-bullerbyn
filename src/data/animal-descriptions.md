@@ -325,7 +325,7 @@ Bobby ist der Senior im Rudel. Er wurde als Welpe von Anna und Danny in Rumänie
 Schwarzer Hund.
 
 ### Geschichte
--
+Jina ist eine ehemalige Therapiehündin. Ihre alte Familie musste sich von ihr trennen. Sie ist die kommunikativste im Rudel und verteilt auch die meisten Küsschen.
 
 ## Grinch
 ### Erscheinung
