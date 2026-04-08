@@ -1,15 +1,10 @@
 <template>
   <div class="characteristics">
-    <div class="section-header">
-      <span class="section-eyebrow">Steckbrief</span>
-      <h3 class="section-title">Charakter und Auftreten</h3>
-    </div>
+    <h3 class="section-title">Steckbrief</h3>
     <div class="char-rows">
       <div class="char-row" v-for="char in charList" :key="char.key">
-        <div class="char-main">
-          <span class="char-emoji-label">{{ char.icon }}</span>
-          <span class="char-label">{{ char.label }}</span>
-        </div>
+        <span class="char-emoji-label">{{ char.icon }}</span>
+        <span class="char-label">{{ char.label }}</span>
         <span class="char-scale">
           <span
             v-for="n in CHARACTERISTIC_SCALE_MAX"
@@ -50,85 +45,53 @@ const charList = computed(() =>
 <style scoped>
 .characteristics {
   width: 100%;
-  padding: 1rem;
-  border-radius: 20px;
-  border: 1px solid rgba(157, 90, 52, 0.14);
-  background: linear-gradient(180deg, rgba(255, 252, 248, 0.98), rgba(252, 244, 236, 0.95));
-  box-shadow: 0 18px 40px rgba(76, 53, 39, 0.08);
-}
-
-.section-header {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: .4rem;
-  margin-bottom: .85rem;
-}
-
-.section-eyebrow {
-  display: inline-flex;
-  align-self: flex-start;
-  padding: .3rem .65rem;
-  border-radius: 999px;
-  background: rgba(157, 90, 52, 0.1);
-  color: #9d5a34;
-  font-size: .7rem;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
+  margin-top: .5rem;
+  padding: .6rem;
+  background: rgba(255, 248, 240, .7);
+  border: 1px solid #ffe0b2;
+  border-radius: 10px;
 }
 
 .section-title {
-  margin: 0;
-  font-size: 1.1rem;
-  color: #2d221b;
+  font-size: .9rem;
+  color: #5d4037;
+  margin: 0 0 .4rem;
 }
 
 .char-rows {
   display: flex;
   flex-direction: column;
-  gap: .55rem;
+  gap: .35rem;
 }
 
 .char-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: .75rem;
-  padding: .7rem .8rem;
-  border-radius: 16px;
-  border: 1px solid rgba(157, 90, 52, 0.1);
-  background: rgba(255, 255, 255, 0.76);
-}
-
-.char-main {
-  display: flex;
-  align-items: center;
-  gap: .55rem;
-  min-width: 0;
+  gap: .4rem;
 }
 
 .char-emoji-label {
-  font-size: 1rem;
-  width: 1.4rem;
+  font-size: .85rem;
+  width: 1.2rem;
   text-align: center;
+  display: none;
 }
 
 .char-label {
-  font-size: .88rem;
-  color: #2d221b;
-  font-weight: 700;
+  font-size: .78rem;
+  color: #6d4c41;
+  min-width: 7rem;
+  font-weight: 600;
 }
 
 .char-scale {
   display: flex;
-  gap: .2rem;
-  flex-shrink: 0;
+  gap: .15rem;
 }
 
 .char-dot {
-  font-size: 1rem;
-  opacity: .18;
+  font-size: .9rem;
+  opacity: .2;
   filter: grayscale(1);
   transition: opacity .2s ease, filter .2s ease;
 }
@@ -139,14 +102,12 @@ const charList = computed(() =>
 }
 
 .besonderheiten {
-  margin-top: .75rem;
-  padding: .85rem .9rem;
-  border-radius: 16px;
-  border: 1px dashed rgba(157, 90, 52, 0.24);
-  font-size: .84rem;
+  margin-top: .5rem;
+  padding-top: .45rem;
+  border-top: 1px dashed #ffe0b2;
+  font-size: .82rem;
   color: #5d4037;
   line-height: 1.4;
-  background: rgba(255, 251, 247, 0.78);
 }
 
 .besonderheiten-label {
@@ -156,16 +117,5 @@ const charList = computed(() =>
 
 .besonderheiten-text {
   font-style: italic;
-}
-
-@media (max-width: 640px) {
-  .characteristics {
-    padding: .85rem;
-  }
-
-  .char-row {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }
 </style>
