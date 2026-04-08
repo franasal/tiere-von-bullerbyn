@@ -311,14 +311,14 @@ Ziggy kommt ebenfalls aus Griechenland. Im Vergleich zu den Hexen ist er wetterf
 Braun-schwarzer Hund mit heller Schnauze.
 
 ### Geschichte
--
+Eli ist die jüngste Griechin. Sie wurde als Welpin in einem Tierheim aufgenommen. Früh stellte man fest, dass sie stark sehbehindert ist, was vor allem beim Spielen zu Zusammenstöße führt.
 
 ## Bobby
 ### Erscheinung
 Schwarzer Hund mit lockigem Fell.
 
 ### Geschichte
--
+Bobby ist der Senior im Rudel. Er wurde als Welpe von Anna und Danny in Rumänien von der Straße gerettet. Mittlerweile ist er leicht dement und schläft viel, doch wenn er einmal in Bewegung ist, freut er sich über Aufmerksamkeit und Spieleinheiten.
 
 ## Jina
 ### Erscheinung
