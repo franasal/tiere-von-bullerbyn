@@ -78,10 +78,10 @@
     <div v-if="showNav" class="navigation-buttons">
       <template v-if="path.length > 0">
         <button class="back-button" @click="$emit('back')">← Zurück</button>
-        <button class="reset-button" @click="$emit('reset')">Start</button>
+        <button class="reset-button" @click="$emit('reset')">Startseite</button>
       </template>
       <template v-else>
-        <button class="reset-button full-width" @click="$emit('reset')">Start</button>
+        <button class="reset-button full-width" @click="$emit('reset')">Startseite</button>
       </template>
     </div>
   </div>
