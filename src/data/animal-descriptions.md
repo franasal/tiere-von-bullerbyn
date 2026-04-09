@@ -1,4 +1,4 @@
-w## Franz
+## Franz
 ### Erscheinung
 Männlich, rosa, rechte Ohrmarke/Loch, normaler Rücken, gefaltete Ohren, langer Schwanz ohne Haare.
 
