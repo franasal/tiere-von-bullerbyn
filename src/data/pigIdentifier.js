@@ -39,6 +39,7 @@ export const pigProfiles = [
     name: 'Milli',
     traits: {
       pigType: 'pot_bellied',
+      sex: 'female',
       coatAppearance: 'black_white_bristles',
       sizeClass: 'large'
     }
@@ -47,14 +48,17 @@ export const pigProfiles = [
     name: 'Vanilli',
     traits: {
       pigType: 'pot_bellied',
+      sex: 'female',
       coatAppearance: 'bristle_punk_left',
-      sizeClass: 'small'
+      sizeClass: 'small',
+      skinPattern: 'half_pink_black'
     }
   },
   {
     name: 'Strolch',
     traits: {
       pigType: 'pot_bellied',
+      sex: 'male',
       tusksVisible: 'yes',
       humpPresent: 'yes',
       coatAppearance: 'light_bristles'
@@ -64,6 +68,7 @@ export const pigProfiles = [
     name: 'Susi',
     traits: {
       pigType: 'pot_bellied',
+      sex: 'female',
       coatAppearance: 'black_with_neck_bristles'
     }
   },
@@ -97,8 +102,9 @@ export const pigProfiles = [
       sex: 'male',
       earMark: 'right',
       skinColor: 'pink',
-      earForm: 'folded',
-      tailType: 'long_bare'
+      earForm: 'pointed',
+      tailType: 'long_bare',
+      bristleAmount: 'few'
     }
   },
   {
@@ -137,7 +143,8 @@ export const pigProfiles = [
     traits: {
       pigType: 'standard_domestic',
       sex: 'female',
-      earMark: 'right',
+      earMark: 'left',
+      earForm: 'pointed',
       skinColor: 'pink',
       spotPattern: 'black_hip_spots',
       backColor: 'gray_back',
@@ -215,6 +222,14 @@ export const pigQuestions = [
     }
   },
   {
+    key: 'bristleAmount',
+    priority: 79,
+    question: 'Wie dicht sind die Borsten sichtbar?',
+    options: {
+      few: 'Wenig Borsten'
+    }
+  },
+  {
     key: 'wildBoarMarking',
     priority: 78,
     question: 'Welche Wildschwein-Merkmale sind sichtbar?',
@@ -231,7 +246,7 @@ export const pigQuestions = [
       face_spots: 'Schwarze Flecken im Gesicht',
       sharp_spots: 'Große Flecken im Gesicht und am Körper',
       black_face_tail_spots: 'Schwarze Flecken im Gesicht und am Schwanz',
-      black_hip_spots: 'Schwarze Flecken am Rücken bei der Hüfte'
+      black_hip_spots: 'schwarze Flecken am Rücken/Hüfte'
     }
   },
   {
@@ -269,8 +284,8 @@ export const pigQuestions = [
     priority: 45,
     question: 'Welche Ohrform passt besser?',
     options: {
-      round_hairy: 'Rund mit Haaren',
-      pointed: 'Spitz',
+      round_hairy: 'Stehend rund',
+      pointed: 'Spitz stehend',
       folded: 'Gefaltet'
     }
   },
@@ -280,6 +295,14 @@ export const pigQuestions = [
     question: 'Welche Hautfarbe ist sichtbar?',
     options: {
       pink: 'Rosa'
+    }
+  },
+  {
+    key: 'skinPattern',
+    priority: 38,
+    question: 'Gibt es eine besondere Haut- oder Farbverteilung?',
+    options: {
+      half_pink_black: 'Halb rosa, halb schwarz'
     }
   },
   {
@@ -368,7 +391,7 @@ export const pigOpeningQuestions = [
     key: 'pigType',
     compareValue: 'woolly_domestic',
     compareLabel: 'Behaartes Schwein',
-    question: 'Ist es ein behaartes Schwein?'
+    question: 'Ist es ein stark behaartes Schwein?'
   },
   {
     key: 'coatAppearance',
@@ -382,6 +405,7 @@ export const traitMeta = {
   pigType:        { icon: '🐖', label: 'Typ' },
   sex:            { icon: '♀♂', label: 'Geschlecht' },
   coatAppearance: { icon: '🎨', label: 'Fell / Borsten' },
+  bristleAmount:  { icon: '🪮', label: 'Borsten' },
   wildBoarMarking:{ icon: '🪶', label: 'Wildschwein-Merkmale' },
   spotPattern:    { icon: '⚫', label: 'Flecken' },
   earPosture:     { icon: '👂', label: 'Ohren' },
@@ -389,6 +413,7 @@ export const traitMeta = {
   earMark:        { icon: '🕳️', label: 'Ohrloch' },
   earForm:        { icon: '👂', label: 'Ohrform' },
   skinColor:      { icon: '🩷', label: 'Hautfarbe' },
+  skinPattern:    { icon: '🎨', label: 'Färbung' },
   backColor:      { icon: '🔘', label: 'Rücken' },
   skinCondition:  { icon: '🧴', label: 'Haut' },
   sizeClass:      { icon: '📏', label: 'Größe' },

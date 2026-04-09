@@ -1,6 +1,6 @@
 ## Franz
 ### Erscheinung
-Männlich, rosa, rechte Ohrmarke/Loch, normaler Rücken, gefaltete Ohren, langer Schwanz ohne Haare.
+Männlich, rosa, Ohrmarke/Loch rechts, spitze stehende Ohren, langer Schwanz ohne Haare, wenig Borsten.
 
 ### Geschichte
 Franz ist der Bruder von Ferdinand. Eigentlich sollte ihre gemeinsame Schwester Sissi zu uns kommen, doch sie ist in der Nacht vor der Befreiung gestorben – so wurde Ferdinand ausgewählt.
@@ -9,23 +9,24 @@ Im Kontakt mit uns Menschen ist Franz sehr kommunikativ und freut sich über Auf
 Ankunftsalter: Ferkel, Kümmerling
 Art: Edelschwein-Hybrid
 Herkunft: konventioneller Ferkelvermehrbetrieb
-Retterin: Samara vom Team Tierschutz
+Retterin: Samara von Team Tierschutz
 ## Kiwi
 ### Erscheinung
+Männlich, rosa, schwarze Flecken im Gesicht, Ohrmarke/Loch rechts, spitze stehende Ohren, kurzer Schwanz.
+
+### Geschichte
 Kiwi war der kleinste Kümmerling, den wir bisher erlebt haben – so kam er auch zu seinem Namen, da sein Kopf kleiner als eine Kiwi war.
 Er ist sehr eng mit Moritz verbunden, da er die ersten Wochen auf seiner Brust geschlafen hat und die beiden bis heute besonders viel Zeit miteinander verbringen.
 In der Rotte kuschelt er besonders gern mit seiner Adoptivmama Hedda und verbringt gerne Zeit mit seinen Freundinnen Hope und Feline.
 Ankunftsalter: Ferkel, Kümmerling
 Art: Edelschwein-Hybrid
 Herkunft: konventioneller Ferkelvermehrbetrieb
-Retterin: Samara vom Team Tierschutz
-
-### Geschichte
+Retterin: Samara von Team Tierschutz
 Sehr redefreudig und kommunikativ, kommt auf einen zu, lässt sich gerne streicheln. Name wegen kleinem Kopf (wie eine Kiwi), mit Flasche aufgezogen, lebte zuerst im Haus der Familie.
 
 ## Ronja
 ### Erscheinung
-Weiblich, grauer Rücken, rechte Ohrmarke/Loch, schwarze Flecken am Rücken bei der Hüfte, kurzer Schwanz.
+Weiblich, rosa, Ohrmarke/Loch links, schwarze Flecken am Rücken/Hüfte, spitze stehende Ohren, kurzer Schwanz.
 
 ### Geschichte
 Ronja ist das Adoptivkind von Hedda und Nia. Zu Beginn war sie immer im Schatten von Hope und Feline unterwegs, doch nun hat sie Lilli als ihre neue beste Freundin ans Herz geschlossen.
@@ -34,11 +35,11 @@ Ronja ist ein sensibles und liebevolles Schweinemädchen. Man kann sie gut an de
 Ankunftsalter: Ferkel, Kümmerling
 Art: Edelschwein-Hybrid
 Herkunft: konventioneller Ferkelvermehrbetrieb
-Retterin: Samara vom Team Tierschutz
+Retterin: Samara von Team Tierschutz
 
 ## Ferdinand
 ### Erscheinung
-Männlich, rosa, rechte Ohrmarke/Loch, runde behaarte Ohren, kurzer Schwanz.
+Männlich, rosa, Ohrmarke/Loch rechts, runde Ohren, kurzer Schwanz.
 
 ### Geschichte
 Ferdinand ist der Bruder von Franz, welcher – aus seiner Sicht – Glück hatte, da eigentlich die gemeinsame Schwester Sissi zu uns kommen sollte. Doch sie ist in der Nacht vor der Befreiung gestorben, sodass Ferdinand seinen Bruder begleiten durfte.
@@ -47,11 +48,11 @@ Ferdinand hat das süßeste Schweinelächeln in Bullerbyn und freut sich über j
 Ankunftsalter: Ferkel, Kümmerling
 Art: Edelschwein-Hybrid
 Herkunft: konventioneller Ferkelvermehrbetrieb
-Retterin: Samara vom Team Tierschutz
+Retterin: Samara von Team Tierschutz
 
 ## Hedda
 ### Erscheinung
-Weiblich, linke Ohrmarke/Loch, hängende Ohren, langer Schwanz mit Haaren.
+Weiblich, rosa, Ohrmarke/Loch links und rechts, hängende Ohren, langer Schwanz mit Haaren, viele Borsten.
 
 ### Geschichte
 Hedda und Nia sind ehemalige „Muttersauen“, die jeweils in fünf Jahren über 130 Ferkel an die Industrie verloren haben. Die beiden haben den Ferkelvermehrbetrieb nicht allein verlassen, sondern wir konnten beiden Müttern die Rettung eines ihrer Babys sowie ihres gemeinsamen Adoptivkindes Ronja ermöglichen.
@@ -61,11 +62,11 @@ Die Industrie hat bei ihr eine posttraumatische Belastungsstörung hinterlassen.
 Ankunftsalter: 5 Jahre, ehemalige Muttersau
 Art: Landschwein-Hybrid
 Herkunft: konventioneller Ferkelvermehrbetrieb
-Retterin: Samara vom Team Tierschutz
+Retterin: Samara von Team Tierschutz
 
 ## Nia
 ### Erscheinung
-Weiblich, linke Ohrmarke/Loch, hängende Ohren, langer Schwanz ohne Haare.
+Weiblich, rosa, Ohrmarke/Loch links und rechts, hängende Ohren, langer Schwanz ohne Haare, wenig Borsten.
 
 ### Geschichte
 Nia und Hedda sind ehemalige „Muttersauen“, die jeweils in fünf Jahren über 130 Ferkel an die Industrie verloren haben. Die beiden haben den Ferkelvermehrbetrieb nicht allein verlassen, sondern wir konnten beiden Müttern die Rettung eines ihrer Babys sowie ihres gemeinsamen Adoptivkindes Ronja ermöglichen.
@@ -73,11 +74,11 @@ Feline ist die leibliche Tochter von Nia und die beiden haben noch heute eine se
 Ankunftsalter: 5 Jahre, ehemalige Muttersau
 Art: Landschwein-Hybrid
 Herkunft: konventioneller Ferkelvermehrbetrieb
-Retterin: Samara vom Team Tierschutz
+Retterin: Samara von Team Tierschutz
 
 ## Feline
 ### Erscheinung
-Weiblich, rechte Ohrmarke/Loch, grosse Flecken im Gesicht und am Körper, kurzer Schwanz.
+Weiblich, rosa, Ohrmarke/Loch links, große graue Flecken im Gesicht und am Körper, kurzer Schwanz, wenig Borsten.
 
 ### Geschichte
 Feline ist die leibliche Tochter von Nia und die rechte Hand von Hope, so wie ihre Mama Nia für Hedda ist. Die beiden eifern ihren Müttern nach.
@@ -86,11 +87,11 @@ Durch die grauen Flecken und die leicht braun-orangenen Borsten im Sommer kann m
 Ankunftsalter: Ferkel, Kümmerling
 Art: Edelschwein-Hybrid
 Herkunft: konventioneller Ferkelvermehrbetrieb
-Retterin: Samara vom Team Tierschutz
+Retterin: Samara von Team Tierschutz
 
 ## Rosalie
 ### Erscheinung
-Weiblich, linke Ohrmarke/Loch, rosa, kurzer Schwanz.
+Weiblich, rosa, Ohrmarke/Loch links, kurzer Schwanz, steife Hüfte.
 
 ### Geschichte
 Rosalie kam – wie die meisten – als Kümmerling auf die Welt. Leider wurde sie von ihrer Mutter versehentlich eingequetscht, was zur Folge hatte, dass sie eine Lähmung in der hinteren Hüfte hatte.
@@ -99,11 +100,11 @@ Maike ist ihre beste Freundin, und sie kuschelt auch gerne mit Franz und Ferdina
 Ankunftsalter: Ferkel, Kümmerling
 Art: Edelschwein-Hybrid
 Herkunft: konventioneller Ferkelvermehrbetrieb
-Retterin: Samara vom Team Tierschutz
+Retterin: Samara von Team Tierschutz
 
 ## Hope
 ### Erscheinung
-Weiblich, linke Ohrmarke/Loch, rosa, geringelt langer Schwanz mit Haaren.
+Weiblich, rosa, Ohrmarke/Loch links, schlitz im Ohr links, geringelt langer Schwanz mit Haaren.
 
 ### Geschichte
 Hope ist die leibliche Tochter von Hedda und die Anführerin der Jungschweine. Sie tut alles, um bereit zu sein, die Position ihrer Mama zu übernehmen.
@@ -112,11 +113,11 @@ Man merkt, wie sehr sie ihrer Mama nahesteht und von ihr lernt. Hope fällt durc
 Ankunftsalter: Ferkel, Kümmerling
 Art: Edelschwein-Hybrid
 Herkunft: konventioneller Ferkelvermehrbetrieb
-Retterin: Samara vom Team Tierschutz
+Retterin: Samara von Team Tierschutz
 
 ## Justus
 ### Erscheinung
-Männlich, komplett gefleckt, voll behaart, keine Ohrmarke/Loch.
+Männlich, schwarzer Kopf und Hüfte, viele Borsten.
 
 ### Geschichte
 Justus hat es nicht nur geschafft, den Biobetrieb lebendig zu verlassen, sondern auch den Landwirt davon zu überzeugen, die Tierausbeutung zu beenden.
@@ -127,7 +128,7 @@ Art: Schwäbisch-Hällisches Landschwein
 
 ## Maike
 ### Erscheinung
-Weiblich, rosa, voll behaart, rechte Ohrmarke/Loch.
+Weiblich, viele Borsten (weiß/grau), hängende behaarte Ohren.
 
 ### Geschichte
 Maike ist eine Wollsau, die noch als Ferkel nach Bullerbyn kam.
@@ -137,7 +138,7 @@ Maike ist den menschlichen Bullerbyner*innen gegenüber sehr verschmust.
 
 ## Milli
 ### Erscheinung
-Weiblich, größtes Hängebauchschwein, schwarz-weiße Borsten am ganzen Körper.
+Weiblich, größtes Hängebauchschwein, schwarz-weiße Borsten am ganzen Körper, schwarze Nase.
 
 ### Geschichte
 Gemeinsam mit Vanilli vor dem Schlachten gerettet. Ihre Halter:innen Milli und Vanilli landeten nach einem Mordfall im Nürnberger Tierheim und durften anschließend bei Susi und Strolchi einziehen.
@@ -146,7 +147,7 @@ In der Rausche fordert Milli Massagen von den menschlichen Bullerbyner*innen ein
 
 ## Vanilli
 ### Erscheinung
-Weiblich, klein, Borsten auf dem Rücken (Punk-Look), halb rosa, halb schwarz.
+Weiblich, klein, weiße Borsten, rosa Nase.
 
 ### Geschichte
 Vanilli und Milli landeten nach einem Mordfall im Nürnberger Tierheim und durften anschließend bei Susi und Strolchi einziehen.
@@ -155,7 +156,7 @@ Vanilli ist schüchtern, doch Kuscheln mit den menschlichen Bullerbyner*innen fi
 
 ## Strolch
 ### Erscheinung
-Männlich, heller Borstenwuchs, deutlicher Buckel, Stoßzähne.
+Männlich, grauer Borsten, große Hauern, rosa Nase.
 
 ### Geschichte
 Strolchi und Susi sind die ersten Schweine, die nach Bullerbyn gezogen sind.
@@ -165,7 +166,7 @@ Die meiste Zeit des Tages verbringen die beiden kuschelnd miteinander und sehen 
 
 ## Susi
 ### Erscheinung
-Weiblich, komplett schwarz mit Borsten im Nacken.
+Weiblich, schwarze Borsten, schwarze Nase.
 
 ### Geschichte
 Susi und Strolchi sind die ersten Schweine, die nach Bullerbyn gezogen sind.
@@ -175,7 +176,7 @@ Die meiste Zeit des Tages verbringen die beiden kuschelnd miteinander und sehen 
 
 ## Frida
 ### Erscheinung
-Weiblich, linke Ohrmarke, orangefarbene Haare, kurzer Schwanz. Lebt allein, getrennt von der Rotte.
+Weiblich, rosa, Ohrmarke links, kurzer Schwanz, lebt vorne mit den Menschen.
 
 ### Geschichte
 Frida ist geistig und körperlich behindert. Sie wurde als Notfall von Samara aus dem Ferkelvermehrbetrieb gerettet. Frida verweigerte knapp 32 Stunden die Nahrungsaufnahme – ihr Überleben ist ein Wunder.
@@ -185,11 +186,11 @@ Frida dreht ihre Runden im vorderen Bereich und liebt es, im Sommer zu baden. Am
 Ankunftsalter: Ferkel, Kümmerling
 Art: Edelschwein-Hybrid
 Herkunft: konventioneller Ferkelvermehrbetrieb
-Retterin: Samara vom Team Tierschutz
+Retterin: Samara von Team Tierschutz
 
 ## Lili
 ### Erscheinung
-Weiblich, Wildschwein, braunes Fell, schwarze Ohren mit weißen Haaren.
+Weiblich, Wildschwein, braun graues Fell, schwarze Ohren mit weißen Haaren.
 
 ### Geschichte
 Lilli wurde als Frischling allein aufgefunden und hatte eine schwere Augenentzündung, durch die sie eine Sehbehinderung zurückbehalten hat.
@@ -199,7 +200,7 @@ Sie genießt und sucht die Zuneigung und Nähe zu Artgenossen, meidet jedoch Men
 
 ## Gezi
 ### Erscheinung
-Weiblich, Wildschwein, graues Fell, schwarz behaarte Ohren und ein schwarzer Fleck am unteren Rücken.
+Weiblich, Wildschwein, braun schwarzes Fell, schwarz behaarte Ohren und ein schwarzer Fleck am Rücken.
 
 ### Geschichte
 Gezi wurde als Frischling durch eine Treibjagd von ihrer Mutter getrennt und anschließend von einer Tierärztin in einem Straßengraben gefunden. Die Tierärztin hat sie aufgepäppelt und zu uns vermittelt.
@@ -209,7 +210,7 @@ Ihre Adoptivmama ist Hedda, und Maike ist ihre Tante.
 
 ## Kalle
 ### Erscheinung
-Ziege, überwiegend braun, mit weißem Fleck auf der Nase.
+Ziege, überwiegend braun, mit weißem Fleck auf der Nase und Po.
 
 ### Geschichte
 Kalle ist mit seinen zwei Freunden Jule und Emil zu uns nach Bullerbyn gezogen. Er ist sehr schüchtern und das Schlusslicht der Ziegengruppe. Kalles Schmusepartner ist Yoda – jede Nacht kuscheln die beiden.
@@ -258,7 +259,7 @@ August ist ein ehemaliger Zuchtbock, der von Aktivisti vor der Schlachtung geret
 
 ## Schneeweißchen
 ### Erscheinung
-Komplett weißes Schaf mit braun gefleckten Beinen.
+Komplett weißes Schaf mit braunen Flecken auf den Beinen und der Nase.
 
 ### Geschichte
 Schneeweißen ist in Alt-Bullerbyn auf die Welt gekommen. Ihre Mutter Itsche (bereits verstorben) wurde trächtig von einem Schäfer gerettet. Gemeinsam mit Carlos führt Schneeweißen die Schafherde an. Sie hat den schüchternen, introvertierten Teil der Herde hinter sich und geht Menschen eher aus dem Weg.
@@ -279,7 +280,7 @@ Carlos wurde davor gerettet, als Osterlamm zu enden. Gemeinsam mit Schneeweißch
 
 ## Samu
 ### Erscheinung
-Braunes Schaf mit langen Hörnern.
+Braunes Schaf mit langen Hörnern, weißer Fleck am Bauch links.
 
 ### Geschichte
 Samu wurde vom Lebenshof Villa Abendsonne gerettet; vermutlich war er einem Schäfer entlaufen, und sie sicherten ihn. Samu wurde zu uns weitervermittelt. Er ist nun Teil der introvertierten Gruppe und hat sich vor allem in Raven verliebt.
@@ -321,28 +322,28 @@ Pablo und Senta sind bereits seit ihrem dritten Lebensjahr zusammen. Die beiden 
 
 ## Miela
 ### Erscheinung
-Blinder grauer Pony.
+Pony, grau weiß, ohne Augen.
 
 ### Geschichte
 Miela ist ein ehemaliges Zirkuspony. Die Zeit im Zirkus hat sie nicht nur stark traumatisiert, sondern sie auch ihr Augenlicht gekostet. Sie kennt Veganien in- und auswendig, was ihr besonders hilft, wenn sie einmal den Anschluss zu ihrer Herde verloren hat. Menschen machen ihr immer noch Angst, doch mit viel Ruhe, Zuneigung und Zeit kann man vorsichtig Kontakt zu ihr aufbauen.
 
 ## Kasper
 ### Erscheinung
-Brauner Pony.
+Pony, hellbraun, blonde Haare.
 
 ### Geschichte
 Kasper und Peter-Charlie wurden in den Niederlanden auf einem Lebendmarkt vor der Schlachtung gerettet. Kasper düst regelmäßig im vollen Karacho durch Veganien, dabei weht seine beneidenswerte goldene Mähne majestätisch im Wind.
 
 ## Peter-Charlie
 ### Erscheinung
-Weiß-brauner Pony.
+Pony, weiß braun.
 
 ### Geschichte
 Peter-Charlie und Kasper wurden in den Niederlanden auf einem Lebendmarkt vor der Schlachtung gerettet. Manchmal passt die Beschreibung „Stoffel“ perfekt zu Peter-Charlie, doch er hat auch viel Zuneigung zu geben.
 
 ## Toffie
 ### Erscheinung
-Braun-schwarze Maine-Coon-Katze.
+Braun schwarze orange Maine-Coon-Katze.
 
 ### Geschichte
 Toffie wurde aus privaten Gründen bei uns abgegeben. Mittlerweile ist Toffie hauptsächlich bei unserer Nachbarin unterwegs. Sie schläft viel und lässt sich gerne verwöhnen.
@@ -370,7 +371,7 @@ Greta stammt aus demselben Betrieb wie die beiden Zwillinge. Sie wurde ebenfalls
 
 ## Grumpy
 ### Erscheinung
-Die größte Kuh, hellbraun, mit grummigem Blick.
+Braune Kuh.
 
 ### Geschichte
 Grumpy ist auf einem Milchviehbetrieb zur Welt gekommen. Aufgrund eines Gendefekts war sie jedoch nicht „geeignet“, Mutter zu werden. Trotzdem hat der Landwirt sie am Leben gelassen. Zwei schöne Sommer auf der Weide durfte sie erleben – doch dann sollte sie dennoch zum Schlachter.
@@ -379,14 +380,14 @@ Sie ist die Ziehmutter von Greta, Giulia und Romeo und kümmert sich sehr liebev
 
 ## Romeo
 ### Erscheinung
-Graue Kuh mit herzförmigem Fleck auf der Stirn.
+Grau schwarze Kuh mit weißem herzförmigen Fleck auf der Stirn.
 
 ### Geschichte
 Romeo ist der Zwillingsbruder von Giulia. Die beiden wurden aus einem Milchviehbetrieb gerettet. Sie wurden direkt nach der Geburt von ihrer Mutter und auch voneinander getrennt. Nur ein kleines Iglu ohne jegliche Nähe war ihr Zuhause. Eine Aktivistin verhinderte die geplante Schlachtung, da Zwillingskälber keinen Wert für die Industrie haben. Romeo ist ein zurückhaltender, verschmuster Bub. Vor allem die Zuneigung von Grumpy genießt er sehr.
 
 ## Giulia
 ### Erscheinung
-Graue Kuh, der Zwilling von Romeo.
+Grau schwarze Kuh mit großen weißem Fleck im Gesicht.
 
 ### Geschichte
 Giulia ist die Zwillingsschwester von Romeo. Die beiden wurden aus einem Milchviehbetrieb gerettet. Sie wurden direkt nach der Geburt von ihrer Mutter und auch voneinander getrennt. Nur ein kleines Iglu ohne jegliche Nähe war ihr Zuhause. Eine Aktivistin verhinderte die geplante Schlachtung, da Zwillingskälber keinen Wert für die Industrie haben. Giulia ist sehr neugierig und immer an der Seite von Greta auf der Suche nach dem nächsten Abenteuer.
@@ -407,28 +408,28 @@ Die Schwestern Prue und Piper kommen aus Griechenland. Sie wurden als Welpen auf
 
 ## Ziggy
 ### Erscheinung
-Überwiegend weißer Hund.
+Weiß schwarzer Hund, schwarzer Kopf.
 
 ### Geschichte
 Ziggy kommt ebenfalls aus Griechenland. Im Vergleich zu den Hexen ist er wetterfest und genießt das Draußensein. Er spielt gerne mit Eli und lässt sich gerne den Bauch streicheln.
 
 ## Eli
 ### Erscheinung
-Braun-schwarzer Hund mit heller Schnauze.
+Braun schwarzer Hund, weiße Brust.
 
 ### Geschichte
 Eli ist die jüngste Griechin. Sie wurde als Welpin in einem Tierheim aufgenommen. Früh stellte man fest, dass sie stark sehbehindert ist, was vor allem beim Spielen zu Zusammenstöße führt.
 
 ## Bobby
 ### Erscheinung
-Schwarzer Hund mit lockigem Fell.
+Schwarzer Hund mit lockigem Fell, weiße Brust.
 
 ### Geschichte
 Bobby ist der Senior im Rudel. Er wurde als Welpe von Anna und Danny in Rumänien von der Straße gerettet. Mittlerweile ist er leicht dement und taub. Bobby schläft viel, doch wenn er einmal in Bewegung ist, freut er sich über Aufmerksamkeit und Spieleinheiten.
 
 ## Jina
 ### Erscheinung
-Schwarzer Hund.
+Schwarzer Hund mit glattem Fell.
 
 ### Geschichte
 Jina ist eine ehemalige Therapiehündin. Ihre alte Familie musste sich von ihr trennen. Sie ist die kommunikativste im Rudel und verteilt auch die meisten Küsschen.

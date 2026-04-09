@@ -52,29 +52,32 @@
         @pointerenter="pauseCarousel"
         @pointerleave="resumeCarousel"
       >
-        <div class="carousel__viewport">
-          <Transition :name="slideDirection" mode="out-in">
-            <article
-              :key="recentNotes[activeSlide].id"
-              class="shared-note-card"
-              :style="getAnimalNoteThemeStyle(recentNotes[activeSlide])"
-            >
-              <img
-                :src="getAnimalImage(recentNotes[activeSlide])"
-                :alt="recentNotes[activeSlide].animalName"
-                class="shared-note-card__image"
-                @error="handleImageError"
-              />
-              <div class="shared-note-card__body">
-                <div class="shared-note-card__meta">
-                  <span class="shared-note-card__animal">{{ recentNotes[activeSlide].animalName }}</span>
-                  <span class="shared-note-card__date">{{ formatDate(recentNotes[activeSlide].createdAt) }}</span>
-                </div>
-                <p class="shared-note-card__text">{{ truncateText(recentNotes[activeSlide].text) }}</p>
-                <p class="shared-note-card__author">{{ formatAuthor(recentNotes[activeSlide].author) }}</p>
+        <div
+          ref="carouselViewport"
+          class="carousel__viewport"
+          @scroll="handleCarouselScroll"
+        >
+          <article
+            v-for="note in recentNotes"
+            :key="note.id"
+            class="shared-note-card"
+            :style="getAnimalNoteThemeStyle(note)"
+          >
+            <img
+              :src="getAnimalImage(note)"
+              :alt="note.animalName"
+              class="shared-note-card__image"
+              @error="handleImageError"
+            />
+            <div class="shared-note-card__body">
+              <div class="shared-note-card__meta">
+                <span class="shared-note-card__animal">{{ note.animalName }}</span>
+                <span class="shared-note-card__date">{{ formatDate(note.createdAt) }}</span>
               </div>
-            </article>
-          </Transition>
+              <p class="shared-note-card__text">{{ truncateText(note.text) }}</p>
+              <p class="shared-note-card__author">{{ formatAuthor(note.author) }}</p>
+            </div>
+          </article>
         </div>
 
         <div v-if="recentNotes.length > 1" class="carousel__dots">
@@ -97,7 +100,7 @@
 </template>
 
 <script setup>
-import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import {
   formatVisitorNoteAuthor,
   formatVisitorNoteDate,
@@ -188,6 +191,7 @@ function truncateText(value) {
 
 const formatDate = formatVisitorNoteDate;
 const formatAuthor = formatVisitorNoteAuthor;
+const carouselViewport = ref(null);
 
 function normalizeName(value) {
   return String(value || '')
@@ -202,38 +206,60 @@ function handleImageError(event) {
   event.target.src = resolveImageUrl('');
 }
 
-// --- Carousel auto-scroll ---
 const activeSlide = ref(0);
-const slideDirection = ref('carousel-slide-next');
 let carouselTimer = null;
+let scrollSyncTimer = null;
 const CAROUSEL_INTERVAL = 4500;
 
-function setSlide(index, direction = 'carousel-slide-next') {
-  if (!recentNotes.value.length) return;
-  slideDirection.value = direction;
-  activeSlide.value = (index + recentNotes.value.length) % recentNotes.value.length;
+function getCardWidth() {
+  const viewport = carouselViewport.value;
+  const firstCard = viewport?.querySelector('.shared-note-card');
+  if (!viewport || !firstCard) return 0;
+
+  const styles = window.getComputedStyle(viewport);
+  const gap = Number.parseFloat(styles.columnGap || styles.gap || '0') || 0;
+  return firstCard.offsetWidth + gap;
+}
+
+function syncActiveSlide() {
+  const viewport = carouselViewport.value;
+  const step = getCardWidth();
+  if (!viewport || !step) return;
+
+  activeSlide.value = Math.round(viewport.scrollLeft / step);
+}
+
+function scrollToSlide(index, behavior = 'smooth') {
+  const viewport = carouselViewport.value;
+  const step = getCardWidth();
+  if (!viewport || !step) return;
+
+  const safeIndex = ((index % recentNotes.value.length) + recentNotes.value.length) % recentNotes.value.length;
+  activeSlide.value = safeIndex;
+  viewport.scrollTo({ left: safeIndex * step, behavior });
 }
 
 function nextSlide() {
-  setSlide(activeSlide.value + 1, 'carousel-slide-next');
+  if (recentNotes.value.length <= 1) return;
+  scrollToSlide(activeSlide.value + 1);
 }
 
 function goToSlide(index) {
-  const direction = index >= activeSlide.value ? 'carousel-slide-next' : 'carousel-slide-prev';
-  setSlide(index, direction);
+  pauseCarousel();
+  scrollToSlide(index);
+  resumeCarousel();
 }
 
 function startCarousel() {
-  if (recentNotes.value.length <= 1) return;
   stopCarousel();
+  if (recentNotes.value.length <= 1) return;
   carouselTimer = setInterval(nextSlide, CAROUSEL_INTERVAL);
 }
 
 function stopCarousel() {
-  if (carouselTimer) {
-    clearInterval(carouselTimer);
-    carouselTimer = null;
-  }
+  if (!carouselTimer) return;
+  clearInterval(carouselTimer);
+  carouselTimer = null;
 }
 
 function pauseCarousel() {
@@ -244,23 +270,34 @@ function resumeCarousel() {
   startCarousel();
 }
 
-watch(recentNotes, (val) => {
-  activeSlide.value = 0;
-  if (val.length > 1) {
-    setTimeout(startCarousel, 500);
-  } else {
-    stopCarousel();
+function handleCarouselScroll() {
+  if (scrollSyncTimer) {
+    clearTimeout(scrollSyncTimer);
   }
-});
+
+  scrollSyncTimer = window.setTimeout(() => {
+    syncActiveSlide();
+    scrollSyncTimer = null;
+  }, 90);
+}
+
+watch(recentNotes, async () => {
+  activeSlide.value = 0;
+  await nextTick();
+  scrollToSlide(0, 'auto');
+  startCarousel();
+}, { immediate: true });
 
 onMounted(() => {
-  if (recentNotes.value.length > 1) {
-    setTimeout(startCarousel, 1500);
-  }
+  startCarousel();
 });
 
 onBeforeUnmount(() => {
   stopCarousel();
+  if (scrollSyncTimer) {
+    clearTimeout(scrollSyncTimer);
+    scrollSyncTimer = null;
+  }
 });
 
 function getSpeciesThemeStyle(key) {
@@ -420,8 +457,17 @@ function getAnimalNoteThemeStyle(note) {
 }
 
 .carousel__viewport {
-  position: relative;
-  overflow: hidden;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  gap: 0.75rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
 }
 
 .carousel__dots {
@@ -457,6 +503,7 @@ function getAnimalNoteThemeStyle(note) {
   min-height: 110px;
   width: 100%;
   box-sizing: border-box;
+  scroll-snap-align: start;
 }
 
 .shared-note-card__image {
@@ -500,25 +547,6 @@ function getAnimalNoteThemeStyle(note) {
   line-height: 1.5;
   color: #43352e;
   white-space: pre-wrap;
-}
-
-.carousel-slide-next-enter-active,
-.carousel-slide-next-leave-active,
-.carousel-slide-prev-enter-active,
-.carousel-slide-prev-leave-active {
-  transition: opacity .24s ease, transform .24s ease;
-}
-
-.carousel-slide-next-enter-from,
-.carousel-slide-prev-leave-to {
-  opacity: 0;
-  transform: translateX(18px);
-}
-
-.carousel-slide-next-leave-to,
-.carousel-slide-prev-enter-from {
-  opacity: 0;
-  transform: translateX(-18px);
 }
 
 :global(:root[data-theme='dark']) .start-screen .animal-card {

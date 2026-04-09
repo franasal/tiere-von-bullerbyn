@@ -3,7 +3,7 @@
     "Franz": {
       "name": "Franz",
       "species": "pig",
-      "appearance_description": "Männlich, rosa, rechte Ohrmarke/Loch, normaler Rücken, gefaltete Ohren, langer Schwanz ohne Haare.",
+      "appearance_description": "Männlich, rosa, Ohrmarke/Loch rechts, spitze stehende Ohren, langer Schwanz ohne Haare, wenig Borsten.",
       "general_description": "Lange Haare an den Ohren. Haltungsstufe 1, Kümmerer – Ferkel untergewichtig, schlechte körperliche Verfassung, bedeuten für Tierindustrie Verluste, erreichen das Schlachtalter selten, kam zusammen mit Ferdinand nach Bullerbyn.",
       "image_url": "/animal-images/pigs/franz.jpg",
       "characteristics": {
@@ -16,7 +16,7 @@
     "Kiwi": {
       "name": "Kiwi",
       "species": "pig",
-      "appearance_description": "Männlich, rosa, schwarze Flecken im Gesicht, rechte Ohrmarke/Loch, spitzige Ohren, kurzer Schwanz.",
+      "appearance_description": "Männlich, rosa, schwarze Flecken im Gesicht, Ohrmarke/Loch rechts, spitze stehende Ohren, kurzer Schwanz.",
       "general_description": "Sehr redefreudig und kommunikativ, kommt auf einen zu, lässt sich gerne streicheln. Name wegen kleinem Kopf (wie eine Kiwi), mit Flasche aufgezogen, lebte zuerst im Haus der Familie.",
       "image_url": "/animal-images/pigs/kiwi.jpg",
       "characteristics": {
@@ -29,7 +29,7 @@
     "Ronja": {
       "name": "Ronja",
       "species": "pig",
-      "appearance_description": "Weiblich, grauer Rücken, rechte Ohrmarke/Loch, schwarze Flecken am Rücken bei der Hüfte, kurzer Schwanz.",
+      "appearance_description": "Weiblich, grauer Rücken, Ohrmarke/Loch links, schwarze Flecken am Rücken bei der Hüfte, spitze stehende Ohren, kurzer Schwanz.",
       "general_description": "Kümmerer, lag mit Hope und Feline in der Ferkelbucht, von Hedda adoptiert.",
       "image_url": "/animal-images/pigs/ronja.jpg",
       "characteristics": {
@@ -42,7 +42,7 @@
     "Ferdinand": {
       "name": "Ferdinand",
       "species": "pig",
-      "appearance_description": "Männlich, rosa, rechte Ohrmarke/Loch, runde behaarte Ohren, kurzer Schwanz.",
+      "appearance_description": "Männlich, rosa, Ohrmarke/Loch rechts, runde Ohren, kurzer Schwanz.",
       "general_description": "Ausschussprodukt aus Tierindustrie, Ferkel, das nicht richtig wächst, absterbendes Gewebe, Eitergeschwür, heute aber gesund.",
       "image_url": "/animal-images/pigs/ferdinand.jpg",
       "characteristics": {
@@ -55,7 +55,7 @@
     "Hedda": {
       "name": "Hedda",
       "species": "pig",
-      "appearance_description": "Weiblich, linke Ohrmarke/Loch, hängende Ohren, langer Schwanz mit Haaren.",
+      "appearance_description": "Weiblich, rosa, Ohrmarke/Loch links und rechts, hängende Ohren, langer Schwanz mit Haaren.",
       "general_description": "Sehr dominant, Saugleiste ausgelaugt, Mutter von Hope, Adoptivmutter von Ronja. Letztes Schwein, das nach Bullerbyn kam. War tragend in einem Zuchtbetrieb zur Aufklärung, wurde zusammen mit Nia gerettet und zog Ferkel auf. Im Pass als „saubissig“ eingestuft.",
       "image_url": "/animal-images/pigs/hedda.jpg",
       "characteristics": {
@@ -68,7 +68,7 @@
     "Nia": {
       "name": "Nia",
       "species": "pig",
-      "appearance_description": "Weiblich, linke Ohrmarke/Loch, hängende Ohren, langer Schwanz ohne Haare.",
+      "appearance_description": "Weiblich, rosa, Ohrmarke/Loch links und rechts, hängende Ohren, langer Schwanz ohne Haare.",
       "general_description": "Sehr dominant, Saugleiste ausgelaugt, Mutter von Feline. Gemeinsam mit Hedda gerettet, zog zusammen mit ihr Feline, Hope und Ronja auf.",
       "image_url": "/animal-images/pigs/nia.jpg",
       "characteristics": {
@@ -81,7 +81,7 @@
     "Feline": {
       "name": "Feline",
       "species": "pig",
-      "appearance_description": "Weiblich, rechte Ohrmarke/Loch, grosse Flecken im Gesicht und am Körper, kurzer Schwanz.",
+      "appearance_description": "Weiblich, Ohrmarke/Loch rechts, grosse Flecken im Gesicht und am Körper, kurzer Schwanz.",
       "general_description": "Deutlich schmaler als Ronja, kleinstes Ferkel des letzten Wurfs, bernsteinbraune Augen, Duroc-Anteil – daher etwas rötlicher.",
       "image_url": "/animal-images/pigs/feline.jpg",
       "characteristics": {
@@ -94,7 +94,7 @@
     "Rosalie": {
       "name": "Rosalie",
       "species": "pig",
-      "appearance_description": "Weiblich, linke Ohrmarke/Loch, rosa, kurzer Schwanz.",
+      "appearance_description": "Weiblich, Ohrmarke/Loch links, rosa, kurzer Schwanz.",
       "general_description": "Hat Buckel, humpelt/geht auffällig, sehr lang und schmal. Wurde unter Mutter gequetscht, war kurzzeitig gelähmt, mit Krankengymnastik geheilt.",
       "image_url": "/animal-images/pigs/rosalie.jpg",
       "characteristics": {
@@ -107,7 +107,7 @@
     "Hope": {
       "name": "Hope",
       "species": "pig",
-      "appearance_description": "Weiblich, linke Ohrmarke/Loch, rosa, geringelt langer Schwanz mit Haaren.",
+      "appearance_description": "Weiblich, Ohrmarke/Loch links, rosa, geringelt langer Schwanz mit Haaren.",
       "general_description": "Kleinste des Wurfs, Tochter von Hedda, wurde zusammen mit Feline und Ronja von Hedda und Nia aufgezogen.",
       "image_url": "/animal-images/pigs/hope.jpg",
       "characteristics": {
@@ -133,7 +133,7 @@
     "Maike": {
       "name": "Maike",
       "species": "pig",
-      "appearance_description": "Weiblich, rosa, voll behaart, rechte Ohrmarke/Loch.",
+      "appearance_description": "Weiblich, rosa, voll behaart, Ohrmarke/Loch rechts.",
       "general_description": "Sehr behaart, Mangalitza-Wollschwein. Kümmerling aus Biobetrieb, wurde gerne abgegeben, war lange dominant in der Rotte.",
       "image_url": "/animal-images/pigs/maike.jpg",
       "characteristics": {
@@ -234,10 +234,10 @@
       },
       "besonderheiten": "Wurde als Frischling nach illegaler Jagd gerettet und von einer Tierärztin aufgepäppelt."
     },
-    "Kale": {
-      "name": "Kale",
+    "Kalle": {
+      "name": "Kalle",
       "species": "goat",
-      "appearance_description": "Ziege, überwiegend braun, mit weißem Fleck auf der Nase.",
+      "appearance_description": "Ziege, überwiegend braun, mit weißem Fleck auf der Nase und Po.",
       "general_description": "",
       "image_url": "/animal-images/goat/kale.jpg"
     },

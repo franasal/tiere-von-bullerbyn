@@ -8,13 +8,120 @@ function resolveTraitLabel(key, value) {
   return question?.options?.[value] || value;
 }
 
-// Traits that should always appear in "So erkennst du mich" when present
-const ALWAYS_SHOW_TRAITS = ['earMark'];
+// Explicit morphology chip order per pig, aligned with the appearance copy.
+const UNIQUE_TRAIT_OVERRIDES = {
+  Franz: [
+    { key: 'sex' },
+    { key: 'earMark' },
+    { key: 'earForm', value: 'Spitz stehend' },
+    { key: 'tailType', value: 'Langer Schwanz ohne Haare' },
+    { key: 'bristleAmount', value: 'Wenig Borsten' }
+  ],
+  Kiwi: [
+    { key: 'sex' },
+    { key: 'spotPattern' },
+    { key: 'earMark' },
+    { key: 'earForm' },
+    { key: 'tailType', value: 'Kurz' }
+  ],
+  Ronja: [
+    { key: 'sex' },
+    { key: 'earMark' },
+    { key: 'spotPattern' },
+    { key: 'earForm', value: 'Spitz stehend' },
+    { key: 'tailType', value: 'Kurz' }
+  ],
+  Ferdinand: [
+    { key: 'sex' },
+    { key: 'earMark' },
+    { key: 'earForm' },
+    { key: 'tailType', value: 'Kurz' }
+  ],
+  Hedda: [
+    { key: 'sex' },
+    { key: 'earMark' },
+    { key: 'earPosture', value: 'Hängend' },
+    { key: 'tailType', value: 'Langer Schwanz mit Haaren' }
+  ],
+  Nia: [
+    { key: 'sex' },
+    { key: 'earMark' },
+    { key: 'earPosture', value: 'Hängend' },
+    { key: 'tailType', value: 'Langer Schwanz ohne Haare' }
+  ],
+  Feline: [
+    { key: 'sex' },
+    { key: 'earMark' },
+    { key: 'spotPattern' },
+    { key: 'tailType', value: 'Kurz' }
+  ],
+  Rosalie: [
+    { key: 'sex' },
+    { key: 'earMark' },
+    { key: 'tailType', value: 'Kurz' }
+  ],
+  Hope: [
+    { key: 'sex' },
+    { key: 'earMark' },
+    { key: 'tailType', value: 'Lang, geringelt, mit Haaren' }
+  ],
+  Justus: [
+    { key: 'sex' },
+    { key: 'coatAppearance' },
+    { key: 'earMark' }
+  ],
+  Maike: [
+    { key: 'sex' },
+    { key: 'coatAppearance' },
+    { key: 'earMark' }
+  ],
+  Milli: [
+    { key: 'sex' },
+    { key: 'sizeClass', value: 'Größtes' },
+    { key: 'pigType', value: 'Hängebauchschwein' },
+    { key: 'coatAppearance' }
+  ],
+  Vanilli: [
+    { key: 'sex' },
+    { key: 'sizeClass', value: 'Klein' },
+    { key: 'coatAppearance' },
+    { key: 'skinPattern' }
+  ],
+  Strolch: [
+    { key: 'sex' },
+    { key: 'coatAppearance', value: 'Heller Borstenwuchs' },
+    { key: 'humpPresent', value: 'Deutlicher Buckel' },
+    { key: 'tusksVisible', value: 'Stoßzähne' }
+  ],
+  Susi: [
+    { key: 'sex' },
+    { key: 'coatAppearance' }
+  ],
+  Frida: [
+    { key: 'sex' },
+    { key: 'earMark', value: 'Links' },
+    { key: 'coatAppearance' },
+    { key: 'tailType', value: 'Kurz' },
+    { key: 'livesAlone' }
+  ],
+  Lili: [
+    { key: 'sex' },
+    { key: 'pigType', value: 'Wildschwein' },
+    { key: 'coatAppearance', value: 'Braunes Fell' },
+    { key: 'wildBoarMarking', value: 'Schwarze Ohren mit weißen Haaren' }
+  ],
+  Gezi: [
+    { key: 'sex' },
+    { key: 'pigType', value: 'Wildschwein' },
+    { key: 'coatAppearance', value: 'Graues Fell' },
+    { key: 'wildBoarMarking', value: 'Schwarz behaarte Ohren und schwarzer Fleck am unteren Rücken' }
+  ]
+};
 
 /**
- * Return the 2-3 traits that most distinguish a pig from all others.
- * earMark is always included when present. Remaining slots filled
- * by most unique traits (shared by fewest others).
+ * Return the morphology traits that should appear in "So erkennst du mich".
+ * These are curated per pig to match the appearance description, while
+ * intentionally omitting skin color chips like "Rosa".
  */
 export function getUniqueTraits(pigName) {
   const pig = pigProfiles.find((p) => p.name === pigName);
@@ -36,18 +143,21 @@ export function getUniqueTraits(pigName) {
     });
   }
 
-  // Always-show traits go first
-  const pinned = scored.filter((t) => ALWAYS_SHOW_TRAITS.includes(t.key));
-  const rest = scored
-    .filter((t) => !ALWAYS_SHOW_TRAITS.includes(t.key))
-    .sort((a, b) => a.sharedBy - b.sharedBy);
-
-  const result = [...pinned];
-  for (const t of rest) {
-    if (result.length >= 3) break;
-    result.push(t);
+  const overrideKeys = UNIQUE_TRAIT_OVERRIDES[pigName];
+  if (overrideKeys?.length) {
+    return overrideKeys
+      .map((override) => {
+        const trait = scored.find((item) => item.key === override.key);
+        if (!trait) return null;
+        return override.value
+          ? { ...trait, value: override.value }
+          : trait;
+      })
+      .filter(Boolean);
   }
-  return result;
+  return scored
+    .filter((trait) => trait.key !== 'skinColor')
+    .sort((a, b) => a.sharedBy - b.sharedBy);
 }
 
 /**
