@@ -118,4 +118,39 @@ function resolveCategory(step) {
   from { opacity: 1; transform: translateX(0); }
   to   { opacity: 0; transform: translateX(10px); }
 }
+
+/* ── Dark mode ── */
+:global(:root[data-theme='dark']) .steckbrief {
+  background: linear-gradient(135deg, var(--theme-surface, rgba(18, 20, 26, 0.92)), var(--theme-surface-soft, rgba(24, 27, 35, 0.92)));
+  border-color: var(--theme-border, #2a2e37);
+}
+
+:global(:root[data-theme='dark']) .steckbrief-title {
+  color: var(--theme-text, #f3eee8);
+}
+
+:global(:root[data-theme='dark']) .trait-row {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+:global(:root[data-theme='dark']) .trait-row:hover {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+:global(:root[data-theme='dark']) .trait-category {
+  color: var(--theme-muted, #a89f98);
+}
+
+:global(:root[data-theme='dark']) .trait-value {
+  color: var(--theme-text, #f3eee8);
+}
+
+:global(:root[data-theme='dark']) .trait-undo {
+  color: #666;
+}
+
+:global(:root[data-theme='dark']) .trait-row:hover .trait-undo {
+  color: #ff8a80;
+}
 </style>

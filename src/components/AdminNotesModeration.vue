@@ -50,7 +50,7 @@
 
           <article v-for="note in group.notes" :key="note.id" class="pending-note-card">
             <div class="pending-note-meta">
-              <span>{{ note.author || 'Anonym' }}</span>
+              <span>{{ formatAuthor(note.author) }}</span>
               <span>{{ formatDate(note.createdAt) }}</span>
             </div>
             <p class="pending-note-text">{{ note.text }}</p>
@@ -72,7 +72,7 @@
 
 <script setup>
 import { watch } from 'vue';
-import { useAdminNotesModeration } from '../composables/useSharedNotes.js';
+import { formatVisitorNoteAuthor, useAdminNotesModeration } from '../composables/useSharedNotes.js';
 import { configuredAdminEmail } from '../lib/firebase.js';
 
 const props = defineProps({
@@ -99,6 +99,8 @@ async function connectWithPanelPassword() {
   if (!configuredAdminEmail || !props.adminPassword) return;
   await login(configuredAdminEmail, props.adminPassword);
 }
+
+const formatAuthor = formatVisitorNoteAuthor;
 
 function formatDate(value) {
   if (!value) return 'Gerade eben';

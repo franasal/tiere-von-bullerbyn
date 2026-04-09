@@ -44,6 +44,10 @@
       />
     </div>
 
+    <div v-if="backgroundFacts && Object.keys(backgroundFacts).length" class="card-padded">
+      <AnimalBackgroundFacts :facts="backgroundFacts" />
+    </div>
+
     <!-- Unique traits: "So erkennst du mich" -->
     <div v-if="uniqueTraits && uniqueTraits.length" class="unique-traits">
       <h3 class="section-title">So erkennst du mich</h3>
@@ -72,6 +76,7 @@
 import { ref, onMounted } from 'vue';
 import ExpandableImage from './ExpandableImage.vue';
 import AnimalCharacteristics from './AnimalCharacteristics.vue';
+import AnimalBackgroundFacts from './AnimalBackgroundFacts.vue';
 import AnimalNoteCarousel from './AnimalNoteCarousel.vue';
 import VisitorNotes from './VisitorNotes.vue';
 
@@ -83,6 +88,7 @@ defineProps({
   uniqueTraits: { type: Array, default: () => [] },
   similarAnimals: { type: Array, default: () => [] },
   characteristics: { type: Object, default: () => ({}) },
+  backgroundFacts: { type: Object, default: () => ({}) },
   besonderheiten: { type: String, default: '' }
 });
 
@@ -215,6 +221,7 @@ onMounted(() => {
 .card-padded {
   width: 100%;
   padding: 0 1rem;
+  box-sizing: border-box;
 }
 
 /* Unique traits section */
@@ -222,17 +229,17 @@ onMounted(() => {
   font-size: .9rem; color: #5d4037; margin: .75rem 0 .4rem;
   text-align: left; width: 100%;
 }
-.unique-traits { width: 100%; padding: 0 1rem; }
+.unique-traits { width: 100%; padding: 0 1.15rem; box-sizing: border-box; }
 .trait-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.45rem;
+  gap: 0.55rem;
 }
 .trait-card {
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.5rem 0.6rem;
+  padding: 0.58rem 0.7rem;
   background: rgba(244,143,177,.12);
   border: 1px solid #f8bbd0;
   border-radius: 10px;
@@ -334,5 +341,68 @@ onMounted(() => {
 @keyframes confettiFall {
   0%   { opacity: 1; transform: translateY(0) rotate(0deg); }
   100% { opacity: 0; transform: translateY(260px) translateX(var(--drift, 0px)) rotate(720deg); }
+}
+
+/* ── Dark mode ── */
+:global(:root[data-theme='dark']) .result-card {
+  background-color: var(--theme-surface-strong, #0e1015);
+  border-color: var(--theme-border, #2a2e37);
+  box-shadow: var(--theme-shadow);
+}
+
+:global(:root[data-theme='dark']) .info-card {
+  background: var(--theme-surface, rgba(18, 20, 26, 0.92));
+  border-color: var(--theme-border, #2a2e37);
+}
+
+:global(:root[data-theme='dark']) .info-card-label {
+  color: var(--theme-muted, #a89f98);
+}
+
+:global(:root[data-theme='dark']) .info-card-text {
+  color: var(--theme-text, #f3eee8);
+}
+
+:global(:root[data-theme='dark']) .trait-card {
+  background: rgba(244, 143, 177, 0.08);
+  border-color: rgba(244, 143, 177, 0.22);
+}
+
+:global(:root[data-theme='dark']) .trait-card-label {
+  color: var(--theme-muted, #a89f98);
+}
+
+:global(:root[data-theme='dark']) .trait-card-value {
+  color: var(--theme-text, #f3eee8);
+}
+
+:global(:root[data-theme='dark']) .section-title {
+  color: var(--theme-text, #f3eee8);
+}
+
+:global(:root[data-theme='dark']) .similar-card {
+  background: var(--theme-surface, rgba(18, 20, 26, 0.92));
+  border-color: var(--theme-border, #2a2e37);
+}
+
+:global(:root[data-theme='dark']) .similar-name {
+  color: var(--theme-text, #f3eee8);
+}
+
+:global(:root[data-theme='dark']) .diff-trait {
+  color: #d7c3b5;
+}
+
+:global(:root[data-theme='dark']) .diff-mine {
+  color: var(--theme-text, #f3eee8);
+}
+
+:global(:root[data-theme='dark']) .diff-theirs {
+  color: var(--theme-muted, #a89f98);
+}
+
+:global(:root[data-theme='dark']) .diff-th {
+  color: var(--theme-muted, #a89f98);
+  border-bottom-color: var(--theme-border, #2a2e37);
 }
 </style>

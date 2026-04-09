@@ -3,11 +3,22 @@
 Männlich, rosa, rechte Ohrmarke/Loch, normaler Rücken, gefaltete Ohren, langer Schwanz ohne Haare.
 
 ### Geschichte
-Lange Haare an den Ohren. Haltungsstufe 1, Kümmerer – Ferkel untergewichtig, schlechte körperliche Verfassung, bedeuten für Tierindustrie Verluste, erreichen das Schlachtalter selten, kam zusammen mit Ferdinand nach Bullerbyn.
-
+Franz ist der Bruder von Ferdinand. Eigentlich sollte ihre gemeinsame Schwester Sissi zu uns kommen, doch sie ist in der Nacht vor der Befreiung gestorben – so wurde Ferdinand ausgewählt.
+Franz und sein Bruder Ferdinand sind unzertrennlich und liegen immer nebeneinander. Während Ferdinand und die anderen Schweine oft draußen unterwegs sind, genießt Franz die Ruhe im Stall.
+Im Kontakt mit uns Menschen ist Franz sehr kommunikativ und freut sich über Aufmerksamkeit.
+Ankunftsalter: Ferkel, Kümmerling
+Art: Edelschwein-Hybrid
+Herkunft: konventioneller Ferkelvermehrbetrieb
+Retterin: Samara vom Team Tierschutz
 ## Kiwi
 ### Erscheinung
-Männlich, rosa, schwarze Flecken im Gesicht, rechte Ohrmarke/Loch, spitzige Ohren, kurzer Schwanz.
+Kiwi war der kleinste Kümmerling, den wir bisher erlebt haben – so kam er auch zu seinem Namen, da sein Kopf kleiner als eine Kiwi war.
+Er ist sehr eng mit Moritz verbunden, da er die ersten Wochen auf seiner Brust geschlafen hat und die beiden bis heute besonders viel Zeit miteinander verbringen.
+In der Rotte kuschelt er besonders gern mit seiner Adoptivmama Hedda und verbringt gerne Zeit mit seinen Freundinnen Hope und Feline.
+Ankunftsalter: Ferkel, Kümmerling
+Art: Edelschwein-Hybrid
+Herkunft: konventioneller Ferkelvermehrbetrieb
+Retterin: Samara vom Team Tierschutz
 
 ### Geschichte
 Sehr redefreudig und kommunikativ, kommt auf einen zu, lässt sich gerne streicheln. Name wegen kleinem Kopf (wie eine Kiwi), mit Flasche aufgezogen, lebte zuerst im Haus der Familie.
@@ -17,112 +28,184 @@ Sehr redefreudig und kommunikativ, kommt auf einen zu, lässt sich gerne streich
 Weiblich, grauer Rücken, rechte Ohrmarke/Loch, schwarze Flecken am Rücken bei der Hüfte, kurzer Schwanz.
 
 ### Geschichte
-Kümmerer, lag mit Hope und Feline in der Ferkelbucht, von Hedda adoptiert.
+Ronja ist das Adoptivkind von Hedda und Nia. Zu Beginn war sie immer im Schatten von Hope und Feline unterwegs, doch nun hat sie Lilli als ihre neue beste Freundin ans Herz geschlossen.
+Die beiden sind immer zusammen unterwegs, und Ronja hilft Lilli bei der Integration in die Schweinefamilie.
+Ronja ist ein sensibles und liebevolles Schweinemädchen. Man kann sie gut an den schwarzen Flecken erkennen.
+Ankunftsalter: Ferkel, Kümmerling
+Art: Edelschwein-Hybrid
+Herkunft: konventioneller Ferkelvermehrbetrieb
+Retterin: Samara vom Team Tierschutz
 
 ## Ferdinand
 ### Erscheinung
 Männlich, rosa, rechte Ohrmarke/Loch, runde behaarte Ohren, kurzer Schwanz.
 
 ### Geschichte
-Ausschussprodukt aus Tierindustrie, Ferkel, das nicht richtig wächst, absterbendes Gewebe, Eitergeschwür, heute aber gesund.
+Ferdinand ist der Bruder von Franz, welcher – aus seiner Sicht – Glück hatte, da eigentlich die gemeinsame Schwester Sissi zu uns kommen sollte. Doch sie ist in der Nacht vor der Befreiung gestorben, sodass Ferdinand seinen Bruder begleiten durfte.
+Die beiden Brüder sind unzertrennlich. Ferdinand führt außerdem eine enge Freundschaft mit Rosalie und Maike.
+Ferdinand hat das süßeste Schweinelächeln in Bullerbyn und freut sich über jede Streicheleinheit. Er ist auch der Liebling der Bullerbynbäuerin Anna.
+Ankunftsalter: Ferkel, Kümmerling
+Art: Edelschwein-Hybrid
+Herkunft: konventioneller Ferkelvermehrbetrieb
+Retterin: Samara vom Team Tierschutz
 
 ## Hedda
 ### Erscheinung
 Weiblich, linke Ohrmarke/Loch, hängende Ohren, langer Schwanz mit Haaren.
 
 ### Geschichte
-Sehr dominant, Saugleiste ausgelaugt, Mutter von Hope, Adoptivmutter von Ronja und Gezi. War tragend in einem Zuchtbetrieb zur Aufklärung, wurde zusammen mit Nia gerettet und zog Ferkel auf. Im Pass als „saubissig“ eingestuft.
+Hedda und Nia sind ehemalige „Muttersauen“, die jeweils in fünf Jahren über 130 Ferkel an die Industrie verloren haben. Die beiden haben den Ferkelvermehrbetrieb nicht allein verlassen, sondern wir konnten beiden Müttern die Rettung eines ihrer Babys sowie ihres gemeinsamen Adoptivkindes Ronja ermöglichen.
+Hope ist die leibliche Tochter von Hedda und die beiden haben noch heute eine sehr enge Bindung.
+Hedda führt die Rotte an und ist die liebevolle Mama für all die anderen, die keine haben. Sie hat ihren Babys immer vorgesungen und versucht, sie vor dem Bauern zu schützen – daher hatte sie den Vermerk „sehr bissig“.
+Die Industrie hat bei ihr eine posttraumatische Belastungsstörung hinterlassen. Hedda – die Kämpferin – findet Frieden in ihrer Familie. Manche Verletzungen kann die Zeit nicht heilen, doch sie dabei zu beobachten, wie sie ihre Liebe in ihre neue Familie trägt, erfüllt unsere und viele andere Herzen.
+Ankunftsalter: 5 Jahre, ehemalige Muttersau
+Art: Landschwein-Hybrid
+Herkunft: konventioneller Ferkelvermehrbetrieb
+Retterin: Samara vom Team Tierschutz
 
 ## Nia
 ### Erscheinung
 Weiblich, linke Ohrmarke/Loch, hängende Ohren, langer Schwanz ohne Haare.
 
 ### Geschichte
-Sehr dominant, Saugleiste ausgelaugt, Mutter von Feline. Gemeinsam mit Hedda gerettet, zog zusammen mit ihr Feline, Hope und Ronja auf.
+Nia und Hedda sind ehemalige „Muttersauen“, die jeweils in fünf Jahren über 130 Ferkel an die Industrie verloren haben. Die beiden haben den Ferkelvermehrbetrieb nicht allein verlassen, sondern wir konnten beiden Müttern die Rettung eines ihrer Babys sowie ihres gemeinsamen Adoptivkindes Ronja ermöglichen.
+Feline ist die leibliche Tochter von Nia und die beiden haben noch heute eine sehr enge Bindung. Nia unterstützt Hedda bei der Anführung der Rotte, und beide kümmern sich besonders liebevoll um die jüngeren Schweinchen. Eine großherzige Patchworkfamilie.
+Ankunftsalter: 5 Jahre, ehemalige Muttersau
+Art: Landschwein-Hybrid
+Herkunft: konventioneller Ferkelvermehrbetrieb
+Retterin: Samara vom Team Tierschutz
 
 ## Feline
 ### Erscheinung
 Weiblich, rechte Ohrmarke/Loch, grosse Flecken im Gesicht und am Körper, kurzer Schwanz.
 
 ### Geschichte
-Deutlich schmaler als Ronja, kleinstes Ferkel des letzten Wurfs, bernsteinbraune Augen, Duroc-Anteil – daher etwas rötlicher.
+Feline ist die leibliche Tochter von Nia und die rechte Hand von Hope, so wie ihre Mama Nia für Hedda ist. Die beiden eifern ihren Müttern nach.
+Das Trio Feline, Hope und Kiwi ist viel gemeinsam unterwegs. Feline kuschelt am liebsten mit ihrer Mama.
+Durch die grauen Flecken und die leicht braun-orangenen Borsten im Sommer kann man sie gut erkennen.
+Ankunftsalter: Ferkel, Kümmerling
+Art: Edelschwein-Hybrid
+Herkunft: konventioneller Ferkelvermehrbetrieb
+Retterin: Samara vom Team Tierschutz
 
 ## Rosalie
 ### Erscheinung
 Weiblich, linke Ohrmarke/Loch, rosa, kurzer Schwanz.
 
 ### Geschichte
-Hat Buckel, humpelt/geht auffällig, sehr lang und schmal. Wurde unter Mutter gequetscht, war kurzzeitig gelähmt, mit Krankengymnastik geheilt.
+Rosalie kam – wie die meisten – als Kümmerling auf die Welt. Leider wurde sie von ihrer Mutter versehentlich eingequetscht, was zur Folge hatte, dass sie eine Lähmung in der hinteren Hüfte hatte.
+In Bullerbyn angekommen, wurde die Lähmung mit Physiotherapie behandelt, und sie kann heute – wenn auch leicht eingeschränkt – wieder laufen.
+Maike ist ihre beste Freundin, und sie kuschelt auch gerne mit Franz und Ferdinand. Kuscheleinheiten mit den menschlichen Bullerbyner*innen werden aktiv eingefordert, und sie ist unsere Buddelweltmeisterin.
+Ankunftsalter: Ferkel, Kümmerling
+Art: Edelschwein-Hybrid
+Herkunft: konventioneller Ferkelvermehrbetrieb
+Retterin: Samara vom Team Tierschutz
 
 ## Hope
 ### Erscheinung
 Weiblich, linke Ohrmarke/Loch, rosa, geringelt langer Schwanz mit Haaren.
 
 ### Geschichte
-Kleinste des Wurfs, Tochter von Hedda, wurde zusammen mit Feline und Ronja von Hedda und Nia aufgezogen.
+Hope ist die leibliche Tochter von Hedda und die Anführerin der Jungschweine. Sie tut alles, um bereit zu sein, die Position ihrer Mama zu übernehmen.
+Ihre besten Freund*innen sind Feline und Kiwi. Sie kuschelt nicht nur gerne mit ihrer Mama, sondern auch mit uns menschlichen Bullerbyner*innen.
+Man merkt, wie sehr sie ihrer Mama nahesteht und von ihr lernt. Hope fällt durch ihren langen Ringelschwanz und den großen Schlitz im linken Ohr auf.
+Ankunftsalter: Ferkel, Kümmerling
+Art: Edelschwein-Hybrid
+Herkunft: konventioneller Ferkelvermehrbetrieb
+Retterin: Samara vom Team Tierschutz
 
 ## Justus
 ### Erscheinung
 Männlich, komplett gefleckt, voll behaart, keine Ohrmarke/Loch.
 
 ### Geschichte
-Hält sich getrennt von der Rotte, frisst, schläft, liegt separat. Wurde im Biobetrieb nicht geschlachtet, als Haustier gehalten. Kann nicht gut mit anderen Schweinen kommunizieren.
+Justus hat es nicht nur geschafft, den Biobetrieb lebendig zu verlassen, sondern auch den Landwirt davon zu überzeugen, die Tierausbeutung zu beenden.
+Justus lebte sehr lange alleine beim Bauern, was seine Integration in die Rotte erschwerte.
+Er ist ein sensibler Riese – man müsste meinen, Justus könnte sich ohne Probleme gegen alle durchsetzen, doch er zieht lieber den Schwanz ein und sucht das Weite.
+Justus hat seinen eigenen Stall, und gelegentlich versuchen Maike und Rosalie, sich ihm zu öffnen. Manchmal klappt es, dass die drei – oder eine von beiden – mit ihm kuschelt.
+Art: Schwäbisch-Hällisches Landschwein
 
 ## Maike
 ### Erscheinung
 Weiblich, rosa, voll behaart, rechte Ohrmarke/Loch.
 
 ### Geschichte
-Sehr behaart, Mangalitza-Wollschwein. Kümmerling aus Biobetrieb, wurde gerne abgegeben, war lange dominant in der Rotte.
+Maike ist eine Wollsau, die noch als Ferkel nach Bullerbyn kam.
+Bevor Hedda und Nia mit ihren Kindern zu uns kamen, war Maike noch die Rottenanführerin. Diesen Posten konnte sie jedoch nicht gegen die beiden großen Mütter verteidigen.
+Maike ist besonders eng mit Rosalie, Ferdinand, Gezi und Franz verbunden. Dem Außenseiter Justus nähert sie sich immer mehr an, auch wenn es ihm schwerfällt, das anzunehmen.
+Maike ist den menschlichen Bullerbyner*innen gegenüber sehr verschmust.
 
 ## Milli
 ### Erscheinung
 Weiblich, größtes Hängebauchschwein, schwarz-weiße Borsten am ganzen Körper.
 
 ### Geschichte
-Gemeinsam mit Vanilli vor dem Schlachten gerettet. Ihre Halter:innen begingen Suizid, Nachbar:innen griffen ein.
+Gemeinsam mit Vanilli vor dem Schlachten gerettet. Ihre Halter:innen Milli und Vanilli landeten nach einem Mordfall im Nürnberger Tierheim und durften anschließend bei Susi und Strolchi einziehen.
+Milli fällt durch ihre dunkelgraue Haut mit einzelnen dunklen Flecken auf.
+In der Rausche fordert Milli Massagen von den menschlichen Bullerbyner*innen ein, und wenn sie einmal zwickt, ist sie danach immer sehr beschämt und bemüht, es wieder gutzumachen.
 
 ## Vanilli
 ### Erscheinung
 Weiblich, klein, Borsten auf dem Rücken (Punk-Look), halb rosa, halb schwarz.
 
 ### Geschichte
-Ihre Halter:innen begingen Suizid, Angehörige wollten sie schlachten lassen – Nachbar:innen griffen ein.
+Vanilli und Milli landeten nach einem Mordfall im Nürnberger Tierheim und durften anschließend bei Susi und Strolchi einziehen.
+Vanilli fällt durch ihre weißen Borsten auf, und im Sommer ähnelt sie eher einem Tapir, nachdem sie ihre ganzen Borsten abgeworfen hat.
+Vanilli ist schüchtern, doch Kuscheln mit den menschlichen Bullerbyner*innen findet sie besonders toll.
 
 ## Strolch
 ### Erscheinung
 Männlich, heller Borstenwuchs, deutlicher Buckel, Stoßzähne.
 
 ### Geschichte
-Gemeinsam mit Susi vor dem Schlachten gerettet, lebt mit ihr in Bullerbyn.
+Strolchi und Susi sind die ersten Schweine, die nach Bullerbyn gezogen sind.
+Die beiden Hängebauchschweine sind mittlerweile über 15 Jahre alt und genießen ihren gemeinsamen Lebensabend.
+Strolchi kann man gut an seinem grauen Körper und den großen Hauern erkennen.
+Die meiste Zeit des Tages verbringen die beiden kuschelnd miteinander und sehen dabei aus wie Yin und Yang.
 
 ## Susi
 ### Erscheinung
 Weiblich, komplett schwarz mit Borsten im Nacken.
 
 ### Geschichte
-Angehörige wollten sie nach Tod des Halters schlachten lassen, Enkel rettete sie. Erste Bewohnerin von Bullerbyn.
+Susi und Strolchi sind die ersten Schweine, die nach Bullerbyn gezogen sind.
+Die beiden Hängebauchschweine sind mittlerweile über 15 Jahre alt und genießen ihren gemeinsamen Lebensabend.
+Susi kann man gut an ihrem schwarzen Körper erkennen.
+Die meiste Zeit des Tages verbringen die beiden kuschelnd miteinander und sehen dabei aus wie Yin und Yang.
 
 ## Frida
 ### Erscheinung
 Weiblich, linke Ohrmarke, orangefarbene Haare, kurzer Schwanz. Lebt allein, getrennt von der Rotte.
 
 ### Geschichte
-Stark unterernährt und apathisch gefunden, heute Palliativpatientin in Bullerbyn.
+Frida ist geistig und körperlich behindert. Sie wurde als Notfall von Samara aus dem Ferkelvermehrbetrieb gerettet. Frida verweigerte knapp 32 Stunden die Nahrungsaufnahme – ihr Überleben ist ein Wunder.
+In Veganien muss sie leider alleine leben, da das Zusammenleben mit anderen Schweinen einfach nicht funktioniert und auch nicht von ihr angestrebt wird.
+Frida hat nun seit Jahren immer wieder Herzattacken und Anfälle, die wir mittlerweile mit Medikamenten in den Griff bekommen.
+Frida dreht ihre Runden im vorderen Bereich und liebt es, im Sommer zu baden. Am meisten Spaß macht es ihr, wenn sie mit ihrem Rüssel unter Wasser blubbern kann.
+Ankunftsalter: Ferkel, Kümmerling
+Art: Edelschwein-Hybrid
+Herkunft: konventioneller Ferkelvermehrbetrieb
+Retterin: Samara vom Team Tierschutz
 
 ## Lili
 ### Erscheinung
 Weiblich, Wildschwein, braunes Fell, schwarze Ohren mit weißen Haaren.
 
 ### Geschichte
-Unverwechselbar mit Gezi, lebt gemeinsam mit ihr in Bullerbyn.
+Lilli wurde als Frischling allein aufgefunden und hatte eine schwere Augenentzündung, durch die sie eine Sehbehinderung zurückbehalten hat.
+Bei uns in Veganien angekommen, lebte sie zunächst bei den Hängebauchschweinen, und als sie groß genug war, durfte sie zur großen Schweinerotte ziehen.
+Ihre beste Freundin ist Ronja – Lilli klebt förmlich an ihr.
+Sie genießt und sucht die Zuneigung und Nähe zu Artgenossen, meidet jedoch Menschen.
 
 ## Gezi
 ### Erscheinung
 Weiblich, Wildschwein, graues Fell, schwarz behaarte Ohren und ein schwarzer Fleck am unteren Rücken.
 
 ### Geschichte
-Wurde nach illegaler Jagd im Straßengraben gefunden, von Tierärztin aufgepäppelt und kam nach Bullerbyn.
+Gezi wurde als Frischling durch eine Treibjagd von ihrer Mutter getrennt und anschließend von einer Tierärztin in einem Straßengraben gefunden. Die Tierärztin hat sie aufgepäppelt und zu uns vermittelt.
+Gezi hat es faustdick hinter den Ohren. Gezi war so frech, dass sie nicht bei Frida und den Hängebauchschweinen integriert werden konnte.
+Als sie groß genug war, durfte sie in die große Schweinerotte umziehen, wo sie schnell lernte, wie sie sich nicht verhalten darf. Das Frechsein hat sie jedoch nie komplett abgelegt.
+Ihre Adoptivmama ist Hedda, und Maike ist ihre Tante.
 
 ## Kalle
 ### Erscheinung
@@ -215,7 +298,7 @@ Weißes Schaf ohne Hörner.
 ### Geschichte
 Die Geschwister Lissi und Liso stammen von einem ehemaligen Schäfer aus der Region, der die beiden seiner Tochter zuliebe verschont hat. Lissi ist eine liebevolle und ruhige Seele.
 
-## Lisso
+## Liso
 ### Erscheinung
 Weißes Schaf mit kleinen Hörnern.
 

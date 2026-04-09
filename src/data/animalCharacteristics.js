@@ -51,7 +51,7 @@ export const ANIMAL_CHARACTERISTICS = {
   Samu: { menschenfreundlichkeit: 1, aktivitaet: 3, neugier: 3 },
   Raven: { menschenfreundlichkeit: 3, aktivitaet: 3, neugier: 3 },
   Lissi: { menschenfreundlichkeit: 3, aktivitaet: 3, neugier: 3 },
-  Lisso: { menschenfreundlichkeit: 3, aktivitaet: 3, neugier: 3 },
+  Liso: { menschenfreundlichkeit: 3, aktivitaet: 3, neugier: 3 },
   Senta: { menschenfreundlichkeit: 3, aktivitaet: 1, neugier: 3 },
   Pablo: { menschenfreundlichkeit: 3, aktivitaet: 3, neugier: 3 },
   Miela: { menschenfreundlichkeit: 5, aktivitaet: 1, neugier: 3 },

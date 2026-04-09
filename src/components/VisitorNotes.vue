@@ -28,7 +28,7 @@
           v-model="authorName"
           class="author-input"
           placeholder="Dein Name (optional)"
-          maxlength="40"
+          maxlength="30"
         />
         <button
           type="submit"
@@ -220,5 +220,60 @@ async function handleSubmit() {
   .note-form-row {
     flex-direction: column;
   }
+}
+
+/* ── Dark mode ── */
+:global(:root[data-theme='dark']) .visitor-notes {
+  background: var(--theme-surface, rgba(18, 20, 26, 0.92));
+  border-color: var(--theme-border, #2a2e37);
+}
+
+:global(:root[data-theme='dark']) .section-title {
+  color: var(--theme-text, #f3eee8);
+}
+
+:global(:root[data-theme='dark']) .notes-hint,
+:global(:root[data-theme='dark']) .notes-status,
+:global(:root[data-theme='dark']) .notes-helper,
+:global(:root[data-theme='dark']) .notes-empty {
+  color: var(--theme-muted, #a89f98);
+}
+
+:global(:root[data-theme='dark']) .notes-count {
+  background: rgba(129, 199, 132, 0.08);
+  border-color: rgba(129, 199, 132, 0.18);
+  color: #a5d6a7;
+}
+
+:global(:root[data-theme='dark']) .notes-status {
+  background: rgba(129, 199, 132, 0.06);
+  border-color: rgba(129, 199, 132, 0.14);
+}
+
+:global(:root[data-theme='dark']) .notes-status-error {
+  color: #ffb3ad;
+  background: rgba(255, 126, 115, 0.1);
+}
+
+:global(:root[data-theme='dark']) .note-input,
+:global(:root[data-theme='dark']) .author-input {
+  background: var(--theme-input-bg, rgba(14, 17, 23, 0.94));
+  color: var(--theme-text, #f3eee8);
+  border-color: var(--theme-border-strong, #3a3e47);
+}
+
+:global(:root[data-theme='dark']) .note-input:focus,
+:global(:root[data-theme='dark']) .author-input:focus {
+  border-color: #66bb6a;
+  box-shadow: 0 0 0 2px rgba(102, 187, 106, 0.18);
+}
+
+:global(:root[data-theme='dark']) .note-submit {
+  background: #4caf50;
+  color: #fff;
+}
+
+:global(:root[data-theme='dark']) .note-submit:hover:not(:disabled) {
+  background: #43a047;
 }
 </style>

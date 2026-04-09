@@ -261,6 +261,24 @@ button:focus-visible {
     0 0 26px color-mix(in srgb, var(--theme-accent) 14%, transparent) !important;
 }
 
+:root[data-theme='dark'] .start-screen .animal-card {
+  background: color-mix(in srgb, var(--group-accent-soft, #fafafa) 22%, #0f1218 78%) !important;
+  color: color-mix(in srgb, var(--group-text, #333) 18%, white 82%) !important;
+  border-color: var(--group-accent-border, #d98357) !important;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--group-accent-border, #d98357) 32%, transparent),
+    0 10px 24px rgba(0, 0, 0, 0.24) !important;
+}
+
+:root[data-theme='dark'] .start-screen .animal-card:hover {
+  background: var(--group-accent, #e0e0e0) !important;
+  color: #fff !important;
+  border-color: var(--group-accent, #d98357) !important;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--group-accent, #d98357) 30%, transparent),
+    0 14px 28px rgba(0, 0, 0, 0.28) !important;
+}
+
 :root[data-theme='dark'] .identify-view,
 :root[data-theme='dark'] .result-card,
 :root[data-theme='dark'] .visitor-notes,

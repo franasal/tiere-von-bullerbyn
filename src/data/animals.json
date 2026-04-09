@@ -388,17 +388,17 @@
       "name": "Lissi",
       "species": "sheep",
       "appearance_description": "Weißes Schaf ohne Hörner.",
-      "general_description": "Schwester von Lisso.",
+      "general_description": "Schwester von Liso.",
       "image_url": "/animal-images/sheep/lissi.jpg",
       "characteristics": {
         "menschenfreundlichkeit": 2,
         "aktivitaet": 2,
         "neugier": 2
       },
-      "besonderheiten": "Schwester von Lisso – die beiden sind fast unzertrennlich."
+      "besonderheiten": "Schwester von Liso – die beiden sind fast unzertrennlich."
     },
-    "Lisso": {
-      "name": "Lisso",
+    "Liso": {
+      "name": "Liso",
       "species": "sheep",
       "appearance_description": "Weißes Schaf mit kleinen Hörnern.",
       "general_description": "Schwester von Lissi.",

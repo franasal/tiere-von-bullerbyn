@@ -28,7 +28,7 @@ import {
 const MAX_NOTES_PER_DAY = 3;
 const MIN_NOTE_LENGTH = 10;
 const MAX_NOTE_LENGTH = 500;
-const MAX_AUTHOR_LENGTH = 40;
+const MAX_AUTHOR_LENGTH = 30;
 const LOCAL_RATE_LIMIT_KEY = 'shared_notes_rate_limit_v1';
 
 const currentUser = ref(auth?.currentUser ?? null);
@@ -180,11 +180,11 @@ export function formatVisitorNoteDate(value) {
 
 export function formatVisitorNoteAuthor(value) {
   const author = String(value || '').trim();
-  if (!author) return 'Anonym geteilt';
+  if (!author) return 'Anonymer Fan';
 
   const anonymousAuthor = parseAnonymousAuthor(author);
   if (anonymousAuthor) {
-    return `anonym_${anonymousAuthor.animalKey}_fan`;
+    return 'Anonymer Fan';
   }
 
   return author;

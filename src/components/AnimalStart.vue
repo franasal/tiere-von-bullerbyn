@@ -522,23 +522,21 @@ function getAnimalNoteThemeStyle(note) {
 }
 
 :global(:root[data-theme='dark']) .start-screen .animal-card {
-  background: rgba(15, 17, 22, 0.92) !important;
-  color: var(--theme-text, #f3eee8) !important;
+  background: var(--group-accent-soft, #fafafa) !important;
+  color: var(--group-text, #333) !important;
   border-color: var(--group-accent-border, #d98357) !important;
   box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--group-accent-border, #d98357) 30%, transparent),
-    0 14px 28px rgba(0, 0, 0, 0.3),
-    0 0 18px color-mix(in srgb, var(--group-accent-border, #d98357) 18%, transparent) !important;
+    0 0 0 1px color-mix(in srgb, var(--group-accent-border, #d98357) 32%, transparent),
+    0 10px 24px rgba(0, 0, 0, 0.24) !important;
 }
 
 :global(:root[data-theme='dark']) .start-screen .animal-card:hover {
-  background: rgba(22, 25, 33, 0.95) !important;
+  background: var(--group-accent, #e0e0e0) !important;
   color: #fff !important;
   border-color: var(--group-accent, #d98357) !important;
   box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--group-accent, #d98357) 28%, transparent),
-    0 18px 34px rgba(0, 0, 0, 0.36),
-    0 0 28px color-mix(in srgb, var(--group-accent, #d98357) 24%, transparent) !important;
+    0 0 0 1px color-mix(in srgb, var(--group-accent, #d98357) 30%, transparent),
+    0 14px 28px rgba(0, 0, 0, 0.28) !important;
 }
 
 :global(:root[data-theme='dark']) .start-screen .shared-notes {

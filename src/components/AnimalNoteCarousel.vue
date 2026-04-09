@@ -244,4 +244,53 @@ onBeforeUnmount(() => {
     flex-direction: column;
   }
 }
+
+/* ── Dark mode ── */
+:global(:root[data-theme='dark']) .animal-note-feed {
+  background: var(--theme-surface, rgba(18, 20, 26, 0.92));
+  border-color: var(--theme-border, #2a2e37);
+}
+
+:global(:root[data-theme='dark']) .animal-note-feed__title {
+  color: var(--theme-text, #f3eee8);
+}
+
+:global(:root[data-theme='dark']) .animal-note-feed__copy,
+:global(:root[data-theme='dark']) .animal-note-feed__status {
+  color: var(--theme-muted, #a89f98);
+}
+
+:global(:root[data-theme='dark']) .animal-note-feed__status {
+  background: var(--theme-surface-soft, rgba(24, 27, 35, 0.92));
+  border-color: var(--theme-border, #2a2e37);
+}
+
+:global(:root[data-theme='dark']) .animal-note-feed__status--error {
+  color: #ffb3ad;
+  background: rgba(255, 126, 115, 0.1);
+  border-color: rgba(255, 126, 115, 0.24);
+}
+
+:global(:root[data-theme='dark']) .animal-note-feed__toggle {
+  background: var(--theme-control-bg, rgba(19, 22, 29, 0.94));
+  color: var(--theme-text, #f3eee8);
+  border-color: var(--theme-border, #2a2e37);
+}
+
+:global(:root[data-theme='dark']) .animal-note-feed__card {
+  background: var(--theme-surface-soft, rgba(24, 27, 35, 0.92));
+  border-color: var(--theme-border, #2a2e37);
+}
+
+:global(:root[data-theme='dark']) .animal-note-feed__author {
+  color: var(--theme-text, #f3eee8);
+}
+
+:global(:root[data-theme='dark']) .animal-note-feed__date {
+  color: var(--theme-muted, #a89f98);
+}
+
+:global(:root[data-theme='dark']) .animal-note-feed__text {
+  color: #ded5cd;
+}
 </style>

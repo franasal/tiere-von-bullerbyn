@@ -43,6 +43,7 @@
       :unique-traits="getUniqueTraitsFor(profileAnimal)"
       :similar-animals="getSimilarAnimalsFor(profileAnimal)"
       :characteristics="getCharacteristics(profileAnimal)"
+      :background-facts="getBackgroundFacts(profileAnimal)"
       :besonderheiten="getBesonderheiten(profileAnimal)"
       @back="appView = 'gallery'"
       @showProfile="showProfile"
@@ -149,6 +150,7 @@
           :unique-traits="getUniqueTraitsFor(resultName)"
           :similar-animals="getSimilarAnimalsFor(resultName)"
           :characteristics="getCharacteristics(resultName)"
+          :background-facts="getBackgroundFacts(resultName)"
           :besonderheiten="getBesonderheiten(resultName)"
           @showProfile="showProfileFromResult"
         />
@@ -185,7 +187,15 @@
       />
 
       <p class="app-credit">
-        Mit tierischer Liebe entwickelt von <span class="app-credit__name">vgn-dev</span>
+        Mit tierischer Liebe entwickelt von
+        <a
+          class="app-credit__link"
+          href="https://franasal.github.io/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span class="app-credit__name">vgn-dev</span>
+        </a>
       </p>
     </footer>
   </div>
@@ -750,6 +760,9 @@ export default {
     getCharacteristics(name) {
       return getAnimalCharacteristics(name);
     },
+    getBackgroundFacts(name) {
+      return this.animalInfo[name]?.rescue_meta || {};
+    },
     getBesonderheiten(name) {
       return this.animalInfo[name]?.besonderheiten || '';
     },
@@ -829,6 +842,27 @@ export default {
   opacity: 0.6;
   text-align: right;
 }
+
+.app-credit__link {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.2rem;
+  padding: 0.08rem 0.38rem;
+  border-radius: 6px;
+  color: var(--theme-accent, #7b1f46);
+  background: color-mix(in srgb, var(--theme-accent-soft, #fce4ec) 72%, transparent);
+  text-decoration: none;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--theme-accent, #7b1f46) 18%, transparent);
+  transition: background-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.app-credit__link:hover,
+.app-credit__link:focus-visible {
+  color: var(--theme-accent-strong, #5d1836);
+  background: color-mix(in srgb, var(--theme-accent-soft, #fce4ec) 88%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--theme-accent, #7b1f46) 32%, transparent);
+}
+
 .app-credit__name {
   font-weight: 700;
 }

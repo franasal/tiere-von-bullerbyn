@@ -40,7 +40,11 @@
       />
     </div>
 
-    <div v-if="uniqueTraits.length" class="profile-section">
+    <div v-if="backgroundFacts && Object.keys(backgroundFacts).length" class="profile-section">
+      <AnimalBackgroundFacts :facts="backgroundFacts" />
+    </div>
+
+    <div v-if="uniqueTraits.length" class="profile-section profile-section--traits">
       <h3 class="section-title">So erkennst du mich</h3>
       <div class="trait-grid">
         <div v-for="t in uniqueTraits" :key="t.key" class="trait-card">
@@ -69,6 +73,7 @@
 import { ref, onMounted } from 'vue';
 import ExpandableImage from './ExpandableImage.vue';
 import AnimalCharacteristics from './AnimalCharacteristics.vue';
+import AnimalBackgroundFacts from './AnimalBackgroundFacts.vue';
 import AnimalNoteCarousel from './AnimalNoteCarousel.vue';
 import VisitorNotes from './VisitorNotes.vue';
 
@@ -80,6 +85,7 @@ defineProps({
   uniqueTraits: { type: Array, default: () => [] },
   similarAnimals: { type: Array, default: () => [] },
   characteristics: { type: Object, default: () => ({}) },
+  backgroundFacts: { type: Object, default: () => ({}) },
   besonderheiten: { type: String, default: '' }
 });
 
@@ -186,7 +192,12 @@ onMounted(() => {
   overflow-wrap: break-word;
 }
 
-.profile-section { width: 100%; padding: 0 1rem; }
+.profile-section { width: 100%; padding: 0 1rem; box-sizing: border-box; }
+
+.profile-section--traits {
+  padding-left: 1.15rem;
+  padding-right: 1.15rem;
+}
 
 .section-title {
   font-size: .9rem; color: #5d4037; margin: .75rem 0 .4rem;
@@ -196,13 +207,13 @@ onMounted(() => {
 .trait-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.45rem;
+  gap: 0.55rem;
 }
 .trait-card {
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.5rem 0.6rem;
+  padding: 0.58rem 0.7rem;
   background: rgba(244,143,177,.12);
   border: 1px solid #f8bbd0;
   border-radius: 10px;
@@ -298,4 +309,61 @@ onMounted(() => {
   transition: background .15s ease;
 }
 .back-button:hover { background-color: #b39ddb; color: #fff; }
+
+/* ── Dark mode ── */
+:global(:root[data-theme='dark']) .profile {
+  background-color: var(--theme-surface-strong, #0e1015);
+  border-color: var(--theme-border, #2a2e37);
+  box-shadow: var(--theme-shadow);
+}
+
+:global(:root[data-theme='dark']) .info-card {
+  background: var(--theme-surface, rgba(18, 20, 26, 0.92));
+  border-color: var(--theme-border, #2a2e37);
+}
+
+:global(:root[data-theme='dark']) .info-card-label {
+  color: var(--theme-muted, #a89f98);
+}
+
+:global(:root[data-theme='dark']) .info-card-text {
+  color: var(--theme-text, #f3eee8);
+}
+
+:global(:root[data-theme='dark']) .section-title {
+  color: var(--theme-text, #f3eee8);
+}
+
+:global(:root[data-theme='dark']) .trait-card {
+  background: rgba(244, 143, 177, 0.08);
+  border-color: rgba(244, 143, 177, 0.22);
+}
+
+:global(:root[data-theme='dark']) .trait-card-label {
+  color: var(--theme-muted, #a89f98);
+}
+
+:global(:root[data-theme='dark']) .trait-card-value {
+  color: var(--theme-text, #f3eee8);
+}
+
+:global(:root[data-theme='dark']) .similar-card {
+  background: var(--theme-surface, rgba(18, 20, 26, 0.92));
+  border-color: var(--theme-border, #2a2e37);
+}
+
+:global(:root[data-theme='dark']) .similar-name {
+  color: var(--theme-text, #f3eee8);
+}
+
+:global(:root[data-theme='dark']) .back-button {
+  background-color: rgba(209, 196, 233, 0.12);
+  color: #ce93d8;
+  border-color: rgba(209, 196, 233, 0.24);
+}
+
+:global(:root[data-theme='dark']) .back-button:hover {
+  background-color: rgba(179, 157, 219, 0.2);
+  color: #e1bee7;
+}
 </style>

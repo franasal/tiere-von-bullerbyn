@@ -165,4 +165,32 @@ const charList = computed(() =>
     margin-top: .1rem;
   }
 }
+
+/* ── Dark mode ── */
+:global(:root[data-theme='dark']) .characteristics {
+  background: var(--theme-surface, rgba(18, 20, 26, 0.92));
+  border-color: var(--theme-border, #2a2e37);
+}
+
+:global(:root[data-theme='dark']) .section-title {
+  color: var(--theme-text, #f3eee8);
+}
+
+:global(:root[data-theme='dark']) .char-label {
+  color: #d7c3b5;
+}
+
+:global(:root[data-theme='dark']) .char-bar-track {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.04);
+}
+
+:global(:root[data-theme='dark']) .char-bar-limit {
+  background: rgba(18, 20, 26, 0.7);
+}
+
+:global(:root[data-theme='dark']) .besonderheiten {
+  border-top-color: var(--theme-border, #2a2e37);
+  color: var(--theme-text, #f3eee8);
+}
 </style>
