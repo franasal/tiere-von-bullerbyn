@@ -213,7 +213,7 @@ Braunes Schaf mit kürzeren Hörnern.
 Weißes Schaf ohne Hörner.
 
 ### Geschichte
-Schwester von Lisso.
+Die Geschwister Lissi und Liso stammen von einem ehemaligen Schäfer aus der Region, der die beiden seiner Tochter zuliebe verschont hat. Lissi ist eine liebevolle und ruhige Seele.
 
 ## Lisso
 ### Erscheinung
