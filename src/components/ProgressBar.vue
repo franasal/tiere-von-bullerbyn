@@ -32,19 +32,26 @@ const speciesEmojiMap = {
   goat: '🐐',
   sheep: '🐑',
   equine: '🫏',
-  dog: '🐶'
+  dog: '🐾'
 };
 
 const speciesEmoji = computed(() => speciesEmojiMap[props.species] || '🐾');
-const shouldMirror = computed(() => props.species === 'goat' || props.species === 'sheep');
+const shouldMirror = computed(() =>
+  props.species === 'goat' || props.species === 'sheep' || props.species === 'equine'
+);
 </script>
 
 <style scoped>
-.progress-wrap { display: grid; gap: .25rem; }
+.progress-wrap {
+  display: grid;
+  gap: .25rem;
+  padding-top: .55rem;
+}
 .progress-track {
   width: 100%; height: 14px;
   background: rgba(0,0,0,.06);
-  border-radius: 999px; overflow: hidden;
+  border-radius: 999px;
+  overflow: visible;
   position: relative;
 }
 .progress-fill {
@@ -69,15 +76,16 @@ const shouldMirror = computed(() => props.species === 'goat' || props.species ==
 }
 .progress-animal {
   position: absolute;
-  right: -6px; top: 50%;
-  transform: translateY(-50%);
-  font-size: .82rem;
+  right: -8px;
+  top: 0;
+  transform: translateY(-62%);
+  font-size: 1.38rem;
   line-height: 1;
-  filter: drop-shadow(0 1px 1px rgba(0,0,0,.15));
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,.2));
 }
 
 .progress-animal--mirrored {
-  transform: translateY(-50%) scaleX(-1);
+  transform: translateY(-62%) scaleX(-1);
 }
 
 @keyframes rainbowSlide {

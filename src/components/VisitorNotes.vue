@@ -1,20 +1,25 @@
 <template>
   <div class="visitor-notes">
-    <h3 class="section-title">📝 Besucher*innennotizen</h3>
-    <p class="notes-hint">Schreib deine Beobachtungen oder Erlebnisse mit {{ animalName }} auf.</p>
+    <div class="notes-intro">
+      <div>
+        <h3 class="section-title">📝 Besucher*innennotizen</h3>
+        <p class="notes-hint">Kurze Eindruecke, Begegnungen und kleine Momente mit {{ animalName }}.</p>
+      </div>
+      <span v-if="firebaseEnabled && notes.length" class="notes-count">{{ notes.length }} Eintraege</span>
+    </div>
 
     <p v-if="!firebaseEnabled" class="notes-status notes-status-error">
       Besucher*innennotizen sind gerade nicht verfuegbar.
     </p>
-    <p v-else class="notes-status">
-      Maximal {{ maxNotesPerDay }} Notizen pro Geraet und Tag. Verbleibend heute: {{ remainingToday }}.
+    <p v-else-if="remainingToday <= 1" class="notes-status">
+      Heute kannst du noch {{ remainingToday }} {{ remainingToday === 1 ? 'Notiz' : 'Notizen' }} schreiben.
     </p>
 
     <form v-if="firebaseEnabled" class="note-form" @submit.prevent="handleSubmit">
       <textarea
         v-model="newNote"
         class="note-input"
-        :placeholder="`Was hast du mit ${animalName} erlebt?`"
+        :placeholder="`Was moechtest du ueber ${animalName} teilen?`"
         rows="3"
         maxlength="500"
       />
@@ -33,7 +38,7 @@
           {{ submitting ? 'Speichert ...' : 'Speichern' }}
         </button>
       </div>
-      <p class="notes-helper">Bitte mindestens 10 und maximal 500 Zeichen schreiben.</p>
+      <p class="notes-helper">10 bis 500 Zeichen. Name optional.</p>
     </form>
 
     <template v-if="firebaseEnabled">
@@ -43,20 +48,24 @@
       <div v-else-if="notes.length" class="notes-list">
         <div v-for="note in notes" :key="note.id" class="note-card">
           <div class="note-header">
-            <span class="note-author">{{ note.author || 'Anonym' }}</span>
+            <span class="note-author">{{ formatAuthor(note.author) }}</span>
             <span class="note-date">{{ formatDate(note.createdAt) }}</span>
           </div>
           <p class="note-text">{{ note.text }}</p>
         </div>
       </div>
-      <p v-else class="notes-empty">Noch keine freigegebenen Notizen vorhanden.</p>
+      <p v-else class="notes-empty">Noch keine Eintraege vorhanden. Teile den ersten Eindruck.</p>
     </template>
   </div>
 </template>
 
 <script setup>
 import { ref, toRef } from 'vue';
-import { useVisitorNotes } from '../composables/useSharedNotes.js';
+import {
+  formatVisitorNoteAuthor,
+  formatVisitorNoteDate,
+  useVisitorNotes
+} from '../composables/useSharedNotes.js';
 
 const props = defineProps({
   animalName: { type: String, required: true }
@@ -87,49 +96,61 @@ async function handleSubmit() {
   }
 }
 
-function formatDate(value) {
-  if (!value) return 'Gerade eben';
-
-  const date = typeof value.toDate === 'function' ? value.toDate() : new Date(value);
-  if (Number.isNaN(date.getTime())) return '';
-
-  return date.toLocaleDateString('de-DE', {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric'
-  });
-}
+const formatDate = formatVisitorNoteDate;
+const formatAuthor = formatVisitorNoteAuthor;
 </script>
 
 <style scoped>
 .visitor-notes {
   width: 100%;
-  margin-top: .6rem;
-  padding: .7rem;
-  background: rgba(232, 245, 233, .55);
-  border: 1px solid #c8e6c9;
-  border-radius: 10px;
+  box-sizing: border-box;
+  margin-top: .9rem;
+  padding: .95rem;
+  background: rgba(246, 249, 244, .96);
+  border: 1px solid #dbe8d3;
+  border-radius: 14px;
+}
+
+.notes-intro {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: .75rem;
+  margin-bottom: .55rem;
+  min-width: 0;
 }
 
 .section-title {
-  font-size: .9rem;
-  color: #2e7d32;
+  font-size: .95rem;
+  color: #2e5d34;
   margin: 0 0 .2rem;
+}
+
+.notes-count {
+  flex-shrink: 0;
+  padding: .24rem .5rem;
+  border-radius: 999px;
+  background: rgba(129, 199, 132, .14);
+  border: 1px solid rgba(129, 199, 132, .28);
+  color: #3d6b42;
+  font-size: .68rem;
+  font-weight: 700;
 }
 
 .notes-hint,
 .notes-status,
 .notes-helper,
 .notes-empty {
-  margin: 0 0 .5rem;
-  font-size: .75rem;
-  color: #558b2f;
+  margin: 0 0 .6rem;
+  font-size: .76rem;
+  color: #66785f;
 }
 
 .notes-status {
-  padding: .45rem .55rem;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, .65);
+  padding: .5rem .65rem;
+  border-radius: 10px;
+  background: rgba(129, 199, 132, .08);
+  border: 1px solid rgba(129, 199, 132, .2);
 }
 
 .notes-status-error {
@@ -140,20 +161,21 @@ function formatDate(value) {
 .note-form {
   display: flex;
   flex-direction: column;
-  gap: .35rem;
-  margin-bottom: .5rem;
+  gap: .45rem;
+  margin-bottom: .8rem;
 }
 
 .note-input {
   width: 100%;
   box-sizing: border-box;
-  padding: .45rem .5rem;
-  border: 1px solid #c8e6c9;
-  border-radius: 6px;
-  font-size: .82rem;
+  padding: .7rem .8rem;
+  border: 1px solid #d3e2cb;
+  border-radius: 10px;
+  font-size: .84rem;
   font-family: inherit;
   resize: vertical;
-  min-height: 4rem;
+  min-height: 4.4rem;
+  background: rgba(255, 255, 255, .92);
 }
 
 .note-input:focus,
@@ -165,22 +187,25 @@ function formatDate(value) {
 
 .note-form-row {
   display: flex;
-  gap: .35rem;
+  gap: .45rem;
+  min-width: 0;
 }
 
 .author-input {
   flex: 1;
-  padding: .35rem .5rem;
-  border: 1px solid #c8e6c9;
-  border-radius: 6px;
-  font-size: .78rem;
+  min-width: 0;
+  padding: .55rem .7rem;
+  border: 1px solid #d3e2cb;
+  border-radius: 10px;
+  font-size: .79rem;
   font-family: inherit;
+  background: rgba(255, 255, 255, .92);
 }
 
 .note-submit {
-  padding: .35rem .75rem;
+  padding: .55rem .9rem;
   border: none;
-  border-radius: 6px;
+  border-radius: 10px;
   background: #81c784;
   color: #fff;
   font-weight: 700;
@@ -200,46 +225,56 @@ function formatDate(value) {
 .notes-list {
   display: flex;
   flex-direction: column;
-  gap: .35rem;
+  gap: .55rem;
   max-height: 320px;
   overflow-y: auto;
 }
 
 .note-card {
-  padding: .5rem .55rem;
-  background: rgba(255, 255, 255, .9);
-  border-radius: 8px;
-  border: 1px solid #e8f5e9;
+  padding: .75rem .8rem;
+  background: rgba(255, 255, 255, .94);
+  border-radius: 12px;
+  border: 1px solid #e2eddc;
 }
 
 .note-header {
   display: flex;
   align-items: center;
-  gap: .35rem;
-  margin-bottom: .25rem;
+  justify-content: space-between;
+  gap: .5rem;
+  margin-bottom: .35rem;
   flex-wrap: wrap;
 }
 
 .note-author {
-  font-size: .72rem;
+  font-size: .74rem;
   font-weight: 700;
-  color: #2e7d32;
+  color: #2e5d34;
 }
 
 .note-date {
-  font-size: .65rem;
-  color: #9e9e9e;
+  font-size: .68rem;
+  color: #8a9684;
 }
 
 .note-text {
   margin: 0;
-  font-size: .8rem;
-  line-height: 1.45;
-  color: #37474f;
+  font-size: .84rem;
+  line-height: 1.55;
+  color: #33423a;
   white-space: pre-wrap;
 }
 
 @media (max-width: 520px) {
+  .notes-intro {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .notes-count {
+    align-self: flex-start;
+  }
+
   .note-form-row {
     flex-direction: column;
   }

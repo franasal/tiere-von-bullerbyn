@@ -144,21 +144,21 @@ function formatLabel(option) {
 .mb-4 { margin-bottom: 1rem; }
 
 .question-box {
-  background-color: var(--group-accent-soft, #fce4ec);
-  border: 1px solid var(--group-accent-border, #f8bbd0);
+  background-color: var(--question-box-bg, var(--group-accent-soft, #fce4ec));
+  border: 1px solid var(--question-box-border, var(--group-accent-border, #f8bbd0));
   padding: 1rem; border-radius: 6px; margin-bottom: 1rem;
 }
 .category-hint {
   margin: 0 0 .3rem; font-size: .8rem;
-  color: #8d6e63; text-transform: uppercase; letter-spacing: .04em;
+  color: var(--theme-muted, #8d6e63); text-transform: uppercase; letter-spacing: .04em;
 }
-.question { font-weight: bold; margin: 0; }
-.help-text { margin: 0.5rem 0 0; font-size: 0.9rem; color: #6d4c41; }
+.question { font-weight: bold; margin: 0; color: var(--theme-text, inherit); }
+.help-text { margin: 0.5rem 0 0; font-size: 0.9rem; color: var(--question-box-caption, #6d4c41); }
 .question-visual {
   margin-top: 0.75rem;
   padding: 0.75rem;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.75);
+  background: var(--question-box-visual-bg, rgba(255, 255, 255, 0.75));
 }
 .question-visual-image {
   display: block;
@@ -172,7 +172,7 @@ function formatLabel(option) {
   margin: 0.55rem 0 0;
   font-size: 0.9rem;
   line-height: 1.35;
-  color: #5d4037;
+  color: var(--question-box-caption, #5d4037);
 }
 
 .options { display: flex; flex-direction: column; gap: .4rem; }
@@ -190,17 +190,17 @@ function formatLabel(option) {
   gap: .45rem;
   width: 100%;
   padding: .65rem;
-  border: 1px solid var(--group-accent-border, #f8bbd0);
+  border: 1px solid var(--option-card-border, var(--group-accent-border, #f8bbd0));
   border-radius: 12px;
-  background: color-mix(in srgb, var(--group-accent-soft, #fce4ec) 65%, white);
+  background: var(--option-card-bg, color-mix(in srgb, var(--group-accent-soft, #fce4ec) 65%, white));
   cursor: pointer;
   transition: transform .12s ease, box-shadow .15s ease, border-color .15s ease;
 }
 
 .option-card:hover {
   transform: translateY(-1px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, .08);
-  border-color: var(--group-accent-strong, #ec407a);
+  box-shadow: var(--option-card-hover-shadow, 0 8px 18px rgba(0, 0, 0, .08));
+  border-color: var(--question-box-border, var(--group-accent-strong, #ec407a));
 }
 
 .option-card:active {
@@ -212,7 +212,7 @@ function formatLabel(option) {
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 10px;
-  background: #fff;
+  background: var(--theme-surface-strong, #fff);
 }
 
 .option-card-title {

@@ -25,7 +25,7 @@
           aria-label="Bild schließen"
           @click="closePreview"
         >
-          X
+          &times;
         </button>
         <img
           :src="src"
@@ -110,13 +110,19 @@ onBeforeUnmount(() => {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: 0;
   border-radius: 999px;
   width: 2.25rem;
   height: 2.25rem;
+  padding: 0;
   background: rgba(255, 255, 255, 0.9);
   color: #2c1d19;
   font-weight: 700;
+  font-size: 1.35rem;
+  line-height: 1;
   cursor: pointer;
 }
 

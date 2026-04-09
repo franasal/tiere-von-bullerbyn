@@ -265,7 +265,7 @@
         "aktivitaet": 2,
         "neugier": 2
       },
-      "besonderheiten": "Hat die markanteste Stimme der Herde – man hört ihn immer zuerst."
+      "besonderheiten": "Trägt die längsten Hörner der Herde – sehr imposant."
     },
     "Yoda": {
       "name": "Yoda",
@@ -369,7 +369,7 @@
         "aktivitaet": 2,
         "neugier": 2
       },
-      "besonderheiten": "Trägt die längsten Hörner der Herde – sehr imposant."
+      "besonderheiten": "Eher zurueckhaltend und Teil der introvertierten Gruppe."
     },
     "Raven": {
       "name": "Raven",
@@ -545,7 +545,7 @@
       "species": "dog",
       "appearance_description": "Weißer Hund mit braunen Flecken am Kopf.",
       "general_description": "",
-      "image_url": "/animal-images/dog/piper-placeholder.svg",
+      "image_url": "/animal-images/dog/piper.jpeg",
       "characteristics": {
         "menschenfreundlichkeit": 3,
         "aktivitaet": 2,
@@ -617,6 +617,45 @@
         "neugier": 2
       },
       "besonderheiten": "Der Größte unter den Hunden – ein sanfter Riese trotz des Namens."
+    },
+    "Toffie": {
+      "name": "Toffie",
+      "species": "cat",
+      "appearance_description": "Braun-schwarze Maine-Coon-Katze.",
+      "general_description": "Schläft viel und lässt sich gerne verwöhnen.",
+      "image_url": "/animal-images/placeholder.svg",
+      "characteristics": {
+        "menschenfreundlichkeit": 4,
+        "aktivitaet": 1,
+        "neugier": 2
+      },
+      "besonderheiten": "Eine entspannte Maine-Coon-Dame, die am liebsten schläft und sich verwöhnen lässt."
+    },
+    "Mau": {
+      "name": "Mau",
+      "species": "cat",
+      "appearance_description": "Graue Katze mit Flecken.",
+      "general_description": "Noch jung, verspielt und nachts oft bei Tierpflegerin Josi.",
+      "image_url": "/animal-images/placeholder.svg",
+      "characteristics": {
+        "menschenfreundlichkeit": 3,
+        "aktivitaet": 4,
+        "neugier": 4
+      },
+      "besonderheiten": "Wurde als Kitten gerettet und ist bis heute besonders verspielt."
+    },
+    "Sari": {
+      "name": "Sari",
+      "species": "cat",
+      "appearance_description": "Überwiegend weiße Katze mit schwarzen Flecken.",
+      "general_description": "Ein aufgeweckter Freigeist mit Vorliebe für Futterkammer und Keller.",
+      "image_url": "/animal-images/placeholder.svg",
+      "characteristics": {
+        "menschenfreundlichkeit": 3,
+        "aktivitaet": 3,
+        "neugier": 5
+      },
+      "besonderheiten": "Ein kleiner Freigeist – mal verschmust, mal sofort wieder unterwegs."
     }
   },
   "species": [

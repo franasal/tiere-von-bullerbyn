@@ -20,6 +20,7 @@
     <AnimalStart
       v-else-if="appView === 'start'"
       :available-species="availableSpecies"
+      :animal-info="animalInfo"
       @select="selectAnimal"
       @toggleAdmin="adminMode = !adminMode"
     />
@@ -140,7 +141,6 @@
 
       <!-- Result -->
       <template v-else-if="resultName">
-        <h2>Es ist: {{ resultName }}!</h2>
         <ResultCard
           :name="resultName"
           :image-url="getAnimalImage(resultName)"
@@ -181,6 +181,10 @@
       :selected-pig="feedbackSelectedPig"
       :current-view="feedbackViewLabel"
     />
+
+    <p class="app-credit">
+      Mit tierischer Liebe entwickelt von <span class="app-credit__name">vgn-dev</span>
+    </p>
   </div>
 </template>
 
@@ -223,6 +227,7 @@ import {
   getDifferentiatingTraits
 } from '../data/pigTraitAnalysis.js';
 import { getQuestionCueGallery, getCueImageForAnimalAndQuestion } from '../data/pigCues.js';
+import { getThemeVars } from '../data/speciesThemes.js';
 
 export default {
   name: 'AnimalIdentifier',
@@ -273,6 +278,10 @@ export default {
         const species = this.animalInfo[name]?.species;
         if (this.selectedAnimal === 'pigs') {
           return species === 'pig' || species === 'wild_boar';
+        }
+
+        if (this.selectedAnimal === 'dog') {
+          return species === 'dog' || species === 'cat';
         }
 
         return species === this.selectedAnimal;
@@ -330,106 +339,16 @@ export default {
       return this.appView;
     },
     currentThemeStyle() {
-      const themes = {
-        pigs: {
-          '--group-accent-soft': '#fce4ec',
-          '--group-accent-border': '#f8bbd0',
-          '--group-accent': '#f48fb1',
-          '--group-accent-strong': '#ec407a',
-          '--group-accent-text': '#5a3044',
-          '--group-secondary': '#d1c4e9',
-          '--group-secondary-strong': '#9575cd',
-          '--group-secondary-text': '#4527a0',
-          '--group-tertiary': '#ffccbc',
-          '--group-tertiary-strong': '#ff8a65',
-          '--group-tertiary-text': '#5d4037',
-          '--group-link-bg': '#fff1f5',
-          '--group-link-border': '#f48fb1',
-          '--group-link-hover': '#fce4ec'
-        },
-        goat: {
-          '--group-accent-soft': '#efebe9',
-          '--group-accent-border': '#d7ccc8',
-          '--group-accent': '#bcaaa4',
-          '--group-accent-strong': '#8d6e63',
-          '--group-accent-text': '#4e342e',
-          '--group-secondary': '#dcedc8',
-          '--group-secondary-strong': '#7cb342',
-          '--group-secondary-text': '#33691e',
-          '--group-tertiary': '#ffe0b2',
-          '--group-tertiary-strong': '#fb8c00',
-          '--group-tertiary-text': '#6d4c41',
-          '--group-link-bg': '#f7f1ed',
-          '--group-link-border': '#a1887f',
-          '--group-link-hover': '#efebe9'
-        },
-        sheep: {
-          '--group-accent-soft': '#eceff1',
-          '--group-accent-border': '#cfd8dc',
-          '--group-accent': '#b0bec5',
-          '--group-accent-strong': '#607d8b',
-          '--group-accent-text': '#37474f',
-          '--group-secondary': '#d1c4e9',
-          '--group-secondary-strong': '#7e57c2',
-          '--group-secondary-text': '#4a148c',
-          '--group-tertiary': '#f5f5f5',
-          '--group-tertiary-strong': '#90a4ae',
-          '--group-tertiary-text': '#455a64',
-          '--group-link-bg': '#f4f7f8',
-          '--group-link-border': '#90a4ae',
-          '--group-link-hover': '#eceff1'
-        },
-        equine: {
-          '--group-accent-soft': '#efebe9',
-          '--group-accent-border': '#d7ccc8',
-          '--group-accent': '#bcaaa4',
-          '--group-accent-strong': '#8d6e63',
-          '--group-accent-text': '#4e342e',
-          '--group-secondary': '#dcedc8',
-          '--group-secondary-strong': '#7cb342',
-          '--group-secondary-text': '#33691e',
-          '--group-tertiary': '#ffe0b2',
-          '--group-tertiary-strong': '#fb8c00',
-          '--group-tertiary-text': '#6d4c41',
-          '--group-link-bg': '#f7f1ed',
-          '--group-link-border': '#a1887f',
-          '--group-link-hover': '#efebe9'
-        },
-        cow: {
-          '--group-accent-soft': '#fff3e0',
-          '--group-accent-border': '#ffcc80',
-          '--group-accent': '#ffb74d',
-          '--group-accent-strong': '#fb8c00',
-          '--group-accent-text': '#6d4c41',
-          '--group-secondary': '#d7ccc8',
-          '--group-secondary-strong': '#8d6e63',
-          '--group-secondary-text': '#4e342e',
-          '--group-tertiary': '#fff8e1',
-          '--group-tertiary-strong': '#ffb300',
-          '--group-tertiary-text': '#6d4c41',
-          '--group-link-bg': '#fff7eb',
-          '--group-link-border': '#ffb74d',
-          '--group-link-hover': '#fff3e0'
-        },
-        dog: {
-          '--group-accent-soft': '#e8f5e9',
-          '--group-accent-border': '#a5d6a7',
-          '--group-accent': '#81c784',
-          '--group-accent-strong': '#43a047',
-          '--group-accent-text': '#2e5d34',
-          '--group-secondary': '#dcedc8',
-          '--group-secondary-strong': '#7cb342',
-          '--group-secondary-text': '#33691e',
-          '--group-tertiary': '#fff8e1',
-          '--group-tertiary-strong': '#f9a825',
-          '--group-tertiary-text': '#6d4c41',
-          '--group-link-bg': '#f1f8e9',
-          '--group-link-border': '#81c784',
-          '--group-link-hover': '#e8f5e9'
-        }
-      };
-
-      return themes[this.selectedAnimal] || {};
+      return getThemeVars(this.selectedAnimal);
+    }
+  },
+  watch: {
+    appView() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+    resultName(next) {
+      if (!next) return;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   },
   async mounted() {
@@ -854,7 +773,7 @@ export default {
         sheep: 'Schafe',
         equine: 'Esel & Ponys',
         cow: 'Kühe',
-        dog: 'Hunde'
+        dog: 'Hunde & Katzen'
       };
       return map[key] || key;
     },
@@ -879,20 +798,34 @@ export default {
 
 <style scoped>
 .container {
+  position: relative;
   max-width: 500px;
   margin: 2rem auto;
   font-family: sans-serif;
   padding: 1rem 1rem 5.5rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--theme-border, #ccc);
   border-radius: 8px;
-  background-color: #fff;
-  color: #212121;
+  background-color: var(--theme-surface, #fff);
+  color: var(--theme-text, #212121);
+}
+
+.app-credit {
+  position: absolute;
+  bottom: 0.6rem;
+  left: 1rem;
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--theme-muted, #6f4e37);
+  opacity: 0.6;
+}
+.app-credit__name {
+  font-weight: 700;
 }
 
 /* Candidate thumbnail gallery */
 .candidate-gallery { margin: 0 0 1rem; }
 .candidate-label {
-  display: block; font-size: 0.9rem; color: #5d4037; margin-bottom: .4rem;
+  display: block; font-size: 0.9rem; color: var(--theme-muted, #5d4037); margin-bottom: .4rem;
 }
 .candidate-thumbs {
   display: flex; flex-wrap: wrap; gap: .4rem;
@@ -905,24 +838,24 @@ export default {
 .thumb-img {
   width: 44px; height: 44px;
   object-fit: cover; border-radius: 50%;
-  border: 2px solid #f8bbd0;
+  border: 2px solid var(--group-accent-border, #f8bbd0);
 }
 .thumb-name {
-  font-size: .65rem; color: #5d4037;
+  font-size: .65rem; color: var(--theme-muted, #5d4037);
   text-align: center; line-height: 1.1; margin-top: 2px;
 }
 
 .question-cues {
   margin: 0 0 1rem;
   padding: .6rem;
-  background: #fff8fb;
-  border: 1px solid #f8bbd0;
+  background: var(--cue-panel-bg, #fff8fb);
+  border: 1px solid var(--cue-panel-border, #f8bbd0);
   border-radius: 8px;
 }
 .question-cues-title {
   font-size: .9rem;
   font-weight: 700;
-  color: #7b1f46;
+  color: var(--theme-accent, #7b1f46);
   margin-bottom: .45rem;
 }
 .question-cues-list {
@@ -950,11 +883,11 @@ export default {
   height: 76px;
   object-fit: cover;
   border-radius: 999px;
-  border: 3px solid #fff;
-  box-shadow: 0 0 0 1px #f0d6e0;
+  border: 3px solid var(--theme-surface-strong, #fff);
+  box-shadow: var(--cue-image-shadow, 0 0 0 1px #f0d6e0);
 }
 .question-cue-button:hover .question-cue-image {
-  box-shadow: 0 0 0 1px #e8a1c1, 0 6px 16px rgba(126, 56, 92, 0.14);
+  box-shadow: var(--cue-image-shadow-hover, 0 0 0 1px #e8a1c1, 0 6px 16px rgba(126, 56, 92, 0.14));
 }
 
 .cue-preview-overlay {
@@ -979,8 +912,8 @@ export default {
   height: 36px;
   border: none;
   border-radius: 999px;
-  background: #fff;
-  color: #5a4151;
+  background: var(--theme-surface-strong, #fff);
+  color: var(--theme-text, #5a4151);
   font-size: 0.9rem;
   font-weight: 700;
   box-shadow: 0 8px 22px rgba(22, 14, 22, 0.22);
@@ -991,7 +924,7 @@ export default {
   max-height: 78vh;
   object-fit: contain;
   border-radius: 20px;
-  background: #fff;
+  background: var(--theme-surface-strong, #fff);
   box-shadow: 0 18px 50px rgba(15, 11, 15, 0.3);
 }
 
@@ -1053,22 +986,22 @@ export default {
 /* Browse link */
 .browse-link {
   display: block; width: 100%; margin-top: 1rem;
-  padding: .55rem; border: 1.5px dashed var(--group-link-border, #a5d6a7); border-radius: 6px;
-  background: var(--group-link-bg, transparent); color: var(--group-secondary-text, #2e7d32);
+  padding: .55rem; border: 1.5px dashed var(--browse-link-border, var(--group-link-border, #a5d6a7)); border-radius: 6px;
+  background: var(--browse-link-bg, var(--group-link-bg, transparent)); color: var(--browse-link-text, var(--group-secondary-text, #2e7d32));
   font-size: .85rem; font-weight: 600; cursor: pointer;
   text-align: center;
   transition: background .15s ease, border-color .15s ease;
 }
 .browse-link:hover {
-  background: var(--group-link-hover, #e8f5e9);
-  border-color: var(--group-accent-strong, #66bb6a);
+  background: var(--browse-link-hover-bg, var(--group-link-hover, #e8f5e9));
+  border-color: var(--question-box-border, var(--group-accent-strong, #66bb6a));
 }
 
 /* Species sub-menu */
 .species-menu {
   display: flex; flex-direction: column; align-items: center; text-align: center;
 }
-.species-menu h2 { margin: 0 0 .75rem; font-size: 1.4rem; color: #3e2723; }
+.species-menu h2 { margin: 0 0 .75rem; font-size: 1.4rem; color: var(--theme-text, #3e2723); }
 .menu-options {
   display: flex; flex-direction: column; gap: .5rem; width: 100%; max-width: 300px;
   margin-bottom: 1rem;

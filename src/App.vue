@@ -54,9 +54,6 @@ watch(theme, (value) => {
       </button>
     </div>
     <AnimalIdentifier />
-    <p class="app-credit">
-      Mit tierischer Liebe entwickelt von <span class="app-credit__name">vgn-dev</span>
-    </p>
   </div>
 </template>
 
@@ -65,6 +62,7 @@ watch(theme, (value) => {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  padding-bottom: 5rem;
 }
 
 .app-toolbar {
@@ -91,14 +89,9 @@ watch(theme, (value) => {
   line-height: 1;
 }
 
-.app-credit {
-  margin: 0;
-  text-align: center;
-  font-size: 0.9rem;
-  color: var(--theme-muted, #6f4e37);
-}
-
-.app-credit__name {
-  font-weight: 700;
+@media (max-width: 640px) {
+  .app-shell {
+    padding-bottom: 5.75rem;
+  }
 }
 </style>

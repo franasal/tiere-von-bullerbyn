@@ -143,7 +143,7 @@ Emil ist mit seinen zwei Freunden Jule und Kalle zu uns nach Bullerbyn gezogen. 
 Kleines weißes Schaf mit lockigen Hörnern.
 
 ### Geschichte
-Hat eine sehr markante Lautäußerung.
+Markus ist ein ruhiger Schafopa. Er wurde aus einer Schäferei gerettet, wo er als Zuchtbock dienen musste. Er ist ein kleines Ouessantschaf. Neben seiner kleinen Figur fallen vor allem seine beeindruckenden Hörner und seine markante Stimme auf.
 
 ## Yoda
 ### Erscheinung
@@ -185,7 +185,7 @@ Schneeweißen ist in Alt-Bullerbyn auf die Welt gekommen. Ihre Mutter Itsche (be
 Komplett schwarzes Schaf ohne Hörner.
 
 ### Geschichte
--
+Henry ist ein Kamerunschaf und intergeschlechtlich. Das heißt, Henry ist zwar mit männlichen Geschlechtsmerkmalen auf die Welt gekommen, doch sein Hormonhaushalt und seine äußerliche Erscheinung sind eher weiblich. Henry ist sehr verschmust und immer vorne mit dabei. Diversity is natural.
 
 ## Carlos
 ### Erscheinung
@@ -256,6 +256,27 @@ Weiß-brauner Pony.
 
 ### Geschichte
 Peter-Charlie und Kasper wurden in den Niederlanden auf einem Lebendmarkt vor der Schlachtung gerettet. Manchmal passt die Beschreibung „Stoffel“ perfekt zu Peter-Charlie, doch er hat auch viel Zuneigung zu geben.
+
+## Toffie
+### Erscheinung
+Braun-schwarze Maine-Coon-Katze.
+
+### Geschichte
+Toffie wurde aus privaten Gründen bei uns abgegeben. Mittlerweile ist Toffie hauptsächlich bei unserer Nachbarin unterwegs. Sie schläft viel und lässt sich gerne verwöhnen.
+
+## Mau
+### Erscheinung
+Graue Katze mit Flecken.
+
+### Geschichte
+Mau wurde als Kitten gerettet. Ihre Mutter war eine Hofkatze, die vermutlich durch einen Giftköder gestorben ist. Mau ist noch jung und verspielt. Nachts schläft Mau bei unserer Tierpflegerin Josi.
+
+## Sari
+### Erscheinung
+Überwiegend weiße Katze mit schwarzen Flecken.
+
+### Geschichte
+Sari stammt, wie Mau, von einem Bauernhof. Als sie gerettet wurde, war sie noch sehr klein, abgemagert und krank. Heute ist sie ein aufgeweckter Freigeist. Ihre Lieblingsplätze sind die Futterkammer und der Keller. Kuscheln mag sie ebenfalls, doch das kann sich im nächsten Augenblick wieder ändern.
 
 ## Greta
 ### Erscheinung

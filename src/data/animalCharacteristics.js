@@ -67,7 +67,10 @@ export const ANIMAL_CHARACTERISTICS = {
   Eli: { menschenfreundlichkeit: 3, aktivitaet: 3, neugier: 3 },
   Bobby: { menschenfreundlichkeit: 5, aktivitaet: 3, neugier: 3 },
   Jina: { menschenfreundlichkeit: 3, aktivitaet: 3, neugier: 3 },
-  Grinch: { menschenfreundlichkeit: 3, aktivitaet: 3, neugier: 3 }
+  Grinch: { menschenfreundlichkeit: 3, aktivitaet: 3, neugier: 3 },
+  Toffie: { menschenfreundlichkeit: 4, aktivitaet: 1, neugier: 2 },
+  Mau: { menschenfreundlichkeit: 3, aktivitaet: 4, neugier: 4 },
+  Sari: { menschenfreundlichkeit: 3, aktivitaet: 3, neugier: 5 }
 };
 
 function normalizeCharacteristicName(name) {

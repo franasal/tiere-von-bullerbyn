@@ -2,10 +2,12 @@ import { computed, onBeforeUnmount, ref, toValue, watch } from 'vue';
 import {
   addDoc,
   collection,
+  collectionGroup,
   deleteDoc,
   doc,
   getDocs,
   getCountFromServer,
+  limit,
   onSnapshot,
   orderBy,
   query,
@@ -128,6 +130,33 @@ function sortNotes(a, b) {
 function getConfigError() {
   if (firebaseEnabled) return '';
   return 'Besucher*innennotizen sind gerade nicht verfuegbar.';
+}
+
+export function formatVisitorNoteDate(value) {
+  if (!value) return 'Gerade eben';
+
+  const date = typeof value.toDate === 'function' ? value.toDate() : new Date(value);
+  if (Number.isNaN(date.getTime())) return '';
+
+  const now = new Date();
+  const diffMs = now.getTime() - date.getTime();
+  const diffDays = Math.floor(diffMs / 86400000);
+
+  if (diffMs < 3600000) return 'Gerade eben';
+  if (diffMs < 86400000) return 'Heute';
+  if (diffDays === 1) return 'Gestern';
+
+  return date.toLocaleDateString('de-DE', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric'
+  });
+}
+
+export function formatVisitorNoteAuthor(value) {
+  const author = String(value || '').trim();
+  if (!author || author.startsWith('anonymous_')) return 'Anonym geteilt';
+  return author;
 }
 
 async function getServerDailyCount(uid, dayKey) {
@@ -316,6 +345,75 @@ export function useVisitorNotes(animalNameSource) {
     firebaseEnabled,
     addNote,
     deleteOwnPendingNote
+  };
+}
+
+export function useRecentVisitorNotes(animalNamesSource, maxEntries = 10) {
+  const notes = ref([]);
+  const loading = ref(true);
+  const error = ref('');
+
+  async function subscribe() {
+    notes.value = [];
+
+    if (!firebaseEnabled) {
+      error.value = getConfigError();
+      loading.value = false;
+      return;
+    }
+
+    loading.value = true;
+    error.value = '';
+
+    try {
+      await ensureVisitorSession();
+      const animalNames = Array.from(new Set((toValue(animalNamesSource) || []).filter(Boolean)));
+
+      if (!animalNames.length) {
+        loading.value = false;
+        return;
+      }
+
+      const snapshots = await Promise.all(
+        animalNames.map(async (animalName) => {
+          const animalKey = normalizeAnimalKey(animalName);
+          const snapshot = await getDocs(
+            query(
+              collection(db, 'notes', animalKey, 'entries'),
+              orderBy('createdAt', 'desc'),
+              limit(maxEntries)
+            )
+          );
+          return snapshot.docs;
+        })
+      );
+
+      notes.value = snapshots
+        .flat()
+        .map(mapNote)
+        .sort(sortNotes)
+        .slice(0, maxEntries);
+      loading.value = false;
+    } catch (loadError) {
+      error.value = loadError.message || 'Notizen konnten nicht geladen werden.';
+      loading.value = false;
+    }
+  }
+
+  watch(
+    () => [authBooted.value, JSON.stringify(toValue(animalNamesSource) || [])],
+    () => {
+      if (!authBooted.value) return;
+      subscribe();
+    },
+    { immediate: true }
+  );
+
+  return {
+    notes,
+    loading,
+    error,
+    firebaseEnabled
   };
 }
 

@@ -270,7 +270,7 @@ export const pigQuestions = [
     question: 'Welche Ohrform passt besser?',
     options: {
       round_hairy: 'Rund mit Haaren',
-      pointed: 'Spitzig',
+      pointed: 'Spitz',
       folded: 'Gefaltet'
     }
   },

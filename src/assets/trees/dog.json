@@ -1,51 +1,79 @@
 {
-  "question": "Welche Grundfarbe oder Zeichnung fällt zuerst auf?",
+  "question": "Ist es eine Katze oder ein Hund?",
   "optionLabels": {
-    "white_spotted": "Weiß mit Flecken",
-    "brown_black": "Braun mit schwarzem Rücken",
-    "black": "Schwarz",
-    "gray": "Grau"
+    "dog": "Hund",
+    "cat": "Katze"
   },
   "options": {
-    "white_spotted": {
-      "question": "Welche Zeichnung passt besser?",
+    "dog": {
+      "question": "Welche Grundfarbe oder Zeichnung fällt zuerst auf?",
       "optionLabels": {
-        "brown_head_spots": "Braune Flecken am Kopf",
-        "mostly_white": "Überwiegend weiß",
-        "black_brown_spots": "Schwarze und braune Flecken"
+        "white_spotted": "Weiß mit Flecken",
+        "brown_black": "Braun mit schwarzem Rücken",
+        "black": "Schwarz",
+        "gray": "Grau"
       },
       "options": {
-        "brown_head_spots": {
-          "result": "Piper"
+        "white_spotted": {
+          "question": "Welche Zeichnung passt besser?",
+          "optionLabels": {
+            "brown_head_spots": "Braune Flecken am Kopf",
+            "mostly_white": "Überwiegend weiß",
+            "black_brown_spots": "Schwarze und braune Flecken"
+          },
+          "options": {
+            "brown_head_spots": {
+              "result": "Piper"
+            },
+            "mostly_white": {
+              "result": "Ziggy"
+            },
+            "black_brown_spots": {
+              "result": "Prue"
+            }
+          }
         },
-        "mostly_white": {
-          "result": "Ziggy"
+        "brown_black": {
+          "result": "Eli"
         },
-        "black_brown_spots": {
-          "result": "Prue"
+        "black": {
+          "question": "Ist das Fell lockig?",
+          "optionLabels": {
+            "yes": "Ja",
+            "no": "Nein"
+          },
+          "options": {
+            "yes": {
+              "result": "Bobby"
+            },
+            "no": {
+              "result": "Jina"
+            }
+          }
+        },
+        "gray": {
+          "result": "Grinch"
         }
       }
     },
-    "brown_black": {
-      "result": "Eli"
-    },
-    "black": {
-      "question": "Ist das Fell lockig?",
+    "cat": {
+      "question": "Welche Fellfarbe oder Zeichnung passt am besten?",
       "optionLabels": {
-        "yes": "Ja",
-        "no": "Nein"
+        "brown_black": "Braun und schwarz",
+        "gray_spotted": "Grau und gefleckt",
+        "mostly_white_black_spots": "Überwiegend weiß mit schwarzen Flecken"
       },
       "options": {
-        "yes": {
-          "result": "Bobby"
+        "brown_black": {
+          "result": "Toffie"
         },
-        "no": {
-          "result": "Jina"
+        "gray_spotted": {
+          "result": "Mau"
+        },
+        "mostly_white_black_spots": {
+          "result": "Sari"
         }
       }
-    },
-    "gray": {
-      "result": "Grinch"
     }
   }
 }
