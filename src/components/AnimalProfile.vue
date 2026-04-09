@@ -54,6 +54,10 @@
     </div>
 
     <div class="profile-section">
+      <AnimalNoteCarousel :animal-name="name" />
+    </div>
+
+    <div class="profile-section">
       <VisitorNotes :animal-name="name" />
     </div>
 
@@ -65,6 +69,7 @@
 import { ref, onMounted } from 'vue';
 import ExpandableImage from './ExpandableImage.vue';
 import AnimalCharacteristics from './AnimalCharacteristics.vue';
+import AnimalNoteCarousel from './AnimalNoteCarousel.vue';
 import VisitorNotes from './VisitorNotes.vue';
 
 defineProps({

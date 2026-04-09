@@ -1,5 +1,5 @@
 <template>
-  <div class="feedback-root">
+  <div :class="['feedback-root', { 'feedback-root--inline': inline }]">
     <button class="feedback-launcher" @click="openPanel = true">
       Feedback senden
     </button>
@@ -12,7 +12,7 @@
               <h2>Feedback senden</h2>
               <p>Öffnet eine vorbereitete E-Mail an `farcilas@gmail.com`.</p>
             </div>
-            <button class="feedback-close" @click="closePanel" aria-label="Schliessen">
+            <button class="feedback-close" @click="closePanel" aria-label="Schließen">
               ×
             </button>
           </div>
@@ -25,10 +25,10 @@
               Allgemein
             </button>
             <button
-              :class="['feedback-type-button', { active: feedbackType === 'pig' }]"
-              @click="setType('pig')"
+              :class="['feedback-type-button', { active: feedbackType === 'animal' }]"
+              @click="setType('animal')"
             >
-              Zu einem Schwein
+              Zu einem Tier
             </button>
           </div>
 
@@ -37,12 +37,12 @@
             <input v-model.trim="title" type="text" placeholder="Kurz zusammenfassen" />
           </label>
 
-          <label v-if="feedbackType === 'pig'" class="feedback-field">
-            <span>Schwein</span>
-            <select v-model="selectedPigName">
+          <label v-if="feedbackType === 'animal'" class="feedback-field">
+            <span>Tier</span>
+            <select v-model="selectedAnimalName">
               <option value="">Bitte auswählen</option>
-              <option v-for="pig in pigNames" :key="pig" :value="pig">
-                {{ pig }}
+              <option v-for="animal in animalNames" :key="animal" :value="animal">
+                {{ animal }}
               </option>
             </select>
           </label>
@@ -78,11 +78,15 @@ const FEEDBACK_EMAIL = 'farcilas@gmail.com';
 export default {
   name: 'FeedbackWidget',
   props: {
-    pigNames: {
+    inline: {
+      type: Boolean,
+      default: false
+    },
+    animalNames: {
       type: Array,
       default: () => []
     },
-    selectedPig: {
+    selectedAnimal: {
       type: String,
       default: ''
     },
@@ -97,7 +101,7 @@ export default {
       feedbackType: 'general',
       title: '',
       message: '',
-      selectedPigName: ''
+      selectedAnimalName: ''
     };
   },
   computed: {
@@ -106,7 +110,7 @@ export default {
         return false;
       }
 
-      if (this.feedbackType === 'pig' && !this.selectedPigName) {
+      if (this.feedbackType === 'animal' && !this.selectedAnimalName) {
         return false;
       }
 
@@ -114,11 +118,11 @@ export default {
     }
   },
   watch: {
-    selectedPig: {
+    selectedAnimal: {
       immediate: true,
       handler(value) {
-        if (value && !this.selectedPigName) {
-          this.selectedPigName = value;
+        if (value && !this.selectedAnimalName) {
+          this.selectedAnimalName = value;
         }
       }
     }
@@ -129,17 +133,17 @@ export default {
     },
     setType(nextType) {
       this.feedbackType = nextType;
-      if (nextType === 'pig' && this.selectedPig && !this.selectedPigName) {
-        this.selectedPigName = this.selectedPig;
+      if (nextType === 'animal' && this.selectedAnimal && !this.selectedAnimalName) {
+        this.selectedAnimalName = this.selectedAnimal;
       }
     },
     buildMailtoUrl() {
-      const computedTitle = this.feedbackType === 'pig' && this.selectedPigName
-        ? `Feedback: ${this.selectedPigName} - ${this.title}`
+      const computedTitle = this.feedbackType === 'animal' && this.selectedAnimalName
+        ? `Feedback: ${this.selectedAnimalName} - ${this.title}`
         : `Feedback: ${this.title}`;
       const bodyLines = [
         `Type: ${this.feedbackType}`,
-        `Pig: ${this.selectedPigName || '-'}`,
+        `Animal: ${this.selectedAnimalName || '-'}`,
         `View: ${this.currentView || '-'}`,
         `Page: ${window.location.href}`,
         '',
@@ -174,6 +178,14 @@ export default {
   z-index: 40;
 }
 
+.feedback-root--inline {
+  position: static;
+  left: auto;
+  bottom: auto;
+  pointer-events: auto;
+  z-index: auto;
+}
+
 .feedback-launcher {
   pointer-events: auto;
   border: 1px solid #d9cfbd;
@@ -186,9 +198,14 @@ export default {
   box-shadow: 0 8px 18px rgba(32, 48, 38, 0.12);
 }
 
+.feedback-root--inline .feedback-launcher {
+  box-shadow: none;
+}
+
 .feedback-overlay {
   position: fixed;
   inset: 0;
+  z-index: 120;
   background: rgba(24, 28, 24, 0.38);
   display: flex;
   align-items: flex-end;
@@ -327,6 +344,11 @@ export default {
   .feedback-root {
     left: 10px;
     bottom: 10px;
+  }
+
+  .feedback-root--inline {
+    left: auto;
+    bottom: auto;
   }
 
   .feedback-launcher {

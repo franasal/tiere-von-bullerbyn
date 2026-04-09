@@ -3,13 +3,13 @@
     <div class="notes-intro">
       <div>
         <h3 class="section-title">📝 Besucher*innennotizen</h3>
-        <p class="notes-hint">Kurze Eindruecke, Begegnungen und kleine Momente mit {{ animalName }}.</p>
+        <p class="notes-hint">Kurze Eindrücke, Begegnungen und kleine Momente mit {{ animalName }}.</p>
       </div>
-      <span v-if="firebaseEnabled && notes.length" class="notes-count">{{ notes.length }} Eintraege</span>
+      <span v-if="firebaseEnabled && notes.length" class="notes-count">{{ notes.length }} Einträge</span>
     </div>
 
     <p v-if="!firebaseEnabled" class="notes-status notes-status-error">
-      Besucher*innennotizen sind gerade nicht verfuegbar.
+      Besucher*innennotizen sind gerade nicht verfügbar.
     </p>
     <p v-else-if="remainingToday <= 1" class="notes-status">
       Heute kannst du noch {{ remainingToday }} {{ remainingToday === 1 ? 'Notiz' : 'Notizen' }} schreiben.
@@ -19,7 +19,7 @@
       <textarea
         v-model="newNote"
         class="note-input"
-        :placeholder="`Was moechtest du ueber ${animalName} teilen?`"
+        :placeholder="`Was möchtest du über ${animalName} teilen?`"
         rows="3"
         maxlength="500"
       />
@@ -44,17 +44,7 @@
     <template v-if="firebaseEnabled">
       <p v-if="error" class="notes-status notes-status-error">{{ error }}</p>
       <p v-else-if="loading" class="notes-empty">Notizen werden geladen ...</p>
-
-      <div v-else-if="notes.length" class="notes-list">
-        <div v-for="note in notes" :key="note.id" class="note-card">
-          <div class="note-header">
-            <span class="note-author">{{ formatAuthor(note.author) }}</span>
-            <span class="note-date">{{ formatDate(note.createdAt) }}</span>
-          </div>
-          <p class="note-text">{{ note.text }}</p>
-        </div>
-      </div>
-      <p v-else class="notes-empty">Noch keine Eintraege vorhanden. Teile den ersten Eindruck.</p>
+      <p v-else class="notes-empty">Dein Eintrag erscheint danach oben im Besucher*innen-Block.</p>
     </template>
   </div>
 </template>
@@ -62,8 +52,6 @@
 <script setup>
 import { ref, toRef } from 'vue';
 import {
-  formatVisitorNoteAuthor,
-  formatVisitorNoteDate,
   useVisitorNotes
 } from '../composables/useSharedNotes.js';
 
@@ -95,9 +83,6 @@ async function handleSubmit() {
     // Error is surfaced through composable state.
   }
 }
-
-const formatDate = formatVisitorNoteDate;
-const formatAuthor = formatVisitorNoteAuthor;
 </script>
 
 <style scoped>
@@ -220,49 +205,6 @@ const formatAuthor = formatVisitorNoteAuthor;
 .note-submit:disabled {
   opacity: .45;
   cursor: default;
-}
-
-.notes-list {
-  display: flex;
-  flex-direction: column;
-  gap: .55rem;
-  max-height: 320px;
-  overflow-y: auto;
-}
-
-.note-card {
-  padding: .75rem .8rem;
-  background: rgba(255, 255, 255, .94);
-  border-radius: 12px;
-  border: 1px solid #e2eddc;
-}
-
-.note-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: .5rem;
-  margin-bottom: .35rem;
-  flex-wrap: wrap;
-}
-
-.note-author {
-  font-size: .74rem;
-  font-weight: 700;
-  color: #2e5d34;
-}
-
-.note-date {
-  font-size: .68rem;
-  color: #8a9684;
-}
-
-.note-text {
-  margin: 0;
-  font-size: .84rem;
-  line-height: 1.55;
-  color: #33423a;
-  white-space: pre-wrap;
 }
 
 @media (max-width: 520px) {

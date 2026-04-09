@@ -48,19 +48,44 @@ function normalizeAnimalKey(name) {
     .replace(/^-+|-+$/g, '') || 'unknown';
 }
 
-function createAnonymousAuthor(animalName, existingNotes) {
+function createAnonymousAuthor(animalName) {
   const animalKey = normalizeAnimalKey(animalName).replace(/-/g, '_');
-  const prefix = `anonymous_${animalKey}_fan-`;
+  return `anonym_${animalKey}_fan`;
+}
 
-  const nextNumber = existingNotes.reduce((max, note) => {
-    const author = String(note.author || '');
-    if (!author.startsWith(prefix)) return max;
+function parseAnonymousAuthor(value) {
+  const author = String(value || '').trim();
+  if (!author) return null;
 
-    const suffix = Number(author.slice(prefix.length));
-    return Number.isFinite(suffix) ? Math.max(max, suffix) : max;
-  }, 0) + 1;
+  const currentMatch = author.match(/^anonym_([a-z0-9_]+)_fan$/);
+  if (currentMatch) {
+    return {
+      animalKey: currentMatch[1]
+    };
+  }
 
-  return `${prefix}${nextNumber}`;
+  const numberedMatch = author.match(/^([a-z0-9_]+)_fan_(\d+)$/);
+  if (numberedMatch) {
+    return {
+      animalKey: numberedMatch[1]
+    };
+  }
+
+  const legacyMatch = author.match(/^anonymous_([a-z0-9_]+)_fan-(\d+)$/);
+  if (legacyMatch) {
+    return {
+      animalKey: legacyMatch[1]
+    };
+  }
+
+  const legacyGenericMatch = author.match(/^anonymous_([a-z0-9_]+)_fan$/);
+  if (legacyGenericMatch) {
+    return {
+      animalKey: legacyGenericMatch[1]
+    };
+  }
+
+  return null;
 }
 
 function getDayKey(date = new Date()) {
@@ -129,7 +154,7 @@ function sortNotes(a, b) {
 
 function getConfigError() {
   if (firebaseEnabled) return '';
-  return 'Besucher*innennotizen sind gerade nicht verfuegbar.';
+  return 'Besucher*innennotizen sind gerade nicht verfügbar.';
 }
 
 export function formatVisitorNoteDate(value) {
@@ -155,7 +180,13 @@ export function formatVisitorNoteDate(value) {
 
 export function formatVisitorNoteAuthor(value) {
   const author = String(value || '').trim();
-  if (!author || author.startsWith('anonymous_')) return 'Anonym geteilt';
+  if (!author) return 'Anonym geteilt';
+
+  const anonymousAuthor = parseAnonymousAuthor(author);
+  if (anonymousAuthor) {
+    return `anonym_${anonymousAuthor.animalKey}_fan`;
+  }
+
   return author;
 }
 
@@ -274,7 +305,7 @@ export function useVisitorNotes(animalNameSource) {
       await refreshRemaining();
 
       if (remainingToday.value <= 0) {
-        throw new Error('Heute sind bereits 3 Notizen von diesem Geraet gespeichert worden.');
+        throw new Error('Heute sind bereits 3 Notizen von diesem Gerät gespeichert worden.');
       }
 
       const animalName = toValue(animalNameSource);

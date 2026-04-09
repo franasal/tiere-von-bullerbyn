@@ -59,6 +59,10 @@
     </div>
 
     <div class="card-padded">
+      <AnimalNoteCarousel :animal-name="name" />
+    </div>
+
+    <div class="card-padded">
       <VisitorNotes :animal-name="name" />
     </div>
   </div>
@@ -68,6 +72,7 @@
 import { ref, onMounted } from 'vue';
 import ExpandableImage from './ExpandableImage.vue';
 import AnimalCharacteristics from './AnimalCharacteristics.vue';
+import AnimalNoteCarousel from './AnimalNoteCarousel.vue';
 import VisitorNotes from './VisitorNotes.vue';
 
 defineProps({

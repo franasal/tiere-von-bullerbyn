@@ -10,8 +10,13 @@
             class="char-bar-fill"
             :style="{ width: (char.value / CHARACTERISTIC_SCALE_MAX * 100) + '%' }"
           />
+          <span
+            v-for="step in CHARACTERISTIC_SCALE_MAX - 1"
+            :key="`${char.key}-limit-${step}`"
+            class="char-bar-limit"
+            :style="{ left: (step / CHARACTERISTIC_SCALE_MAX * 100) + '%' }"
+          />
         </div>
-        <span class="char-value">{{ char.value }}/{{ CHARACTERISTIC_SCALE_MAX }}</span>
       </div>
     </div>
     <div v-if="besonderheiten" class="besonderheiten">
@@ -65,7 +70,8 @@ const charList = computed(() =>
 }
 
 .char-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1.3rem 7.5rem minmax(0, 1fr);
   align-items: center;
   gap: .45rem;
   min-width: 0;
@@ -81,34 +87,48 @@ const charList = computed(() =>
 .char-label {
   font-size: .78rem;
   color: #6d4c41;
-  min-width: 6.5rem;
+  width: 7.5rem;
   font-weight: 600;
   flex-shrink: 0;
 }
 
 .char-bar-track {
-  flex: 1;
+  position: relative;
+  width: 100%;
   min-width: 0;
-  height: 8px;
-  background: rgba(0, 0, 0, 0.06);
-  border-radius: 4px;
+  height: 10px;
+  border-radius: 999px;
   overflow: hidden;
+  background: rgba(93, 64, 55, 0.12);
+  border: 1px solid rgba(93, 64, 55, 0.08);
 }
 
 .char-bar-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
   height: 100%;
-  border-radius: 4px;
+  border-radius: 999px;
   background: linear-gradient(90deg, #f48fb1, #ec407a);
   transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.char-value {
-  font-size: .72rem;
-  color: #8d6e63;
-  min-width: 1.8rem;
-  text-align: right;
-  font-weight: 600;
-  flex-shrink: 0;
+.char-bar-limit {
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  width: 1px;
+  background: rgba(255, 248, 240, 0.9);
+  transform: translateX(-50%);
+}
+
+.char-bar-track::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  height: 10px;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px rgba(93, 64, 55, 0.08);
+  pointer-events: none;
 }
 
 .besonderheiten {
@@ -131,24 +151,18 @@ const charList = computed(() =>
 
 @media (max-width: 520px) {
   .char-row {
-    display: grid;
-    grid-template-columns: 1.3rem minmax(0, 1fr) auto;
+    grid-template-columns: 1.3rem minmax(0, 1fr);
     align-items: center;
   }
 
   .char-label {
+    width: auto;
     min-width: 0;
   }
 
   .char-bar-track {
     grid-column: 2 / 3;
     margin-top: .1rem;
-  }
-
-  .char-value {
-    grid-column: 3 / 4;
-    grid-row: 1 / 3;
-    align-self: center;
   }
 }
 </style>

@@ -33,18 +33,18 @@
       <div class="shared-notes__header">
         <div>
           <h2 class="shared-notes__title">Was Besucher*innen teilen</h2>
-          <p class="shared-notes__copy">Die neuesten Eindruecke von Begegnungen mit den Tieren.</p>
+          <p class="shared-notes__copy">Die neuesten Eindrücke von Begegnungen mit den Tieren.</p>
         </div>
       </div>
 
       <p v-if="!firebaseEnabled" class="shared-notes__status">
-        Besucher*innennotizen sind gerade nicht verfuegbar.
+        Besucher*innennotizen sind gerade nicht verfügbar.
       </p>
       <p v-else-if="feedError" class="shared-notes__status">
         {{ feedError }}
       </p>
       <p v-else-if="feedLoading" class="shared-notes__status">
-        Eintraege werden geladen ...
+        Einträge werden geladen ...
       </p>
       <div
         v-else-if="recentNotes.length"
@@ -90,7 +90,7 @@
         </div>
       </div>
       <p v-else class="shared-notes__status">
-        Noch keine Eintraege vorhanden.
+        Noch keine Einträge vorhanden.
       </p>
     </section>
   </div>

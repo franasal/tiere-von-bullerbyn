@@ -2,7 +2,7 @@
   <section class="panel-section">
     <h3 class="section-title">Notizen verwalten</h3>
     <p class="panel-copy">
-      Besucher*innen sehen neue Notizen sofort. Hier koennt ihr Eintraege bei Bedarf wieder loeschen.
+      Besucher*innen sehen neue Notizen sofort. Hier könnt ihr Einträge bei Bedarf wieder löschen.
     </p>
 
     <p v-if="!firebaseEnabled" class="notes-error">
@@ -35,7 +35,7 @@
       </button>
 
       <p v-if="!adminReady" class="notes-error">
-        Notizen sind sichtbar, aber Loeschen ist erst moeglich wenn der Firebase-Admin-Login erfolgreich ist.
+        Notizen sind sichtbar, aber Löschen ist erst möglich wenn der Firebase-Admin-Login erfolgreich ist.
       </p>
       <p v-if="notesError" class="notes-error">{{ notesError }}</p>
       <p v-if="loading" class="notes-empty">Notizen werden geladen ...</p>
@@ -60,7 +60,7 @@
                 :disabled="actionId === note.id || !adminReady"
                 @click="deleteNote(note)"
               >
-                Loeschen
+                Löschen
               </button>
             </div>
           </article>

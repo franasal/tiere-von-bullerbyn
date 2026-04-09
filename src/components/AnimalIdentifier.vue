@@ -176,15 +176,18 @@
       </button>
     </div>
 
-    <FeedbackWidget
-      :pig-names="feedbackPigNames"
-      :selected-pig="feedbackSelectedPig"
-      :current-view="feedbackViewLabel"
-    />
+    <footer class="app-footer">
+      <FeedbackWidget
+        inline
+        :animal-names="feedbackAnimalNames"
+        :selected-animal="feedbackSelectedAnimal"
+        :current-view="feedbackViewLabel"
+      />
 
-    <p class="app-credit">
-      Mit tierischer Liebe entwickelt von <span class="app-credit__name">vgn-dev</span>
-    </p>
+      <p class="app-credit">
+        Mit tierischer Liebe entwickelt von <span class="app-credit__name">vgn-dev</span>
+      </p>
+    </footer>
   </div>
 </template>
 
@@ -310,18 +313,17 @@ export default {
         maxImagesPerPig: 2
       });
     },
-    feedbackPigNames() {
+    feedbackAnimalNames() {
       return Object.values(this.animalInfo)
-        .filter((animal) => animal.species === 'pig')
         .map((animal) => animal.name)
         .sort((a, b) => a.localeCompare(b, 'de'));
     },
-    feedbackSelectedPig() {
-      if (this.resultName && this.animalInfo[this.resultName]?.species === 'pig') {
+    feedbackSelectedAnimal() {
+      if (this.resultName && this.animalInfo[this.resultName]) {
         return this.resultName;
       }
 
-      if (this.profileAnimal && this.animalInfo[this.profileAnimal]?.species === 'pig') {
+      if (this.profileAnimal && this.animalInfo[this.profileAnimal]) {
         return this.profileAnimal;
       }
 
@@ -809,17 +811,36 @@ export default {
   color: var(--theme-text, #212121);
 }
 
-.app-credit {
+.app-footer {
   position: absolute;
-  bottom: 0.6rem;
   left: 1rem;
+  right: 1rem;
+  bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9rem;
+}
+
+.app-credit {
   margin: 0;
   font-size: 0.72rem;
   color: var(--theme-muted, #6f4e37);
   opacity: 0.6;
+  text-align: right;
 }
 .app-credit__name {
   font-weight: 700;
+}
+
+@media (max-width: 520px) {
+  .app-footer {
+    gap: 0.6rem;
+  }
+
+  .app-credit {
+    max-width: 52%;
+  }
 }
 
 /* Candidate thumbnail gallery */

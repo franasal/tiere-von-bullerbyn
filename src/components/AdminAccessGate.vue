@@ -1,10 +1,10 @@
 <template>
   <div class="admin-gate">
     <div class="gate-card">
-      <p class="gate-kicker">Geschuetzter Bereich</p>
+      <p class="gate-kicker">Geschützter Bereich</p>
       <h2 class="gate-title">Admin Panel</h2>
       <p class="gate-copy">
-        Dieser Bereich steuert Inhalte, Fotos und kuenftige Tiergruppen.
+        Dieser Bereich steuert Inhalte, Fotos und künftige Tiergruppen.
         Bitte mit Passwort entsperren.
       </p>
 
