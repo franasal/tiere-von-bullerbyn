@@ -206,7 +206,7 @@ Braunes Schaf mit langen Hörnern.
 Braunes Schaf mit kürzeren Hörnern.
 
 ### Geschichte
--
+Raven stammt aus einer Beschlagnahmung durch das Veterinäramt. Sie ist ein Soayschaf, und ihr Verhalten ähnelt stark dem eines Rehs. Raven folgt Schneeweißen und ist Menschen gegenüber sehr scheu.
 
 ## Lissi
 ### Erscheinung
