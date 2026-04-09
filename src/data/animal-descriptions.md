@@ -1,4 +1,4 @@
-## Franz
+w## Franz
 ### Erscheinung
 Männlich, rosa, rechte Ohrmarke/Loch, normaler Rücken, gefaltete Ohren, langer Schwanz ohne Haare.
 
@@ -199,7 +199,7 @@ Carlos wurde davor gerettet, als Osterlamm zu enden. Gemeinsam mit Schneeweißch
 Braunes Schaf mit langen Hörnern.
 
 ### Geschichte
--
+Samu wurde vom Lebenshof Villa Abendsonne gerettet; vermutlich war er einem Schäfer entlaufen, und sie sicherten ihn. Samu wurde zu uns weitervermittelt. Er ist nun Teil der introvertierten Gruppe und hat sich vor allem in Raven verliebt.
 
 ## Raven
 ### Erscheinung
