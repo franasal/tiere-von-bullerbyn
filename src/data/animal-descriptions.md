@@ -192,7 +192,7 @@ Komplett schwarzes Schaf ohne Hörner.
 Komplett weißes Schaf mit braunen Flecken auf der Nase.
 
 ### Geschichte
--
+Carlos wurde davor gerettet, als Osterlamm zu enden. Gemeinsam mit Schneeweißchen führt er die Schafherde an. Carlos geht immer voraus. Er ist sehr neugierig und hat stets den mutigen, extrovertierten Teil der Herde hinter sich.
 
 ## Samu
 ### Erscheinung
