@@ -220,7 +220,7 @@ Die Geschwister Lissi und Liso stammen von einem ehemaligen Schäfer aus der Reg
 Weißes Schaf mit kleinen Hörnern.
 
 ### Geschichte
-Schwester von Lissi.
+Die Geschwister Liso und Lissi stammen von einem ehemaligen Schäfer aus der Region, der die beiden seiner Tochter zuliebe verschont hat. Liso ist ein intensiver Schmuser, der auch gern seinen Kopf im menschlichen Schoß vergräbt.
 
 ## Senta
 ### Erscheinung
