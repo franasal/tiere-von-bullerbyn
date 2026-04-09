@@ -1,4 +1,4 @@
-## Franz
+w## Franz
 ### Erscheinung
 Männlich, rosa, rechte Ohrmarke/Loch, normaler Rücken, gefaltete Ohren, langer Schwanz ohne Haare.
 
@@ -178,7 +178,7 @@ August ist ein ehemaliger Zuchtbock, der von Aktivisti vor der Schlachtung geret
 Komplett weißes Schaf mit braun gefleckten Beinen.
 
 ### Geschichte
--
+Schneeweißen ist in Alt-Bullerbyn auf die Welt gekommen. Ihre Mutter Itsche (bereits verstorben) wurde trächtig von einem Schäfer gerettet. Gemeinsam mit Carlos führt Schneeweißen die Schafherde an. Sie hat den schüchternen, introvertierten Teil der Herde hinter sich und geht Menschen eher aus dem Weg.
 
 ## Henry
 ### Erscheinung
