@@ -194,6 +194,11 @@
           target="_blank"
           rel="noreferrer"
         >
+          <img
+            class="app-credit__logo"
+            src="https://franasal.github.io/assets/img/vgn-dev-icon.png"
+            alt=""
+          />
           <span class="app-credit__name">vgn-dev</span>
         </a>
       </p>
@@ -846,21 +851,30 @@ export default {
 .app-credit__link {
   display: inline-flex;
   align-items: center;
+  gap: 0.28rem;
   margin-left: 0.2rem;
-  padding: 0.08rem 0.38rem;
+  padding: 0.14rem 0.42rem;
   border-radius: 6px;
-  color: var(--theme-accent, #7b1f46);
-  background: color-mix(in srgb, var(--theme-accent-soft, #fce4ec) 72%, transparent);
+  color: #1f6b33;
+  background: color-mix(in srgb, #dff5e4 86%, transparent);
   text-decoration: none;
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--theme-accent, #7b1f46) 18%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, #2d8a43 28%, transparent);
   transition: background-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
 }
 
 .app-credit__link:hover,
 .app-credit__link:focus-visible {
-  color: var(--theme-accent-strong, #5d1836);
-  background: color-mix(in srgb, var(--theme-accent-soft, #fce4ec) 88%, transparent);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--theme-accent, #7b1f46) 32%, transparent);
+  color: #155225;
+  background: color-mix(in srgb, #d3f0da 96%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, #217537 42%, transparent);
+}
+
+.app-credit__logo {
+  width: 0.95rem;
+  height: 0.95rem;
+  display: block;
+  border-radius: 4px;
+  object-fit: cover;
 }
 
 .app-credit__name {
