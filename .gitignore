@@ -25,3 +25,4 @@ dist-ssr
 .claude/
 .codex
 .codex/
+.codex-tmp/

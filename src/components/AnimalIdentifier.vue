@@ -190,13 +190,13 @@
         Mit tierischer Liebe entwickelt von
         <a
           class="app-credit__link"
-          href="https://franasal.github.io/"
+          href="https://vgn-dev.gitlab.io/"
           target="_blank"
           rel="noreferrer"
         >
           <img
             class="app-credit__logo"
-            src="https://franasal.github.io/assets/img/vgn-dev-icon.png"
+            src="https://vgn-dev.gitlab.io/assets/img/vgn-dev-icon.png"
             alt=""
           />
           <span class="app-credit__name">vgn-dev</span>
