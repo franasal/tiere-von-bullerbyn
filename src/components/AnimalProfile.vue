@@ -50,18 +50,18 @@
         <div v-for="t in uniqueTraits" :key="t.key" class="trait-card">
           <span class="trait-card-icon">{{ t.icon }}</span>
           <div class="trait-card-body">
-            <span class="trait-card-label-row">
-              <span class="trait-card-label">{{ t.label }}</span>
-              <TraitInfoButton
-                v-if="t.key === 'sex'"
-                :image-src="MALE_PIG_GUIDE_IMAGE"
-                :image-alt="MALE_PIG_GUIDE_ALT"
-                :caption="MALE_PIG_GUIDE_CAPTION"
-                label="Hilfe zum Geschlecht anzeigen"
-              />
-            </span>
+            <span class="trait-card-label">{{ t.label }}</span>
             <span class="trait-card-value">{{ t.value }}</span>
           </div>
+          <TraitInfoButton
+            v-if="t.key === 'sex'"
+            class="trait-info-inline"
+            :image-src="MALE_PIG_GUIDE_IMAGE"
+            :image-alt="MALE_PIG_GUIDE_ALT"
+            :caption="MALE_PIG_GUIDE_CAPTION"
+            credit="Bild adaptiert von Jo-Anne McArthur / We Animals."
+            label="Hilfe zum Geschlecht anzeigen"
+          />
         </div>
       </div>
     </div>
@@ -225,6 +225,7 @@ onMounted(() => {
   gap: 0.55rem;
 }
 .trait-card {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 0.45rem;
@@ -242,11 +243,6 @@ onMounted(() => {
   flex-direction: column;
   line-height: 1.2;
   min-width: 0;
-}
-.trait-card-label-row {
-  display: flex;
-  align-items: center;
-  gap: .35rem;
 }
 .trait-card-label {
   font-size: 0.65rem;

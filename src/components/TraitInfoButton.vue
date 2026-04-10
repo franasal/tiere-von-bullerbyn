@@ -19,7 +19,10 @@
         >
           ×
         </button>
-        <img :src="imageSrc" :alt="imageAlt" class="trait-info-image" />
+        <div class="trait-info-image-wrap">
+          <img :src="imageSrc" :alt="imageAlt" class="trait-info-image" />
+          <div v-if="credit" class="trait-info-credit-overlay">© {{ credit }}</div>
+        </div>
         <p v-if="caption" class="trait-info-caption">{{ caption }}</p>
       </div>
     </div>
@@ -33,6 +36,7 @@ const props = defineProps({
   imageSrc: { type: String, required: true },
   imageAlt: { type: String, default: '' },
   caption: { type: String, default: '' },
+  credit: { type: String, default: '' },
   label: { type: String, default: 'Info anzeigen' }
 });
 
@@ -53,14 +57,20 @@ const buttonLabel = computed(() => props.label || 'Info anzeigen');
   width: 1.2rem;
   height: 1.2rem;
   padding: 0;
-  border: 1px solid #d7a9bd;
+  border: 0;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.9);
-  color: #8a4164;
+  background: rgba(62, 39, 35, 0.1);
+  color: #5d4037;
   font-size: 0.72rem;
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
+}
+
+.trait-info-inline {
+  position: absolute;
+  right: 0.55rem;
+  bottom: 0.55rem;
 }
 
 .trait-info-overlay {
@@ -96,6 +106,7 @@ const buttonLabel = computed(() => props.label || 'Info anzeigen');
   color: #4e342e;
   font-size: 1.2rem;
   cursor: pointer;
+  z-index: 2;
 }
 
 .trait-info-image {
@@ -104,6 +115,22 @@ const buttonLabel = computed(() => props.label || 'Info anzeigen');
   max-height: 22rem;
   border-radius: 12px;
   object-fit: contain;
+}
+
+.trait-info-image-wrap {
+  position: relative;
+}
+
+.trait-info-credit-overlay {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  padding: 0.18rem 0.3rem;
+  border-radius: 6px;
+  background: rgba(20, 14, 18, 0.5);
+  color: #fdf5f9;
+  font-size: 0.62rem;
+  line-height: 1.15;
 }
 
 .trait-info-caption {
