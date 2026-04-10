@@ -1,80 +1,9 @@
-// src/composables/useAnimalData.js
 import Papa from 'papaparse';
+import { parseAnimalDescriptionsMarkdown } from '../data/animalDescriptionParser.js';
 
 const CACHE_KEY = 'animal_info_v1';
 const SPECIES_KEY = 'animal_species_v1';
 const TTL = 24 * 60 * 60 * 1000; // 24h
-
-const STORY_META_FIELDS = [
-  ['Ankunftsalter', 'ankunftsalter'],
-  ['Art', 'art'],
-  ['Herkunft', 'herkunft'],
-  ['Retterin', 'retterin'],
-  ['Retter', 'retter']
-];
-
-function normalizeBlockText(value) {
-  return String(value || '')
-    .split('\n')
-    .map((line) => line.trimEnd())
-    .join('\n')
-    .replace(/\n{3,}/g, '\n\n')
-    .trim();
-}
-
-function extractStoryMeta(...blocks) {
-  const metadata = {};
-  const keysByLabel = new Map(STORY_META_FIELDS);
-
-  const cleanedBlocks = blocks.map((block) => String(block || '')
-    .split('\n')
-    .filter((line) => {
-      const trimmed = line.trim();
-      const match = trimmed.match(/^([^:]+):\s*(.+)$/);
-      if (!match) return true;
-
-      const key = keysByLabel.get(match[1].trim());
-      if (!key) return true;
-
-      metadata[key] = match[2].trim();
-      return false;
-    })
-    .join('\n'));
-
-  return {
-    metadata,
-    cleanedBlocks: cleanedBlocks.map(normalizeBlockText)
-  };
-}
-
-function parseAnimalDescriptionsMarkdown(markdown) {
-  const text = (markdown || '').replace(/\r\n/g, '\n');
-  const sections = text.split(/^## /m).slice(1);
-  const descriptions = {};
-
-  sections.forEach((section) => {
-    const [headingLine, ...restLines] = section.split('\n');
-    const name = headingLine?.trim();
-    if (!name) return;
-
-    const rest = restLines.join('\n');
-    const appearanceMatch = rest.match(/### Erscheinung\n([\s\S]*?)(?:\n### Geschichte|\n*$)/);
-    const storyMatch = rest.match(/### Geschichte\n([\s\S]*?)$/);
-
-    const appearance = (appearanceMatch?.[1] || '').trim();
-    const story = (storyMatch?.[1] || '').trim();
-    const { metadata, cleanedBlocks } = extractStoryMeta(appearance, story);
-    const [cleanAppearance, cleanStory] = cleanedBlocks;
-
-    descriptions[name] = {
-      appearance_description: cleanAppearance === '-' ? '' : cleanAppearance,
-      general_description: cleanStory === '-' ? '' : cleanStory,
-      rescue_meta: metadata
-    };
-  });
-
-  return descriptions;
-}
 
 function mergeDescriptions(info, descriptions) {
   const mergedInfo = { ...(info || {}) };
@@ -85,7 +14,8 @@ function mergeDescriptions(info, descriptions) {
       ...mergedInfo[name],
       appearance_description: content.appearance_description || '',
       general_description: content.general_description || '',
-      rescue_meta: content.rescue_meta || {}
+      rescue_meta: content.rescue_meta || {},
+      traits: content.traits || {}
     };
   });
 
@@ -139,6 +69,9 @@ export function mergeAnimalSources(primary, secondary) {
     }
     if ('rescue_meta' in secondaryInfo[name]) {
       mergedInfo[name].rescue_meta = secondaryInfo[name].rescue_meta || {};
+    }
+    if ('traits' in secondaryInfo[name]) {
+      mergedInfo[name].traits = secondaryInfo[name].traits || {};
     }
   });
 

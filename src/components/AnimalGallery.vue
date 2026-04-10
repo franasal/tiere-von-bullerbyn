@@ -22,15 +22,6 @@
         </div>
         <div class="gallery-body">
           <strong class="gallery-name">{{ animal.name }}</strong>
-          <div class="gallery-traits">
-            <span
-              v-for="t in animal.uniqueTraits.slice(0, 2)"
-              :key="t.key"
-              class="mini-badge"
-            >
-              {{ t.icon }} {{ t.value }}
-            </span>
-          </div>
         </div>
       </div>
     </div>
@@ -116,7 +107,6 @@ defineEmits(['showProfile', 'back']);
 .gallery-body {
   display: flex;
   flex-direction: column;
-  gap: .45rem;
   padding: .8rem;
 }
 .gallery-name {
@@ -124,26 +114,6 @@ defineEmits(['showProfile', 'back']);
   color: #3e2723;
   text-align: left;
   word-break: break-word;
-}
-
-.gallery-traits {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .3rem;
-  width: 100%;
-}
-.mini-badge {
-  font-size: .7rem;
-  color: #5d4037;
-  background: rgba(255,255,255,.72);
-  border: 1px solid #f1dde5;
-  padding: .18rem .45rem;
-  border-radius: 999px;
-  text-align: center;
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .back-button {

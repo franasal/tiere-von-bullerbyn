@@ -1,188 +1,27 @@
-export const pigProfiles = [
-  {
-    name: 'Lili',
-    traits: {
-      pigType: 'wild_boar_like',
-      sex: 'female',
-      coatAppearance: 'brown_dense',
-      wildBoarMarking: 'plain_brown'
-    }
-  },
-  {
-    name: 'Gezi',
-    traits: {
-      pigType: 'wild_boar_like',
-      sex: 'female',
-      coatAppearance: 'gray_dense',
-      wildBoarMarking: 'black_ears_lower_back_spot'
-    }
-  },
-  {
-    name: 'Maike',
-    traits: {
-      pigType: 'woolly_domestic',
-      sex: 'female',
-      coatAppearance: 'full_hair_no_spots',
-      earMark: 'right'
-    }
-  },
-  {
-    name: 'Justus',
-    traits: {
-      pigType: 'woolly_domestic',
-      sex: 'male',
-      coatAppearance: 'big_black_spots_full_hair',
-      earMark: 'none'
-    }
-  },
-  {
-    name: 'Milli',
-    traits: {
-      pigType: 'pot_bellied',
-      sex: 'female',
-      coatAppearance: 'black_white_bristles',
-      sizeClass: 'large'
-    }
-  },
-  {
-    name: 'Vanilli',
-    traits: {
-      pigType: 'pot_bellied',
-      sex: 'female',
-      coatAppearance: 'bristle_punk_left',
-      sizeClass: 'small',
-      skinPattern: 'half_pink_black'
-    }
-  },
-  {
-    name: 'Strolch',
-    traits: {
-      pigType: 'pot_bellied',
-      sex: 'male',
-      tusksVisible: 'yes',
-      humpPresent: 'yes',
-      coatAppearance: 'light_bristles'
-    }
-  },
-  {
-    name: 'Susi',
-    traits: {
-      pigType: 'pot_bellied',
-      sex: 'female',
-      coatAppearance: 'black_with_neck_bristles'
-    }
-  },
-  {
-    name: 'Kiwi',
-    traits: {
-      pigType: 'standard_domestic',
-      sex: 'male',
-      earMark: 'right',
-      skinColor: 'pink',
-      earForm: 'pointed',
-      spotPattern: 'face_spots',
-      tailType: 'short'
-    }
-  },
-  {
-    name: 'Ferdinand',
-    traits: {
-      pigType: 'standard_domestic',
-      sex: 'male',
-      earMark: 'right',
-      skinColor: 'pink',
-      earForm: 'round_hairy',
-      tailType: 'short'
-    }
-  },
-  {
-    name: 'Franz',
-    traits: {
-      pigType: 'standard_domestic',
-      sex: 'male',
-      earMark: 'right',
-      skinColor: 'pink',
-      earForm: 'pointed',
-      tailType: 'long_bare',
-      bristleAmount: 'few'
-    }
-  },
-  {
-    name: 'Frida',
-    traits: {
-      pigType: 'standard_domestic',
-      sex: 'female',
-      earMark: 'left',
-      coatAppearance: 'orange_hair',
-      livesAlone: 'yes',
-      tailType: 'short'
-    }
-  },
-  {
-    name: 'Hedda',
-    traits: {
-      pigType: 'standard_domestic',
-      sex: 'female',
-      earMark: 'left',
-      earPosture: 'hanging',
-      tailType: 'long_hairy'
-    }
-  },
-  {
-    name: 'Nia',
-    traits: {
-      pigType: 'standard_domestic',
-      sex: 'female',
-      earMark: 'left',
-      earPosture: 'hanging',
-      tailType: 'long_bare'
-    }
-  },
-  {
-    name: 'Ronja',
-    traits: {
-      pigType: 'standard_domestic',
-      sex: 'female',
-      earMark: 'left',
-      earForm: 'pointed',
-      skinColor: 'pink',
-      spotPattern: 'black_hip_spots',
-      backColor: 'gray_back',
-      tailType: 'short'
-    }
-  },
-  {
-    name: 'Feline',
-    traits: {
-      pigType: 'standard_domestic',
-      sex: 'female',
-      earMark: 'right',
-      spotPattern: 'sharp_spots',
-      tailType: 'short'
-    }
-  },
-  {
-    name: 'Rosalie',
-    traits: {
-      pigType: 'standard_domestic',
-      sex: 'female',
-      earMark: 'left',
-      skinColor: 'pink',
-      tailType: 'short',
-      bodyShape: 'slim_hump'
-    }
-  },
-  {
-    name: 'Hope',
-    traits: {
-      pigType: 'standard_domestic',
-      sex: 'female',
-      earMark: 'left',
-      skinColor: 'pink',
-      tailType: 'curly_hairy'
-    }
-  }
-];
+import animalDescriptionsRaw from './animal-descriptions.md?raw';
+import { parsePigProfilesFromMarkdown } from './animalDescriptionParser.js';
+
+const BINARY_DEFAULTS = {
+  spotsPresent: 'no',
+  largeBlackSpots: 'no',
+  tusksVisible: 'no',
+  frontArea: 'no',
+  livesAlone: 'no',
+  earSlit: 'no',
+  mobility: 'normal'
+};
+
+function applyTraitDefaults(traits) {
+  return {
+    ...BINARY_DEFAULTS,
+    ...traits
+  };
+}
+
+export const pigProfiles = parsePigProfilesFromMarkdown(animalDescriptionsRaw).map((pig) => ({
+  ...pig,
+  traits: applyTraitDefaults(pig.traits)
+}));
 
 export const pigQuestions = [
   {
@@ -208,25 +47,16 @@ export const pigQuestions = [
   {
     key: 'coatAppearance',
     priority: 80,
-    question: 'Welche Fell- oder Borstenfarbe passt am besten?',
+    question: 'Welche Fell- oder Borstenstruktur passt am besten?',
     options: {
-      brown_dense: 'Braun und dicht behaart',
-      gray_dense: 'Grau und dicht behaart',
-      full_hair_no_spots: 'Voll behaart ohne Flecken',
-      big_black_spots_full_hair: 'Große schwarze Flecken und voll behaart',
-      black_white_bristles: 'Schwarz mit weißlichen Borsten',
-      bristle_punk_left: 'Borsten auf dem Rücken (Punk-Look)',
-      light_bristles: 'Hellere Borsten',
-      black_with_neck_bristles: 'Schwarz mit Borsten im Nacken',
-      orange_hair: 'Orangefarbene Haare'
-    }
-  },
-  {
-    key: 'bristleAmount',
-    priority: 79,
-    question: 'Wie dicht sind die Borsten sichtbar?',
-    options: {
-      few: 'Wenig Borsten'
+      brown_dense: 'Braun-graues dichtes Fell',
+      dark_dense: 'Braun-schwarzes dichtes Fell',
+      full_hair_light: 'Hell / weiß-grau',
+      black_head_hip_hairy: 'Schwarzer Kopf und Hüfte',
+      black_white_bristles: 'Schwarz-weiße Borsten am ganzen Körper',
+      white_bristles: 'Weiße Borsten',
+      gray_bristles: 'Graue Borsten',
+      black_bristles: 'Schwarze Borsten'
     }
   },
   {
@@ -234,8 +64,26 @@ export const pigQuestions = [
     priority: 78,
     question: 'Welche Wildschwein-Merkmale sind sichtbar?',
     options: {
-      plain_brown: 'Braunes Fell, schwarze Ohren mit weißen Haaren',
-      black_ears_lower_back_spot: 'Schwarz behaarte Ohren und schwarzer Fleck am unteren Rücken'
+      plain_brown: 'Schwarze Ohren mit weißen Haaren',
+      dark_back_spot: 'Schwarz behaarte Ohren und dunkler Rückenfleck'
+    }
+  },
+  {
+    key: 'spotsPresent',
+    priority: 77,
+    question: 'Hat es Flecken?',
+    options: {
+      yes: 'Ja, Flecken sichtbar',
+      no: 'Nein, keine Flecken'
+    }
+  },
+  {
+    key: 'largeBlackSpots',
+    priority: 76,
+    question: 'Hat es große Flecken?',
+    options: {
+      yes: 'Ja, große Flecken',
+      no: 'Nein, keine großen Flecken'
     }
   },
   {
@@ -244,9 +92,8 @@ export const pigQuestions = [
     question: 'Welche Fleckenzeichnung ist sichtbar?',
     options: {
       face_spots: 'Schwarze Flecken im Gesicht',
-      sharp_spots: 'Große Flecken im Gesicht und am Körper',
-      black_face_tail_spots: 'Schwarze Flecken im Gesicht und am Schwanz',
-      black_hip_spots: 'schwarze Flecken am Rücken/Hüfte'
+      hip_spots: 'Schwarze Flecken an Rücken/Hüfte',
+      body_large_spots: 'Große Flecken im Gesicht und am Körper'
     }
   },
   {
@@ -272,10 +119,11 @@ export const pigQuestions = [
   {
     key: 'earMark',
     priority: 50,
-    question: 'Wo ist eine Ohrmarke oder ein Loch sichtbar?',
+    question: 'Wo ist eine Ohrmarke, ein Loch oder ein Schlitz sichtbar?',
     options: {
       left: 'Links',
       right: 'Rechts',
+      both: 'Links und rechts',
       none: 'Keine sichtbar'
     }
   },
@@ -284,9 +132,9 @@ export const pigQuestions = [
     priority: 45,
     question: 'Welche Ohrform passt besser?',
     options: {
-      round_hairy: 'Stehend rund',
+      round: 'Rund stehend',
       pointed: 'Spitz stehend',
-      folded: 'Gefaltet'
+      hairy_hanging: 'Hängend und behaart'
     }
   },
   {
@@ -298,36 +146,21 @@ export const pigQuestions = [
     }
   },
   {
-    key: 'skinPattern',
-    priority: 38,
-    question: 'Gibt es eine besondere Haut- oder Farbverteilung?',
+    key: 'bristleAmount',
+    priority: 39,
+    question: 'Wie viele Borsten sind sichtbar?',
     options: {
-      half_pink_black: 'Halb rosa, halb schwarz'
+      few: 'Wenig Borsten',
+      many: 'Viele Borsten'
     }
   },
   {
-    key: 'backColor',
-    priority: 35,
-    question: 'Ist der Rücken grau gefärbt?',
+    key: 'noseColor',
+    priority: 28,
+    question: 'Welche Nasenfarbe ist sichtbar?',
     options: {
-      gray_back: 'Ja, der Rücken ist grau'
-    }
-  },
-  {
-    key: 'skinCondition',
-    priority: 35,
-    question: 'Gibt es eine auffällige Hautstruktur?',
-    options: {
-      scaly: 'Sehr schuppige Haut'
-    }
-  },
-  {
-    key: 'sizeClass',
-    priority: 30,
-    question: 'Wie wirkt die Körpergröße?',
-    options: {
-      large: 'Eher gross',
-      small: 'Eher klein'
+      black: 'Schwarze Nase',
+      pink: 'Rosa Nase'
     }
   },
   {
@@ -335,37 +168,49 @@ export const pigQuestions = [
     priority: 25,
     question: 'Sind Stoßzähne sichtbar?',
     options: {
-      yes: 'Ja'
+      yes: 'Ja',
+      no: 'Nein'
     }
   },
   {
-    key: 'humpPresent',
-    priority: 20,
-    question: 'Ist ein deutlicher Buckel sichtbar?',
+    key: 'frontArea',
+    priority: 24,
+    question: 'Lebt das Schwein vorne bei den Menschen?',
     options: {
-      yes: 'Ja'
+      yes: 'Ja, vorne bei den Menschen',
+      no: 'Nein'
     }
   },
   {
-    key: 'bodyShape',
-    priority: 20,
-    question: 'Fällt die Körperform besonders auf?',
+    key: 'mobility',
+    priority: 23,
+    question: 'Fällt der Gang oder die Hüfte auf?',
     options: {
-      slim_hump: 'Sehr lang, schmal oder buckelig'
+      stiff_hip: 'Steife Hüfte / auffälliger Gang',
+      normal: 'Unauffällig'
     }
   },
   {
     key: 'livesAlone',
-    priority: 15,
+    priority: 22,
     question: 'Lebt das Schwein allein / getrennt von der Rotte?',
     options: {
-      yes: 'Ja, lebt allein'
+      yes: 'Ja, lebt allein',
+      no: 'Nein'
+    }
+  },
+  {
+    key: 'earSlit',
+    priority: 18,
+    question: 'Ist ein Schlitz im linken Ohr sichtbar?',
+    options: {
+      yes: 'Ja',
+      no: 'Nein'
     }
   }
 ];
 
 export const UNKNOWN_OPTION = 'unknown';
-const DEFINED_TRAIT_VALUE = '__defined__';
 const MALE_PIG_GUIDE_IMAGE = `${import.meta.env.BASE_URL || '/'}male_pig.png`;
 
 export const pigOpeningQuestions = [
@@ -392,35 +237,30 @@ export const pigOpeningQuestions = [
     compareValue: 'woolly_domestic',
     compareLabel: 'Behaartes Schwein',
     question: 'Ist es ein stark behaartes Schwein?'
-  },
-  {
-    key: 'coatAppearance',
-    compareValue: 'big_black_spots_full_hair',
-    compareLabel: 'Große schwarze Flecken und voll behaart',
-    question: 'Hat es große schwarze Flecken und ist voll behaart?'
   }
 ];
 
 export const traitMeta = {
-  pigType:        { icon: '🐖', label: 'Typ' },
-  sex:            { icon: '♀♂', label: 'Geschlecht' },
-  coatAppearance: { icon: '🎨', label: 'Fell / Borsten' },
-  bristleAmount:  { icon: '🪮', label: 'Borsten' },
-  wildBoarMarking:{ icon: '🪶', label: 'Wildschwein-Merkmale' },
-  spotPattern:    { icon: '⚫', label: 'Flecken' },
-  earPosture:     { icon: '👂', label: 'Ohren' },
-  tailType:       { icon: '〰️', label: 'Schwanz' },
-  earMark:        { icon: '🕳️', label: 'Ohrloch' },
-  earForm:        { icon: '👂', label: 'Ohrform' },
-  skinColor:      { icon: '🩷', label: 'Hautfarbe' },
-  skinPattern:    { icon: '🎨', label: 'Färbung' },
-  backColor:      { icon: '🔘', label: 'Rücken' },
-  skinCondition:  { icon: '🧴', label: 'Haut' },
-  sizeClass:      { icon: '📏', label: 'Größe' },
-  tusksVisible:   { icon: '🦷', label: 'Stoßzähne' },
-  humpPresent:    { icon: '🐫', label: 'Buckel' },
-  bodyShape:      { icon: '📐', label: 'Körperbau' },
-  livesAlone:     { icon: '🏠', label: 'Lebt allein' }
+  pigType: { icon: '🐖', label: 'Typ' },
+  sex: { icon: '♀♂', label: 'Geschlecht' },
+  coatAppearance: { icon: '🧥', label: 'Fell / Borsten' },
+  wildBoarMarking: { icon: '🐗', label: 'Wildschwein-Merkmale' },
+  spotsPresent: { icon: '⚫', label: 'Flecken' },
+  largeBlackSpots: { icon: '⬛', label: 'Große Flecken' },
+  spotPattern: { icon: '🐄', label: 'Fleckenmuster' },
+  earPosture: { icon: '👂', label: 'Ohren' },
+  tailType: { icon: '🐾', label: 'Schwanz' },
+  earMark: { icon: '🏷️', label: 'Ohrmarke / Loch' },
+  earForm: { icon: '👂', label: 'Ohrform' },
+  skinColor: { icon: '🩷', label: 'Hautfarbe' },
+  bristleAmount: { icon: '🪮', label: 'Borstenmenge' },
+  sizeClass: { icon: '📏', label: 'Größe' },
+  noseColor: { icon: '🐽', label: 'Nase' },
+  tusksVisible: { icon: '🦷', label: 'Stoßzähne' },
+  frontArea: { icon: '📍', label: 'Vorderer Bereich' },
+  mobility: { icon: '🚶', label: 'Gang / Hüfte' },
+  livesAlone: { icon: '🧍', label: 'Lebt allein' },
+  earSlit: { icon: '✂️', label: 'Ohrschlitz' }
 };
 
 export function getInitialPigCandidates() {
@@ -434,15 +274,11 @@ export function filterPigCandidates(candidates, step) {
 
   const matchesTrait = (candidate, expectedValue) => {
     const candidateValue = candidate.traits[step.questionKey];
-    if (expectedValue === DEFINED_TRAIT_VALUE) {
-      return candidateValue !== undefined && candidateValue !== null;
-    }
 
     if (candidateValue === expectedValue) {
       return true;
     }
 
-    // "Lang mit Haaren" should include ringed long hairy tails as well.
     if (step.questionKey === 'tailType' && expectedValue === 'long_hairy' && candidateValue === 'curly_hairy') {
       return true;
     }
@@ -507,9 +343,19 @@ export function getNextPigQuestion(candidates, answeredKeys) {
     lockedKeys.add(step.questionKey);
   });
 
-  const rosalieQuestion = getRosalieSpotQuestion(candidates, answeredKeys);
-  if (rosalieQuestion) {
-    return rosalieQuestion;
+  const shortTailFemaleSpots = getShortTailFemaleSpotQuestion(candidates, answeredKeys);
+  if (shortTailFemaleSpots) {
+    return shortTailFemaleSpots;
+  }
+
+  const maleFaceSpotsQuestion = getMaleFaceSpotsQuestion(candidates, answeredKeys);
+  if (maleFaceSpotsQuestion) {
+    return maleFaceSpotsQuestion;
+  }
+
+  const woollyColorQuestion = getWoollyColorQuestion(candidates, answeredKeys);
+  if (woollyColorQuestion) {
+    return woollyColorQuestion;
   }
 
   const openingQuestion = getOpeningQuestion(candidates, answeredKeys);
@@ -543,29 +389,24 @@ export function getNextPigQuestion(candidates, answeredKeys) {
   return bestQuestion ? { question: bestQuestion, values: bestValues } : null;
 }
 
-function getRosalieSpotQuestion(candidates, answeredSteps) {
-  const hasFemale = answeredSteps.some(
-    (step) => step.questionKey === 'sex' && step.optionKey === 'female'
+function getMaleFaceSpotsQuestion(candidates, answeredSteps) {
+  const hasMale = answeredSteps.some(
+    (step) => step.questionKey === 'sex' && step.optionKey === 'male'
   );
-  const hasShortTail = answeredSteps.some(
-    (step) => step.questionKey === 'tailType' && step.optionKey === 'short'
-  );
-  const alreadyAsked = answeredSteps.some(
-    (step) => step.questionKey === 'spotPattern' && step.compareValue === DEFINED_TRAIT_VALUE
-  );
+  const alreadyAsked = answeredSteps.some((step) => step.questionKey === 'spotPattern');
 
-  if (!hasFemale || !hasShortTail || alreadyAsked) {
+  if (!hasMale || alreadyAsked) {
     return null;
   }
 
-  const withSpots = candidates.filter((candidate) => candidate.traits.spotPattern !== undefined);
-  const withoutSpots = candidates.filter((candidate) => candidate.traits.spotPattern === undefined);
+  const values = getDistinctValues(candidates, 'spotPattern');
+  if (!values.includes('face_spots')) {
+    return null;
+  }
 
-  if (
-    withSpots.length < 2 ||
-    withoutSpots.length !== 1 ||
-    withoutSpots[0]?.name !== 'Rosalie'
-  ) {
+  const nonFaceSpotCandidates = candidates.filter((candidate) => candidate.traits.spotPattern !== 'face_spots');
+  const allNonFaceUnspotted = nonFaceSpotCandidates.every((candidate) => candidate.traits.spotsPresent === 'no');
+  if (!allNonFaceUnspotted) {
     return null;
   }
 
@@ -573,9 +414,70 @@ function getRosalieSpotQuestion(candidates, answeredSteps) {
     question: {
       key: 'spotPattern',
       mode: 'binary',
-      compareValue: DEFINED_TRAIT_VALUE,
+      compareValue: 'face_spots',
+      compareLabel: 'Flecken im Gesicht',
+      question: 'Hat es Flecken im Gesicht?',
+      options: {
+        yes: 'Ja, passt',
+        no: 'Nein'
+      }
+    },
+    values: ['yes', 'no'],
+    forcedBinary: true
+  };
+}
+
+function getWoollyColorQuestion(candidates, answeredSteps) {
+  const alreadyAsked = answeredSteps.some((step) => step.questionKey === 'coatAppearance');
+  if (alreadyAsked || candidates.length < 2) {
+    return null;
+  }
+
+  const allWoolly = candidates.every((candidate) => candidate.traits.pigType === 'woolly_domestic');
+  if (!allWoolly) {
+    return null;
+  }
+
+  const values = getDistinctValues(candidates, 'coatAppearance');
+  if (values.length < 2) {
+    return null;
+  }
+
+  const question = pigQuestions.find((entry) => entry.key === 'coatAppearance');
+  if (!question) {
+    return null;
+  }
+
+  return { question, values };
+}
+
+function getShortTailFemaleSpotQuestion(candidates, answeredSteps) {
+  const hasFemale = answeredSteps.some(
+    (step) => step.questionKey === 'sex' && step.optionKey === 'female'
+  );
+  const hasShortTail = answeredSteps.some(
+    (step) => step.questionKey === 'tailType' && step.optionKey === 'short'
+  );
+  const alreadyAsked = answeredSteps.some(
+    (step) => step.questionKey === 'spotsPresent'
+  );
+
+  if (!hasFemale || !hasShortTail || alreadyAsked) {
+    return null;
+  }
+
+  const values = getDistinctValues(candidates, 'spotsPresent');
+  if (!values.includes('yes') || !values.includes('no')) {
+    return null;
+  }
+
+  return {
+    question: {
+      key: 'spotsPresent',
+      mode: 'binary',
+      compareValue: 'yes',
       compareLabel: 'Flecken sichtbar',
-      question: 'Sind Flecken sichtbar?',
+      question: 'Hat es Flecken?',
       options: {
         yes: 'Ja, passt',
         no: 'Nein'
@@ -588,13 +490,6 @@ function getRosalieSpotQuestion(candidates, answeredSteps) {
 
 function getOpeningQuestion(candidates, answeredSteps) {
   for (const opening of pigOpeningQuestions) {
-    if (
-      opening.key === 'coatAppearance' &&
-      !candidates.every((candidate) => candidate.traits.pigType === 'woolly_domestic')
-    ) {
-      continue;
-    }
-
     const alreadyAsked = answeredSteps.some(
       (step) => step.questionKey === opening.key && step.compareValue === opening.compareValue
     );
@@ -602,14 +497,7 @@ function getOpeningQuestion(candidates, answeredSteps) {
       continue;
     }
 
-    const matching = candidates.filter((candidate) => {
-      const value = candidate.traits[opening.key];
-      if (opening.compareValue === DEFINED_TRAIT_VALUE) {
-        return value !== undefined && value !== null;
-      }
-      return value === opening.compareValue;
-    });
-
+    const matching = candidates.filter((candidate) => candidate.traits[opening.key] === opening.compareValue);
     if (!matching.length || matching.length === candidates.length) {
       continue;
     }

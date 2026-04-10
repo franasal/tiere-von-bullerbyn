@@ -25,11 +25,11 @@ const props = defineProps({
 });
 
 const FACT_DEFINITIONS = [
-  { key: 'ankunftsalter', label: 'Ankunftsalter', icon: '🐣' },
-  { key: 'art', label: 'Art', icon: '🧬' },
-  { key: 'herkunft', label: 'Herkunft', icon: '📍' },
-  { key: 'retterin', label: 'Retterin', icon: '🤝' },
-  { key: 'retter', label: 'Retter', icon: '🤝' }
+  { key: 'ankunftsalter', label: 'Ankunftsalter', icon: '📅' },
+  { key: 'art', label: 'Art', icon: '🐾' },
+  { key: 'herkunft', label: 'Herkunft', icon: '🏚️' },
+  { key: 'retterin', label: 'Retterin', icon: '💚' },
+  { key: 'retter', label: 'Retter', icon: '💚' }
 ];
 
 const entries = computed(() => FACT_DEFINITIONS

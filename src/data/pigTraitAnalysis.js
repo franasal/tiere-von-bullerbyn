@@ -13,12 +13,13 @@ const UNIQUE_TRAIT_OVERRIDES = {
   Franz: [
     { key: 'sex' },
     { key: 'earMark' },
-    { key: 'earForm', value: 'Spitz stehend' },
-    { key: 'tailType', value: 'Langer Schwanz ohne Haare' },
+    { key: 'earForm' },
+    { key: 'tailType', value: 'Lang ohne Haare' },
     { key: 'bristleAmount', value: 'Wenig Borsten' }
   ],
   Kiwi: [
     { key: 'sex' },
+    { key: 'spotsPresent', value: 'Flecken sichtbar' },
     { key: 'spotPattern' },
     { key: 'earMark' },
     { key: 'earForm' },
@@ -27,8 +28,9 @@ const UNIQUE_TRAIT_OVERRIDES = {
   Ronja: [
     { key: 'sex' },
     { key: 'earMark' },
+    { key: 'spotsPresent', value: 'Flecken sichtbar' },
     { key: 'spotPattern' },
-    { key: 'earForm', value: 'Spitz stehend' },
+    { key: 'earForm' },
     { key: 'tailType', value: 'Kurz' }
   ],
   Ferdinand: [
@@ -40,81 +42,86 @@ const UNIQUE_TRAIT_OVERRIDES = {
   Hedda: [
     { key: 'sex' },
     { key: 'earMark' },
-    { key: 'earPosture', value: 'Hängend' },
-    { key: 'tailType', value: 'Langer Schwanz mit Haaren' }
+    { key: 'earPosture' },
+    { key: 'tailType', value: 'Lang mit Haaren' },
+    { key: 'bristleAmount', value: 'Viele Borsten' }
   ],
   Nia: [
     { key: 'sex' },
     { key: 'earMark' },
-    { key: 'earPosture', value: 'Hängend' },
-    { key: 'tailType', value: 'Langer Schwanz ohne Haare' }
+    { key: 'earPosture' },
+    { key: 'tailType', value: 'Lang ohne Haare' },
+    { key: 'bristleAmount', value: 'Wenig Borsten' }
   ],
   Feline: [
     { key: 'sex' },
     { key: 'earMark' },
+    { key: 'spotsPresent', value: 'Flecken sichtbar' },
     { key: 'spotPattern' },
-    { key: 'tailType', value: 'Kurz' }
+    { key: 'tailType', value: 'Kurz' },
+    { key: 'bristleAmount', value: 'Wenig Borsten' }
   ],
   Rosalie: [
     { key: 'sex' },
     { key: 'earMark' },
-    { key: 'tailType', value: 'Kurz' }
+    { key: 'tailType', value: 'Kurz' },
+    { key: 'mobility', value: 'Steife Hüfte / auffälliger Gang' }
   ],
   Hope: [
     { key: 'sex' },
     { key: 'earMark' },
-    { key: 'tailType', value: 'Lang, geringelt, mit Haaren' }
+    { key: 'tailType', value: 'Lang, geringelt, mit Haaren' },
+    { key: 'earSlit', value: 'Schlitz im linken Ohr' }
   ],
   Justus: [
     { key: 'sex' },
     { key: 'coatAppearance' },
-    { key: 'earMark' }
+    { key: 'bristleAmount', value: 'Viele Borsten' }
   ],
   Maike: [
     { key: 'sex' },
     { key: 'coatAppearance' },
-    { key: 'earMark' }
+    { key: 'earForm' },
+    { key: 'bristleAmount', value: 'Viele Borsten' }
   ],
   Milli: [
     { key: 'sex' },
-    { key: 'sizeClass', value: 'Größtes' },
     { key: 'pigType', value: 'Hängebauchschwein' },
-    { key: 'coatAppearance' }
+    { key: 'coatAppearance' },
+    { key: 'noseColor' }
   ],
   Vanilli: [
     { key: 'sex' },
-    { key: 'sizeClass', value: 'Klein' },
     { key: 'coatAppearance' },
-    { key: 'skinPattern' }
+    { key: 'noseColor' }
   ],
   Strolch: [
     { key: 'sex' },
-    { key: 'coatAppearance', value: 'Heller Borstenwuchs' },
-    { key: 'humpPresent', value: 'Deutlicher Buckel' },
+    { key: 'coatAppearance' },
     { key: 'tusksVisible', value: 'Stoßzähne' }
   ],
   Susi: [
     { key: 'sex' },
-    { key: 'coatAppearance' }
+    { key: 'coatAppearance' },
+    { key: 'noseColor' }
   ],
   Frida: [
     { key: 'sex' },
     { key: 'earMark', value: 'Links' },
-    { key: 'coatAppearance' },
     { key: 'tailType', value: 'Kurz' },
-    { key: 'livesAlone' }
+    { key: 'frontArea', value: 'Ja, vorne bei den Menschen' },
   ],
   Lili: [
     { key: 'sex' },
-    { key: 'pigType', value: 'Wildschwein' },
-    { key: 'coatAppearance', value: 'Braunes Fell' },
-    { key: 'wildBoarMarking', value: 'Schwarze Ohren mit weißen Haaren' }
+    { key: 'pigType', value: 'Wildschweinartig mit dichtem Fell' },
+    { key: 'coatAppearance' },
+    { key: 'wildBoarMarking' }
   ],
   Gezi: [
     { key: 'sex' },
-    { key: 'pigType', value: 'Wildschwein' },
-    { key: 'coatAppearance', value: 'Graues Fell' },
-    { key: 'wildBoarMarking', value: 'Schwarz behaarte Ohren und schwarzer Fleck am unteren Rücken' }
+    { key: 'pigType', value: 'Wildschweinartig mit dichtem Fell' },
+    { key: 'coatAppearance' },
+    { key: 'wildBoarMarking' }
   ]
 };
 

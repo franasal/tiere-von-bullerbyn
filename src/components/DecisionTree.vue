@@ -129,7 +129,7 @@ function formatLabel(option) {
   const map = {
     '': 'Keine', left: 'Links', right: 'Rechts',
     'hängend': 'Hängend', normal: 'Normal', 'ohne_spitzen': 'Ohne Spitzen',
-    short: 'Kurz', long_with_hair: 'Lang mit Haaren', long_without_hair: 'Lang ohne Haare',
+    short: 'Kurz', long_with_hair: 'Lang mit Haaren', long_without_hair: 'Lang',
     flecken_gesicht: 'Flecken im Gesicht', flecken_genau_abgegrenzt: 'Flecken abgegrenzt',
     grau_rücken: 'Grau am Rücken', komplett_gefleckt: 'Komplett gefleckt', rosa: 'Rosa',
     halb_schwarz_rosa_klein: 'Halb schwarz, halb rosa', schwarz_weiss_borsten_groß: 'Schwarz/weiße Borsten (groß)',
@@ -225,10 +225,12 @@ function formatLabel(option) {
 .option-button, .skip-button, .back-button, .reset-button {
   display: block; width: 100%;
   padding: .75rem 1rem;
+  min-height: 44px;
   border: none; border-radius: 6px;
   cursor: pointer; font-weight: bold;
   font-size: .95rem;
   transition: background .15s ease, transform .1s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 .option-button:active, .skip-button:active,
 .back-button:active, .reset-button:active {

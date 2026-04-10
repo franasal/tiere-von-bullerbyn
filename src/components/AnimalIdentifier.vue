@@ -30,7 +30,7 @@
       v-else-if="appView === 'gallery'"
       :animals="galleryAnimals"
       @showProfile="showProfile"
-      @back="appView = 'identify'"
+      @back="navigateBack"
     />
 
     <!-- Animal profile (from gallery) -->
@@ -45,7 +45,7 @@
       :characteristics="getCharacteristics(profileAnimal)"
       :background-facts="getBackgroundFacts(profileAnimal)"
       :besonderheiten="getBesonderheiten(profileAnimal)"
-      @back="appView = 'gallery'"
+      @back="navigateBack"
       @showProfile="showProfile"
     />
 
@@ -173,7 +173,7 @@
         @reset="reset"
       />
 
-      <button class="browse-link" @click="appView = 'gallery'">
+      <button class="browse-link" @click="appView = 'gallery'; pushHistoryState('gallery')">
         Alle {{ formatSpecies(selectedAnimal) }} kennenlernen →
       </button>
     </div>
@@ -307,8 +307,7 @@ export default {
 
       return names.map((name) => ({
         name,
-        imageUrl: this.getAnimalImage(name),
-        uniqueTraits: getUniqueTraits(name)
+        imageUrl: this.getAnimalImage(name)
       }));
     },
     questionCueGroups() {
@@ -371,6 +370,41 @@ export default {
   async mounted() {
     this.adminUnlocked = isAdminUnlocked();
 
+    // Browser back button support
+    this._onPopState = (event) => {
+      const state = event.state;
+      if (!state || !state.view) {
+        // No state = initial entry, go to start
+        this._skipPush = true;
+        this.reset();
+        this._skipPush = false;
+        return;
+      }
+      this._skipPush = true;
+      if (state.view === 'start') {
+        this.reset();
+      } else if (state.view === 'gallery') {
+        this.appView = 'gallery';
+      } else if (state.view === 'profile') {
+        this.profileAnimal = state.profileAnimal || null;
+        this.appView = 'profile';
+      } else if (state.view === 'identify') {
+        const stepCount = state.stepCount ?? 0;
+        if (stepCount === 0 && this.steps.length === 0) {
+          // Already at first question, go back to start
+          this.reset();
+        } else if (stepCount < this.steps.length) {
+          this.undoTo(stepCount - 1);
+        } else if (stepCount === 0 && this.steps.length > 0) {
+          this.undoTo(-1);
+        }
+      }
+      this._skipPush = false;
+    };
+    window.addEventListener('popstate', this._onPopState);
+    // Replace current entry with start state
+    history.replaceState({ view: 'start' }, '');
+
     const local = await loadFromLocalMirror();
     const cached = loadFromCache();
 
@@ -389,7 +423,21 @@ export default {
 
     await this.loadDecisionTrees();
   },
+  beforeUnmount() {
+    if (this._onPopState) {
+      window.removeEventListener('popstate', this._onPopState);
+    }
+  },
   methods: {
+    pushHistoryState(view, extra = {}) {
+      if (this._skipPush) return;
+      history.pushState({ view, ...extra }, '');
+    },
+
+    navigateBack() {
+      window.history.back();
+    },
+
     handleAdminUnlock(password) {
       this.adminUnlocked = true;
       this.adminSessionPassword = password || '';
@@ -437,6 +485,7 @@ export default {
       this.appView = 'identify';
       this.path = [];
       this.steps = [];
+      this.pushHistoryState('identify', { stepCount: 0 });
       this.resultName = null;
       this.showComparison = false;
 
@@ -453,12 +502,14 @@ export default {
     showProfile(name) {
       this.profileAnimal = name;
       this.appView = 'profile';
+      this.pushHistoryState('profile', { profileAnimal: name });
     },
 
     showProfileFromResult(name) {
       // Navigate to profile from result card's "similar animals"
       this.profileAnimal = name;
       this.appView = 'profile';
+      this.pushHistoryState('profile', { profileAnimal: name });
     },
 
     advance(option, branch) {
@@ -488,6 +539,7 @@ export default {
           compareValue: this.currentNode.compareValue,
           compareLabel: this.currentNode.compareLabel
         });
+        this.pushHistoryState('identify', { stepCount: this.steps.length });
         this.recomputePigState();
         return;
       }
@@ -500,6 +552,7 @@ export default {
         optionKey: option,
         optionLabel
       });
+      this.pushHistoryState('identify', { stepCount: this.steps.length });
       this.path.push(option);
       const next = branch ?? null;
 
@@ -529,6 +582,7 @@ export default {
       this.comparisonTraits = [];
       this.selectedAnimal = null;
       this.appView = 'start';
+      this.pushHistoryState('start');
     },
 
     restart() {
@@ -802,7 +856,7 @@ export default {
         unknown: 'Nicht sicher / nicht sichtbar',
         '': 'Keine', left: 'Links', right: 'Rechts', none: 'Keine sichtbar',
         hängend: 'Hängend', normal: 'Normal', ohne_spitzen: 'Ohne Spitzen',
-        short: 'Kurz', long_with_hair: 'Lang mit Haaren', long_without_hair: 'Lang ohne Haare',
+        short: 'Kurz', long_with_hair: 'Lang mit Haaren', long_without_hair: 'Lang',
         flecken_gesicht: 'Flecken im Gesicht', flecken_genau_abgegrenzt: 'Flecken abgegrenzt',
         grau_rücken: 'Grau am Rücken', komplett_gefleckt: 'Komplett gefleckt', rosa: 'Rosa',
         halb_schwarz_rosa_klein: 'Halb schwarz, halb rosa',
@@ -1000,9 +1054,11 @@ export default {
 .option-button, .back-button, .reset-button {
   display: block; width: 100%;
   padding: 0.75rem 1rem; margin-top: 0.5rem;
+  min-height: 44px;
   border: none; border-radius: 6px;
   cursor: pointer; font-weight: bold; font-size: 0.95rem;
   transition: background .15s ease, transform .1s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 .option-button:active, .back-button:active, .reset-button:active {
   transform: scale(0.98);
@@ -1026,9 +1082,11 @@ export default {
 .restart-button {
   display: block; width: 100%;
   padding: 0.75rem 1rem; margin-top: 0.5rem;
+  min-height: 44px;
   border: none; border-radius: 6px;
   cursor: pointer; font-weight: bold; font-size: 0.95rem;
   transition: background .15s ease, transform .1s ease;
+  -webkit-tap-highlight-color: transparent;
   background-color: var(--group-tertiary, #ffccbc);
   color: var(--group-tertiary-text, #5d4037);
 }
