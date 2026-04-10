@@ -69,6 +69,7 @@ body {
   color: var(--theme-text);
   background: var(--theme-background);
   transition: background 0.2s ease, color 0.2s ease;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -106,7 +107,6 @@ button:focus-visible {
   text-align: center;
   width: 100%;
   box-sizing: border-box;
-  overflow-x: hidden;
 }
 
 :root[data-theme='dark'] a {

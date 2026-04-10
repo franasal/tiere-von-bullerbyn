@@ -1,5 +1,10 @@
 import animalDescriptionsRaw from './animal-descriptions.md?raw';
 import { parsePigProfilesFromMarkdown } from './animalDescriptionParser.js';
+import {
+  MALE_PIG_GUIDE_ALT,
+  MALE_PIG_GUIDE_CAPTION,
+  MALE_PIG_GUIDE_IMAGE
+} from './pigSexGuide.js';
 
 const BINARY_DEFAULTS = {
   spotsPresent: 'no',
@@ -211,7 +216,6 @@ export const pigQuestions = [
 ];
 
 export const UNKNOWN_OPTION = 'unknown';
-const MALE_PIG_GUIDE_IMAGE = `${import.meta.env.BASE_URL || '/'}male_pig.png`;
 
 export const pigOpeningQuestions = [
   {
@@ -547,9 +551,8 @@ export function buildPigQuestionNode(question, candidates, values) {
     question.key === 'sex'
       ? {
           questionImage: MALE_PIG_GUIDE_IMAGE,
-          questionImageAlt: 'Beispiel für das Präputium bei einem männlichen Schwein',
-          questionImageCaption:
-            'Aus der Distanz ist das oft der einfachste Unterschied: Beim männlichen Schwein sieht das Präputium ein bisschen wie ein Bauchnabel aus. Bild adaptiert von Jo-Anne McArthur / We Animals.'
+          questionImageAlt: MALE_PIG_GUIDE_ALT,
+          questionImageCaption: MALE_PIG_GUIDE_CAPTION
         }
       : {};
 

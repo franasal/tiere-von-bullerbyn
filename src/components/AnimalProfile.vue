@@ -50,7 +50,16 @@
         <div v-for="t in uniqueTraits" :key="t.key" class="trait-card">
           <span class="trait-card-icon">{{ t.icon }}</span>
           <div class="trait-card-body">
-            <span class="trait-card-label">{{ t.label }}</span>
+            <span class="trait-card-label-row">
+              <span class="trait-card-label">{{ t.label }}</span>
+              <TraitInfoButton
+                v-if="t.key === 'sex'"
+                :image-src="MALE_PIG_GUIDE_IMAGE"
+                :image-alt="MALE_PIG_GUIDE_ALT"
+                :caption="MALE_PIG_GUIDE_CAPTION"
+                label="Hilfe zum Geschlecht anzeigen"
+              />
+            </span>
             <span class="trait-card-value">{{ t.value }}</span>
           </div>
         </div>
@@ -75,7 +84,13 @@ import ExpandableImage from './ExpandableImage.vue';
 import AnimalCharacteristics from './AnimalCharacteristics.vue';
 import AnimalBackgroundFacts from './AnimalBackgroundFacts.vue';
 import AnimalNoteCarousel from './AnimalNoteCarousel.vue';
+import TraitInfoButton from './TraitInfoButton.vue';
 import VisitorNotes from './VisitorNotes.vue';
+import {
+  MALE_PIG_GUIDE_ALT,
+  MALE_PIG_GUIDE_CAPTION,
+  MALE_PIG_GUIDE_IMAGE
+} from '../data/pigSexGuide.js';
 
 defineProps({
   name: { type: String, required: true },
@@ -227,6 +242,11 @@ onMounted(() => {
   flex-direction: column;
   line-height: 1.2;
   min-width: 0;
+}
+.trait-card-label-row {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
 }
 .trait-card-label {
   font-size: 0.65rem;
