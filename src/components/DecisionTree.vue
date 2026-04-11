@@ -219,9 +219,11 @@ function closeImagePreview() {
 .mb-4 { margin-bottom: 1rem; }
 
 .question-box {
-  background-color: var(--question-box-bg, var(--group-accent-soft, #fce4ec));
-  border: 1px solid var(--question-box-border, var(--group-accent-border, #f8bbd0));
-  padding: 1rem; border-radius: 6px; margin-bottom: 1rem;
+  background-color: var(--question-box-bg, var(--group-accent-soft, rgba(255, 255, 255, 0.04)));
+  border: 1px solid var(--question-box-border, var(--group-accent-border, rgba(255, 255, 255, 0.08)));
+  padding: 1rem; border-radius: var(--radius, 16px); margin-bottom: 1rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 .question-box--with-visual {
   display: flex;
@@ -419,7 +421,7 @@ function closeImagePreview() {
   width: 100%;
   padding: .65rem;
   border: 1px solid var(--option-card-border, var(--group-accent-border, #f8bbd0));
-  border-radius: 12px;
+  border-radius: var(--radius, 16px);
   background: var(--option-card-bg, color-mix(in srgb, var(--group-accent-soft, #fce4ec) 65%, white));
   cursor: pointer;
   transition: transform .12s ease, box-shadow .15s ease, border-color .15s ease;
@@ -454,10 +456,10 @@ function closeImagePreview() {
   display: block; width: 100%;
   padding: .75rem 1rem;
   min-height: 44px;
-  border: none; border-radius: 6px;
-  cursor: pointer; font-weight: bold;
+  border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 999px;
+  cursor: pointer; font-weight: 700;
   font-size: .95rem;
-  transition: background .15s ease, transform .1s ease;
+  transition: background .2s ease, transform .15s ease, box-shadow .2s ease;
   -webkit-tap-highlight-color: transparent;
 }
 .option-button:active, .skip-button:active,
@@ -475,15 +477,15 @@ function closeImagePreview() {
 }
 
 .skip-button {
-  background: transparent;
-  border: 1.5px dashed #bbb;
-  color: #888;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed var(--theme-muted, rgba(255, 255, 255, 0.2));
+  color: var(--theme-muted, #8a8880);
   font-weight: normal;
   font-size: .88rem;
   padding: .55rem .75rem;
   margin-top: .25rem;
 }
-.skip-button:hover { border-color: #999; color: #555; background: #f5f5f5; }
+.skip-button:hover { border-color: var(--theme-text, #ccc); color: var(--theme-text, #e8e6e1); background: rgba(255, 255, 255, 0.04); }
 
 .back-button {
   background-color: var(--group-secondary, #d1c4e9);

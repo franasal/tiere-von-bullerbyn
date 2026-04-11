@@ -1,10 +1,18 @@
+@font-face {
+  font-family: 'Survivant';
+  src: url('/fonts/survivant.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  line-height: 1.6;
   font-weight: 400;
   color: #213547;
   color-scheme: light;
-  --theme-accent: var(--group-accent-strong, #d98357);
+  --theme-accent: var(--group-accent-strong, #2f6b4f);
   --theme-accent-secondary: var(--group-secondary-strong, #9575cd);
   --theme-accent-tertiary: var(--group-tertiary-strong, #ff8a65);
   --theme-text: #2d221b;
@@ -21,6 +29,8 @@
   --theme-background:
     radial-gradient(circle at top, #fff7ef 0%, #fffdf9 48%, #f7efe5 100%);
   --theme-shadow: 0 18px 50px rgba(76, 53, 39, 0.08);
+  --radius: 16px;
+  --radius-pill: 999px;
   background:
     radial-gradient(circle at top, #fff7ef 0%, #fffdf9 48%, #f7efe5 100%);
 
@@ -31,23 +41,24 @@
 }
 
 :root[data-theme='dark'] {
-  color: #f3eee8;
+  color: #e8e6e1;
   color-scheme: dark;
-  --theme-text: #f3eee8;
-  --theme-muted: #a89f98;
-  --theme-border: #2a2e37;
-  --theme-surface: rgba(18, 20, 26, 0.92);
-  --theme-surface-strong: #0e1015;
-  --theme-surface-soft: rgba(24, 27, 35, 0.92);
-  --theme-control-bg: rgba(19, 22, 29, 0.94);
-  --theme-control-hover: rgba(27, 31, 40, 0.97);
-  --theme-input-bg: rgba(14, 17, 23, 0.94);
-  --theme-border-strong: color-mix(in srgb, var(--theme-accent) 58%, #2a2e37);
+  --theme-text: #e8e6e1;
+  --theme-muted: #8a8880;
+  --theme-border: rgba(255, 255, 255, 0.08);
+  --theme-surface: rgba(20, 20, 20, 0.92);
+  --theme-surface-strong: #0a0a0a;
+  --theme-surface-soft: rgba(20, 20, 20, 0.88);
+  --theme-control-bg: rgba(20, 20, 20, 0.94);
+  --theme-control-hover: rgba(30, 30, 30, 0.97);
+  --theme-input-bg: rgba(14, 14, 14, 0.94);
+  --theme-border-strong: color-mix(in srgb, var(--theme-accent) 58%, rgba(255, 255, 255, 0.08));
   --theme-neon-ring:
     0 0 0 1px color-mix(in srgb, var(--theme-accent) 42%, transparent),
     0 0 20px color-mix(in srgb, var(--theme-accent) 16%, transparent);
   --theme-background:
-    radial-gradient(circle at top, #181b25 0%, #0e1118 44%, #090b11 100%);
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(47, 107, 79, 0.1) 0%, transparent 70%),
+    radial-gradient(circle at top, #141414 0%, #0a0a0a 44%, #080808 100%);
   --theme-shadow: 0 18px 42px rgba(0, 0, 0, 0.42);
 }
 
@@ -78,18 +89,19 @@ h1 {
 }
 
 button {
-  border-radius: 8px;
+  border-radius: var(--radius-pill, 999px);
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
-  font-weight: 500;
+  font-weight: 600;
   font-family: inherit;
   background-color: #f9f1e7;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s, background-color 0.2s, transform 0.15s;
 }
 button:hover {
   border-color: #c99466;
+  transform: translateY(-1px);
 }
 button:focus,
 button:focus-visible {
@@ -272,18 +284,18 @@ button:focus-visible {
 :root[data-theme='dark'] .start-screen .animal-card {
   background: color-mix(in srgb, var(--group-accent-soft, #fafafa) 22%, #0f1218 78%) !important;
   color: color-mix(in srgb, var(--group-text, #333) 18%, white 82%) !important;
-  border-color: var(--group-accent-border, #d98357) !important;
+  border-color: var(--group-accent-border, #2f6b4f) !important;
   box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--group-accent-border, #d98357) 32%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--group-accent-border, #2f6b4f) 32%, transparent),
     0 10px 24px rgba(0, 0, 0, 0.24) !important;
 }
 
 :root[data-theme='dark'] .start-screen .animal-card:hover {
   background: var(--group-accent, #e0e0e0) !important;
   color: #fff !important;
-  border-color: var(--group-accent, #d98357) !important;
+  border-color: var(--group-accent, #2f6b4f) !important;
   box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--group-accent, #d98357) 30%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--group-accent, #2f6b4f) 30%, transparent),
     0 14px 28px rgba(0, 0, 0, 0.28) !important;
 }
 
@@ -464,13 +476,13 @@ button:focus-visible {
 
 /* ── Dark-mode identify-view: derive all accents from --group-* vars ── */
 :root[data-theme='dark'] .identify-view {
-  --theme-accent: var(--group-accent-strong, #d98357);
+  --theme-accent: var(--group-accent-strong, #2f6b4f);
   --theme-accent-secondary: var(--group-secondary-strong, #9575cd);
   --theme-accent-tertiary: var(--group-tertiary-strong, #ff8a65);
-  --theme-border-strong: color-mix(in srgb, var(--group-accent-strong, #d98357) 58%, #2a2e37);
+  --theme-border-strong: color-mix(in srgb, var(--group-accent-strong, #2f6b4f) 58%, rgba(255, 255, 255, 0.08));
   --theme-neon-ring:
-    0 0 0 1px color-mix(in srgb, var(--group-accent-strong, #d98357) 42%, transparent),
-    0 0 20px color-mix(in srgb, var(--group-accent-strong, #d98357) 22%, transparent);
+    0 0 0 1px color-mix(in srgb, var(--group-accent-strong, #2f6b4f) 42%, transparent),
+    0 0 20px color-mix(in srgb, var(--group-accent-strong, #2f6b4f) 22%, transparent);
   --question-box-bg: color-mix(in srgb, var(--theme-accent) 10%, var(--theme-surface-soft));
   --question-box-border: color-mix(in srgb, var(--theme-accent) 60%, var(--theme-border));
   --question-box-caption: color-mix(in srgb, var(--theme-accent) 36%, white 42%);
@@ -499,9 +511,9 @@ button:focus-visible {
 :root[data-theme='dark'] .identify-view .question-cues,
 :root[data-theme='dark'] .identify-view .trait-row,
 :root[data-theme='dark'] .identify-view .question-cue-card {
-  border-color: color-mix(in srgb, var(--group-accent-strong, #d98357) 50%, var(--theme-border)) !important;
+  border-color: color-mix(in srgb, var(--group-accent-strong, #2f6b4f) 50%, var(--theme-border)) !important;
   box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--group-accent-strong, #d98357) 14%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--group-accent-strong, #2f6b4f) 14%, transparent),
     0 12px 28px rgba(0, 0, 0, 0.28) !important;
 }
 
@@ -509,17 +521,17 @@ button:focus-visible {
 :root[data-theme='dark'] .identify-view .question-cue-image,
 :root[data-theme='dark'] .identify-view .preview-img,
 :root[data-theme='dark'] .identify-view .similar-img {
-  border-color: color-mix(in srgb, var(--group-accent-strong, #d98357) 62%, white 10%) !important;
+  border-color: color-mix(in srgb, var(--group-accent-strong, #2f6b4f) 62%, white 10%) !important;
 }
 
 /* Primary buttons */
 :root[data-theme='dark'] .identify-view .option-button,
 :root[data-theme='dark'] .identify-view .identify-btn,
 :root[data-theme='dark'] .identify-view .select-button {
-  border-color: color-mix(in srgb, var(--group-accent-strong, #d98357) 70%, white 8%) !important;
+  border-color: color-mix(in srgb, var(--group-accent-strong, #2f6b4f) 70%, white 8%) !important;
   box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--group-accent-strong, #d98357) 28%, transparent),
-    0 0 22px color-mix(in srgb, var(--group-accent-strong, #d98357) 22%, transparent) !important;
+    0 0 0 1px color-mix(in srgb, var(--group-accent-strong, #2f6b4f) 28%, transparent),
+    0 0 22px color-mix(in srgb, var(--group-accent-strong, #2f6b4f) 22%, transparent) !important;
 }
 
 /* Secondary buttons */
@@ -544,7 +556,7 @@ button:focus-visible {
 :root[data-theme='dark'] .identify-view .option-button:hover,
 :root[data-theme='dark'] .identify-view .identify-btn:hover,
 :root[data-theme='dark'] .identify-view .select-button:hover {
-  border-color: color-mix(in srgb, var(--group-accent-strong, #d98357) 84%, white 10%) !important;
+  border-color: color-mix(in srgb, var(--group-accent-strong, #2f6b4f) 84%, white 10%) !important;
 }
 
 :root[data-theme='dark'] .identify-view .back-button:hover,

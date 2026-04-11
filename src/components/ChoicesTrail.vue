@@ -74,14 +74,14 @@ function resolveCategory(step) {
 .trait-row {
   display: flex; align-items: center; gap: .5rem;
   padding: .35rem .5rem;
-  background: rgba(255,255,255,.7);
-  border-radius: 6px;
+  background: var(--theme-surface-soft, rgba(255, 255, 255, 0.04));
+  border-radius: 999px;
   cursor: pointer;
-  transition: background .15s ease, box-shadow .15s ease;
+  transition: background .2s ease, box-shadow .2s ease;
 }
 .trait-row:hover {
-  background: rgba(255,255,255,.95);
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--theme-control-hover, rgba(255, 255, 255, 0.06));
+  box-shadow: 0 1px 4px rgba(0,0,0,.12);
 }
 
 .trait-icon { font-size: 1.05rem; flex-shrink: 0; width: 1.5rem; text-align: center; }

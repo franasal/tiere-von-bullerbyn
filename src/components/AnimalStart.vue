@@ -14,7 +14,12 @@
       </h1>
     </div>
 
-    <p class="start-prompt">Welches Tier möchtest du identifizieren?</p>
+    <p class="start-mission">
+      Jedes Tier hier hat eine Geschichte. Lerne sie kennen, erkenne sie wieder
+      und erfahre, was sie besonders macht.
+    </p>
+
+    <p class="start-prompt">Wen m&ouml;chtest du kennenlernen?</p>
 
     <div class="animal-grid">
       <button
@@ -29,11 +34,11 @@
       </button>
     </div>
 
-    <section class="shared-notes">
+    <section class="shared-notes reveal">
       <div class="shared-notes__header">
         <div>
-          <h2 class="shared-notes__title">Was Besucher*innen teilen</h2>
-          <p class="shared-notes__copy">Die neuesten Eindrücke von Begegnungen mit den Tieren.</p>
+          <h2 class="shared-notes__title">Stimmen von Besucher*innen</h2>
+          <p class="shared-notes__copy">Eindr&uuml;cke und Begegnungen aus dem Lebenshof.</p>
         </div>
       </div>
 
@@ -288,8 +293,26 @@ watch(recentNotes, async () => {
   startCarousel();
 }, { immediate: true });
 
+let revealObserver = null;
+
 onMounted(() => {
   startCarousel();
+
+  revealObserver = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      }
+    },
+    { threshold: 0.15 }
+  );
+
+  document.querySelectorAll('.reveal').forEach((el) => {
+    revealObserver.observe(el);
+  });
 });
 
 onBeforeUnmount(() => {
@@ -297,6 +320,10 @@ onBeforeUnmount(() => {
   if (scrollSyncTimer) {
     clearTimeout(scrollSyncTimer);
     scrollSyncTimer = null;
+  }
+  if (revealObserver) {
+    revealObserver.disconnect();
+    revealObserver = null;
   }
 });
 
@@ -322,12 +349,23 @@ function getAnimalNoteThemeStyle(note) {
   align-items: center;
   text-align: center;
   padding: 1rem 1rem 2rem;
-  animation: fadeIn 0.4s ease-out;
+  animation: fadeIn 0.6s ease-out;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(30px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Reveal scroll animation ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ---- Header ---- */
@@ -336,7 +374,7 @@ function getAnimalNoteThemeStyle(note) {
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.75rem;
 }
 
 .start-logo {
@@ -347,27 +385,44 @@ function getAnimalNoteThemeStyle(note) {
 }
 
 .start-title {
-  font-size: 1.6rem;
-  line-height: 1.3;
+  font-family: 'Survivant', Inter, sans-serif;
+  font-size: clamp(1.8rem, 6vw, 2.4rem);
+  line-height: 1.1;
   margin: 0;
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  font-weight: normal;
+  letter-spacing: 0.02em;
+  background: linear-gradient(135deg, var(--theme-text, #e8e6e1) 30%, var(--theme-muted, #8a8880) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .subtitle {
   display: block;
-  font-weight: 400;
-  font-size: 1.1rem;
-  opacity: 0.7;
+  font-family: 'Survivant', Inter, sans-serif;
+  font-weight: normal;
+  font-size: clamp(1rem, 3.5vw, 1.3rem);
   margin-top: 0.1rem;
+}
+
+/* ---- Mission text ---- */
+.start-mission {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--theme-muted, #8a8880);
+  max-width: 360px;
+  margin: 0 0 1.25rem;
 }
 
 /* ---- Prompt ---- */
 .start-prompt {
-  font-size: 1rem;
-  opacity: 0.65;
-  margin: 0 0 1rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--theme-muted, #8a8880);
+  margin: 0 0 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.78rem;
 }
 
 /* ---- Grid ---- */
@@ -377,7 +432,7 @@ function getAnimalNoteThemeStyle(note) {
   gap: 0.75rem;
   width: 100%;
   max-width: 340px;
-  margin-bottom: 1.4rem;
+  margin-bottom: 2rem;
 }
 
 .animal-card {
@@ -387,19 +442,21 @@ function getAnimalNoteThemeStyle(note) {
   justify-content: center;
   gap: 0.35rem;
   padding: 1.1rem 0.5rem;
-  border-radius: 16px;
-  border: 2px solid var(--group-accent-border, #e0e0e0);
-  background: var(--group-accent-soft, #fafafa);
-  color: var(--group-text, #333);
+  border-radius: var(--radius, 16px);
+  border: 1px solid var(--group-accent-border, rgba(255, 255, 255, 0.08));
+  background: var(--group-accent-soft, rgba(255, 255, 255, 0.03));
+  color: var(--group-text, var(--theme-text, #e8e6e1));
   cursor: pointer;
   font-family: inherit;
-  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
 .animal-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
   background: var(--group-accent, #e0e0e0);
   border-color: var(--group-accent, #bbb);
   color: #fff;
@@ -417,7 +474,7 @@ function getAnimalNoteThemeStyle(note) {
 
 .animal-label {
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.02em;
 }
 
@@ -425,11 +482,12 @@ function getAnimalNoteThemeStyle(note) {
   width: 100%;
   max-width: 420px;
   padding: 1rem;
-  border-radius: 18px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(248, 242, 235, 0.95));
-  border: 1px solid rgba(214, 196, 180, 0.75);
-  box-shadow: 0 14px 34px rgba(76, 53, 39, 0.08);
+  border-radius: var(--radius, 16px);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
   text-align: left;
 }
 
@@ -440,7 +498,8 @@ function getAnimalNoteThemeStyle(note) {
 .shared-notes__title {
   margin: 0 0 0.2rem;
   font-size: 1rem;
-  color: #3e2723;
+  font-weight: 800;
+  color: var(--theme-text, #e8e6e1);
 }
 
 .shared-notes__copy,
@@ -448,7 +507,7 @@ function getAnimalNoteThemeStyle(note) {
   margin: 0;
   font-size: 0.82rem;
   line-height: 1.45;
-  color: #7a6253;
+  color: var(--theme-muted, #8a8880);
 }
 
 .carousel {
@@ -483,13 +542,14 @@ function getAnimalNoteThemeStyle(note) {
   padding: 0;
   border-radius: 999px;
   border: 0;
-  background: rgba(141, 110, 99, 0.24);
+  background: rgba(255, 255, 255, 0.14);
   cursor: pointer;
+  transition: width 0.2s, background 0.2s;
 }
 
 .carousel__dot--active {
   width: 1.15rem;
-  background: #8d6e63;
+  background: var(--theme-accent, #2f6b4f);
 }
 
 .shared-note-card {
@@ -497,9 +557,9 @@ function getAnimalNoteThemeStyle(note) {
   align-items: flex-start;
   gap: 0.7rem;
   padding: 0.72rem 0.76rem;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(232, 217, 205, 0.9);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   min-height: 110px;
   width: 100%;
   box-sizing: border-box;
@@ -512,8 +572,8 @@ function getAnimalNoteThemeStyle(note) {
   border-radius: 999px;
   object-fit: cover;
   flex-shrink: 0;
-  border: 2px solid color-mix(in srgb, var(--group-accent-border, #f8bbd0) 82%, white 18%);
-  background: #fff;
+  border: 2px solid color-mix(in srgb, var(--group-accent-border, #2f6b4f) 82%, white 18%);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .shared-note-card__body {
@@ -532,90 +592,98 @@ function getAnimalNoteThemeStyle(note) {
 .shared-note-card__animal {
   font-size: 0.8rem;
   font-weight: 700;
-  color: #4c3527;
+  color: var(--theme-text, #e8e6e1);
 }
 
 .shared-note-card__date,
 .shared-note-card__author {
   font-size: 0.7rem;
-  color: #8f7a6c;
+  color: var(--theme-muted, #8a8880);
 }
 
 .shared-note-card__text {
   margin: 0 0 0.32rem;
   font-size: 0.82rem;
   line-height: 1.5;
-  color: #43352e;
+  color: var(--theme-muted, #a59f93);
   white-space: pre-wrap;
 }
 
+/* ---- Dark mode overrides (dark is now default) ---- */
 :global(:root[data-theme='dark']) .start-screen .animal-card {
-  background: var(--group-accent-soft, #fafafa) !important;
-  color: var(--group-text, #333) !important;
-  border-color: var(--group-accent-border, #d98357) !important;
+  background: color-mix(in srgb, var(--group-accent-soft, #fafafa) 18%, rgba(20, 20, 20, 0.88)) !important;
+  color: color-mix(in srgb, var(--group-text, #333) 18%, white 82%) !important;
+  border-color: color-mix(in srgb, var(--group-accent-border, #2f6b4f) 52%, rgba(255, 255, 255, 0.08)) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--group-accent-border, #d98357) 32%, transparent),
-    0 10px 24px rgba(0, 0, 0, 0.24) !important;
+    0 0 0 1px color-mix(in srgb, var(--group-accent-border, #2f6b4f) 28%, transparent),
+    0 10px 24px rgba(0, 0, 0, 0.3) !important;
 }
 
 :global(:root[data-theme='dark']) .start-screen .animal-card:hover {
   background: var(--group-accent, #e0e0e0) !important;
   color: #fff !important;
-  border-color: var(--group-accent, #d98357) !important;
+  border-color: var(--group-accent, #2f6b4f) !important;
   box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--group-accent, #d98357) 30%, transparent),
-    0 14px 28px rgba(0, 0, 0, 0.28) !important;
-}
-
-:global(:root[data-theme='dark']) .start-screen .shared-notes {
-  background: linear-gradient(180deg, rgba(18, 21, 28, 0.96), rgba(12, 14, 19, 0.96));
-  border-color: var(--theme-border, #2a2e37);
-  box-shadow:
-    0 18px 42px rgba(0, 0, 0, 0.34),
-    0 0 0 1px rgba(255, 255, 255, 0.02);
-}
-
-:global(:root[data-theme='dark']) .start-screen .shared-notes__title {
-  color: var(--theme-text, #f3eee8);
-}
-
-:global(:root[data-theme='dark']) .start-screen .shared-notes__copy,
-:global(:root[data-theme='dark']) .start-screen .shared-notes__status {
-  color: var(--theme-muted, #a89f98);
-}
-
-:global(:root[data-theme='dark']) .start-screen .carousel__dot {
-  background: rgba(255, 255, 255, 0.18);
-}
-
-:global(:root[data-theme='dark']) .start-screen .carousel__dot--active {
-  background: var(--group-accent, #f48fb1);
-}
-
-:global(:root[data-theme='dark']) .start-screen .shared-note-card {
-  background: rgba(18, 20, 28, 0.96);
-  border-color: var(--group-accent-border, #3a3028);
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.03),
-    0 10px 24px rgba(0, 0, 0, 0.24);
-}
-
-:global(:root[data-theme='dark']) .start-screen .shared-note-card__animal {
-  color: var(--theme-text, #f3eee8);
-}
-
-:global(:root[data-theme='dark']) .start-screen .shared-note-card__text {
-  color: #ded5cd;
-}
-
-:global(:root[data-theme='dark']) .start-screen .shared-note-card__date,
-:global(:root[data-theme='dark']) .start-screen .shared-note-card__author {
-  color: var(--theme-muted, #a89f98);
+    0 0 0 1px color-mix(in srgb, var(--group-accent, #2f6b4f) 30%, transparent),
+    0 14px 28px rgba(0, 0, 0, 0.34) !important;
 }
 
 :global(:root[data-theme='dark']) .start-screen .shared-note-card__image {
-  background: var(--theme-surface-strong, #0e1015);
-  border-color: var(--group-accent, #d98357);
+  background: var(--theme-surface-strong, #0a0a0a);
+  border-color: var(--group-accent, #2f6b4f);
+}
+
+/* ---- Light mode overrides ---- */
+:global(:root:not([data-theme='dark'])) .start-screen .shared-notes {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-color: rgba(214, 196, 180, 0.6);
+}
+
+:global(:root:not([data-theme='dark'])) .start-screen .shared-notes__title {
+  color: #3e2723;
+}
+
+:global(:root:not([data-theme='dark'])) .start-screen .shared-notes__copy,
+:global(:root:not([data-theme='dark'])) .start-screen .shared-notes__status {
+  color: #7a6253;
+}
+
+:global(:root:not([data-theme='dark'])) .start-screen .shared-note-card {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(232, 217, 205, 0.9);
+}
+
+:global(:root:not([data-theme='dark'])) .start-screen .shared-note-card__animal {
+  color: #4c3527;
+}
+
+:global(:root:not([data-theme='dark'])) .start-screen .shared-note-card__text {
+  color: #43352e;
+}
+
+:global(:root:not([data-theme='dark'])) .start-screen .shared-note-card__date,
+:global(:root:not([data-theme='dark'])) .start-screen .shared-note-card__author {
+  color: #8f7a6c;
+}
+
+:global(:root:not([data-theme='dark'])) .start-screen .carousel__dot {
+  background: rgba(141, 110, 99, 0.24);
+}
+
+:global(:root:not([data-theme='dark'])) .start-screen .carousel__dot--active {
+  background: #2f6b4f;
+}
+
+:global(:root:not([data-theme='dark'])) .start-mission {
+  color: #6f4e37;
+}
+
+:global(:root:not([data-theme='dark'])) .start-prompt {
+  color: #6f4e37;
 }
 
 /* single-column for very narrow screens */

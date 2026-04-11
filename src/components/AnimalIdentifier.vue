@@ -138,7 +138,7 @@
       />
 
       <p class="app-credit">
-        Mit tierischer Liebe entwickelt von
+        Sorgf&auml;ltig gebaut von
         <a
           class="app-credit__link"
           href="https://franasal.github.io/"
@@ -817,13 +817,16 @@ export default {
   position: relative;
   width: min(100%, 500px);
   margin: 2rem auto;
-  font-family: sans-serif;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   padding: 1rem 1rem 5.5rem;
-  border: 1px solid var(--theme-border, #ccc);
-  border-radius: 8px;
-  background-color: var(--theme-surface, #fff);
-  color: var(--theme-text, #212121);
+  border: 1px solid var(--theme-border, rgba(255, 255, 255, 0.08));
+  border-radius: var(--radius, 16px);
+  background: var(--theme-surface, rgba(20, 20, 20, 0.92));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: var(--theme-text, #e8e6e1);
   box-sizing: border-box;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.15);
 }
 
 .app-footer {
@@ -851,19 +854,19 @@ export default {
   gap: 0.28rem;
   margin-left: 0.2rem;
   padding: 0.14rem 0.42rem;
-  border-radius: 6px;
-  color: #1f6b33;
-  background: color-mix(in srgb, #dff5e4 86%, transparent);
+  border-radius: 999px;
+  color: #6fcea0;
+  background: rgba(47, 107, 79, 0.12);
   text-decoration: none;
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, #2d8a43 28%, transparent);
+  box-shadow: inset 0 0 0 1px rgba(47, 107, 79, 0.28);
   transition: background-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
 }
 
 .app-credit__link:hover,
 .app-credit__link:focus-visible {
-  color: #155225;
-  background: color-mix(in srgb, #d3f0da 96%, transparent);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, #217537 42%, transparent);
+  color: #8ee4b8;
+  background: rgba(47, 107, 79, 0.18);
+  box-shadow: inset 0 0 0 1px rgba(47, 107, 79, 0.42);
 }
 
 .app-credit__logo {
@@ -920,9 +923,9 @@ export default {
   display: block; width: 100%;
   padding: 0.75rem 1rem; margin-top: 0.5rem;
   min-height: 44px;
-  border: none; border-radius: 6px;
-  cursor: pointer; font-weight: bold; font-size: 0.95rem;
-  transition: background .15s ease, transform .1s ease;
+  border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 999px;
+  cursor: pointer; font-weight: 700; font-size: 0.95rem;
+  transition: background .2s ease, transform .15s ease, box-shadow .2s ease;
   -webkit-tap-highlight-color: transparent;
 }
 .option-button:active, .back-button:active, .reset-button:active {
@@ -948,9 +951,9 @@ export default {
   display: block; width: 100%;
   padding: 0.75rem 1rem; margin-top: 0.5rem;
   min-height: 44px;
-  border: none; border-radius: 6px;
-  cursor: pointer; font-weight: bold; font-size: 0.95rem;
-  transition: background .15s ease, transform .1s ease;
+  border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 999px;
+  cursor: pointer; font-weight: 700; font-size: 0.95rem;
+  transition: background .2s ease, transform .15s ease, box-shadow .2s ease;
   -webkit-tap-highlight-color: transparent;
   background-color: var(--group-tertiary, #ffccbc);
   color: var(--group-tertiary-text, #5d4037);
@@ -978,15 +981,16 @@ export default {
 /* Browse link */
 .browse-link {
   display: block; width: 100%; margin-top: 1rem;
-  padding: .55rem; border: 1.5px dashed var(--browse-link-border, var(--group-link-border, #a5d6a7)); border-radius: 6px;
-  background: var(--browse-link-bg, var(--group-link-bg, transparent)); color: var(--browse-link-text, var(--group-secondary-text, #2e7d32));
+  padding: .65rem; border: 1px solid var(--browse-link-border, var(--group-link-border, rgba(255, 255, 255, 0.15))); border-radius: 999px;
+  background: var(--browse-link-bg, var(--group-link-bg, rgba(255, 255, 255, 0.03))); color: var(--browse-link-text, var(--group-secondary-text, #2e7d32));
   font-size: .85rem; font-weight: 600; cursor: pointer;
   text-align: center;
-  transition: background .15s ease, border-color .15s ease;
+  transition: background .2s ease, border-color .2s ease, transform .15s ease;
 }
 .browse-link:hover {
-  background: var(--browse-link-hover-bg, var(--group-link-hover, #e8f5e9));
+  background: var(--browse-link-hover-bg, var(--group-link-hover, rgba(255, 255, 255, 0.06)));
   border-color: var(--question-box-border, var(--group-accent-strong, #66bb6a));
+  transform: translateY(-1px);
 }
 
 /* Species sub-menu */
@@ -1000,9 +1004,9 @@ export default {
 }
 .menu-btn {
   display: block; width: 100%;
-  padding: .85rem 1rem; border: none; border-radius: 8px;
-  font-weight: bold; font-size: .95rem; cursor: pointer;
-  transition: background .15s ease, transform .1s ease;
+  padding: .85rem 1rem; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 999px;
+  font-weight: 700; font-size: .95rem; cursor: pointer;
+  transition: background .2s ease, transform .15s ease;
 }
 .menu-btn:active { transform: scale(0.98); }
 .identify-btn { background-color: #f48fb1; color: #212121; }

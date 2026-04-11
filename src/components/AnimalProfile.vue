@@ -336,11 +336,11 @@ onMounted(() => {
 .back-button {
   display: block; width: calc(100% - 2rem);
   margin: 1rem; padding: .65rem;
-  border: none; border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 999px;
   background-color: #d1c4e9; color: #4527a0;
-  font-weight: bold; font-size: .9rem;
+  font-weight: 700; font-size: .9rem;
   cursor: pointer;
-  transition: background .15s ease;
+  transition: background .2s ease, transform .15s ease;
 }
 .back-button:hover { background-color: #b39ddb; color: #fff; }
 

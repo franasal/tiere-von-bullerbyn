@@ -102,11 +102,11 @@ defineEmits(['select']);
 
 .select-button {
   margin-top: .5rem; width: 100%;
-  padding: .5rem; border: none; border-radius: 6px;
+  padding: .5rem; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 999px;
   background-color: #f48fb1; color: #212121;
-  font-weight: bold; font-size: .85rem;
+  font-weight: 700; font-size: .85rem;
   cursor: pointer;
-  transition: background .15s ease, transform .1s ease;
+  transition: background .2s ease, transform .15s ease;
 }
 .select-button:hover { background-color: #ec407a; color: #fff; }
 .select-button:active { transform: scale(0.97); }

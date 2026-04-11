@@ -143,9 +143,12 @@ onMounted(() => {
 .result-card {
   position: relative;
   display: flex; flex-direction: column; align-items: center;
-  border: 1px solid #ccc; border-radius: 12px; margin-bottom: 1rem;
-  background-color: #fdf5f9; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  animation: resultReveal .4s cubic-bezier(.34,1.56,.64,1) both;
+  border: 1px solid var(--theme-border, rgba(255, 255, 255, 0.08)); border-radius: var(--radius, 16px); margin-bottom: 1rem;
+  background: var(--theme-surface, rgba(20, 20, 20, 0.92));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.2);
+  animation: resultReveal .5s cubic-bezier(.34,1.56,.64,1) both;
   overflow: hidden;
 }
 
@@ -202,9 +205,9 @@ onMounted(() => {
   align-items: flex-start;
   gap: 0.6rem;
   padding: 0.65rem 0.75rem;
-  background: rgba(255, 248, 240, 0.8);
-  border: 1px solid #ffe0b2;
-  border-radius: 10px;
+  background: var(--theme-surface-soft, rgba(255, 255, 255, 0.04));
+  border: 1px solid var(--theme-border, rgba(255, 255, 255, 0.08));
+  border-radius: 12px;
 }
 .info-card-icon {
   font-size: 1.3rem;
@@ -221,14 +224,14 @@ onMounted(() => {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: #8d6e63;
+  color: var(--theme-muted, #8a8880);
   margin-bottom: 0.15rem;
 }
 .info-card-text {
   margin: 0;
   font-size: 0.88rem;
   line-height: 1.45;
-  color: #3e2723;
+  color: var(--theme-text, #e8e6e1);
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
@@ -241,7 +244,7 @@ onMounted(() => {
 
 /* Unique traits section */
 .section-title {
-  font-size: .9rem; color: #5d4037; margin: .75rem 0 .4rem;
+  font-size: .9rem; color: var(--theme-muted, #8a8880); margin: .75rem 0 .4rem;
   text-align: left; width: 100%;
 }
 .unique-traits { width: 100%; padding: 0 1.15rem; box-sizing: border-box; }
@@ -256,9 +259,9 @@ onMounted(() => {
   align-items: center;
   gap: 0.45rem;
   padding: 0.58rem 0.7rem;
-  background: rgba(244,143,177,.12);
-  border: 1px solid #f8bbd0;
-  border-radius: 10px;
+  background: var(--theme-surface-soft, rgba(255, 255, 255, 0.04));
+  border: 1px solid var(--theme-border, rgba(255, 255, 255, 0.08));
+  border-radius: 12px;
 }
 .trait-card-icon {
   font-size: 1.4rem;
@@ -273,14 +276,14 @@ onMounted(() => {
 }
 .trait-card-label {
   font-size: 0.65rem;
-  color: #8d6e63;
+  color: var(--theme-muted, #8a8880);
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
 .trait-card-value {
   font-size: 0.88rem;
   font-weight: 700;
-  color: #3e2723;
+  color: var(--theme-text, #e8e6e1);
   overflow-wrap: anywhere;
 }
 
@@ -308,15 +311,15 @@ onMounted(() => {
   gap: 0.7rem;
   padding: 0.6rem;
   margin-top: 0.5rem;
-  background: rgba(255,255,255,.7);
-  border: 1px solid #f0e6e0;
-  border-radius: 10px;
+  background: var(--theme-surface-soft, rgba(255, 255, 255, 0.04));
+  border: 1px solid var(--theme-border, rgba(255, 255, 255, 0.08));
+  border-radius: 12px;
   cursor: pointer;
-  transition: background .15s ease, box-shadow .15s ease;
+  transition: background .2s ease, box-shadow .2s ease;
 }
 .similar-card:hover {
-  background: rgba(255,255,255,.95);
-  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  background: var(--theme-control-hover, rgba(255, 255, 255, 0.06));
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 :deep(.similar-img) {
   width: 64px; height: 64px;
