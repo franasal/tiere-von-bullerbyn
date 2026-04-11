@@ -26,16 +26,24 @@
             <p v-if="currentNode.questionImageLabel" class="question-visual-label">
               {{ currentNode.questionImageLabel }}
             </p>
-            <img
-              :src="currentNode.questionImage"
-              :alt="currentNode.questionImageAlt || currentNode.question"
-              class="question-visual-image"
-              role="button"
-              tabindex="0"
-              @click="openImagePreview(currentNode.questionImage)"
-              @keydown.enter.prevent="openImagePreview(currentNode.questionImage)"
-              @keydown.space.prevent="openImagePreview(currentNode.questionImage)"
-            />
+            <div class="question-visual-media">
+              <img
+                :src="currentNode.questionImage"
+                :alt="currentNode.questionImageAlt || currentNode.question"
+                class="question-visual-image"
+                role="button"
+                tabindex="0"
+                @click="openImagePreview(currentNode.questionImage)"
+                @keydown.enter.prevent="openImagePreview(currentNode.questionImage)"
+                @keydown.space.prevent="openImagePreview(currentNode.questionImage)"
+              />
+              <div
+                v-if="currentNode.questionImageCredit"
+                class="question-visual-credit-overlay"
+              >
+                © {{ currentNode.questionImageCredit }}
+              </div>
+            </div>
             <p v-if="currentNode.questionImageCaption" class="question-visual-caption">
               {{ currentNode.questionImageCaption }}
             </p>
@@ -245,6 +253,9 @@ function closeImagePreview() {
   width: 84px;
   text-align: center;
 }
+.question-visual-media {
+  position: relative;
+}
 .question-visual--stacked {
   width: 100%;
   max-width: none;
@@ -268,12 +279,35 @@ function closeImagePreview() {
 }
 .question-visual--stacked .question-visual-image {
   width: 100%;
-  max-width: 240px;
+  max-width: 280px;
   height: auto;
+  aspect-ratio: 1231 / 819;
   border-radius: 8px;
   margin: 0 auto;
   border: none;
   box-shadow: none;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.72);
+}
+.question-visual--stacked .question-visual-media {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.question-visual-credit-overlay {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  padding: 0.18rem 0.3rem;
+  border-radius: 6px;
+  background: rgba(20, 14, 18, 0.5);
+  color: #fdf5f9;
+  font-size: 0.54rem;
+  line-height: 1.2;
+  max-width: 8.5rem;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: right;
 }
 .question-visual-caption {
   margin: 0.4rem 0 0;
@@ -328,17 +362,44 @@ function closeImagePreview() {
 }
 
 @media (max-width: 420px) {
+  .question-box {
+    padding: 0.9rem;
+  }
+
   .question-box--with-visual {
-    gap: 0.7rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
   }
 
   .question-visual {
-    width: 72px;
+    width: 100%;
+    text-align: left;
+  }
+
+  .question-visual-label {
+    margin-bottom: 0.45rem;
+  }
+
+  .question-box--with-visual {
+    gap: 0.75rem;
+  }
+
+  .question-visual {
+    width: 100%;
   }
 
   .question-visual-image {
-    width: 64px;
-    height: 64px;
+    width: min(100%, 168px);
+    height: auto;
+    margin: 0;
+  }
+
+  .question-visual-credit-overlay {
+    right: 0.4rem;
+    bottom: 0.4rem;
+    font-size: 0.5rem;
+    max-width: 7rem;
   }
 }
 

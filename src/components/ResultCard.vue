@@ -267,6 +267,7 @@ onMounted(() => {
 .trait-card-body {
   display: flex;
   flex-direction: column;
+  flex: 1 1 auto;
   line-height: 1.2;
   min-width: 0;
 }
@@ -280,6 +281,23 @@ onMounted(() => {
   font-size: 0.88rem;
   font-weight: 700;
   color: #3e2723;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 520px) {
+  .unique-traits {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .trait-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trait-card {
+    align-items: flex-start;
+    padding-right: 2.2rem;
+  }
 }
 
 /* Similar animals section */

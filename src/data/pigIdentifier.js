@@ -3,6 +3,7 @@ import { parsePigProfilesFromMarkdown } from './animalDescriptionParser.js';
 import {
   MALE_PIG_GUIDE_ALT,
   MALE_PIG_GUIDE_CAPTION,
+  MALE_PIG_GUIDE_CREDIT,
   MALE_PIG_GUIDE_IMAGE
 } from './pigSexGuide.js';
 import RONJA_SPOT_PATTERN_IMAGE from '../assets/pig-cues/Ronja/spotPattern.jpg';
@@ -653,7 +654,8 @@ export function buildPigQuestionNode(question, candidates, values, answeredCount
       ? {
           questionImage: MALE_PIG_GUIDE_IMAGE,
           questionImageAlt: MALE_PIG_GUIDE_ALT,
-          questionImageCaption: MALE_PIG_GUIDE_CAPTION
+          questionImageCaption: MALE_PIG_GUIDE_CAPTION,
+          questionImageCredit: MALE_PIG_GUIDE_CREDIT
         }
       : {};
 
@@ -733,11 +735,16 @@ export function buildPigQuestionNode(question, candidates, values, answeredCount
       optionLabels[UNKNOWN_OPTION] = 'Nicht sicher';
     }
 
+    const questionText =
+      question.key === 'largeBlackSpots'
+        ? 'Bedecken die Flecken den größten Teil des Gesichts?'
+        : question.question;
+
     return {
       key: question.key,
       mode: 'direct',
       categoryHint: meta ? `${meta.icon} ${meta.label}` : '',
-      question: question.question,
+      question: questionText,
       options,
       optionLabels,
       estimatedRemaining,
@@ -764,6 +771,16 @@ export function buildPigQuestionNode(question, candidates, values, answeredCount
   }
 
   let questionText = `${compareLabel}?`;
+  if (
+    question.key === 'spotPattern' &&
+    compareValue === 'face_spots' &&
+    values.includes('body_large_spots')
+  ) {
+    compareValue = ['face_spots', 'body_large_spots'];
+    compareLabel = 'Schwarze Flecken im Gesicht';
+    questionText = 'Hat es schwarze Flecken im Gesicht?';
+  }
+
   if (question.key === 'tailType' && compareValue === 'short') {
     compareValue = LONG_TAIL_VALUES.filter((value) => values.includes(value));
     compareLabel = 'Lang';

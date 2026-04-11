@@ -879,6 +879,11 @@ export default {
 }
 
 @media (max-width: 520px) {
+  .container {
+    margin: 0.75rem auto;
+    padding: 0.85rem 0.85rem 5.25rem;
+  }
+
   .app-footer {
     gap: 0.6rem;
   }

@@ -85,11 +85,11 @@ const buttonLabel = computed(() => props.label || 'Info anzeigen');
 
 .trait-info-dialog {
   position: relative;
-  width: min(88vw, 24rem);
-  max-height: min(78vh, 32rem);
+  width: min(calc(100vw - 1.5rem), 30rem);
+  max-height: min(82vh, 36rem);
   overflow: auto;
-  padding: 0.85rem;
-  border-radius: 14px;
+  padding: 0.8rem;
+  border-radius: 12px;
   background: #fffaf7;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
 }
@@ -112,8 +112,8 @@ const buttonLabel = computed(() => props.label || 'Info anzeigen');
 .trait-info-image {
   display: block;
   width: 100%;
-  max-height: 22rem;
-  border-radius: 12px;
+  max-height: 26rem;
+  border-radius: 10px;
   object-fit: contain;
 }
 
@@ -138,5 +138,20 @@ const buttonLabel = computed(() => props.label || 'Info anzeigen');
   color: #5d4037;
   font-size: 0.88rem;
   line-height: 1.45;
+}
+
+@media (max-width: 520px) {
+  .trait-info-overlay {
+    padding: 0.75rem;
+  }
+
+  .trait-info-dialog {
+    width: min(calc(100vw - 1.5rem), 28rem);
+    padding: 0.7rem;
+  }
+
+  .trait-info-image {
+    max-height: 60vh;
+  }
 }
 </style>

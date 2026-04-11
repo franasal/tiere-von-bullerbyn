@@ -109,6 +109,12 @@ button:focus-visible {
   box-sizing: border-box;
 }
 
+@media (max-width: 520px) {
+  #app {
+    padding: 0.5rem;
+  }
+}
+
 :root[data-theme='dark'] a {
   color: color-mix(in srgb, var(--theme-accent) 72%, white);
 }
