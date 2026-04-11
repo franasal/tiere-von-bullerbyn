@@ -77,55 +77,6 @@
         </div>
       </div>
 
-      <div v-if="questionCueGroups.length" class="question-cues">
-        <div class="question-cues-title">Foto-Hinweise zur aktuellen Frage</div>
-        <div class="question-cues-list">
-          <article
-            v-for="group in questionCueGroups"
-            :key="group.name"
-            class="question-cue-card"
-          >
-            <div class="question-cue-images">
-              <button
-                v-for="(url, index) in group.images"
-                :key="`${group.name}-${index}`"
-                type="button"
-                class="question-cue-button"
-                @click="openCuePreview(url)"
-              >
-                <img
-                  :src="url"
-                  alt="Hinweisfoto"
-                  class="question-cue-image"
-                />
-              </button>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <div
-        v-if="activeCuePreview"
-        class="cue-preview-overlay"
-        @click.self="closeCuePreview"
-      >
-        <div class="cue-preview-dialog">
-          <button
-            type="button"
-            class="cue-preview-close"
-            aria-label="Bild schließen"
-            @click="closeCuePreview"
-          >
-            X
-          </button>
-          <img
-            :src="activeCuePreview"
-            alt="Großes Hinweisfoto"
-            class="cue-preview-image"
-          />
-        </div>
-      </div>
-
       <!-- Comparison view for 2-3 similar candidates -->
       <template v-if="showComparison">
         <ComparisonView
@@ -164,7 +115,7 @@
       <!-- Decision tree questions -->
       <DecisionTree
         v-else
-        :current-node="currentNode"
+        :current-node="currentQuestionNode"
         :path="path"
         :species="selectedAnimal"
         :show-nav="true"
@@ -190,13 +141,13 @@
         Mit tierischer Liebe entwickelt von
         <a
           class="app-credit__link"
-          href="https://vgn-dev.gitlab.io/"
+          href="https://franasal.github.io/"
           target="_blank"
           rel="noreferrer"
         >
           <img
             class="app-credit__logo"
-            src="https://vgn-dev.gitlab.io/assets/img/vgn-dev-icon.png"
+            src="https://franasal.github.io/assets/img/vgn-dev-icon.png"
             alt=""
           />
           <span class="app-credit__name">vgn-dev</span>
@@ -277,7 +228,6 @@ export default {
       adminUnlocked: false,
       adminSessionPassword: '',
       adminSecurityInfo: getAdminSecurityInfo(),
-      activeCuePreview: ''
     };
   },
   computed: {
@@ -326,6 +276,27 @@ export default {
         maxPigs: 4,
         maxImagesPerPig: 2
       });
+    },
+    currentQuestionNode() {
+      if (!this.currentNode) {
+        return null;
+      }
+
+      if (this.currentNode.questionImage || !this.questionCueGroups.length) {
+        return this.currentNode;
+      }
+
+      const hintImage = this.questionCueGroups[0]?.images?.[0];
+      if (!hintImage) {
+        return this.currentNode;
+      }
+
+      return {
+        ...this.currentNode,
+        questionImage: hintImage,
+        questionImageAlt: 'Hinweisfoto',
+        questionImageLabel: 'Hinweis'
+      };
     },
     feedbackAnimalNames() {
       return Object.values(this.animalInfo)
@@ -389,6 +360,7 @@ export default {
         this.profileAnimal = state.profileAnimal || null;
         this.appView = 'profile';
       } else if (state.view === 'identify') {
+        this.appView = 'identify';
         const stepCount = state.stepCount ?? 0;
         if (stepCount === 0 && this.steps.length === 0) {
           // Already at first question, go back to start
@@ -651,14 +623,6 @@ export default {
       this.currentNode = null;
     },
 
-    openCuePreview(url) {
-      this.activeCuePreview = url;
-    },
-
-    closeCuePreview() {
-      this.activeCuePreview = '';
-    },
-
     recomputePigState() {
       let candidates = getInitialPigCandidates();
 
@@ -710,8 +674,13 @@ export default {
       this.resultName = null;
 
       if (nextQuestion) {
-        const node = buildPigQuestionNode(nextQuestion.question, candidates, nextQuestion.values);
-        this.currentNode = this.addOptionImages(node, candidates);
+        const node = buildPigQuestionNode(
+          nextQuestion.question,
+          candidates,
+          nextQuestion.values,
+          this.steps.length
+        );
+        this.currentNode = node;
         return;
       }
 
@@ -755,33 +724,6 @@ export default {
         ...node,
         helpText: `${candidateCount} ${speciesLabel} passen aktuell noch.`
       };
-    },
-
-    // Add optionImages to a pig question node based on available cue images
-    addOptionImages(node, candidates) {
-      const images = {};
-      if (node.mode === 'binary' && node.compareValue) {
-        const matching = candidates.filter((c) => {
-          if (node.compareValue === '__defined__') {
-            return c.traits[node.key] !== undefined && c.traits[node.key] !== null;
-          }
-          return c.traits[node.key] === node.compareValue;
-        });
-        for (const candidate of matching) {
-          const img = getCueImageForAnimalAndQuestion(candidate.name, node.key);
-          if (img) { images['yes'] = img; break; }
-        }
-      } else if (node.mode === 'direct') {
-        for (const optionKey of Object.keys(node.options)) {
-          if (optionKey === UNKNOWN_OPTION) continue;
-          const matching = candidates.filter((c) => c.traits[node.key] === optionKey);
-          for (const candidate of matching) {
-            const img = getCueImageForAnimalAndQuestion(candidate.name, node.key);
-            if (img) { images[optionKey] = img; break; }
-          }
-        }
-      }
-      return Object.keys(images).length > 0 ? { ...node, optionImages: images } : node;
     },
 
     // Trait analysis helpers
@@ -873,7 +815,7 @@ export default {
 <style scoped>
 .container {
   position: relative;
-  max-width: 500px;
+  width: min(100%, 500px);
   margin: 2rem auto;
   font-family: sans-serif;
   padding: 1rem 1rem 5.5rem;
@@ -881,6 +823,7 @@ export default {
   border-radius: 8px;
   background-color: var(--theme-surface, #fff);
   color: var(--theme-text, #212121);
+  box-sizing: border-box;
 }
 
 .app-footer {
@@ -966,89 +909,6 @@ export default {
 .thumb-name {
   font-size: .65rem; color: var(--theme-muted, #5d4037);
   text-align: center; line-height: 1.1; margin-top: 2px;
-}
-
-.question-cues {
-  margin: 0 0 1rem;
-  padding: .6rem;
-  background: var(--cue-panel-bg, #fff8fb);
-  border: 1px solid var(--cue-panel-border, #f8bbd0);
-  border-radius: 8px;
-}
-.question-cues-title {
-  font-size: .9rem;
-  font-weight: 700;
-  color: var(--theme-accent, #7b1f46);
-  margin-bottom: .45rem;
-}
-.question-cues-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .5rem;
-}
-.question-cue-card {
-  background: transparent;
-}
-.question-cue-images {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .35rem;
-}
-.question-cue-button {
-  padding: 0;
-  border: none;
-  background: transparent;
-  border-radius: 999px;
-  line-height: 0;
-}
-.question-cue-image {
-  width: 76px;
-  height: 76px;
-  object-fit: cover;
-  border-radius: 999px;
-  border: 3px solid var(--theme-surface-strong, #fff);
-  box-shadow: var(--cue-image-shadow, 0 0 0 1px #f0d6e0);
-}
-.question-cue-button:hover .question-cue-image {
-  box-shadow: var(--cue-image-shadow-hover, 0 0 0 1px #e8a1c1, 0 6px 16px rgba(126, 56, 92, 0.14));
-}
-
-.cue-preview-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 70;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  background: rgba(23, 18, 23, 0.68);
-}
-.cue-preview-dialog {
-  position: relative;
-  width: min(92vw, 560px);
-}
-.cue-preview-close {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  width: 36px;
-  height: 36px;
-  border: none;
-  border-radius: 999px;
-  background: var(--theme-surface-strong, #fff);
-  color: var(--theme-text, #5a4151);
-  font-size: 0.9rem;
-  font-weight: 700;
-  box-shadow: 0 8px 22px rgba(22, 14, 22, 0.22);
-}
-.cue-preview-image {
-  display: block;
-  width: 100%;
-  max-height: 78vh;
-  object-fit: contain;
-  border-radius: 20px;
-  background: var(--theme-surface-strong, #fff);
-  box-shadow: 0 18px 50px rgba(15, 11, 15, 0.3);
 }
 
 .option-button, .back-button, .reset-button {

@@ -16,20 +16,63 @@
 
     <Transition name="question-fade" mode="out-in" v-else>
       <div v-if="currentNode" :key="currentNode.key || currentNode.question">
-        <div class="question-box">
+        <div
+          v-if="currentNode.questionImage && currentNode.key === 'sex'"
+          class="question-box"
+        >
           <p v-if="currentNode.categoryHint" class="category-hint">{{ currentNode.categoryHint }}</p>
           <p class="question">{{ currentNode.question }}</p>
-          <div v-if="currentNode.questionImage" class="question-visual">
+          <div class="question-visual question-visual--stacked">
+            <p v-if="currentNode.questionImageLabel" class="question-visual-label">
+              {{ currentNode.questionImageLabel }}
+            </p>
             <img
               :src="currentNode.questionImage"
               :alt="currentNode.questionImageAlt || currentNode.question"
               class="question-visual-image"
+              role="button"
+              tabindex="0"
+              @click="openImagePreview(currentNode.questionImage)"
+              @keydown.enter.prevent="openImagePreview(currentNode.questionImage)"
+              @keydown.space.prevent="openImagePreview(currentNode.questionImage)"
             />
             <p v-if="currentNode.questionImageCaption" class="question-visual-caption">
               {{ currentNode.questionImageCaption }}
             </p>
           </div>
           <p v-if="currentNode.helpText" class="help-text">{{ currentNode.helpText }}</p>
+        </div>
+        <div
+          v-else
+          class="question-box"
+          :class="{ 'question-box--with-visual': currentNode.questionImage }"
+        >
+          <div class="question-copy">
+            <p v-if="currentNode.categoryHint" class="category-hint">{{ currentNode.categoryHint }}</p>
+            <p class="question">{{ currentNode.question }}</p>
+            <p v-if="currentNode.helpText" class="help-text">{{ currentNode.helpText }}</p>
+          </div>
+          <div
+            v-if="currentNode.questionImage"
+            class="question-visual"
+          >
+            <p v-if="currentNode.questionImageLabel" class="question-visual-label">
+              {{ currentNode.questionImageLabel }}
+            </p>
+            <img
+              :src="currentNode.questionImage"
+              :alt="currentNode.questionImageAlt || currentNode.question"
+              class="question-visual-image"
+              role="button"
+              tabindex="0"
+              @click="openImagePreview(currentNode.questionImage)"
+              @keydown.enter.prevent="openImagePreview(currentNode.questionImage)"
+              @keydown.space.prevent="openImagePreview(currentNode.questionImage)"
+            />
+            <p v-if="currentNode.questionImageCaption" class="question-visual-caption">
+              {{ currentNode.questionImageCaption }}
+            </p>
+          </div>
         </div>
         <div v-if="currentNode.key === 'fallbackResult' && currentNode.optionCards" class="option-card-grid">
           <button
@@ -52,15 +95,8 @@
             <button
               v-if="option !== unknownOption"
               class="option-button"
-              :class="{ 'option-button--with-image': currentNode.optionImages?.[option] }"
               @click="$emit('advance', option, branch)"
             >
-              <img
-                v-if="currentNode.optionImages?.[option]"
-                :src="currentNode.optionImages[option]"
-                :alt="formatLabel(option)"
-                class="option-cue-image"
-              />
               {{ formatLabel(option) }}
             </button>
           </template>
@@ -75,6 +111,28 @@
       </div>
     </Transition>
 
+    <div
+      v-if="previewImage"
+      class="cue-preview-overlay"
+      @click.self="closeImagePreview"
+    >
+      <div class="cue-preview-dialog">
+        <button
+          type="button"
+          class="cue-preview-close"
+          aria-label="Bild schließen"
+          @click="closeImagePreview"
+        >
+          X
+        </button>
+        <img
+          :src="previewImage"
+          :alt="currentNode?.questionImageAlt || currentNode?.question || 'Hinweisfoto'"
+          class="cue-preview-image"
+        />
+      </div>
+    </div>
+
     <div v-if="showNav" class="navigation-buttons">
       <template v-if="path.length > 0">
         <button class="back-button" @click="$emit('back')">← Zurück</button>
@@ -88,11 +146,12 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import ProgressBar from './ProgressBar.vue';
 import { UNKNOWN_OPTION } from '../data/pigIdentifier.js';
 
 const unknownOption = UNKNOWN_OPTION;
+const previewImage = ref('');
 
 const props = defineProps({
   currentNode: { type: Object, default: null },
@@ -138,6 +197,14 @@ function formatLabel(option) {
   };
   return map[option] || option;
 }
+
+function openImagePreview(url) {
+  previewImage.value = url || '';
+}
+
+function closeImagePreview() {
+  previewImage.value = '';
+}
 </script>
 
 <style scoped>
@@ -148,6 +215,25 @@ function formatLabel(option) {
   border: 1px solid var(--question-box-border, var(--group-accent-border, #f8bbd0));
   padding: 1rem; border-radius: 6px; margin-bottom: 1rem;
 }
+.question-box--with-visual {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.9rem;
+}
+.question-box--stacked-visual .question-visual {
+  margin-top: 0.75rem;
+  width: 100%;
+  max-width: none;
+  padding: 0.75rem;
+  border-radius: 10px;
+  background: var(--question-box-visual-bg, rgba(255, 255, 255, 0.75));
+  box-sizing: border-box;
+}
+.question-copy {
+  flex: 1 1 auto;
+  min-width: 0;
+}
 .category-hint {
   margin: 0 0 .3rem; font-size: .8rem;
   color: var(--theme-muted, #8d6e63); text-transform: uppercase; letter-spacing: .04em;
@@ -155,24 +241,105 @@ function formatLabel(option) {
 .question { font-weight: bold; margin: 0; color: var(--theme-text, inherit); }
 .help-text { margin: 0.5rem 0 0; font-size: 0.9rem; color: var(--question-box-caption, #6d4c41); }
 .question-visual {
-  margin-top: 0.75rem;
-  padding: 0.75rem;
-  border-radius: 10px;
-  background: var(--question-box-visual-bg, rgba(255, 255, 255, 0.75));
+  flex: 0 0 auto;
+  width: 84px;
+  text-align: center;
+}
+.question-visual--stacked {
+  width: 100%;
+  max-width: none;
+}
+.question-visual-label {
+  margin: 0 0 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--theme-accent, #7b1f46);
 }
 .question-visual-image {
   display: block;
+  width: 76px;
+  height: 76px;
+  border-radius: 999px;
+  margin: 0 0 0 auto;
+  object-fit: cover;
+  border: 3px solid var(--theme-surface-strong, #fff);
+  box-shadow: var(--cue-image-shadow, 0 0 0 1px #f0d6e0);
+  cursor: zoom-in;
+}
+.question-visual--stacked .question-visual-image {
   width: 100%;
   max-width: 240px;
+  height: auto;
   border-radius: 8px;
   margin: 0 auto;
-  object-fit: cover;
+  border: none;
+  box-shadow: none;
 }
 .question-visual-caption {
-  margin: 0.55rem 0 0;
-  font-size: 0.9rem;
+  margin: 0.4rem 0 0;
+  font-size: 0.78rem;
   line-height: 1.35;
   color: var(--question-box-caption, #5d4037);
+}
+.question-visual--stacked .question-visual-caption {
+  font-size: 0.9rem;
+  margin-top: 0.55rem;
+}
+
+.cue-preview-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(23, 18, 23, 0.68);
+}
+
+.cue-preview-dialog {
+  position: relative;
+  width: min(92vw, 560px);
+}
+
+.cue-preview-close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 999px;
+  background: var(--theme-surface-strong, #fff);
+  color: var(--theme-text, #5a4151);
+  font-size: 0.9rem;
+  font-weight: 700;
+  box-shadow: 0 8px 22px rgba(22, 14, 22, 0.22);
+}
+
+.cue-preview-image {
+  display: block;
+  width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  border-radius: 20px;
+  background: var(--theme-surface-strong, #fff);
+  box-shadow: 0 18px 50px rgba(15, 11, 15, 0.3);
+}
+
+@media (max-width: 420px) {
+  .question-box--with-visual {
+    gap: 0.7rem;
+  }
+
+  .question-visual {
+    width: 72px;
+  }
+
+  .question-visual-image {
+    width: 64px;
+    height: 64px;
+  }
 }
 
 .options { display: flex; flex-direction: column; gap: .4rem; }
@@ -244,21 +411,6 @@ function formatLabel(option) {
 .option-button:hover {
   background-color: var(--group-accent-strong, #ec407a);
   color: white;
-}
-
-.option-button--with-image {
-  display: flex;
-  align-items: center;
-  gap: .6rem;
-  text-align: left;
-}
-
-.option-cue-image {
-  width: 56px;
-  height: 56px;
-  object-fit: cover;
-  border-radius: 6px;
-  flex-shrink: 0;
 }
 
 .skip-button {

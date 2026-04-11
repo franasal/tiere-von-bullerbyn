@@ -177,7 +177,7 @@ Retterin: Samara von Team Tierschutz
 
 ## Rosalie
 ### Erscheinung
-Weiblich, rosa, Ohrmarke/Loch links, kurzer Schwanz, steife Hüfte.
+Weiblich, rosa, Ohrmarke/Loch links, spitze stehende Ohren, kurzer Schwanz, steife Hüfte.
 
 ### Merkmale
 ```traits
@@ -186,6 +186,7 @@ sex: female
 spotsPresent: no
 earMark: left
 skinColor: pink
+earForm: pointed
 tailType: short
 mobility: stiff_hip
 ```

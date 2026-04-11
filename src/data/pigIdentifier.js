@@ -5,6 +5,8 @@ import {
   MALE_PIG_GUIDE_CAPTION,
   MALE_PIG_GUIDE_IMAGE
 } from './pigSexGuide.js';
+import RONJA_SPOT_PATTERN_IMAGE from '../assets/pig-cues/Ronja/spotPattern.jpg';
+import FRANZ_TAIL_TYPE_IMAGE from '../assets/pig-cues/Franz/tailType_.jpg';
 
 const BINARY_DEFAULTS = {
   spotsPresent: 'no',
@@ -22,6 +24,8 @@ function applyTraitDefaults(traits) {
     ...traits
   };
 }
+
+const LONG_TAIL_VALUES = ['long_hairy', 'long_bare', 'curly_hairy'];
 
 export const pigProfiles = parsePigProfilesFromMarkdown(animalDescriptionsRaw).map((pig) => ({
   ...pig,
@@ -253,7 +257,7 @@ export const traitMeta = {
   largeBlackSpots: { icon: '⬛', label: 'Große Flecken' },
   spotPattern: { icon: '🐄', label: 'Fleckenmuster' },
   earPosture: { icon: '👂', label: 'Ohren' },
-  tailType: { icon: '🐾', label: 'Schwanz' },
+  tailType: { icon: '〰️', label: 'Schwanz' },
   earMark: { icon: '🏷️', label: 'Ohrmarke / Loch' },
   earForm: { icon: '👂', label: 'Ohrform' },
   skinColor: { icon: '🩷', label: 'Hautfarbe' },
@@ -278,6 +282,10 @@ export function filterPigCandidates(candidates, step) {
 
   const matchesTrait = (candidate, expectedValue) => {
     const candidateValue = candidate.traits[step.questionKey];
+
+    if (Array.isArray(expectedValue)) {
+      return expectedValue.some((value) => matchesTrait(candidate, value));
+    }
 
     if (candidateValue === expectedValue) {
       return true;
@@ -355,6 +363,16 @@ export function getNextPigQuestion(candidates, answeredKeys) {
   const maleFaceSpotsQuestion = getMaleFaceSpotsQuestion(candidates, answeredKeys);
   if (maleFaceSpotsQuestion) {
     return maleFaceSpotsQuestion;
+  }
+
+  const hipSpotsQuestion = getHipSpotsQuestion(candidates, answeredKeys);
+  if (hipSpotsQuestion) {
+    return hipSpotsQuestion;
+  }
+
+  const tailTypeCueQuestion = getTailTypeCueQuestion(candidates, answeredKeys);
+  if (tailTypeCueQuestion) {
+    return tailTypeCueQuestion;
   }
 
   const woollyColorQuestion = getWoollyColorQuestion(candidates, answeredKeys);
@@ -455,6 +473,83 @@ function getWoollyColorQuestion(candidates, answeredSteps) {
   return { question, values };
 }
 
+function getHipSpotsQuestion(candidates, answeredSteps) {
+  const alreadyAsked = answeredSteps.some((step) => step.questionKey === 'spotPattern');
+  if (alreadyAsked || candidates.length !== 2) {
+    return null;
+  }
+
+  const values = getDistinctValues(candidates, 'spotPattern');
+  const hasOnlyHipAndBodyLarge =
+    values.length === 2 &&
+    values.includes('hip_spots') &&
+    values.includes('body_large_spots');
+
+  if (!hasOnlyHipAndBodyLarge) {
+    return null;
+  }
+
+  const candidateNames = candidates.map((candidate) => candidate.name).sort((a, b) => a.localeCompare(b, 'de'));
+  if (candidateNames.join('|') !== 'Feline|Ronja') {
+    return null;
+  }
+
+  return {
+    question: {
+      key: 'spotPattern',
+      mode: 'binary',
+      compareValue: 'hip_spots',
+      compareLabel: 'Flecken an Ruecken/Huefte',
+      question: 'Hat es Flecken an den Rücken/Hüfte?',
+      optionLabels: {
+        yes: 'Ja, passt',
+        no: 'Nein, es hat Große Flecken im Gesicht und am Körper'
+      },
+      questionImage: RONJA_SPOT_PATTERN_IMAGE,
+      questionImageAlt: 'Hinweisfoto Flecken an Rücken und Hüfte',
+      questionImageLabel: 'Hinweis'
+    },
+    values: ['yes', 'no'],
+    forcedBinary: true
+  };
+}
+
+function getTailTypeCueQuestion(candidates, answeredSteps) {
+  const alreadyAsked = answeredSteps.some((step) => step.questionKey === 'tailType');
+  if (alreadyAsked) {
+    return null;
+  }
+
+  const values = getDistinctValues(candidates, 'tailType');
+  const hasShortAndLongBare =
+    values.length === 2 &&
+    values.includes('short') &&
+    values.includes('long_bare');
+
+  if (!hasShortAndLongBare) {
+    return null;
+  }
+
+  return {
+    question: {
+      key: 'tailType',
+      mode: 'binary',
+      compareValue: 'long_bare',
+      compareLabel: 'Langer Schwanz ohne Haare',
+      question: 'Hat es einen langen Schwanz ohne Haare?',
+      optionLabels: {
+        yes: 'Ja, passt',
+        no: 'Nein, es hat einen kurzen Schwanz'
+      },
+      questionImage: FRANZ_TAIL_TYPE_IMAGE,
+      questionImageAlt: 'Hinweisfoto langer Schwanz ohne Haare',
+      questionImageLabel: 'Hinweis'
+    },
+    values: ['yes', 'no'],
+    forcedBinary: true
+  };
+}
+
 function getShortTailFemaleSpotQuestion(candidates, answeredSteps) {
   const hasFemale = answeredSteps.some(
     (step) => step.questionKey === 'sex' && step.optionKey === 'female'
@@ -543,8 +638,14 @@ function getBestBinaryValue(candidates, questionKey, values) {
   return bestValue;
 }
 
-export function buildPigQuestionNode(question, candidates, values) {
+export function buildPigQuestionNode(question, candidates, values, answeredCount = 0) {
   const estimatedRemaining = Math.max(1, Math.ceil(Math.log2(candidates.length)));
+  const allowUnknownOption = question.key === 'sex' && answeredCount >= 3;
+  const isHipVsBodyLargeSpotQuestion =
+    question.key === 'spotPattern' &&
+    values.length === 2 &&
+    values.includes('hip_spots') &&
+    values.includes('body_large_spots');
 
   const meta = traitMeta[question.key];
   const sexGuide =
@@ -558,6 +659,20 @@ export function buildPigQuestionNode(question, candidates, values) {
 
   if (question.mode === 'binary' && question.compareValue) {
     const categoryHint = meta ? `${meta.icon} ${meta.label}` : '';
+    const options = {
+      yes: {},
+      no: {}
+    };
+    const optionLabels = {
+      yes: 'Ja, passt',
+      no: 'Nein'
+    };
+    Object.assign(optionLabels, question.optionLabels || {});
+
+    if (allowUnknownOption) {
+      options[UNKNOWN_OPTION] = {};
+      optionLabels[UNKNOWN_OPTION] = 'Nicht sicher';
+    }
 
     return {
       key: question.key,
@@ -566,19 +681,43 @@ export function buildPigQuestionNode(question, candidates, values) {
       compareLabel: question.compareLabel,
       categoryHint,
       question: question.question,
+      options,
+      optionLabels,
+      estimatedRemaining,
+      helpText: `${candidates.length} Schweine passen aktuell noch.`,
+      ...sexGuide,
+      ...(question.questionImage
+        ? {
+            questionImage: question.questionImage,
+            questionImageAlt: question.questionImageAlt,
+            questionImageCaption: question.questionImageCaption,
+            questionImageLabel: question.questionImageLabel
+          }
+        : {})
+    };
+  }
+
+  if (isHipVsBodyLargeSpotQuestion) {
+    return {
+      key: question.key,
+      mode: 'binary',
+      compareValue: 'hip_spots',
+      compareLabel: 'Flecken an Ruecken/Huefte',
+      categoryHint: meta ? `${meta.icon} ${meta.label}` : '',
+      question: 'Hat es Flecken an den Rücken/Hüfte?',
       options: {
         yes: {},
-        no: {},
-        [UNKNOWN_OPTION]: {}
+        no: {}
       },
       optionLabels: {
         yes: 'Ja, passt',
-        no: 'Nein',
-        [UNKNOWN_OPTION]: 'Nicht sicher'
+        no: 'Nein, es hat Große Flecken im Gesicht und am Körper'
       },
       estimatedRemaining,
       helpText: `${candidates.length} Schweine passen aktuell noch.`,
-      ...sexGuide
+      questionImage: RONJA_SPOT_PATTERN_IMAGE,
+      questionImageAlt: 'Hinweisfoto Flecken an Rücken und Hüfte',
+      questionImageLabel: 'Hinweis'
     };
   }
 
@@ -587,7 +726,12 @@ export function buildPigQuestionNode(question, candidates, values) {
     values.forEach((value) => {
       options[value] = {};
     });
-    options[UNKNOWN_OPTION] = {};
+
+    const optionLabels = { ...question.options };
+    if (allowUnknownOption) {
+      options[UNKNOWN_OPTION] = {};
+      optionLabels[UNKNOWN_OPTION] = 'Nicht sicher';
+    }
 
     return {
       key: question.key,
@@ -595,16 +739,36 @@ export function buildPigQuestionNode(question, candidates, values) {
       categoryHint: meta ? `${meta.icon} ${meta.label}` : '',
       question: question.question,
       options,
-      optionLabels: { ...question.options, [UNKNOWN_OPTION]: 'Nicht sicher' },
+      optionLabels,
       estimatedRemaining,
       helpText: `${candidates.length} Schweine passen aktuell noch.`,
       ...sexGuide
     };
   }
 
-  const compareValue = getBestBinaryValue(candidates, question.key, values);
-  const compareLabel = question.options[compareValue] || compareValue;
+  let compareValue = getBestBinaryValue(candidates, question.key, values);
+  let compareLabel = question.options[compareValue] || compareValue;
   const categoryHint = meta ? `${meta.icon} ${meta.label}` : '';
+  const options = {
+    yes: {},
+    no: {}
+  };
+  const optionLabels = {
+    yes: 'Ja, passt',
+    no: 'Nein'
+  };
+
+  if (allowUnknownOption) {
+    options[UNKNOWN_OPTION] = {};
+    optionLabels[UNKNOWN_OPTION] = 'Nicht sicher';
+  }
+
+  let questionText = `${compareLabel}?`;
+  if (question.key === 'tailType' && compareValue === 'short') {
+    compareValue = LONG_TAIL_VALUES.filter((value) => values.includes(value));
+    compareLabel = 'Lang';
+    questionText = 'Schwanz lang?';
+  }
 
   return {
     key: question.key,
@@ -612,17 +776,9 @@ export function buildPigQuestionNode(question, candidates, values) {
     compareValue,
     compareLabel,
     categoryHint,
-    question: `${compareLabel}?`,
-    options: {
-      yes: {},
-      no: {},
-      [UNKNOWN_OPTION]: {}
-    },
-    optionLabels: {
-      yes: 'Ja, passt',
-      no: 'Nein',
-      [UNKNOWN_OPTION]: 'Nicht sicher'
-    },
+    question: questionText,
+    options,
+    optionLabels,
     estimatedRemaining,
     helpText: `${candidates.length} Schweine passen aktuell noch.`,
     ...sexGuide

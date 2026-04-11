@@ -42,7 +42,7 @@ export const ANIMAL_CHARACTERISTICS = {
   Emil: { menschenfreundlichkeit: 3, aktivitaet: 5, neugier: 5 },
   Markus: { menschenfreundlichkeit: 2, aktivitaet: 3, neugier: 3 },
   Yoda: { menschenfreundlichkeit: 3, aktivitaet: 4, neugier: 5 },
-  Jule: { menschenfreundlichkeit: 4, aktivitaet: 5, neugier: 5 },
+  Jule: { menschenfreundlichkeit: 3, aktivitaet: 5, neugier: 5 },
   Timon: { menschenfreundlichkeit: 5, aktivitaet: 4, neugier: 5 },
   August: { menschenfreundlichkeit: 5, aktivitaet: 5, neugier: 5 },
   Schneeweisschen: { menschenfreundlichkeit: 1, aktivitaet: 4, neugier: 2 },

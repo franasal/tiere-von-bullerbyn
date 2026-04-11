@@ -623,7 +623,7 @@
       "species": "cat",
       "appearance_description": "Braun-schwarze Maine-Coon-Katze.",
       "general_description": "Schläft viel und lässt sich gerne verwöhnen.",
-      "image_url": "/animal-images/placeholder.svg",
+      "image_url": "/animal-images/cat/toffie.jpg",
       "characteristics": {
         "menschenfreundlichkeit": 4,
         "aktivitaet": 1,
@@ -636,7 +636,7 @@
       "species": "cat",
       "appearance_description": "Graue Katze mit Flecken.",
       "general_description": "Noch jung, verspielt und nachts oft bei Tierpflegerin Josi.",
-      "image_url": "/animal-images/placeholder.svg",
+      "image_url": "/animal-images/cat/mau.jpg",
       "characteristics": {
         "menschenfreundlichkeit": 3,
         "aktivitaet": 4,
@@ -649,7 +649,7 @@
       "species": "cat",
       "appearance_description": "Überwiegend weiße Katze mit schwarzen Flecken.",
       "general_description": "Ein aufgeweckter Freigeist mit Vorliebe für Futterkammer und Keller.",
-      "image_url": "/animal-images/placeholder.svg",
+      "image_url": "/animal-images/cat/sari.jpeg",
       "characteristics": {
         "menschenfreundlichkeit": 3,
         "aktivitaet": 3,

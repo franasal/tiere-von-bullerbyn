@@ -61,6 +61,7 @@ watch(theme, (value) => {
 .app-shell {
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 1rem;
   padding-bottom: 5rem;
 }

@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
-  <rect width="800" height="800" fill="#f5f2ee"/>
-  <circle cx="400" cy="290" r="120" fill="#fafafa"/>
-  <circle cx="355" cy="265" r="34" fill="#3b3b3b"/>
-  <circle cx="450" cy="320" r="30" fill="#9b6a43"/>
-  <rect x="225" y="430" width="350" height="145" rx="72" fill="#ece5dd"/>
-  <text x="400" y="660" text-anchor="middle" font-family="Arial, sans-serif" font-size="56" font-weight="700" fill="#4d433c">Prue</text>
-  <text x="400" y="720" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="#776a61">Bild folgt</text>
-</svg>

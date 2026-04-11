@@ -23,6 +23,10 @@ const QUESTION_HINTS = {
   livesAlone: ['alone', 'allein']
 };
 
+const QUESTION_PREFERRED_PIGS = {
+  spotPattern: ['Kiwi']
+};
+
 function indexCuesByPig() {
   const byPig = new Map();
 
@@ -51,6 +55,16 @@ function indexCuesByPig() {
 }
 
 const cueIndex = indexCuesByPig();
+
+function getKiwiSpotCue() {
+  const kiwiCues = cueIndex.get('Kiwi') || [];
+  return kiwiCues.find((cue) => cue.baseName.toLowerCase() === 'kiwi_flecken')?.url || null;
+}
+
+function getFranzTailCue() {
+  const franzCues = cueIndex.get('Franz') || [];
+  return franzCues.find((cue) => cue.baseName.toLowerCase() === 'tailtype_')?.url || null;
+}
 
 function scoreCueForQuestion(cue, questionKey) {
   if (!questionKey) {
@@ -93,7 +107,34 @@ function sortCuesForQuestion(cues, questionKey) {
   });
 }
 
+function prioritizePigNamesForQuestion(names, questionKey) {
+  const preferred = QUESTION_PREFERRED_PIGS[questionKey] || [];
+  if (!preferred.length) {
+    return [...names];
+  }
+
+  return [...names].sort((a, b) => {
+    const aPriority = preferred.indexOf(a);
+    const bPriority = preferred.indexOf(b);
+    const normalizedAPriority = aPriority === -1 ? Number.MAX_SAFE_INTEGER : aPriority;
+    const normalizedBPriority = bPriority === -1 ? Number.MAX_SAFE_INTEGER : bPriority;
+
+    if (normalizedAPriority !== normalizedBPriority) {
+      return normalizedAPriority - normalizedBPriority;
+    }
+
+    return 0;
+  });
+}
+
 export function getCueImageForAnimalAndQuestion(name, questionKey) {
+  if (name === 'Kiwi' && questionKey === 'spotPattern') {
+    const kiwiSpotCue = getKiwiSpotCue();
+    if (kiwiSpotCue) {
+      return kiwiSpotCue;
+    }
+  }
+
   const cues = cueIndex.get(name) || [];
   const sorted = sortCuesForQuestion(cues, questionKey);
   const matching = sorted.filter((cue) => scoreCueForQuestion(cue, questionKey) > 0);
@@ -104,7 +145,31 @@ export function getQuestionCueGallery(candidateNames, questionKey, options = {})
   const maxPigs = options.maxPigs || 4;
   const maxImagesPerPig = options.maxImagesPerPig || 2;
 
-  const names = (candidateNames || []).slice(0, maxPigs);
+  if (questionKey === 'spotPattern') {
+    const kiwiSpotCue = getKiwiSpotCue();
+    if (kiwiSpotCue) {
+      return [
+        {
+          name: 'Kiwi',
+          images: [kiwiSpotCue]
+        }
+      ];
+    }
+  }
+
+  if (questionKey === 'tailType') {
+    const franzTailCue = getFranzTailCue();
+    if (franzTailCue) {
+      return [
+        {
+          name: 'Franz',
+          images: [franzTailCue]
+        }
+      ];
+    }
+  }
+
+  const names = prioritizePigNamesForQuestion(candidateNames || [], questionKey).slice(0, maxPigs);
 
   return names
     .map((name) => {
