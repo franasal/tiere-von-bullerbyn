@@ -138,7 +138,7 @@
       />
 
       <p class="app-credit">
-        Sorgf&auml;ltig gebaut von
+        Mit tierischer Liebe entwickelt von
         <a
           class="app-credit__link"
           href="https://franasal.github.io/"
