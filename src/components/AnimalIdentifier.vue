@@ -141,7 +141,7 @@
         Mit tierischer Liebe entwickelt von
         <a
           class="app-credit__link"
-          href="https://franasal.github.io/"
+          href="https://vgn.earth/"
           target="_blank"
           rel="noreferrer"
         >
@@ -150,7 +150,7 @@
             src="https://franasal.github.io/assets/img/vgn-dev-icon.png"
             alt=""
           />
-          <span class="app-credit__name">vgn-dev</span>
+          <span class="app-credit__name">vgn.dev</span>
         </a>
       </p>
     </footer>
@@ -843,8 +843,7 @@ export default {
 .app-credit {
   margin: 0;
   font-size: 0.72rem;
-  color: var(--theme-muted, #6f4e37);
-  opacity: 0.6;
+  color: color-mix(in srgb, var(--theme-text, #2d221b) 82%, var(--theme-muted, #6f4e37));
   text-align: right;
 }
 
@@ -855,18 +854,18 @@ export default {
   margin-left: 0.2rem;
   padding: 0.14rem 0.42rem;
   border-radius: 999px;
-  color: #6fcea0;
-  background: rgba(47, 107, 79, 0.12);
+  color: color-mix(in srgb, var(--theme-accent, #2f6b4f) 72%, var(--theme-text, #2d221b));
+  background: color-mix(in srgb, var(--theme-accent, #2f6b4f) 14%, var(--theme-surface-soft, rgba(255, 255, 255, 0.78)));
   text-decoration: none;
-  box-shadow: inset 0 0 0 1px rgba(47, 107, 79, 0.28);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--theme-accent, #2f6b4f) 42%, var(--theme-border, #decbbb));
   transition: background-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
 }
 
 .app-credit__link:hover,
 .app-credit__link:focus-visible {
-  color: #8ee4b8;
-  background: rgba(47, 107, 79, 0.18);
-  box-shadow: inset 0 0 0 1px rgba(47, 107, 79, 0.42);
+  color: var(--theme-text, #2d221b);
+  background: color-mix(in srgb, var(--theme-accent, #2f6b4f) 20%, var(--theme-surface-soft, rgba(255, 255, 255, 0.78)));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--theme-accent, #2f6b4f) 58%, var(--theme-border, #decbbb));
 }
 
 .app-credit__logo {
