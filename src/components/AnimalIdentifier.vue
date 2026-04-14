@@ -51,7 +51,7 @@
 
     <!-- Identification flow -->
     <div v-else-if="appView === 'identify'" class="identify-view" :style="currentThemeStyle">
-      <h1>
+      <h1 class="identify-title">
         <template v-if="selectedAnimal === 'pigs'">Schweine</template>
         <template v-else>{{ formatSpecies(selectedAnimal) }}</template>
       </h1>
@@ -897,6 +897,13 @@ export default {
 
 /* Candidate thumbnail gallery */
 .candidate-gallery { margin: 0 0 1rem; }
+.identify-title {
+  margin: 0 0 1rem;
+  font-family: 'Survivant', Inter, sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  line-height: 1.05;
+}
+
 .candidate-label {
   display: block; font-size: 0.9rem; color: var(--theme-muted, #5d4037); margin-bottom: .4rem;
 }

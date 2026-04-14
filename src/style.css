@@ -1,9 +1,11 @@
 @font-face {
   font-family: 'Survivant';
-  src: url('/fonts/survivant.ttf') format('truetype');
+  src:
+    local('Survivant'),
+    url('/fonts/survivant.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 :root {
